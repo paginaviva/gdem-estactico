@@ -23,3 +23,5 @@ opencode --port 44389
 exit
 opencode --port 26633
 exit
+opencode --port 55394
+opencode --port 38494
