@@ -6,7 +6,6 @@ ADVERTENCIA-HALANS.md
 reglas-abreviaciones.txt
 halans-mcp-server/
 hugo-mcp/
-project/gaia-static/
 
 # Caché, estado y temporales
 .cache/
@@ -17,6 +16,7 @@ project/gaia-static/
 .tmp/
 temp/
 .opencode/
+.agents/
 
 # Dependencias generadas
 node_modules/
