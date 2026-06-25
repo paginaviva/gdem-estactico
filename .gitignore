@@ -4,6 +4,8 @@
 !.env.example
 ADVERTENCIA-HALANS.md
 reglas-abreviaciones.txt
+halans-mcp-server/
+hugo-mcp/
 
 # Caché, estado y temporales
 .cache/
