@@ -12,11 +12,11 @@
 
 - [Grupo 1: Documentación Maestra del Proceso](#grupo-1-documentación-maestra-del-proceso)
   - [01 — README: Documento maestro](#01--01_readmemd)
-  - [02 — Análisis del SWE original](#02--02_analisis-swe-gaia-staticmd)
-  - [03 — Plan de migración a Hugo](#03--03_plan-migracion-hugomd)
+  - [02 — Análisis del SWE original (Etapa 1)](#02--02_etapa-1-analisis-swe-gaia-staticmd)
+  - [03 — Plan de migración a Hugo (Etapa 2)](#03--03_etapa-2-plan-migracion-hugomd)
 - [Grupo 2: Ejecución y Seguimiento](#grupo-2-ejecución-y-seguimiento)
-  - [04 — Bitácora de ejecución](#04--04_bitacora-ejecucionmd)
-  - [05 — Plan de despliegue Cloudflare](#05--05_plan-despliegue-cloudfla remd)
+  - [04 — Bitácora de ejecución (Etapa 3)](#04--04_etapa-3-bitacora-ejecucionmd)
+  - [05 — Plan de despliegue Cloudflare (Etapa 4)](#05--05_etapa-4-plan-despliegue-cloudflaremd)
 - [Grupo 3: Planes Específicos y Listas de Tareas](#grupo-3-planes-específicos-y-listas-de-tareas)
   - [06 — Lista de tareas Cloudflare](#06--06_lista-tareas-cloudflaremd)
   - [07 — Plan de correo DonDominio](#07--07_plan-correo-dondominiomd)
@@ -47,26 +47,26 @@ Documentos fundacionales que definen el proyecto, su metodología y el plan de t
 | **Dependencias** | Ninguna |
 | **Resumen** | Describe el concepto de SWE (Static Website Export), la arquitectura del sitio GDEM (Blocksy + Elementor + Simply Static), los 5 tipos de componentes a inventariar, los design tokens (8 colores, 3 tipografías), los artefactos WP a limpiar, las anomalías comunes detectadas (OG tags de `yoely.es`, rutas absolutas a `wped.gaiaevoluciondelser.es`, placeholders `#`), y la estructura de menú de 3 niveles. Incluye enlaces a recursos Hugo, Simply Static y MCPs disponibles. |
 
-### 02 — `02_analisis-swe-gaia-static.md`
+### 02 — `02_etapa-1-analisis-swe-gaia-static.md`
 
 | Campo | Valor |
 |-------|-------|
 | **Nombre original** | `etapa-1-analisis-gaia-static.md` |
-| **Ruta relativa** | `doc-proceso/02_analisis-swe-gaia-static.md` |
+| **Ruta relativa** | `doc-proceso/02_etapa-1-analisis-swe-gaia-static.md` |
 | **Líneas** | 771 |
 | **Finalidad** | Análisis exhaustivo del sitio WordPress original exportado a estático. Inventario completo de páginas, componentes visuales, assets, design tokens y anomalías. Base para construir el tema Hugo personalizado. |
 | **Dependencias** | `01_README.md` (contexto general) |
 | **Resumen** | Documenta 19 páginas HTML + sitemap + robots.txt, estructura de navegación de 3 niveles con 25 entradas, catálogo de 9 secciones de la página de inicio (hero, bienvenida, icon-boxes, cursos, CTA, galería de servicios, testimonios, programas, contacto), paleta de 8 colores corporativos (morado #7E50D5, dorado #BA9732, lavanda, grises), tipografía (Roboto, Roboto Slab, Josefin Sans), inventario de CSS (20 archivos), JS (8 archivos) e imágenes (284 en uploads). Detecta 4 anomalías: OG tags de `yoely.es`, Google Fonts con URLs absolutas, enlaces `#` placeholder, y secciones ocultas con lorem ipsum. Recomienda estructura de layouts para el tema Hugo. |
 
-### 03 — `03_plan-migracion-hugo.md`
+### 03 — `03_etapa-2-plan-migracion-hugo.md`
 
 | Campo | Valor |
 |-------|-------|
 | **Nombre original** | `etapa-2-pdTbjo-migracion-swe-hugo.md` |
-| **Ruta relativa** | `doc-proceso/03_plan-migracion-hugo.md` |
+| **Ruta relativa** | `doc-proceso/03_etapa-2-plan-migracion-hugo.md` |
 | **Líneas** | 738 |
 | **Finalidad** | Plan de trabajo detallado para migrar el SWE a Hugo. Define la arquitectura del tema, el mapeo de contenido, 54 tareas organizadas en 12 módulos (A-L), 34 reglas vinculantes (R1-R34), y el grafo de dependencias entre módulos. |
-| **Dependencias** | `01_README.md`, `02_analisis-swe-gaia-static.md` |
+| **Dependencias** | `01_README.md`, `02_etapa-1-analisis-swe-gaia-static.md` |
 | **Resumen** | Arquitectura: tema Hugo propio (sin temas externos), contenido en HTML plano (no Markdown), CSS plano en `assets/css/`, JavaScript vanilla sin jQuery. Estructura de directorios completa (`content/` con 19 páginas, `layouts/` con baseof, header, footer, home, pages, shortcodes, `static/` con CSS, JS, imágenes, fuentes). Mapeo slug a slug de cada página original. 34 reglas que cubren: configuración (R1-R5: `disablePathToLower: true`, menú en YAML), layouts (R6-R12: baseof, header, footer, nav, home), contenido (R13-R18: HTML incrustado, slugs exactos, front matter), assets (R19-R24: CSS plano, fuentes locales, imágenes en static/), rendimiento (R25-R27: minificación, WebP, concatenación JS), SEO (R28-R31: canonical, sitemaps, Open Graph, schema), menú (R32-R34). Grafo de dependencias: módulos A-B-C (base) → D-E-F (contenido) → G-H-I (assets) → J-K-L (SEO y cierre). |
 
 ---
@@ -75,26 +75,26 @@ Documentos fundacionales que definen el proyecto, su metodología y el plan de t
 
 Documentos que registran el progreso de la migración y el plan de despliegue a Cloudflare.
 
-### 04 — `04_bitacora-ejecucion.md`
+### 04 — `04_etapa-3-bitacora-ejecucion.md`
 
 | Campo | Valor |
 |-------|-------|
 | **Nombre original** | `etapa-3-bitacora-ejecucion.md` |
-| **Ruta relativa** | `doc-proceso/04_bitacora-ejecucion.md` |
+| **Ruta relativa** | `doc-proceso/04_etapa-3-bitacora-ejecucion.md` |
 | **Líneas** | 80 |
 | **Finalidad** | Bitácora de ejecución de la Etapa 3 (migración a Hugo). Registro de tareas completadas, decisiones técnicas, problemas y atajos. |
-| **Dependencias** | `03_plan-migracion-hugo.md` |
+| **Dependencias** | `03_etapa-2-plan-migracion-hugo.md` |
 | **Resumen** | Estado actual: **0 de 70 tareas completadas (0%)**. Los 12 módulos (A-L) están todos en pendiente. Solo contiene el registro de inicio de Etapa 3, donde se revisó el plan y se documentó que el directorio `.tmp/tasks/migracion-hugo/` (que contenía el desglose de 70 subtareas atómicas) fue eliminado durante limpieza del proyecto. Refleja que la migración a Hugo no se ha ejecutado realmente. Tablas de seguimiento y decisiones vacías. |
 
-### 05 — `05_plan-despliegue-cloudflare.md`
+### 05 — `05_etapa-4-plan-despliegue-cloudflare.md`
 
 | Campo | Valor |
 |-------|-------|
 | **Nombre original** | `etapa-4-pdTbjo-despliegue-cloudflare.md` |
-| **Ruta relativa** | `doc-proceso/05_plan-despliegue-cloudflare.md` |
+| **Ruta relativa** | `doc-proceso/05_etapa-4-plan-despliegue-cloudflare.md` |
 | **Líneas** | 503 |
 | **Finalidad** | Plan de despliegue en Cloudflare Pages + Email Routing. Define 12 tareas (CF01-CF12), la migración DNS, las credenciales necesarias, los límites del free tier y los riesgos con mitigaciones. |
-| **Dependencias** | `04_bitacora-ejecucion.md` |
+| **Dependencias** | `04_etapa-3-bitacora-ejecucion.md` |
 | **Resumen** | Justificación de Cloudflare Pages sobre Workers Static Assets. Situación de credenciales (3 tokens reales verificados vía API: GDEM-FullOps-Token, ORIC-Token, ORIC-CF-API-Token-GDEM). FASE 0 de migración DNS completada (nameservers cambiados a `aitana.ns.cloudflare.com` / `apollo.ns.cloudflare.com`). Tareas CF01-CF12 con comandos exactos (instalación de Wrangler, creación de `_headers`, deploy, dominio personalizado, optimizaciones, correo). 18 criterios de aceptación (CA01-CA18). 10 riesgos con mitigaciones. Plan de rollback. Versión 2.0 actualizada con estado real del despliegue. |
 
 ---
@@ -111,7 +111,7 @@ Documentos operativos que detallan tareas concretas y su estado de ejecución ve
 | **Ruta relativa** | `doc-proceso/06_lista-tareas-cloudflare.md` |
 | **Líneas** | 290 |
 | **Finalidad** | Lista de tareas de despliegue Cloudflare con estados reales verificados contra la API de Cloudflare. Actualización del progreso real frente a lo documentado en el plan. |
-| **Dependencias** | `05_plan-despliegue-cloudflare.md` |
+| **Dependencias** | `05_etapa-4-plan-despliegue-cloudflare.md` |
 | **Resumen** | Verificación contra API real de Cloudflare del 2026-06-25. Descubrimientos clave: Fase 0 completada (el documento decía pendiente pero realmente estaba hecha), CF07 deploy completado, CF08 dominio activo (HTTP/2 200), CF09 optimizaciones mayormente hechas, CF10 correo configurado. Incluye 3 anexos detallados: Anexo CF08 (diagnóstico de dominio pending → active, solución del error 522), Anexo CF09 (Auto Minify deprecado por Cloudflare desde 2024-08-05, Rocket Loader desactivado, Always Use HTTPS activado), Anexo CF10 (correo DonDominio vía DNS). Pendiente solo: CF06 (cabeceras de seguridad, descartado por falta de permisos API para Rulesets). |
 
 ### 07 — `07_plan-correo-dondominio.md`
@@ -122,7 +122,7 @@ Documentos operativos que detallan tareas concretas y su estado de ejecución ve
 | **Ruta relativa** | `doc-proceso/07_plan-correo-dondominio.md` |
 | **Líneas** | 154 |
 | **Finalidad** | Plan de trabajo específico para configurar el correo electrónico de DonDominio en los DNS de Cloudflare. Define 5 fases de ejecución con requisitos técnicos. |
-| **Dependencias** | `05_plan-despliegue-cloudflare.md` |
+| **Dependencias** | `05_etapa-4-plan-despliegue-cloudflare.md` |
 | **Resumen** | Objetivo: configurar registros DNS (MX, SPF, DKIM, DMARC) para que DonDominio gestione el correo del dominio `gaiaevoluciondelser.es` desde Cloudflare. 5 fases: F1 (ExternalScout para documentación de DDOM), F2 (análisis de servicios y DNS actual vía API DDOM), F3 (creación de registros en Cloudflare), F4 (verificación de cuentas de correo por el usuario), F5 (documentación final y DMARC p=reject). Documenta el estado inicial de DNS (MX antiguo apuntando a `cprapid.com`, SPF del WordPress), las credenciales de DonDominio, 9 requisitos técnicos (R1-R9), y los riesgos identificados (saldo 0€ en DDOM, API no crea cuentas, propagación DNS lenta). |
 
 ---
@@ -139,7 +139,7 @@ Documentos que evalúan la calidad de la migración y controlan el estado de las
 | **Ruta relativa** | `doc-proceso/08_incidencias-hugo-vs-static.md` |
 | **Líneas** | 348 |
 | **Finalidad** | Diagnóstico completo de 52 incidencias comparando la versión migrada a Hugo contra el original estático de WordPress. Clasificadas por severidad, ámbito y estado de corrección. |
-| **Dependencias** | `01_README.md`, `02_analisis-swe-gaia-static.md`, `03_plan-migracion-hugo.md` |
+| **Dependencias** | `01_README.md`, `02_etapa-1-analisis-swe-gaia-static.md`, `03_etapa-2-plan-migracion-hugo.md` |
 | **Resumen** | 52 incidencias diagnosticadas: 12 críticas, 9 altas, 9 medias, 7 bajas. Ámbitos: CSS archivos (I01-I04: global.css, main.min.css, elementor-frontend.css, kit-7), CSS variables/layout (I05-I10: widgets, container-width, text-color, sticky header, dropdown), CSS navegación (I11-I16: offcanvas, overlay, dropdown, mega-menú), JS archivos (I17-I24: jQuery, blocksy main, elementor frontend, complianz), JS fallos (I25-I30: menú móvil, sticky, duplicados), HTML head (I31-I34: fuentes, schema, viewport), header/hero/footer (I35-I40), cookies (I41-I42: banner, preferencias), assets (I43-I46: imágenes, fuentes, SVG), schema (I47-I50: JSON-LD, sameAs), sitemap (I51-I52). **25 corregidas (76%)**, 4 no aplican, 8 pendientes. |
 
 ### 09 — `09_control-incidencias-pendientes.md`

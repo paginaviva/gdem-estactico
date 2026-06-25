@@ -62,7 +62,7 @@ El trabajo se organizó en 3 fases ejecutadas secuencialmente:
 
 ### 2.1 ¿Por qué se hizo?
 
-Originalmente la tarea **CF10** del plan de trabajo (`05_plan-despliegue-cloudflare.md`) consistía en activar **Email Routing de Cloudflare**. Sin embargo, durante la ejecución del proyecto se determinó que:
+Originalmente la tarea **CF10** del plan de trabajo (`05_etapa-4-plan-despliegue-cloudflare.md`) consistía en activar **Email Routing de Cloudflare**. Sin embargo, durante la ejecución del proyecto se determinó que:
 
 1. El dominio `gaiaevoluciondelser.es` tiene un **plan Mini Hosting activo en DonDominio** (vence 2027-05-26) que incluye capacidad de correo electrónico (5 cuentas, 5 alias).
 2. Las credenciales de DonDominio están disponibles, así como su API funcional.

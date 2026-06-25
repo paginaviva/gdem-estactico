@@ -1,7 +1,7 @@
 # Lista de Tareas — Despliegue Cloudflare para gaiaevoluciondelser.es
 
 > **Proyecto:** GDEM — Gaia Demurtas
-> **Documento generado a partir de:** `05_plan-despliegue-cloudflare.md`
+> **Documento generado a partir de:** `05_etapa-4-plan-despliegue-cloudflare.md`
 > **Estados verificados contra Cloudflare vía API:** 2026-06-25
 > **Token usado:** GDEM-FullOps-Token (activo)
 

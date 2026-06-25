@@ -49,7 +49,7 @@ Se ejecutaron las optimizaciones de rendimiento a nivel de zona Cloudflare para 
 
 ### 2.1 ¿Por qué se hizo?
 
-El proyecto GDEM (Gaia Demurtas, `gaiaevoluciondelser.es`) consiste en la migración de un sitio WordPress a un sitio estático generado con **Hugo**, desplegado en **Cloudflare Pages** (plan Free). Como parte de la **Etapa 4** del plan de trabajo (`05_plan-despliegue-cloudflare.md`), la tarea **CF09** consiste en activar las optimizaciones de rendimiento a nivel de zona Cloudflare (settings de dominio) para maximizar la velocidad de carga del sitio estático.
+El proyecto GDEM (Gaia Demurtas, `gaiaevoluciondelser.es`) consiste en la migración de un sitio WordPress a un sitio estático generado con **Hugo**, desplegado en **Cloudflare Pages** (plan Free). Como parte de la **Etapa 4** del plan de trabajo (`05_etapa-4-plan-despliegue-cloudflare.md`), la tarea **CF09** consiste en activar las optimizaciones de rendimiento a nivel de zona Cloudflare (settings de dominio) para maximizar la velocidad de carga del sitio estático.
 
 Tras la finalización de **CF08** (dominio personalizado activo en Pages), el sitio ya era accesible desde `https://gaiaevoluciondelser.es/` con HTTPS, cabeceras de seguridad automáticas y compresión básica. El objetivo de CF09 era ajustar los settings de rendimiento restantes que no vienen optimizados por defecto.
 

@@ -37,7 +37,7 @@ Se logró que ambos dominios (apex y www) respondan correctamente desde Cloudfla
 
 ### 2.1 ¿Por qué se hizo?
 
-El proyecto GDEM (Gaia Demurtas, `gaiaevoluciondelser.es`) consiste en la migración de un sitio WordPress a un sitio estático generado con **Hugo**, desplegado en **Cloudflare Pages** (plan Free). Como parte de la Etapa 4 del plan de trabajo (`05_plan-despliegue-cloudflare.md`), la tarea **CF08** consiste en asociar el dominio real `gaiaevoluciondelser.es` al proyecto de Pages para que el sitio sea accesible desde la URL definitiva (no desde la URL de preview `*.pages.dev`).
+El proyecto GDEM (Gaia Demurtas, `gaiaevoluciondelser.es`) consiste en la migración de un sitio WordPress a un sitio estático generado con **Hugo**, desplegado en **Cloudflare Pages** (plan Free). Como parte de la Etapa 4 del plan de trabajo (`05_etapa-4-plan-despliegue-cloudflare.md`), la tarea **CF08** consiste en asociar el dominio real `gaiaevoluciondelser.es` al proyecto de Pages para que el sitio sea accesible desde la URL definitiva (no desde la URL de preview `*.pages.dev`).
 
 ### 2.2 Estado inicial antes de la intervención
 
