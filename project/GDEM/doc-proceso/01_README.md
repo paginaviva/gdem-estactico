@@ -19,11 +19,11 @@
 
 | Ruta | Proposito | Depende de |
 |------|-----------|------------|
-| `README.md` | **Documento maestro** (este). Visio global del proceso, metodologia, checklist, glosario. Lectura obligatoria para cualquier IA que retome el proyecto. | Ninguno |
-| `etapa-1-analisis-gaia-static.md` | Analisis exhaustivo del SWE original: paginas, componentes, assets, anomalias. Contiene el inventario completo del sitio GDEM. | Ninguno |
-| `etapa-2-pdTbjo-migracion-swe-hugo.md` | **Plan de Trabajo** de la migracion (734 lineas). Arquitectura Hugo, mapeo de contenido, catalogo de tareas (12 modulos A-L, 54 tareas), reglas R1-R34. | `etapa-1-analisis-gaia-static.md`, `README.md` |
-| `etapa-3-bitacora-ejecucion.md` | **Bitacora de ejecucion** de la Etapa 3. Registro de tareas completadas, decisiones, problemas, atajos tecnicos. | `etapa-2-pdTbjo-migracion-swe-hugo.md` |
-| `etapa-4-pdTbjo-despliegue-cloudflare.md` | **Plan de despliegue** en Cloudflare Pages + Email Routing (12 tareas CF01-CF12). Optimizaciones de rendimiento, headers de seguridad, free tier limits. | `etapa-3-bitacora-ejecucion.md` |
+| `01_README.md` | **Documento maestro** (este). Visio global del proceso, metodologia, checklist, glosario. Lectura obligatoria para cualquier IA que retome el proyecto. | Ninguno |
+| `02_analisis-swe-gaia-static.md` | Analisis exhaustivo del SWE original: paginas, componentes, assets, anomalias. Contiene el inventario completo del sitio GDEM. | Ninguno |
+| `03_plan-migracion-hugo.md` | **Plan de Trabajo** de la migracion (734 lineas). Arquitectura Hugo, mapeo de contenido, catalogo de tareas (12 modulos A-L, 54 tareas), reglas R1-R34. | `02_analisis-swe-gaia-static.md`, `01_README.md` |
+| `04_bitacora-ejecucion.md` | **Bitacora de ejecucion** de la Etapa 3. Registro de tareas completadas, decisiones, problemas, atajos tecnicos. | `03_plan-migracion-hugo.md` |
+| `05_plan-despliegue-cloudflare.md` | **Plan de despliegue** en Cloudflare Pages + Email Routing (12 tareas CF01-CF12). Optimizaciones de rendimiento, headers de seguridad, free tier limits. | `04_bitacora-ejecucion.md` |
 
 ### Mapa de dependencias entre etapas
 
@@ -44,7 +44,7 @@ ETAPA 3 (Ejecucion del Plan)  [EN EJECUCION]
   v
 ETAPA 4 (Despliegue en Produccion en Cloudflare Pages)  [PLAN LISTO]
   |-- Depende de: sitio Hugo construido (output Etapa 3)
-  |-- Output: etapa-4-pdTbjo-despliegue-cloudflare.md (FASE 0 migración DNS + 12 tareas CF01-CF12)
+  |-- Output: 05_plan-despliegue-cloudflare.md (FASE 0 migración DNS + 12 tareas CF01-CF12)
   |-- Recursos: Skills wrangler + cloudflare + cloudflare-email-service
   |-- Enfoque: Cloudflare Pages (no Workers), Email Routing, optimizaciones free tier
 ```

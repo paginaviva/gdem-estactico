@@ -1,6 +1,6 @@
 # Control — Incidencias gaia-hugo: No aplica y Pendiente
 
-> Archivo de control derivado de `incidencias-gaia-hugo-vs-static.md`  
+> Archivo de control derivado de `08_incidencias-hugo-vs-static.md`  
 > Solo incluye las incidencias marcadas como **➖ No aplica** y **❌ Pendiente**  
 > **Fecha**: 2026-06-24
 

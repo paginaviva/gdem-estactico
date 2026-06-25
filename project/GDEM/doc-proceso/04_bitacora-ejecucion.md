@@ -48,7 +48,7 @@ Fase 5: L01-L04 (Deploy, Etapa 4)
 
 | Hora | Subtask | Módulo | Acción | Resultado | Agente |
 |------|---------|--------|--------|-----------|--------|
-| — | — | — | Inicio de Etapa 3 | Plan revisado y corregido. 70 subtasks desglosados (directorio `.tmp/tasks/migracion-hugo/` eliminado por limpieza posterior). README.md actualizado. | OpenAgent |
+| — | — | — | Inicio de Etapa 3 | Plan revisado y corregido. 70 subtasks desglosados (directorio `.tmp/tasks/migracion-hugo/` eliminado por limpieza posterior). 01_README.md actualizado. | OpenAgent |
 | | | | | | |
 
 ---

@@ -1,7 +1,7 @@
 # Lista de Tareas — Despliegue Cloudflare para gaiaevoluciondelser.es
 
 > **Proyecto:** GDEM — Gaia Demurtas
-> **Documento generado a partir de:** `etapa-4-pdTbjo-despliegue-cloudflare.md`
+> **Documento generado a partir de:** `05_plan-despliegue-cloudflare.md`
 > **Estados verificados contra Cloudflare vía API:** 2026-06-25
 > **Token usado:** GDEM-FullOps-Token (activo)
 
@@ -251,7 +251,7 @@ La respuesta de la API incluye el campo `editable: true/false` que indica si el 
 
 ## Anexo CF10 — Configurar Correo DonDominio en DNS de Cloudflare
 
-> **Documento de planificación:** `GDEM/doc-proceso/PdTbjo-CF10-correo-dondominio-cloudflare.md`
+> **Documento de planificación:** `GDEM/doc-proceso/07_plan-correo-dondominio.md`
 >
 > **Contextos consultados:**
 > - `.opencode/external-context/dondominio/email-dns-config.md` — Docs oficiales de DDOM (ExternalScout)

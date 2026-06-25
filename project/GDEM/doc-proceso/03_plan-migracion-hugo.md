@@ -9,7 +9,7 @@
 **DIR_PYT:** `/home/coder/project/GDEM/`
 **Documentos fuente:**
 - `etapa-1-descubrimiento/analisis-gaia-static.md` (inventario, componentes, assets, anomalías)
-- `doc-proceso/README.md` (metodología general, checklist, glosario)
+- `doc-proceso/01_README.md` (metodología general, checklist, glosario)
 - `.opencode/external-context/hugo/01-migration-guide-complete.md` (guía de migración Hugo)
 - `.opencode/external-context/hugo/02-migration-tutorial-from-newbeelearn.md` (tutorial práctico)
 - `.opencode/external-context/hugo/03-quick-reference-cheatsheet.md` (referencia rápida)
@@ -485,7 +485,7 @@ Las tareas se agrupan en módulos funcionales. Cada tarea tiene un identificador
 | K01 | Documentar decisiones de migración | Por cada página migrada, documentar el slug elegido, si se usó HTML o Markdown, y cualquier decisión particular | `write` | — |
 | K02 | Documentar atajos técnicos | Documentar qué partes del CSS de Blocksy se usaron, qué shortcodes se crearon, cómo se implementó el menú recursivo | `write` | — |
 | K03 | Documentar problemas encontrados | Cada anomalía o problema durante la migración, cómo se resolvió | `write` | — |
-| K04 | Actualizar README.md del proceso | Al finalizar, actualizar `doc-proceso/README.md` con el resumen de la ejecución | `edit` | J08 |
+| K04 | Actualizar 01_README.md del proceso | Al finalizar, actualizar `doc-proceso/01_README.md` con el resumen de la ejecución | `edit` | J08 |
 
 ### Módulo L: Despliegue en Cloudflare (Etapa 4)
 
@@ -673,7 +673,7 @@ Este checklist debe completarse al final de la Etapa 3 antes de pasar a la Etapa
 
 | Archivo | Propósito |
 |---------|-----------|
-| `doc-proceso/README.md` | Documento maestro del proceso (autocontenido para IAs futuras) |
+| `doc-proceso/01_README.md` | Documento maestro del proceso (autocontenido para IAs futuras) |
 | `doc-proceso/etapa-1-descubrimiento/analisis-gaia-static.md` | Análisis exhaustivo del SWE original |
 | `doc-proceso/etapa-2-plan/pdTbjo-migracion-swe-hugo.md` | **Este archivo** — Plan de trabajo detallado |
 | `doc-proceso/etapa-2-plan/decisiones-arquitectura.md` | (a crear) Decisiones arquitectónicas del tema Hugo |
@@ -693,7 +693,7 @@ Este checklist debe completarse al final de la Etapa 3 antes de pasar a la Etapa
 
 Cualquier IA que quiera migrar otro SWE de WordPress a Hugo debe:
 
-1. Leer `doc-proceso/README.md` (metodología general)
+1. Leer `doc-proceso/01_README.md` (metodología general)
 2. Leer `doc-proceso/etapa-2-plan/pdTbjo-migracion-swe-hugo.md` (este plan como plantilla)
 3. Sustituir los datos específicos del SWE original (paleta, páginas, menús, assets)
 4. Seguir el checklist de verificación adaptándolo al nuevo sitio
