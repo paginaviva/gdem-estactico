@@ -251,7 +251,7 @@ La respuesta de la API incluye el campo `editable: true/false` que indica si el 
 
 ## Anexo CF10 — Configurar Correo DonDominio en DNS de Cloudflare
 
-> **Documento de planificación:** `project/doc-proceso/PdTbjo-CF10-correo-dondominio-cloudflare.md`
+> **Documento de planificación:** `GDEM/doc-proceso/PdTbjo-CF10-correo-dondominio-cloudflare.md`
 >
 > **Contextos consultados:**
 > - `.opencode/external-context/dondominio/email-dns-config.md` — Docs oficiales de DDOM (ExternalScout)

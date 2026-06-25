@@ -6,7 +6,7 @@
 
 **Etapa:** 2 de 4 — Preparación del Plan de Conversión
 **Proyecto:** GDEM — Gaia Demurtas
-**DIR_PYT:** `/home/coder/project/`
+**DIR_PYT:** `/home/coder/project/GDEM/`
 **Documentos fuente:**
 - `etapa-1-descubrimiento/analisis-gaia-static.md` (inventario, componentes, assets, anomalías)
 - `doc-proceso/README.md` (metodología general, checklist, glosario)
@@ -86,7 +86,7 @@ El sitio original utiliza el tema **Blocksy** v2.1.38 con **Elementor** v4.0.1 c
 ### 2.2 Estructura de directorios del sitio Hugo
 
 ```
-project/gaia-hugo/                   ← DIR_PYT del sitio Hugo
+GDEM/gaia-hugo/                   ← DIR_PYT del sitio Hugo
 ├── hugo.yaml                        ← Configuración general
 ├── content/                         ← Contenido (Markdown + HTML)
 │   ├── _index.html                   ← Página de inicio

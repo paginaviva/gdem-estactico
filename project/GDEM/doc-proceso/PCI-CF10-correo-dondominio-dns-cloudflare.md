@@ -5,9 +5,9 @@
 **Fecha de creación:** 2026-06-25  
 **Fecha de última modificación:** 2026-06-25 (actualizado: F4 por usuario, F5 DMARC p=reject ejecutado)
 
-> **Plan de trabajo de referencia:** `project/doc-proceso/PdTbjo-CF10-correo-dondominio-cloudflare.md`
+> **Plan de trabajo de referencia:** `GDEM/doc-proceso/PdTbjo-CF10-correo-dondominio-cloudflare.md`
 >
-> **Documento de tareas principal:** `project/doc-proceso/lista-tareas-cloudflare-gaiaevoluciondelser-es.md` (Anexo CF10)
+> **Documento de tareas principal:** `GDEM/doc-proceso/lista-tareas-cloudflare-gaiaevoluciondelser-es.md` (Anexo CF10)
 
 **Índice**
 - [1. Resumen ejecutivo](#1-resumen-ejecutivo)

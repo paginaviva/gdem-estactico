@@ -4,7 +4,7 @@
 **Fecha:** 2026-06-24
 **Proyecto:** GDEM — Gaia Demurtas
 **Origen:** Exportación estática de WordPress (Simply Static)
-**DIR_PYT:** `project/`
+**DIR_PYT:** `GDEM/`
 **Fuente del análisis:** Subagente `explore` de OpenAgent
 
 ---
@@ -22,8 +22,8 @@
 **Título:** "Desarrollo Personal Gaia Demurtas: Constelaciones Familiares + Psicología * Gemoterapia"  
 **Eslogan:** "Gaia, Evolución del Ser"  
 
-**DIR_PYT:** `project/`
-**Ruta del SWE original:** `project/gaia-static/`
+**DIR_PYT:** `GDEM/`
+**Ruta del SWE original:** `GDEM/gaia-static/`
 
 ---
 
@@ -32,7 +32,7 @@
 ### Página Principal
 | Ruta | Título | Slug |
 |------|--------|------|
-| `project/gaia-static/index.html` | Desarrollo Personal Gaia Demurtas: Constelaciones Familiares + Psicología * Gemoterapia | `/` (home) |
+| `GDEM/gaia-static/index.html` | Desarrollo Personal Gaia Demurtas: Constelaciones Familiares + Psicología * Gemoterapia | `/` (home) |
 
 ### Páginas Internas (18)
 | # | Ruta (relativa desde raíz) | Título (SEO) |
@@ -676,7 +676,7 @@ En página de contacto hay contenedores con clase `elementor-hidden-desktop elem
 ## 11. ESTRUCTURA DE DIRECTORIOS ACTUAL
 
 ```
-project/gaia-static/
+GDEM/gaia-static/
 ├── index.html                          (HOME - 150 KB)
 ├── robots.txt / sitemaps.xml / page-sitemap1.xml / main-sitemap.xsl
 ├── 61-gemoterapia/                     → index.html

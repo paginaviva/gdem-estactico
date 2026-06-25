@@ -38,7 +38,7 @@ ETAPA 2 (Preparacion del Plan de Conversion)  [COMPLETADA]
   v
 ETAPA 3 (Ejecucion del Plan)  [EN EJECUCION]
   |-- Depende de: pdTbjo-migracion-swe-hugo.md (plan de conversion)
-  |-- Desglose: .tmp/tasks/migracion-hugo/ (70 subtasks atomicos)
+  |-- Desglose: .tmp/tasks/migracion-hugo/ (70 subtasks atomicos, eliminado)
   |-- Recursos: MCP hugo-mcp, skill opencode-skills-plugin-hugo, guias Hugo
   |
   v
@@ -57,7 +57,7 @@ ETAPA 4 (Despliegue en Produccion en Cloudflare Pages)  [PLAN LISTO]
 
 Un SWE es una exportacion estatica completa de un sitio WordPress generada mediante un plugin como **Simply Static**, **WP2Static** o **StaticPress**. En lugar de servir el sitio con PHP+MySQL, el plugin genera archivos HTML planos con todas las rutas convertidas a relativas, listos para alojarse en cualquier servidor estatico o CDN.
 
-**Ejemplo concreto (GDEM):** El directorio `project/gaia-static/` fue generado con Simply Static v3.7.6 desde un WordPress que usaba Blocksy + Elementor. Cada pagina de WordPress se convirtio en un directorio con su `index.html` (ej: `/gemoterapia/` -> `project/gaia-static/61-gemoterapia/index.html`).
+**Ejemplo concreto (GDEM):** El directorio `GDEM/gaia-static/` fue generado con Simply Static v3.7.6 desde un WordPress que usaba Blocksy + Elementor. Cada pagina de WordPress se convirtio en un directorio con su `index.html` (ej: `/gemoterapia/` -> `GDEM/gaia-static/61-gemoterapia/index.html`).
 
 ### Por que migrar a Hugo?
 
@@ -89,12 +89,12 @@ gaia-static/
 
 ### Que es DIR_PYT y como se usa?
 
-`DIR_PYT` es el directorio raiz del proyecto. En GDEM es `project/`. Todos los paths en los documentos del proceso son relativos a DIR_PYT. La estructura estandar es:
+`DIR_PYT` es el directorio raiz del proyecto. En GDEM es `GDEM/`. Todos los paths en los documentos del proceso son relativos a DIR_PYT. La estructura estandar es:
 
 ```
 {DIR_PYT}/
 ├── gaia-static/          ← SWE original (NO MODIFICAR, es la fuente de verdad)
-├── legado/               ← Artefactos previos no relacionados
+├── gaia-hugo/            ← Sitio migrado a Hugo
 └── doc-proceso/          ← Documentacion del proceso (ESTE DIRECTORIO)
     └── etapa-1-descubrimiento/
 ```
@@ -132,7 +132,7 @@ El proceso sigue 4 etapas secuenciales. Cada etapa debe completarse antes de pas
 
 ## Descubrimientos CLAVE de la Etapa 1 (GDEM)
 
-Basado en el analisis de `project/gaia-static/`, estos son los patrones que cualquier IA debe buscar al analizar CUALQUIER SWE:
+Basado en el analisis de `GDEM/gaia-static/`, estos son los patrones que cualquier IA debe buscar al analizar CUALQUIER SWE:
 
 ### Los 5 tipos de componentes a inventariar siempre
 
@@ -300,7 +300,7 @@ Un documento de analisis (como `analisis-gaia-static.md`) que contenga:
 | Termino | Definicion |
 |---------|------------|
 | **SWE** | Static Website Export. Exportacion completa de un sitio WordPress a HTML plano. |
-| **DIR_PYT** | Directorio raiz del proyecto. En GDEM: `project/`. Todos los paths son relativos a este directorio. |
+| **DIR_PYT** | Directorio raiz del proyecto. En GDEM: `GDEM/`. Todos los paths son relativos a este directorio. |
 | **GDEM** | Codigo abreviado del proyecto "Gaia Demurtas — Evolucion del Ser". Usado como prefijo en identificadores y nombres de archivo. |
 | **SSG** | Static Site Generator. Herramienta que genera sitios web estaticos a partir de templates y contenido. Hugo es un SSG. |
 | **CF** | Cloudflare. Plataforma de despliegue destino para el sitio migrado. |
@@ -320,7 +320,7 @@ Un documento de analisis (como `analisis-gaia-static.md`) que contenga:
 
 1. **Lee primero este README.** Contiene el contexto completo y la metodologia. No intentes entender el proyecto solo con los archivos sueltos.
 2. **Las Etapas 1 y 2 ya estan completadas.** El analisis esta en `etapa-1-descubrimiento/analisis-gaia-static.md`. El plan de trabajo esta en `etapa-2-plan/pdTbjo-migracion-swe-hugo.md`. No repitas estas etapas.
-3. **Arranca con la Etapa 3.** El plan tiene 70 subtasks atomicos en `.tmp/tasks/migracion-hugo/`. Usa `bash .opencode/skills/task-management/router.sh status migracion-hugo` para ver el progreso.
+3. **Arranca con la Etapa 3.** El plan tiene 70 subtasks atomicos (directorio `.tmp/tasks/migracion-hugo/` eliminado por limpieza).
 4. **Usa los recursos.** Las guias de migracion, el skill de Hugo, y los MCPs estan disponibles. No asumas conocimiento previo de Hugo.
 5. **Preserva la fuente.** El directorio `gaia-static/` es la fuente de verdad. No lo modifiques. Cualquier extraccion de HTML, CSS o imagenes debe hacerse como copia.
 6. **Documenta mientras avanzas.** Cada etapa debe producir documentacion en `doc-proceso/`. La bitacora de ejecucion esta en `etapa-3-ejecucion/bitacora-ejecucion.md`.

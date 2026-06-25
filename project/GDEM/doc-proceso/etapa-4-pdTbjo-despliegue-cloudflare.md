@@ -6,8 +6,8 @@
 
 **Etapa:** 4 de 4 — Despliegue en Producción
 **Proyecto:** GDEM — Gaia Demurtas (gaiaevoluciondelser.es)
-**DIR_PYT:** `/home/coder/project/`
-**Sitio Hugo:** `project/gaia-hugo/` (build en `public/`, 7.6 MB, 21 archivos HTML, 155 static files)
+**DIR_PYT:** `/home/coder/project/GDEM/`
+**Sitio Hugo:** `GDEM/gaia-hugo/` (build en `public/`, 7.6 MB, 21 archivos HTML, 155 static files)
 
 **Documentación de referencia (rutas absolutas desde `/home/coder/`):**
 - `/home/coder/.opencode/external-context/cloudflare/pages-free-tier-limits.md`
@@ -218,7 +218,7 @@ CF02 (✅ Token ya creado) ──→ CF04 (Verificar/exportar .env)─┤
 ### CF01: Instalar Wrangler
 **Ejecutor:** OpenAgent → `bash` (npm)
 ```bash
-cd /home/coder/project/gaia-hugo
+cd /home/coder/project/GDEM/gaia-hugo
 npm init -y                    # Crear package.json (no existe actualmente)
 npm install -D wrangler@latest
 ```
@@ -277,7 +277,7 @@ Situación actual del `.env`:
 ### CF05: Verificar build Hugo
 **Ejecutor:** Skill `opencode-skills-plugin-hugo` o BuildAgent
 ```bash
-cd /home/coder/project/gaia-hugo
+cd /home/coder/project/GDEM/gaia-hugo
 hugo --minify
 find public/ -type f | wc -l  # Debe ser < 20,000
 du -sh public/                  # ~7.6 MB
@@ -285,7 +285,7 @@ du -sh public/                  # ~7.6 MB
 
 ### CF06: Crear `_headers` para Pages
 **Ejecutor:** CoderAgent → `write`
-Archivo: `project/gaia-hugo/_headers` (raíz del proyecto, sin control de versiones actualmente)
+Archivo: `GDEM/gaia-hugo/_headers` (raíz del proyecto, sin control de versiones actualmente)
 ```
 # Headers de seguridad globales
 /*
@@ -316,7 +316,7 @@ Nota: Cloudflare Pages recoge `_headers` de la raíz del proyecto. Si se coloca 
 ### CF07: Desplegar a Cloudflare Pages
 **Ejecutor:** Skill `wrangler` (CLI) o MCP `cloudflare-api`
 ```bash
-cd /home/coder/project/gaia-hugo
+cd /home/coder/project/GDEM/gaia-hugo
 export CLOUDFLARE_API_TOKEN="<token_creado_en_CF02>"
 export CLOUDFLARE_ACCOUNT_ID="bda11265f568ce8eea996ca445002b38"
 npx wrangler pages deploy ./public --project-name gaiaevoluciondelser
@@ -485,7 +485,7 @@ curl -sI https://gaiaevoluciondelser.es/ | grep -E "x-frame|x-content-type|refer
 |---------|---------------|-----------|
 | `doc/api-token-crear-otros-api-tokens.md` | `/home/coder/doc/api-token-crear-otros-api-tokens.md` | Explicación de los dos tipos de token |
 | `.env` | `/home/coder/.env` | Credenciales de Cloudflare (GDEM) |
-| Build Hugo | `/home/coder/project/gaia-hugo/public/` | Build output listo para desplegar (7.6 MB) |
+| Build Hugo | `/home/coder/project/GDEM/gaia-hugo/public/` | Build output listo para desplegar (7.6 MB) |
 | External context pages-free-tier | `/home/coder/.opencode/external-context/cloudflare/pages-free-tier-limits.md` | Límites detallados del free tier |
 | External context performance | `/home/coder/.opencode/external-context/cloudflare/pages-performance-features.md` | Optimizaciones de rendimiento |
 | External context email-routing | `/home/coder/.opencode/external-context/cloudflare/email-routing.md` | Configuración de Email Routing |

@@ -4,7 +4,7 @@
 
 **Fecha inicio:** 2026-06-24
 **Plan de referencia:** `../etapa-2-plan/pdTbjo-migracion-swe-hugo.md`
-**Desglose atómico:** `.tmp/tasks/migracion-hugo/` (70 subtasks, 12 módulos A-L)
+**Desglose atómico:** `.tmp/tasks/migracion-hugo/` (70 subtasks, 12 módulos A-L, eliminado por limpieza)
 
 ---
 
@@ -48,7 +48,7 @@ Fase 5: L01-L04 (Deploy, Etapa 4)
 
 | Hora | Subtask | Módulo | Acción | Resultado | Agente |
 |------|---------|--------|--------|-----------|--------|
-| — | — | — | Inicio de Etapa 3 | Plan revisado y corregido. 70 subtasks desglosados en `.tmp/tasks/migracion-hugo/`. README.md actualizado. | OpenAgent |
+| — | — | — | Inicio de Etapa 3 | Plan revisado y corregido. 70 subtasks desglosados (directorio `.tmp/tasks/migracion-hugo/` eliminado por limpieza posterior). README.md actualizado. | OpenAgent |
 | | | | | | |
 
 ---
