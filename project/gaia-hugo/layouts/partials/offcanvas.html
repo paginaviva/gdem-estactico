@@ -1,0 +1,95 @@
+{{/* Offcanvas drawer móvil - estructura Blocksy original */}}
+<div class="ct-drawer-canvas" data-location="start">
+  <div id="offcanvas" class="ct-panel ct-header" data-behaviour="right-side" role="dialog" aria-label="Panel fuera del lienzo emergente" inert="">
+    <div class="ct-panel-inner">
+
+      {{/* Botón cerrar (X) con SVG inline (R33) */}}
+      <div class="ct-panel-actions">
+        <button class="ct-toggle-close" data-type="type-1" aria-label="Cerrar el cajón">
+          <svg class="ct-icon" width="12" height="12" viewBox="0 0 15 15">
+            <path d="M1 15a1 1 0 01-.71-.29 1 1 0 010-1.41l5.8-5.8-5.8-5.8A1 1 0 011.7.29l5.8 5.8 5.8-5.8a1 1 0 011.41 1.41l-5.8 5.8 5.8 5.8a1 1 0 01-1.41 1.41l-5.8-5.8-5.8 5.8A1 1 0 011 15z"/>
+          </svg>
+        </button>
+      </div>
+
+      {{/* Panel content - solo visible en mobile */}}
+      <div class="ct-panel-content" data-device="desktop">
+        <div class="ct-panel-content-inner"></div>
+      </div>
+
+      <div class="ct-panel-content" data-device="mobile">
+        <div class="ct-panel-content-inner">
+          {{/* Anuncio promocional en menú mobile */}}
+          <div class="ct-header-text" data-id="text" data-width="stretch">
+            <div class="entry-content is-layout-flow">
+              <p style="text-align: center;">
+                <b>Próximo Curso: <a href="/curso-constelaciones-familiares-acompanamiento-profesional/">Herramientas Básicas de Constelaciones Familiares para el Acompañamiento Profesional</a></b>
+              </p>
+            </div>
+          </div>
+
+          {{/* Menú mobile renderizado en vertical con toggle buttons */}}
+          <nav class="mobile-menu menu-container has-submenu"
+               data-id="mobile-menu"
+               data-interaction="click"
+               data-toggle-type="type-1"
+               data-submenu-dots="yes"
+               aria-label="Main Menu">
+            {{ $currentPage := . }}
+            <ul id="menu-main-menu-1" class="">
+              {{ range .Site.Menus.main }}
+                {{ if not .Parent }}
+                  {{ $isPlaceholder := .Params.placeholder | default false }}
+                  <li class="menu-item{{ if .HasChildren }} menu-item-has-children{{ end }}{{ if $currentPage.IsMenuCurrent "main" . }} current-menu-item{{ end }}">
+                    {{ if .HasChildren }}
+                      <span class="ct-sub-menu-parent">
+                        <a href="{{ if $isPlaceholder }}#{{ else }}{{ .URL }}{{ end }}" class="ct-menu-link">{{ .Name }}</a>
+                        <button class="ct-toggle-dropdown-mobile" aria-label="Abrir el menú desplegable" aria-haspopup="true" aria-expanded="false">
+                          <svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg>
+                        </button>
+                      </span>
+                    {{ else }}
+                      <a href="{{ if $isPlaceholder }}#{{ else }}{{ .URL }}{{ end }}" class="ct-menu-link">{{ .Name }}</a>
+                    {{ end }}
+                    {{ if .HasChildren }}
+                      <ul class="sub-menu">
+                        {{ range sort .Children "Weight" }}
+                          {{ $isSeparator := .Params.separator | default false }}
+                          {{ $isPlaceholder := .Params.placeholder | default false }}
+                          <li class="menu-item{{ if .HasChildren }} menu-item-has-children{{ end }}{{ if $isSeparator }} menu-separator{{ end }}">
+                            {{ if $isSeparator }}
+                              <span class="ct-menu-link menu-separator-text">{{ .Name }}</span>
+                            {{ else if .HasChildren }}
+                              <span class="ct-sub-menu-parent">
+                                <a href="{{ if $isPlaceholder }}#{{ else }}{{ .URL }}{{ end }}" class="ct-menu-link">{{ .Name }}</a>
+                                <button class="ct-toggle-dropdown-mobile" aria-label="Abrir el menú desplegable" aria-haspopup="true" aria-expanded="false">
+                                  <svg class="ct-icon toggle-icon-1" width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><path d="M3.9,5.1l3.6,3.6l3.6-3.6l1.4,0.7l-5,5l-5-5L3.9,5.1z"/></svg>
+                                </button>
+                              </span>
+                            {{ else }}
+                              <a href="{{ if $isPlaceholder }}#{{ else }}{{ .URL }}{{ end }}" class="ct-menu-link">{{ .Name }}</a>
+                            {{ end }}
+                            {{ if .HasChildren }}
+                              <ul class="sub-menu">
+                                {{ range sort .Children "Weight" }}
+                                  <li class="menu-item">
+                                    <a href="{{ .URL }}" class="ct-menu-link">{{ .Name }}</a>
+                                  </li>
+                                {{ end }}
+                              </ul>
+                            {{ end }}
+                          </li>
+                        {{ end }}
+                      </ul>
+                    {{ end }}
+                  </li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- Schema.org Person + WebSite — Gaia Demurtas -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gaia Demurtas",
+  "alternateName": "Gaia, Evolución del Ser",
+  "givenName": "Gaia",
+  "familyName": "Demurtas",
+  "description": "Psicóloga clínica, facilitadora de Constelaciones Familiares, Gemoterapeuta. Sesiones presenciales en Alicante y online.",
+  "url": "{{ .Site.BaseURL }}",
+  "image": "{{ .Site.BaseURL }}images/gaia-demurtas-evolucion-del-ser-constelaciones-familiares-desarrollo-personal.webp",
+  "sameAs": [
+    "https://www.facebook.com/gaiaevoluciondelser",
+    "https://www.instagram.com/gaiaevoluciondelser/",
+    "https://x.com/gaiaeVoluciondelser"
+  ],
+  "jobTitle": "Psicóloga Clínica • Consteladora Familiar • Gemoterapeuta",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Alicante",
+    "addressCountry": "ES"
+  },
+  "telephone": "+34 622 779 449",
+  "email": "escribenos@gaiaevoluciondelser.es"
+}
+</script>
+
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Gaia Evolución del Ser",
+  "alternateName": "Gaia, Evolución del Ser",
+  "description": "Desarrollo Personal Gaia Demurtas: Constelaciones Familiares + Psicología • Gemoterapia. Sesiones presenciales en Alicante y online.",
+  "url": "{{ .Site.BaseURL }}"
+}
+</script>
+{{ end }}

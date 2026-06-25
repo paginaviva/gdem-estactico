@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  {{ partial "head.html" . }}
+</head>
+<body class="ct-elementor-default-template" data-link="type-2" data-prefix="single_page" data-header="type-1:sticky" data-footer="type-1" itemscope itemtype="https://schema.org/WebPage">
+
+  <a class="skip-link screen-reader-text" href="#main">Saltar al contenido</a>
+
+  {{ partial "offcanvas.html" . }}
+
+  <div id="main-container">
+    <header id="header" class="ct-header" data-id="type-1" itemscope itemtype="https://schema.org/WPHeader">
+      {{ partial "header.html" . }}
+    </header>
+
+    <main id="main" class="site-main hfeed">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <footer id="footer" class="ct-footer" data-id="type-1" itemscope itemtype="https://schema.org/WPFooter">
+      {{ partial "footer.html" . }}
+    </footer>
+  </div>
+
+  {{ partial "schema.html" . }}
+
+  {{/* Hugo custom JS */}}
+  <script src="/js/main.js"></script>
+
+  {{/* Elementor JS */}}
+  <script>
+    var elementorFrontendConfig = {
+      environmentMode: { edit: false, wpPreview: false, isScriptDebug: false },
+      i18n: {},
+      is_rtl: false,
+      breakpoints: { xs: 0, sm: 480, md: 768, lg: 1025, xl: 1440, xxl: 1600 },
+      version: '4.0.1'
+    };
+  </script>
+  <script src="/js/elementor-webpack-runtime.js"></script>
+  <script src="/js/elementor-frontend-modules.js"></script>
+  <script src="/js/elementor-frontend.js"></script>
+
+  {{/* Blocksy JS */}}
+  <script src="/js/blocksy-main.js"></script>
+</body>
+</html>

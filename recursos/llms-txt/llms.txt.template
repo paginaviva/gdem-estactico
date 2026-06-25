@@ -1,0 +1,16 @@
+{{- /*
+  llms.txt template for Hugo
+  Generates llms.txt (summary) and llms-full.txt (full content).
+  Copy to: layouts/_default/list.llms.txt
+  Requires output format config — see LEEME.md
+*/ -}}
+{{- $pages := where .Site.RegularPages "Draft" false -}}
+{{- $pages = where $pages "Date" "le" now -}}
+{{- range $pages -}}
+{{- if eq $.OutputFormat.Name "LLMSFULL" }}
+# {{ .Title }}
+{{ .Content }}
+{{- else }}
+- [{{ .Title }}]({{ .Permalink }}): {{ .Summary | plainify }}
+{{ end -}}
+{{- end -}}

@@ -1,0 +1,32 @@
+{{/*
+  Shortcode: image-box
+  Parameters:
+    - image:    Image path (e.g., /images/programa.webp)
+    - title:    Card heading (h3)
+    - description: Paragraph text
+    - url:      Link URL for the button
+    - button:   Button text (e.g., "Más...")
+  Usage: {{< image-box image="/images/programa.webp" title="Título" description="Descripción" url="/pagina/" button="Más..." >}}
+  CSS classes match: components.css §3 (elementor-image-box-wrapper)
+*/}}
+<div class="elementor-image-box-wrapper">
+  <figure class="elementor-image-box-img">
+    <img
+      decoding="async"
+      width="437" height="527"
+      src="{{ .Get "image" }}"
+      alt="{{ .Get "title" }}"
+      loading="lazy">
+  </figure>
+  <div class="elementor-image-box-content">
+    <h3 class="elementor-image-box-title">{{ .Get "title" }}</h3>
+    <p class="elementor-image-box-description">{{ .Get "description" }}</p>
+    <div class="elementor-button-wrapper elementor-align-center">
+      <a class="elementor-button elementor-size-sm" href="{{ .Get "url" }}">
+        <span class="elementor-button-content-wrapper">
+          <span class="elementor-button-text">{{ .Get "button" }}</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

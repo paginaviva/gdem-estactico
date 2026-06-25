@@ -1,0 +1,51 @@
+{{/*
+  Shortcode: cta-whatsapp
+  Parameters:
+    - heading:     Main heading text (h2)
+    - subheading:  Subheading text (h4)
+    - button_text: Button label
+    - phone:       WhatsApp number (default: +34622779449)
+  Usage: {{< cta-whatsapp heading="¿Quieres..." subheading="(Charlas...)" button_text="Contáctame por Whatsapp" >}}
+  CSS classes match: components.css §5 (cta-section)
+*/}}
+{{ $phone := .Get "phone" | default "+34622779449" }}
+<section class="cta-section section-with-overlay">
+  <div class="section-overlay"></div>
+  <div class="elementor-container elementor-column-gap-default">
+    <div class="elementor-row" style="display:flex;width:100%;align-items:center;flex-wrap:wrap;">
+      <div class="elementor-column elementor-col-50 elementor-top-column" style="width:50%;min-width:300px;">
+        <div class="elementor-widget-wrap elementor-element-populated">
+          <div class="elementor-element elementor-widget elementor-widget-heading">
+            <div class="elementor-widget-container">
+              <h2 class="elementor-heading-title elementor-size-default">
+                <a href="#">{{ .Get "heading" }}</a>
+              </h2>
+            </div>
+          </div>
+          <div class="elementor-element elementor-widget elementor-widget-heading">
+            <div class="elementor-widget-container">
+              <h4 class="elementor-heading-title elementor-size-default">
+                <a href="#">{{ .Get "subheading" }}</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="elementor-column elementor-col-50 elementor-top-column" style="width:50%;min-width:300px;">
+        <div class="elementor-widget-wrap elementor-element-populated">
+          <div class="elementor-element elementor-align-right elementor-tablet-align-center elementor-widget elementor-widget-button">
+            <div class="elementor-widget-container">
+              <div class="elementor-button-wrapper">
+                <a class="elementor-button elementor-button--whatsapp elementor-size-lg" href="https://wa.me/{{ $phone }}" target="_blank" rel="noopener noreferrer">
+                  <span class="elementor-button-content-wrapper">
+                    <span class="elementor-button-text">{{ .Get "button_text" }}</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

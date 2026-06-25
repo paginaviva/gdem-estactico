@@ -1,0 +1,10 @@
+{
+  "name": "CET/CEST Timezone",
+  "containerEnv": {
+    "TZ": "Europe/Madrid"
+  },
+  "remoteEnv": {
+    "TZ": "Europe/Madrid"
+  },
+  "postCreateCommand": "sudo ln -fs /usr/share/zoneinfo/Europe/Madrid /etc/localtime && sudo dpkg-reconfigure -f noninteractive tzdata"
+}
