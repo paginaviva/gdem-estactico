@@ -90,112 +90,15 @@ El plan detallado de Fase 2 se ha movido a un documento independiente para mante
 
 ---
 
----
-
 ## Anexo A: Despliegue en Cloudflare Pages
 
-### A.1 Infraestructura
+El flujo completo de despliegue, configuración, checklist e historial se ha movido a un documento independiente:
 
-| Elemento | Detalle |
-|----------|---------|
-| Proveedor | Cloudflare Pages |
-| Token API | Variable `CLOUDFLARE_API_TOKEN` en `/home/coder/.env` |
-| Proyecto | `esds-hugo` |
-| Dominio temporal | `esds-hugo.pages.dev` (automático) |
-| Dominio definitivo | `elsonidodelsilencio.com` / `.es` (Ionos, fase posterior) |
-| Framework | Hugo estático (0.152.2+extended) |
-| Output | `./public` |
+→ **[`despliegue-cloudflare-pages.md`](./despliegue-cloudflare-pages.md)**
 
-### A.2 Token de API
-
-El token de Cloudflare está en `/home/coder/.env`, variable `CLOUDFLARE_API_TOKEN`.
-Exportarlo antes de desplegar (rellenar el valor desde `.env`):
-
-```bash
-export CLOUDFLARE_API_TOKEN="<valor>"
-```
-
-No incluir el valor del token en ningún documento del proyecto ni en código.
-
-### A.3 Flujo de despliegue completo
-
-```bash
-# 1. Exportar token (ver A.2)
-export CLOUDFLARE_API_TOKEN="<valor_del_env>"
-
-# 2. (Solo primera vez) Crear el proyecto en Cloudflare Pages
-npx wrangler pages project create esds-hugo
-
-# 3. Limpiar build anterior y construir el sitio Hugo
-rm -rf public
-hugo --minify -b https://esds-hugo.pages.dev
-
-# 4. Desplegar en Cloudflare Pages (rama main explícita)
-npx wrangler pages deploy ./public --project-name=esds-hugo --branch main
-
-# 5. Verificar que el despliegue responde correctamente
-curl -s -o /dev/null -w "%{http_code}" https://esds-hugo.pages.dev/
-# Debe responder 200
-```
-
-Para deploys posteriores (pasos 3, 4 y 5):
-```bash
-export CLOUDFLARE_API_TOKEN="<valor_del_env>" && \
-rm -rf public && \
-hugo --minify -b https://esds-hugo.pages.dev && \
-npx wrangler pages deploy ./public --project-name=esds-hugo --branch main && \
-curl -s -o /dev/null -w "HTTP %{http_code}\n" https://esds-hugo.pages.dev/servicios/mini-retiro/
-```
-
-### A.4 Archivos de configuración
-
-| Archivo | Propósito |
-|---------|-----------|
-| `project/esds-hugo/wrangler.jsonc` | Config de wrangler para el proyecto (ver A.5) |
-| `/home/coder/.env` | Variables de entorno con tokens CF (NO incluir en el proyecto) |
-
-### A.5 Configuración `wrangler.jsonc`
-
-Ubicación: `project/esds-hugo/wrangler.jsonc`
-
-```jsonc
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "esds-hugo",
-  "compatibility_date": "2026-06-27",
-  "pages_build_output_dir": "public"
-}
-```
-
-### A.6 Variable `baseURL` en Hugo
-
-En `hugo.yaml`, el `baseURL` se configura con el dominio final. Para el despliegue temporal:
-- Si se despliega con `-b https://esds-hugo.pages.dev`, ese valor sobreescribe el `baseURL` de `hugo.yaml`.
-- Cloudflare Pages inyecta `$CF_PAGES_URL` en el entorno de build para usarlo con `hugo --minify -b $CF_PAGES_URL`.
-
-### A.7 Tareas de despliegue (checklist)
-
-| # | Tarea | Estado | Dependencias |
-|---|-------|--------|-------------|
-| D1 | Cargar skills `wrangler` + `cloudflare` | ✅ | — |
-| D2 | Crear `wrangler.jsonc` en project/esds-hugo/ | ✅ | D1 |
-| D3 | Exportar `CLOUDFLARE_API_TOKEN` desde `/home/coder/.env` | ✅ | — |
-| D4 | Verificar build: `hugo --minify` | ✅ | D2 |
-| D5 | Crear proyecto CF Pages: `wrangler pages project create esds-hugo` | ✅ | D4 |
-| D6 | Desplegar: `wrangler pages deploy ./public --project-name=esds-hugo --branch main` | ⚠️ Usar siempre `--branch` explícito | D5 |
-| D7 | Limpiar `public/` antes de cada build (`rm -rf public`) | ✅ | — |
-| D8 | Verificar con curl: `curl -sI https://esds-hugo.pages.dev/servicios/mini-retiro/` | ⚠️ Debe responder 200 | D6 |
-
-### A.8 Fase posterior: dominio personalizado
-
-```bash
-# Cuando se tenga el dominio (elsonidodelsilencio.com):
-# 1. Añadir dominio en Dashboard CF Pages
-# 2. Configurar DNS (Ionos → Cloudflare)
-# 3. Construir y desplegar con baseURL definitivo:
-hugo --minify -b https://elsonidodelsilencio.com
-npx wrangler pages deploy ./public --project-name=esds-hugo
-```
+Incluye: infraestructura, token de API, comandos de despliegue (inicial y posteriores),
+configuración `wrangler.jsonc`, variable `baseURL`, checklist de 8 pasos,
+dominio personalizado (fase posterior) e historial de despliegues.
 
 ---
 

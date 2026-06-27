@@ -11,16 +11,16 @@ centralizando el contenido para que el copywriter pueda editarlo sin tocar HTML.
 
 | # | Archivo | Claves | Estado |
 |:-:|---------|--------|--------|
-| 1 | `baseof.html` | 2 (meta defaults) | Pendiente |
-| 2 | `hero.html` | 13 (hero + info-bar) | Pendiente |
-| 3 | `experiencias.html` | 16 (títulos + 4 tarjetas) | Pendiente |
-| 4 | `conversion.html` | 13 (3 tarjetas) | Pendiente |
-| 5 | `como-llegar.html` | 15 (3 columnas + aviso) | Pendiente |
-| 6 | `conecta.html` | 5 (WhatsApp + Instagram) | Pendiente |
-| 7 | `footer.html` | 3 (claim, location, copyright) | Pendiente |
-| 8 | `single.html` | ~27 (programa, incluye/no incluye, CTA, relacionados) | Pendiente |
-| 9 | `list.html` | ~9 (breadcrumb, aria-labels, empty state) | Pendiente |
-| 10 | `datos-servicio.html` | 6 (etiquetas de datos prácticos) | Pendiente |
+| 1 | `baseof.html` | 2 (meta defaults) | ✅ Completado |
+| 2 | `hero.html` | 18 (hero + early bird + info-bar) | ✅ Completado |
+| 3 | `experiencias.html` | 16+ (títulos + 4 tarjetas) | ✅ Completado |
+| 4 | `conversion.html` | 13 (3 tarjetas) | ✅ Completado |
+| 5 | `como-llegar.html` | 15 (3 columnas + aviso) | ✅ Completado |
+| 6 | `conecta.html` | 7 (WhatsApp + Instagram) | ✅ Completado |
+| 7 | `footer.html` | 3 (claim, location, copyright) | ✅ Completado |
+| 8 | `single.html` | ~29 (breadcrumb, programa, 3 cols, CTA, relacionados) | ✅ Completado |
+| 9 | `list.html` | ~9 (breadcrumb, aria-labels, empty state) | ✅ Completado |
+| 10 | `datos-servicio.html` | 6 (etiquetas de datos prácticos) | ✅ Completado |
 
 ---
 
@@ -580,4 +580,4 @@ En `hugo.yaml` se referenciarán como `name: "{{ i18n \"menu_inicio\" }}"`.
 
 ---
 
-*Fin del plan. Creado: 2026-06-27. Próxima acción: ejecutar Batch 1.*
+*Fin del plan. Creado: 2026-06-27. Ejecutado: 2026-06-27. Todos los batches completados y desplegados.*
