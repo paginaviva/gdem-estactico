@@ -1,0 +1,210 @@
+# ── Hero ──────────────────────────────────────────
+hero_title: "Reconecta con la naturaleza y contigo"
+hero_subtitle_manuscrita: "Experiencias conscientes en el Embalse de Guadalest"
+hero_subtitle: "Yoga · Kayak · Caminatas conscientes · Mini Retiros"
+hero_actividad_yoga: "Yoga"
+hero_actividad_kayak: "Kayak"
+hero_actividad_caminata: "Caminata"
+hero_cta_principal: "Ver Experiencias"
+hero_cta_reservar: "Reservar"
+
+# ── Hero: Early Bird ──────────────────────────────
+hero_early_bird_label: "★ EARLY BIRD"
+hero_early_bird_title: "Reserva con anticipación"
+hero_early_bird_text: "Reserva con anticipación y asegura tu plaza este verano."
+hero_early_bird_aviso: "¡Plazas limitadas!"
+
+# ── Hero: Info Bar ────────────────────────────────
+info_bar_title_ubicacion: "Ubicación"
+info_bar_text_ubicacion: "Todas las actividades se realizan cerca del Embalse de Guadalest"
+info_bar_title_duracion: "Duración"
+info_bar_text_duracion: "Duración aproximada de cada experiencia: 1h30"
+info_bar_title_grupos: "Grupos"
+info_bar_text_grupos: "Grupos pequeños para una experiencia más personal"
+
+# ── Experiencias ───────────────────────────────────
+experiencias_title: "Nuestras Experiencias"
+experiencias_subtitle: "Elige tu experiencia favorita"
+experiencias_divider: "✦"
+
+# Tarjeta 1: Yoga
+experiencias_yoga_title: "Yoga en la naturaleza"
+experiencias_yoga_desc: "Conecta cuerpo, mente y respiración en un entorno único junto al embalse."
+experiencias_yoga_duracion: "1h30"
+experiencias_yoga_precio: "30€"
+experiencias_yoga_min: "Mín. 2 personas"
+experiencias_yoga_img_alt: "Persona practicando yoga junto al embalse de Guadalest"
+
+# Tarjeta 2: Kayak
+experiencias_kayak_title: "Kayak Experience"
+experiencias_kayak_desc: "Explora las aguas tranquilas del embalse y disfruta del paisaje desde otra perspectiva."
+experiencias_kayak_duracion: "1h30"
+experiencias_kayak_precio: "20€"
+experiencias_kayak_min: "Mín. 2 personas"
+experiencias_kayak_img_alt: "Persona navegando en kayak por el embalse de Guadalest"
+
+# Tarjeta 3: Caminata
+experiencias_caminata_title: "Caminata consciente"
+experiencias_caminata_desc: "Camina, respira y conecta con la naturaleza y contigo mismo."
+experiencias_caminata_duracion: "~2 horas"
+experiencias_caminata_precio: "25€"
+experiencias_caminata_min: "Mín. 2 personas"
+experiencias_caminata_img_alt: "Persona caminando por un sendero natural en el Valle de Guadalest"
+
+# Tarjeta 4: Mini Retiro
+experiencias_mini_retiro_title: "Mini Retiro"
+experiencias_mini_retiro_desc: "Vive Yoga + Caminata + Kayak y reconecta por completo."
+experiencias_mini_retiro_duracion: "5 horas"
+experiencias_mini_retiro_precio: "50€"
+experiencias_mini_retiro_min: "Mín. 2 personas"
+experiencias_mini_retiro_badge: "Pack estrella"
+experiencias_mini_retiro_label: "(Pack completo)"
+experiencias_mini_retiro_img_alt: "Persona meditando frente al embalse de Guadalest al atardecer"
+
+# Genérico
+experiencias_precio_label: "/persona"
+
+# ── Conversión ────────────────────────────────────
+conversion_title: "¿Por qué reservar con anticipación?"
+conversion_divider: "✦"
+
+# Tarjeta 1: Reserva anticipada
+conversion_card1_title: "Reserva anticipada"
+conversion_card1_items:
+  - "Aseguras tu plaza y disponibilidad"
+  - "Garantizamos los kayaks para tu grupo"
+  - "Mejor organización para todos"
+conversion_card1_highlight: "¡Plazas limitadas cada día!"
+
+# Tarjeta 2: Este verano
+conversion_card2_title: "Este verano es solo el comienzo"
+conversion_card2_intro: "Si esta experiencia funciona… habrá más aventura:"
+conversion_card2_items:
+  - "Yoga en la playa"
+  - "Miradores"
+  - "Visitas a cuevas"
+  - "¡Y mucho más!"
+conversion_card2_outro: "¡Síguenos y no te lo pierdas!"
+
+# Tarjeta 3: Reserva fácil
+conversion_card3_title: "Reserva fácil"
+conversion_card3_text: "Consulta disponibilidad y reserva desde nuestro calendario."
+conversion_card3_cta: "Ver disponibilidad"
+conversion_card3_more: "Sistema de reserva próximo. Por ahora, escríbenos por WhatsApp."
+
+# ── Cómo llegar ───────────────────────────────────
+como_llegar_title: "¿Cómo llegar?"
+como_llegar_divider: "✦"
+
+# Transfer recomendado
+como_llegar_transfer_title: "Transfer Recomendado"
+como_llegar_transfer_subtitle: "Desde Beniardà o Puerto de Guadalest"
+como_llegar_transfer_desc: "Punto de encuentro fácil y con parking. La forma más cómoda de llegar."
+como_llegar_transfer_puntos:
+  - "Punto de encuentro fácil y con parking"
+  - "La forma más cómoda para disfrutar sin preocupaciones"
+como_llegar_transfer_precio: "10€/persona"
+como_llegar_transfer_detalle: "12 min · Multivan Volkswagen"
+
+# Transfer privado
+como_llegar_privado_title: "Transfer Privado"
+como_llegar_privado_subtitle: "Desde otros lugares"
+como_llegar_privado_desc: "Servicio opcional y a consultar. Destinos disponibles:"
+como_llegar_privado_destinos:
+  - "Fonts d'Algar"
+  - "Castillo de Guadalest"
+como_llegar_privado_cta: "Consultar"
+
+# Puntos de encuentro
+como_llegar_puntos_title: "Puntos de encuentro"
+como_llegar_puntos_lista:
+  - "Puerto de Guadalest"
+  - "Beniardà"
+  - "Embalse de Guadalest"
+como_llegar_puntos_desc: "Los puntos de encuentro se confirman al reservar"
+
+# Aviso
+como_llegar_aviso_title: "⚠ Importante"
+como_llegar_aviso_text: "El acceso al embalse es por carretera de montaña. Recomendamos vehículos pequeños. Plazas de parking limitadas."
+
+# ── Conecta ───────────────────────────────────────
+conecta_title: "Conecta con nosotros"
+conecta_divider: "✦"
+
+# WhatsApp
+conecta_whatsapp_title: "Escríbenos directamente por WhatsApp"
+conecta_whatsapp_text: "Resuelve tus dudas, consulta disponibilidad o reserva tu experiencia."
+conecta_whatsapp_cta: "Abrir WhatsApp"
+
+# Instagram
+conecta_instagram_text: "Síguenos en Instagram"
+conecta_instagram_cta: "Seguir en Instagram"
+
+# ── Footer ────────────────────────────────────────
+footer_claim: "Naturaleza. Bienestar. Aventura. Tú."
+footer_location: "Hecho con amor en Guadalest Valley"
+footer_copyright: "© 2026 {{ .Year }}"
+
+# ── Single (servicio) ──────────────────────────────
+single_cta_title: "¿Te animas a vivirlo?"
+single_cta_text: "Reserva tu plaza y vive una experiencia única en el Valle de Guadalest. Elena te guiará en cada momento."
+single_cta_btn: "💬 Reservar por WhatsApp →"
+single_cta_label: "Reserva tu experiencia"
+single_cta_mensaje_prefix: "Mensaje:"
+
+single_relacionados_title: "Otras experiencias"
+single_relacionados_subtitle: "Descubre más formas de conectar contigo en la naturaleza"
+single_relacionados_card_cta: "Ver más →"
+
+# Relacionados: nombres
+single_relacionados_yoga: "Yoga & Mindfulness"
+single_relacionados_kayak: "Kayak en el Embalse"
+single_relacionados_caminata: "Caminata Consciente"
+
+# Programa
+single_programa_title: "Programa de la experiencia"
+single_programa_fin: "Fin de la experiencia"
+
+# Incluye / No incluye / Llevar
+single_tres_col_sr: "Qué incluye, qué no incluye y qué llevar"
+single_incluye: "Incluye"
+single_no_incluye: "No incluye"
+single_que_llevar: "Qué llevar"
+
+# Para quién / Por qué
+single_para_quien: "Para quién es"
+single_por_que_elegir: "Por qué elegir esta experiencia"
+
+# ── List (servicios) ──────────────────────────────
+list_breadcrumb_inicio: "Inicio"
+list_card_cta: "Ver experiencia →"
+list_empty_title: "Próximamente"
+list_empty_text: "Estamos preparando nuevas experiencias para ti en el Valle de Guadalest. Vuelve pronto para descubrirlas."
+
+list_breadcrumb_servicios: "Servicios"
+list_aria_label_breadcrumb: "Breadcrumb"
+list_aria_label_grid: "Experiencias"
+list_card_cta_aria: "Ver {{ .Title }}"
+list_price_aria: "Precio:"
+list_duration_aria: "Duración:"
+
+# ── Datos servicio ──────────────────────────────
+datos_sr_title: "Datos prácticos"
+datos_precio: "Precio"
+datos_duracion: "Duración"
+datos_horario: "Horario"
+datos_personas: "Personas"
+datos_punto_encuentro: "Punto de encuentro"
+
+# ── Menú ──────────────────────────────────────────
+menu_inicio: "Inicio"
+menu_experiencias: "Experiencias"
+menu_servicios: "Servicios"
+menu_mini_retiro: "Mini Retiro"
+menu_tarde_conexion: "Tarde de Conexión"
+menu_yoga: "Yoga & Mindfulness"
+menu_kayak: "Kayak"
+menu_caminata: "Caminata Consciente"
+menu_transfer_actividad: "Transfer Actividad"
+menu_transfer_privado: "Transfer Privado"
+menu_informacion: "Información"
