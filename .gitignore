@@ -44,3 +44,11 @@ project/GDEM/gaia-static/
 project/GDEM/gaia-hugo/
 project/ocmib-estactico/
 project/pviva-estactico/
+
+# Dotfiles de usuario/entorno local
+.bash_history
+.bash_logout
+.bashrc
+.profile
+.mcp.json
+.wget-hsts
