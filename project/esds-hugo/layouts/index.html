@@ -1,0 +1,25 @@
+{{/* ========================================
+   Layout: index.html
+   Página de inicio (Home) — landing page de ESDS
+   Extiende baseof.html con la sección "main"
+   Orden de secciones según maqueta aprobada (conocimiento-proyecto-esds.md §07)
+   ======================================== */}}
+
+{{ define "main" }}
+
+  {{/* ❷ Hero principal + ❸ Franja informativa (todo incluido en hero.html) */}}
+  {{ partial "hero.html" . }}
+
+  {{/* ❹ Nuestras Experiencias — 4 tarjetas de servicios (id="experiencias") */}}
+  {{ partial "experiencias.html" . }}
+
+  {{/* ❺ ¿Cómo llegar? + Transfer + Mapa (id="como-llegar") */}}
+  {{ partial "como-llegar.html" . }}
+
+  {{/* ❻ ¿Por qué reservar con anticipación? — Argumentos de conversión */}}
+  {{ partial "conversion.html" . }}
+
+  {{/* ❼ Conecta con nosotros — WhatsApp + Instagram (id="conecta") */}}
+  {{ partial "conecta.html" . }}
+
+{{ end }}

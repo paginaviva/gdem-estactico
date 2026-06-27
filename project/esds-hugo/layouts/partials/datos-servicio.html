@@ -1,0 +1,170 @@
+{{/* ========================================
+   Partial: datos-servicio.html
+   Muestra los datos prácticos de un servicio
+   en formato icon grid (5 campos máximo).
+   Cada campo = tarjeta visual con icono +
+   valor destacado + etiqueta textual.
+
+   Uso:  {{ partial "datos-servicio" . }}
+   ========================================
+
+   Campos desde .Params del front matter:
+     - precio_texto     → ej. "30 €/persona"
+     - duracion         → ej. "1:30 horas"
+     - horario          → ej. "8:30 / 19:00"
+     - min_personas     → ej. 2
+     - max_personas     → ej. 6
+     - punto_encuentro  → ej. "Embalse de Guadalest"
+
+   Diseño responsive:
+     - Móvil  (<768px):  grid 2 columnas
+     - Tablet (≥768px):  grid 3 columnas
+     - Desktop (≥1024px): grid 5 columnas
+   ======================================== */}}
+
+{{- /* Solo renderiza si hay al menos un campo con datos */ -}}
+{{ if or .Params.precio_texto .Params.duracion .Params.horario .Params.min_personas .Params.max_personas .Params.punto_encuentro }}
+
+<style>
+/* ========================================
+   Datos Servicio — Icon Grid
+   Prefijo: service-data-
+   Mobile-first · usa variables CSS del proyecto
+   ======================================== */
+
+.service-data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.service-data-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  background-color: var(--blanco);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-data-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-media);
+}
+
+.service-data-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--dorado);
+  margin-bottom: var(--space-xs);
+}
+
+.service-data-card__value {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--verde-bosque);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.service-data-card__label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: var(--space-xs);
+}
+
+/* ------------------------------
+   Tablet: 3 columnas (3+2)
+   ------------------------------ */
+@media (min-width: 768px) {
+  .service-data-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ------------------------------
+   Desktop: 5 columnas (1 fila)
+   ------------------------------ */
+@media (min-width: 1024px) {
+  .service-data-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ------------------------------
+   Accesibilidad: reducir movimiento
+   ------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  .service-data-card {
+    transition: none;
+  }
+}
+</style>
+
+<section class="service-datos" aria-labelledby="datos-servicio-title">
+  <div class="container">
+    <h2 id="datos-servicio-title" class="sr-only">Datos prácticos</h2>
+    <div class="service-data-grid">
+
+      {{- /* 💰 Precio */}}
+      {{ with .Params.precio_texto }}
+      <div class="service-data-card">
+        <span class="service-data-card__icon" aria-hidden="true">💰</span>
+        <span class="service-data-card__value">{{ . }}</span>
+        <span class="service-data-card__label">Precio</span>
+      </div>
+      {{ end }}
+
+      {{- /* ⏱ Duración */}}
+      {{ with .Params.duracion }}
+      <div class="service-data-card">
+        <span class="service-data-card__icon" aria-hidden="true">⏱</span>
+        <span class="service-data-card__value">{{ . }}</span>
+        <span class="service-data-card__label">Duración</span>
+      </div>
+      {{ end }}
+
+      {{- /* 🕐 Horario */}}
+      {{ with .Params.horario }}
+      <div class="service-data-card">
+        <span class="service-data-card__icon" aria-hidden="true">🕐</span>
+        <span class="service-data-card__value">{{ . }}</span>
+        <span class="service-data-card__label">Horario</span>
+      </div>
+      {{ end }}
+
+      {{- /* 👥 Personas (min / max combinado) */}}
+      {{ if or .Params.min_personas .Params.max_personas }}
+      <div class="service-data-card">
+        <span class="service-data-card__icon" aria-hidden="true">👥</span>
+        <span class="service-data-card__value">
+          {{- if .Params.min_personas }}{{ .Params.min_personas }}{{ end -}}
+          {{- if and .Params.min_personas .Params.max_personas }} — {{ end -}}
+          {{- if .Params.max_personas }}{{ .Params.max_personas }}{{ end -}}
+          {{ if or .Params.min_personas .Params.max_personas }} personas{{ end -}}
+        </span>
+        <span class="service-data-card__label">Personas</span>
+      </div>
+      {{ end }}
+
+      {{- /* 📍 Punto de encuentro */}}
+      {{ with .Params.punto_encuentro }}
+      <div class="service-data-card">
+        <span class="service-data-card__icon" aria-hidden="true">📍</span>
+        <span class="service-data-card__value">{{ . }}</span>
+        <span class="service-data-card__label">Punto de encuentro</span>
+      </div>
+      {{ end }}
+
+    </div>{{/* /service-data-grid */}}
+  </div>{{/* /container */}}
+</section>
+
+{{ end }}{{/* /if hay datos */}}

@@ -1,0 +1,63 @@
+{{/* ========================================
+   Partial: conversion.html
+   Sección "¿Por qué reservar con anticipación?"
+   ======================================== */}}
+
+<section class="conversion" aria-label="Por qué reservar con anticipación">
+  <div class="container">
+
+  <div class="section-title">
+    <h2 class="section-title__heading">¿Por qué reservar con anticipación?</h2>
+    <div class="section-title__divider" aria-hidden="true">
+      <span class="section-title__divider-icon">✦</span>
+    </div>
+  </div>
+
+  <div class="conversion__grid">
+
+    {{/* Tarjeta 1: Reserva anticipada */}}
+    <article class="conversion-card">
+      <div class="conversion-card__icon" aria-hidden="true">📅</div>
+      <h3 class="conversion-card__title">Reserva anticipada</h3>
+      <ul class="conversion-card__list">
+        <li>Aseguras tu plaza y disponibilidad</li>
+        <li>Garantizamos los kayaks para tu grupo</li>
+        <li>Mejor organización para todos</li>
+      </ul>
+      <p class="conversion-card__highlight">¡Plazas limitadas cada día!</p>
+    </article>
+
+    {{/* Tarjeta 2: Este verano es solo el comienzo */}}
+    <article class="conversion-card">
+      <div class="conversion-card__icon" aria-hidden="true">🌟</div>
+      <h3 class="conversion-card__title">Este verano es solo el comienzo</h3>
+      <p class="conversion-card__text">Si esta experiencia funciona… habrá más aventura:</p>
+      <ul class="conversion-card__list">
+        <li>Yoga en la playa</li>
+        <li>Miradores</li>
+        <li>Visitas a cuevas</li>
+        <li>¡Y mucho más!</li>
+      </ul>
+      <p class="conversion-card__text">
+        ¡Síguenos y no te lo pierdas!<br>
+        <a href="{{ .Site.Params.instagram_url | default "https://instagram.com/elsonido.silencio" }}"
+           class="conversion-card__highlight"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Síguenos en Instagram">
+          {{ .Site.Params.instagram | default "elsonido.silencio" }}
+        </a>
+      </p>
+    </article>
+
+    {{/* Tarjeta 3: Reserva fácil */}}
+    <article class="conversion-card">
+      <div class="conversion-card__icon" aria-hidden="true">📱</div>
+      <h3 class="conversion-card__title">Reserva fácil</h3>
+      <p class="conversion-card__text">Consulta disponibilidad y reserva desde nuestro calendario.</p>
+      <a href="#conecta" class="btn btn-primary">Ver disponibilidad</a>
+      <p class="conversion-card__more">Sistema de reserva próximo. Por ahora, escríbenos por WhatsApp.</p>
+    </article>
+
+  </div>
+  </div>{{/* /.container */}}
+</section>

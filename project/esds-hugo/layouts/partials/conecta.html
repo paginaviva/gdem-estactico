@@ -1,0 +1,45 @@
+{{/* ========================================
+   Partial: conecta.html
+   Sección "Conecta con nosotros" — WhatsApp + Instagram
+   ======================================== */}}
+
+<section id="conecta" class="conecta" aria-labelledby="conecta-title">
+  <div class="container">
+
+  <div class="section-title">
+    <h2 id="conecta-title" class="section-title__heading" style="color: var(--dorado);">Conecta con nosotros</h2>
+    <div class="section-title__divider" aria-hidden="true">
+      <span class="section-title__divider-icon">✦</span>
+    </div>
+  </div>
+
+  <div class="conecta__grid">
+
+    {{/* WhatsApp */}}
+    <div class="conecta__card">
+      <div class="conecta__icon" aria-hidden="true">📱</div>
+      <h3 class="conecta__title">Escríbenos directamente por WhatsApp</h3>
+      <p class="conecta__text">Resuelve tus dudas, consulta disponibilidad o reserva tu experiencia.</p>
+      <a href="https://wa.me/{{ .Site.Params.whatsapp_number }}?text={{ .Site.Params.whatsapp_message }}"
+         class="btn-whatsapp"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Abrir WhatsApp">
+        Abrir WhatsApp
+      </a>
+    </div>
+
+    {{/* Instagram */}}
+    <div class="conecta__card">
+      <div class="conecta__icon" aria-hidden="true">📸</div>
+      <p class="conecta__text">Síguenos en Instagram <strong>{{ .Site.Params.instagram }}</strong></p>
+      <a href="{{ .Site.Params.instagram_url }}"
+         class="btn-instagram"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Seguir en Instagram">
+        Seguir en Instagram
+      </a>
+    </div>
+
+  </div>
+  </div>{{/* /.container */}}
+</section>

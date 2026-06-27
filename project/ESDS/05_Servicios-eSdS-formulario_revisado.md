@@ -17,7 +17,7 @@ Completa la siguiente información para cada servicio. Si un campo no aplica, es
 | **Datos de acceso** | Usuario: / Contraseña: [elena.brioschi@gmail.com](mailto:elena.brioschi@gmail.com) MiProposito\_realizado2026 |
 | **Enlace Instagram** | elsonido.silencio |
 | **Web empresa de kayak** | www.kayakbeni.com |
-| **Otras empresas relacionadas (opcional)** | [www.inspirealtea.com](http://www.inspirealtea.com) página de un colega que ofrece Yoga y senderismo. Me parece inmediata la primera página  |
+| **Otras empresas relacionadas (opcional)** | [www.inspirealtea.com](http://www.inspirealtea.com) página de un colega que ofrece Yoga y senderismo. Me parece inmediata la primera página. Ver project/ESDS/www_inspirealtea_com.md |
 | **Lugares donde ofrecéis servicios** | Rellenar tabla inferior |
 
 ### **Lugares de servicio**

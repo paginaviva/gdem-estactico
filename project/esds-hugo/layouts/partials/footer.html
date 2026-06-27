@@ -1,0 +1,37 @@
+{{/* Footer — El Sonido del Silencio */}}
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer__inner">
+
+    {{/* Brand */}}
+    <div class="site-footer__brand">
+      <a href="/" class="site-footer__logo" aria-label="{{ .Site.Title }} — Ir a inicio">
+        {{ .Site.Title }}
+      </a>
+      <p class="site-footer__claim">Naturaleza. Bienestar. Aventura. Tú.</p>
+    </div>
+
+    {{/* Divider */}}
+    <div class="site-footer__divider" role="presentation" aria-hidden="true"></div>
+
+    {{/* Social */}}
+    <div class="site-footer__social">
+      <a href="{{ .Site.Params.instagram_url }}"
+         class="site-footer__social-link"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Síguenos en Instagram">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" aria-hidden="true">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
+
+    {{/* Location */}}
+    <p class="site-footer__location">Hecho con amor en Guadalest Valley</p>
+
+    {{/* Copyright */}}
+    <p class="site-footer__copyright">&copy; 2026 {{ .Site.Title }}</p>
+
+  </div>
+</footer>

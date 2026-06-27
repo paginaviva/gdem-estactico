@@ -13,21 +13,22 @@
 
 ## Índice
 
-- [01. ¿Qué ofrece este repositorio para Hugo?](#01)
-- [02. Servidor MCP hugo-mcp](#02)
-- [03. Skill de Hugo instalado](#03)
-- [04. Documentación disponible](#04)
-- [05. Primeros pasos: crear el sitio](#05)
-- [06. Flujo de trabajo recomendado](#06)
-- [07. Despliegue con Cloudflare](#07)
-- [08. Resolución de problemas comunes](#08)
-- [09. Referencia rápida de comandos](#09)
-- [10. Próximos pasos](#10)
-- [11. Anexo: recomendación para empezar](#11)
+- [01. ¿Qué ofrece este repositorio para Hugo?](#que-ofrece-este-repositorio-para-hugo)
+- [02. Servidor MCP hugo-mcp](#servidor-mcp-hugo-mcp)
+- [03. Skill de Hugo instalado](#skill-de-hugo-instalado)
+- [04. Documentación disponible](#documentacion-disponible)
+- [05. Primeros pasos: crear el sitio](#primeros-pasos-crear-el-sitio)
+- [06. Flujo de trabajo recomendado](#flujo-de-trabajo-recomendado)
+- [07. Despliegue con Cloudflare](#despliegue-con-cloudflare)
+- [08. Resolución de problemas comunes](#resolucion-de-problemas-comunes)
+- [09. Referencia rápida de comandos](#referencia-rapida-de-comandos)
+- [10. Próximos pasos](#proximos-pasos)
+- [11. Anexo: recomendación para empezar](#anexo-recomendacion-para-empezar)
 
 ---
 
-### 01. ¿Qué ofrece este repositorio para Hugo? {#01}
+<a id="que-ofrece-este-repositorio-para-hugo"></a>
+### 01. ¿Qué ofrece este repositorio para Hugo?
 
 Este entorno de desarrollo tiene un ecosistema Hugo completo y operativo que incluye:
 
@@ -42,7 +43,8 @@ Lo único pendiente es crear el sitio Hugo propiamente dicho en el directorio `p
 
 ---
 
-### 02. Servidor MCP hugo-mcp {#02}
+<a id="servidor-mcp-hugo-mcp"></a>
+### 02. Servidor MCP hugo-mcp
 
 El servidor MCP `hugo-mcp` (basado en SunnyCloudYang/hugo-mcp) está clonado en `/home/coder/hugo-mcp/` y configurado en `.mcp.json` para ejecutarse con `uv run main.py`.
 
@@ -62,7 +64,8 @@ Para utilizar estas herramientas desde el asistente, basta con invocar el servid
 
 ---
 
-### 03. Skill de Hugo instalado {#03}
+<a id="skill-de-hugo-instalado"></a>
+### 03. Skill de Hugo instalado
 
 El skill `opencode-skills-plugin-hugo` está instalado en `~/.agents/skills/opencode-skills-plugin-hugo/SKILL.md`. Está disponible para cargarse cuando se necesite.
 
@@ -86,7 +89,8 @@ El skill `opencode-skills-plugin-hugo` está instalado en `~/.agents/skills/open
 
 ---
 
-### 04. Documentación disponible {#04}
+<a id="documentacion-disponible"></a>
+### 04. Documentación disponible
 
 El repositorio contiene documentación organizada en dos ubicaciones principales:
 
@@ -111,7 +115,8 @@ El repositorio contiene documentación organizada en dos ubicaciones principales
 
 ---
 
-### 05. Primeros pasos: crear el sitio {#05}
+<a id="primeros-pasos-crear-el-sitio"></a>
+### 05. Primeros pasos: crear el sitio
 
 Para crear el sitio Hugo en `project/`, sigue estos pasos:
 
@@ -170,7 +175,8 @@ hugo server -D
 
 ---
 
-### 06. Flujo de trabajo recomendado {#06}
+<a id="flujo-de-trabajo-recomendado"></a>
+### 06. Flujo de trabajo recomendado
 
 El flujo de trabajo diario recomendado para trabajar con Hugo en este repositorio es:
 
@@ -197,7 +203,8 @@ El flujo de trabajo diario recomendado para trabajar con Hugo en este repositori
 
 ---
 
-### 07. Despliegue con Cloudflare {#07}
+<a id="despliegue-con-cloudflare"></a>
+### 07. Despliegue con Cloudflare
 
 El repositorio tiene configurados 4 servidores MCP de Cloudflare que complementan el despliegue Hugo:
 
@@ -219,7 +226,8 @@ El skill de Hugo incluye configuración para desplegar con `wrangler.jsonc` usan
 
 ---
 
-### 08. Resolución de problemas comunes {#08}
+<a id="resolucion-de-problemas-comunes"></a>
+### 08. Resolución de problemas comunes
 
 El skill `opencode-skills-plugin-hugo` documenta 15 errores comunes. Los más frecuentes al iniciar:
 
@@ -234,7 +242,8 @@ El skill `opencode-skills-plugin-hugo` documenta 15 errores comunes. Los más fr
 
 ---
 
-### 09. Referencia rápida de comandos {#09}
+<a id="referencia-rapida-de-comandos"></a>
+### 09. Referencia rápida de comandos
 
 ```bash
 # Verificar instalación
@@ -263,7 +272,8 @@ git submodule update --init --recursive
 
 ---
 
-### 10. Próximos pasos {#10}
+<a id="proximos-pasos"></a>
+### 10. Próximos pasos
 
 | Paso | Acción | Prioridad |
 |------|--------|-----------|
@@ -280,7 +290,8 @@ git submodule update --init --recursive
 
 ---
 
-### 11. Anexo: recomendación para empezar {#11}
+<a id="anexo-recomendacion-para-empezar"></a>
+### 11. Anexo: recomendación para empezar
 
 **Fecha del anexo**: 2026-06-27
 **Propósito**: Explicación de la recomendación priorizada para comenzar el proyecto Hugo, basada en el contexto completo del repositorio (documentación, MCP, skill, estado del proyecto).

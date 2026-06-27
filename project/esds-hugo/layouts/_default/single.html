@@ -1,0 +1,1207 @@
+{{/* ========================================
+   Layout: _default/single.html
+   Página de servicio individual (9 bloques)
+   Mobile-first · Anexo 2 de PdTbjo-esds-fase-2.md
+   ========================================
+
+   ORDEN DE BLOQUES (mobile):
+     ❶ Hero — foto a sangre, breadcrumb, título, badge precio
+     ❷ Galería fotográfica — scroll horizontal (mobile) / grid 2×2 (≥768px)
+     ❸ Descripción visual — .Content + blockquote styling
+     ❹ Datos prácticos — grid 2×2 iconos
+     ❺ Programa — timeline visual (solo si tipo == "pack")
+     ❻ Incluye / No incluye — badges con iconos
+     ❼ Equipaje — icon strip (oculto si tipo == "transfer")
+     ❽ CTA WhatsApp — foto fondo + botón wa.me
+     ❾ Servicios relacionados — cards (oculto si tipo == "transfer")
+
+   COMPORTAMIENTO DESKTOP (≥768px):
+     - ❷ Galería: full-width, grid 2×2
+     - ❸+❹+❻+❼: wrapper 2 columnas (65% / 35% sidebar sticky)
+     - ❺ Programa: cruza ambas columnas (grid-column: 1 / -1)
+     - ❶, ❷, ❽, ❾: full-width
+   ======================================== */}}
+
+{{ define "head" }}
+<style>
+/* ========================================
+   Service Page Styles (prefijo: service-)
+   Mobile-first → todos los bloques al 100%
+   ======================================== */
+
+/* ----------------------------------------------------------
+   ❶ HERO — Foto a sangre
+   ---------------------------------------------------------- */
+.service-hero {
+  position: relative;
+  min-height: 50vh;
+  display: flex;
+  align-items: flex-end;
+  margin-top: var(--header-height);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.service-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(45, 58, 44, 0.80) 0%,
+    rgba(45, 58, 44, 0.35) 50%,
+    rgba(45, 58, 44, 0.10) 100%
+  );
+  z-index: 1;
+}
+
+.service-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: var(--space-2xl) var(--content-padding);
+  color: var(--blanco);
+}
+
+/* Breadcrumb */
+.service-breadcrumb {
+  font-family: var(--font-sans);
+  font-size: 0.813rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.85;
+}
+
+.service-breadcrumb a {
+  color: var(--blanco);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.service-breadcrumb a:hover {
+  color: var(--dorado);
+  text-decoration-color: var(--dorado);
+}
+
+.service-breadcrumb__sep {
+  margin: 0 var(--space-xs);
+  opacity: 0.5;
+}
+
+.service-hero__title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--blanco);
+  margin-bottom: var(--space-sm);
+  max-width: 800px;
+  line-height: 1.15;
+}
+
+.service-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: var(--dorado);
+  color: var(--blanco);
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 1.063rem;
+  font-weight: 700;
+  margin-top: var(--space-md);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ----------------------------------------------------------
+   ❷ GALERÍA FOTOGRÁFICA
+   ---------------------------------------------------------- */
+.service-galeria {
+  padding: var(--space-2xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.service-galeria__scroll {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: thin;
+  scrollbar-color: var(--dorado) var(--borde);
+}
+
+.service-galeria__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.service-galeria__scroll::-webkit-scrollbar-track {
+  background: var(--borde);
+  border-radius: 2px;
+}
+
+.service-galeria__scroll::-webkit-scrollbar-thumb {
+  background: var(--dorado);
+  border-radius: 2px;
+}
+
+.service-galeria__img {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  width: 100%;
+  transition: transform var(--transition-base);
+}
+
+.service-galeria__img:hover {
+  transform: scale(1.02);
+}
+
+.service-galeria__grid {
+  display: none;
+}
+
+/* ----------------------------------------------------------
+   ❸ DESCRIPCIÓN VISUAL
+   ---------------------------------------------------------- */
+.service-descripcion {
+  padding: var(--space-2xl) 0;
+  background-color: var(--beige);
+}
+
+.service-descripcion__content {
+  font-size: 1.063rem;
+  line-height: 1.7;
+  color: var(--texto-oscuro);
+}
+
+.service-descripcion__content p:last-child {
+  margin-bottom: 0;
+}
+
+.service-descripcion__content blockquote {
+  margin: var(--space-xl) 0;
+  padding: var(--space-lg) var(--space-xl);
+  background-color: var(--blanco-hueso);
+  border-left: 4px solid var(--dorado);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--texto-oscuro);
+  line-height: 1.5;
+}
+
+.service-descripcion__content blockquote p {
+  margin-bottom: 0;
+}
+
+.service-descripcion__content blockquote footer,
+.service-descripcion__content blockquote cite {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-style: normal;
+  color: var(--dorado);
+}
+
+/* ----------------------------------------------------------
+   ❹ DATOS PRÁCTICOS
+   ---------------------------------------------------------- */
+.service-datos {
+  padding: var(--space-2xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.service-datos__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.service-datos__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--blanco);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-datos__item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-media);
+}
+
+.service-datos__icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(138, 154, 123, 0.12);
+  border-radius: var(--radius-full);
+}
+
+.service-datos__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.service-datos__label {
+  font-size: 0.688rem;
+  font-weight: 600;
+  color: var(--texto-secundario);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.service-datos__value {
+  font-size: 0.938rem;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+  word-break: break-word;
+}
+
+/* ----------------------------------------------------------
+   ❺ PROGRAMA — Timeline visual (solo packs)
+   ---------------------------------------------------------- */
+.service-programa {
+  padding: var(--space-2xl) 0;
+  background-color: var(--blanco-hueso);
+  border-top: 2px solid var(--borde);
+  border-bottom: 2px solid var(--borde);
+}
+
+.service-programa__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg) 0;
+  position: relative;
+}
+
+.service-programa__step + .service-programa__step {
+  border-top: 2px dashed var(--dorado);
+  padding-top: var(--space-xl);
+}
+
+.service-programa__step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.service-programa__step-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--dorado);
+  color: var(--blanco);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.service-programa__step-title {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--texto-oscuro);
+}
+
+.service-programa__step-time {
+  font-size: 0.813rem;
+  color: var(--dorado);
+  font-weight: 600;
+  margin-left: auto;
+  white-space: nowrap;
+  font-family: var(--font-sans);
+}
+
+.service-programa__step-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--sombra-suave);
+}
+
+.service-programa__step-desc {
+  font-size: 0.938rem;
+  color: var(--texto-secundario);
+  line-height: 1.6;
+}
+
+.service-programa__pausa {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  color: var(--texto-secundario);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.service-programa__pausa::before,
+.service-programa__pausa::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(
+    to right,
+    var(--borde) 0,
+    var(--borde) 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.service-programa__fin {
+  margin-top: var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-serif);
+  font-size: 1.063rem;
+  font-weight: 600;
+  color: var(--verde-oliva);
+}
+
+.service-programa__fin-icon {
+  font-size: 1.25rem;
+}
+
+/* ----------------------------------------------------------
+   ❻ INCLUYE / NO INCLUYE
+   ---------------------------------------------------------- */
+.service-incluye {
+  padding: var(--space-2xl) 0;
+  background-color: var(--beige);
+}
+
+.service-incluye__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.service-incluye__col-title {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--texto-oscuro);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.service-incluye__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--blanco);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--texto-oscuro);
+  line-height: 1.4;
+}
+
+.service-incluye__item--si {
+  border-left: 3px solid var(--verde-oliva);
+}
+
+.service-incluye__item--no {
+  border-left: 3px solid var(--dorado);
+  color: var(--texto-secundario);
+}
+
+/* ----------------------------------------------------------
+   ❼ EQUIPAJE — Icon strip
+   ---------------------------------------------------------- */
+.service-equipaje {
+  padding: var(--space-2xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.service-equipaje__scroll {
+  display: flex;
+  gap: var(--space-md);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: thin;
+  scrollbar-color: var(--dorado) var(--borde);
+}
+
+.service-equipaje__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.service-equipaje__scroll::-webkit-scrollbar-track {
+  background: var(--borde);
+  border-radius: 2px;
+}
+
+.service-equipaje__scroll::-webkit-scrollbar-thumb {
+  background: var(--dorado);
+  border-radius: 2px;
+}
+
+.service-equipaje__item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--blanco);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sombra-suave);
+  min-width: 90px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.service-equipaje__item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-media);
+}
+
+.service-equipaje__icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.service-equipaje__label {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* ----------------------------------------------------------
+   ❽ CTA WHATSAPP
+   ---------------------------------------------------------- */
+.service-cta {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.service-cta__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(45, 58, 44, 0.70) 0%,
+    rgba(45, 58, 44, 0.35) 100%
+  );
+  z-index: 1;
+}
+
+.service-cta__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: var(--space-3xl) var(--content-padding);
+  color: var(--blanco);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.service-cta__title {
+  font-family: var(--font-manuscrita);
+  font-size: 2rem;
+  color: var(--dorado);
+  margin-bottom: var(--space-lg);
+  line-height: 1.3;
+}
+
+.service-cta__text {
+  font-size: 0.938rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-xl);
+  opacity: 0.9;
+}
+
+.service-cta__mensaje {
+  font-size: 0.813rem;
+  opacity: 0.7;
+  margin-top: var(--space-md);
+  font-style: italic;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------------------------------------------------------
+   ❾ SERVICIOS RELACIONADOS
+   ---------------------------------------------------------- */
+.service-relacionados {
+  padding: var(--space-3xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.service-relacionados__scroll {
+  display: flex;
+  gap: var(--space-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: var(--space-sm);
+  scrollbar-width: thin;
+  scrollbar-color: var(--dorado) var(--borde);
+}
+
+.service-relacionados__scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.service-relacionados__scroll::-webkit-scrollbar-track {
+  background: var(--borde);
+  border-radius: 2px;
+}
+
+.service-relacionados__scroll::-webkit-scrollbar-thumb {
+  background: var(--dorado);
+  border-radius: 2px;
+}
+
+.service-relacionados__card {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  background-color: var(--blanco);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.service-relacionados__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-media);
+}
+
+.service-relacionados__card-img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+
+.service-relacionados__card-body {
+  padding: var(--space-md);
+}
+
+.service-relacionados__card-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+  color: var(--texto-oscuro);
+}
+
+.service-relacionados__card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  font-size: 0.813rem;
+  color: var(--texto-secundario);
+  margin-bottom: var(--space-md);
+}
+
+.service-relacionados__card-price {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--dorado);
+}
+
+/* ----------------------------------------------------------
+   TWO-COLUMN LAYOUT WRAPPER (desktop ≥768px)
+   ---------------------------------------------------------- */
+.service-two-col-wrapper {
+  /* Mobile: single column by default */
+  display: block;
+}
+
+.service-two-col__sidebar-inner {
+  /* Sticky wrapper for sidebar content */
+}
+
+/* ============================================================
+   RESPONSIVE: TABLET & DESKTOP
+   ============================================================ */
+@media (min-width: 768px) {
+  /* --- ❶ Hero --- */
+  .service-hero {
+    min-height: 60vh;
+  }
+
+  .service-hero__title {
+    font-size: 2.75rem;
+  }
+
+  .service-hero__content {
+    padding: var(--space-3xl) var(--content-padding);
+  }
+
+  /* --- ❷ Galería: grid 2×2 (ocultar scroll) --- */
+  .service-galeria__scroll {
+    display: none;
+  }
+
+  .service-galeria__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  .service-galeria__grid .service-galeria__img {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-galeria__grid .service-galeria__img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 7;
+  }
+
+  /* --- Two-column layout (65% / 35%) --- */
+  .service-two-col-wrapper {
+    display: grid;
+    grid-template-columns: 65fr 35fr;
+    gap: var(--space-xl);
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+  }
+
+  /* Place items in grid positions */
+  .service-descripcion {
+    grid-column: 1;
+    grid-row: 1;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .service-datos {
+    grid-column: 2;
+    grid-row: 1;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .service-programa {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .service-incluye {
+    grid-column: 1;
+    grid-row: 3;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .service-equipaje {
+    grid-column: 2;
+    grid-row: 3;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Sidebar sticky */
+  .service-datos {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-lg));
+  }
+
+  /* --- ❸ Descripción: más aire --- */
+  .service-descripcion__content {
+    font-size: 1.125rem;
+  }
+
+  .service-datos__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  /* --- ❺ Programa: timeline horizontal --- */
+  .service-programa__steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+  }
+
+  .service-programa__step + .service-programa__step {
+    border-top: none;
+    padding-top: var(--space-lg);
+  }
+
+  .service-programa__step:nth-child(n+2) {
+    border-left: 2px dashed var(--dorado);
+    padding-left: var(--space-lg);
+  }
+
+  .service-programa__pausa {
+    grid-column: 1 / -1;
+  }
+
+  /* --- ❼ Equipaje: vertical en sidebar --- */
+  .service-equipaje__scroll {
+    flex-direction: column;
+    overflow-x: visible;
+    gap: var(--space-sm);
+    padding-bottom: 0;
+  }
+
+  .service-equipaje__item {
+    flex-direction: row;
+    min-width: auto;
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-md);
+  }
+
+  /* --- ❽ CTA --- */
+  .service-cta {
+    min-height: 50vh;
+  }
+
+  .service-cta__title {
+    font-size: 2.5rem;
+  }
+
+  /* --- ❾ Relacionados: grid --- */
+  .service-relacionados__scroll {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    overflow-x: visible;
+  }
+
+  .service-relacionados__card {
+    flex: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-hero {
+    min-height: 70vh;
+  }
+
+  .service-hero__title {
+    font-size: 3.25rem;
+  }
+
+  .service-hero__badge {
+    font-size: 1.125rem;
+    padding: 0.625rem 1.5rem;
+  }
+
+  .service-two-col-wrapper {
+    gap: var(--space-2xl);
+  }
+
+  .service-programa__steps {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .service-relacionados__scroll {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .service-hero__title {
+    font-size: 3.75rem;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE: MOBILE MAX (for grid reset)
+   ============================================================ */
+@media (max-width: 767px) {
+  .service-two-col-wrapper > * {
+    /* On mobile, sections inside the wrapper keep their container padding */
+  }
+}
+
+/* ============================================================
+   ACCESIBILIDAD: REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .service-galeria__img,
+  .service-datos__item,
+  .service-equipaje__item,
+  .service-relacionados__card {
+    transition: none;
+  }
+}
+</style>
+{{ end }}
+
+
+{{ define "main" }}
+
+{{/* ========================================
+     ❶ HERO — Foto a sangre, full-width
+     ======================================== */}}
+<section class="service-hero" style="background-image: url('{{ .Params.imagen_hero | default "/images/default-hero.jpg" }}');"
+         aria-label="{{ .Params.imagen_hero_alt | default .Title }}">
+  <div class="service-hero__overlay" aria-hidden="true"></div>
+  <div class="service-hero__content">
+    <nav class="service-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Inicio</a>
+      <span class="service-breadcrumb__sep" aria-hidden="true">›</span>
+      <a href="/servicios/">Servicios</a>
+      <span class="service-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">{{ .Title }}</span>
+    </nav>
+    <h1 class="service-hero__title">{{ .Title }}</h1>
+    {{ with .Params.precio_texto }}
+    <span class="service-hero__badge" aria-label="Precio: {{ . }}">
+      🏷️ {{ . }}
+    </span>
+    {{ end }}
+  </div>
+</section>
+
+{{/* ========================================
+     ❷ GALERÍA FOTOGRÁFICA
+     ======================================== */}}
+{{ with .Params.imagenes_galeria }}
+<section class="service-galeria" aria-labelledby="galeria-title">
+  <div class="container">
+    <h2 id="galeria-title" class="sr-only">Galería de imágenes</h2>
+    <!-- Mobile: scroll horizontal -->
+    <div class="service-galeria__scroll" role="list" aria-label="Galería de fotos, desliza para ver más">
+      {{ range $i, $img := . }}
+      <img class="service-galeria__img"
+           src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           role="listitem"
+           {{ if eq $i 0 }}fetchpriority="high"{{ end }}>
+      {{ end }}
+    </div>
+    <!-- Desktop: grid 2×2 -->
+    <div class="service-galeria__grid" role="list" aria-label="Galería de fotos">
+      {{ range $i, $img := . }}
+      <img class="service-galeria__img"
+           src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           role="listitem">
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ========================================
+     TWO-COLUMN WRAPPER (desktop 65/35)
+     Contiene: ❸ ❹ ❺ ❻ ❼
+     ======================================== */}}
+<div class="service-two-col-wrapper">
+
+  {{/* === ❸ DESCRIPCIÓN VISUAL (left column) === */}}
+  <section class="service-descripcion" aria-labelledby="descripcion-title">
+    <div class="container">
+      <h2 id="descripcion-title" class="sr-only">Descripción de la experiencia</h2>
+      <div class="service-descripcion__content">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+
+  {{/* === ❹ DATOS PRÁCTICOS (right column — sticky) === */}}
+  <section class="service-datos" aria-labelledby="datos-title">
+    <div class="container">
+      <h2 id="datos-title" class="sr-only">Datos prácticos</h2>
+      <div class="service-datos__grid">
+        {{ with .Params.precio_texto }}
+        <div class="service-datos__item">
+          <span class="service-datos__icon" aria-hidden="true">💰</span>
+          <div class="service-datos__info">
+            <span class="service-datos__label">Precio</span>
+            <span class="service-datos__value">{{ . }}</span>
+          </div>
+        </div>
+        {{ end }}
+
+        {{ with .Params.duracion }}
+        <div class="service-datos__item">
+          <span class="service-datos__icon" aria-hidden="true">⏱️</span>
+          <div class="service-datos__info">
+            <span class="service-datos__label">Duración</span>
+            <span class="service-datos__value">{{ . }}</span>
+          </div>
+        </div>
+        {{ end }}
+
+        {{ with .Params.horario }}
+        <div class="service-datos__item">
+          <span class="service-datos__icon" aria-hidden="true">🕐</span>
+          <div class="service-datos__info">
+            <span class="service-datos__label">Horario</span>
+            <span class="service-datos__value">{{ . }}</span>
+          </div>
+        </div>
+        {{ end }}
+
+        {{ if or .Params.min_personas .Params.max_personas }}
+        <div class="service-datos__item">
+          <span class="service-datos__icon" aria-hidden="true">👥</span>
+          <div class="service-datos__info">
+            <span class="service-datos__label">Participantes</span>
+            <span class="service-datos__value">
+              {{- if .Params.min_personas }}{{ .Params.min_personas }}{{ end }}
+              {{- if and .Params.min_personas .Params.max_personas }} — {{ end }}
+              {{- if .Params.max_personas }}{{ .Params.max_personas }}{{ end }}
+              {{- if or .Params.min_personas .Params.max_personas }} personas{{ end -}}
+            </span>
+          </div>
+        </div>
+        {{ end }}
+
+        {{ with .Params.punto_encuentro }}
+        <div class="service-datos__item">
+          <span class="service-datos__icon" aria-hidden="true">📍</span>
+          <div class="service-datos__info">
+            <span class="service-datos__label">Punto de encuentro</span>
+            <span class="service-datos__value">{{ . }}</span>
+          </div>
+        </div>
+        {{ end }}
+
+        {{ with .Params.acceso }}
+        <div class="service-datos__item">
+          <span class="service-datos__icon" aria-hidden="true">🚐</span>
+          <div class="service-datos__info">
+            <span class="service-datos__label">Acceso</span>
+            <span class="service-datos__value">{{ . }}</span>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{/* === ❺ PROGRAMA (full-width, cruza ambas columnas) === */}}
+  {{ if eq .Params.tipo "pack" }}
+  {{ with .Params.programa }}
+  <section class="service-programa" aria-labelledby="programa-title">
+    <div class="container">
+      <h2 id="programa-title" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
+      <div class="service-programa__steps">
+        {{ range $i, $step := . }}
+        <div class="service-programa__step">
+          <div class="service-programa__step-header">
+            <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
+            <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
+            {{ with $step.hora }}
+            <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ with $step.imagen }}
+          <img class="service-programa__step-img"
+               src="{{ . }}"
+               alt="{{ $step.paso }}"
+               loading="lazy">
+          {{ end }}
+          {{ with $step.desc }}
+          <p class="service-programa__step-desc">{{ . }}</p>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <div class="service-programa__fin">
+        <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
+        <span>Fin de la experiencia</span>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+  {{/* === ❻ INCLUYE / NO INCLUYE (left column) === */}}
+  {{ if or .Params.incluye .Params.no_incluye }}
+  <section class="service-incluye" aria-labelledby="incluye-title">
+    <div class="container">
+      <h2 id="incluye-title" class="sr-only">Qué incluye y qué no incluye</h2>
+      <div class="service-incluye__grid">
+        {{ with .Params.incluye }}
+        <div>
+          <h3 class="service-incluye__col-title"><span aria-hidden="true">✅</span> Incluye</h3>
+          {{ range . }}
+          <div class="service-incluye__item service-incluye__item--si">
+            <span aria-hidden="true">✓</span>
+            <span>{{ . }}</span>
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+        {{ with .Params.no_incluye }}
+        <div>
+          <h3 class="service-incluye__col-title"><span aria-hidden="true">❌</span> No incluye</h3>
+          {{ range . }}
+          <div class="service-incluye__item service-incluye__item--no">
+            <span aria-hidden="true">✗</span>
+            <span>{{ . }}</span>
+          </div>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* === ❼ EQUIPAJE (right column) === */}}
+  {{ if and .Params.equipaje (ne .Params.tipo "transfer") }}
+  <section class="service-equipaje" aria-labelledby="equipaje-title">
+    <div class="container">
+      <h2 id="equipaje-title" class="section-title__heading mb-4">Qué llevar</h2>
+      <div class="service-equipaje__scroll" role="list" aria-label="Lista de equipaje recomendado">
+        {{ range .Params.equipaje }}
+        <div class="service-equipaje__item" role="listitem">
+          <span class="service-equipaje__icon" aria-hidden="true">🎒</span>
+          <span class="service-equipaje__label">{{ . }}</span>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+</div>{{/* /service-two-col-wrapper */}}
+
+{{/* ========================================
+     ❽ CTA WHATSAPP — Full-width
+     ======================================== */}}
+<section class="service-cta"
+         style="background-image: url('{{ .Params.imagen_hero | default "/images/default-cta.jpg" }}');"
+         aria-label="Reserva tu experiencia">
+  <div class="service-cta__overlay" aria-hidden="true"></div>
+  <div class="service-cta__content">
+    <h2 class="service-cta__title">¿Te animas a vivirlo?</h2>
+    <p class="service-cta__text">
+      Reserva tu plaza y vive una experiencia única en el Valle de Guadalest.
+      Elena te guiará en cada momento.
+    </p>
+    {{ $whatsappNum := .Site.Params.whatsapp_number | default "34600000000" }}
+    {{ $mensaje := .Params.whatsapp_mensaje | default "Hola, quiero reservar una experiencia" }}
+    <a href="https://wa.me/{{ $whatsappNum }}?text={{ $mensaje | urlquery }}"
+       class="btn btn-whatsapp"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Reservar por WhatsApp">
+      💬 Reservar por WhatsApp →
+    </a>
+    <p class="service-cta__mensaje">
+      Mensaje: "{{ $mensaje }}"
+    </p>
+  </div>
+</section>
+
+{{/* ========================================
+     ❾ SERVICIOS RELACIONADOS
+     (oculto en transfers)
+     ======================================== */}}
+{{ if ne .Params.tipo "transfer" }}
+<section class="service-relacionados" aria-labelledby="relacionados-title">
+  <div class="container">
+    <div class="section-title">
+      <h2 id="relacionados-title" class="section-title__heading">Otras experiencias</h2>
+      <p class="section-title__sub">Descubre más formas de conectar contigo en la naturaleza</p>
+      <div class="section-title__divider" aria-hidden="true">
+        <span></span>
+        <span class="section-title__divider-icon">✦</span>
+        <span></span>
+      </div>
+    </div>
+    <div class="service-relacionados__scroll" role="list" aria-label="Servicios relacionados">
+      {{/* Yoga — 30€ */}}
+      <a href="/servicios/yoga/" class="service-relacionados__card" role="listitem">
+        <img class="service-relacionados__card-img"
+             src="https://picsum.photos/seed/yoga-card/600/400"
+             alt="Persona practicando yoga al aire libre"
+             loading="lazy">
+        <div class="service-relacionados__card-body">
+          <h3 class="service-relacionados__card-title">Yoga &amp; Mindfulness</h3>
+          <div class="service-relacionados__card-meta">
+            <span class="service-relacionados__card-price">30 €</span>
+            <span>1:30 h</span>
+          </div>
+          <span class="btn btn--sm btn-outline-dark">Ver más →</span>
+        </div>
+      </a>
+
+      {{/* Kayak — 20€ */}}
+      <a href="/servicios/kayak/" class="service-relacionados__card" role="listitem">
+        <img class="service-relacionados__card-img"
+             src="https://picsum.photos/seed/kayak-card/600/400"
+             alt="Kayak en el embalse de Guadalest"
+             loading="lazy">
+        <div class="service-relacionados__card-body">
+          <h3 class="service-relacionados__card-title">Kayak en el Embalse</h3>
+          <div class="service-relacionados__card-meta">
+            <span class="service-relacionados__card-price">20 €</span>
+            <span>1:30 h</span>
+          </div>
+          <span class="btn btn--sm btn-outline-dark">Ver más →</span>
+        </div>
+      </a>
+
+      {{/* Caminata — 25€ */}}
+      <a href="/servicios/caminata-consciente/" class="service-relacionados__card" role="listitem">
+        <img class="service-relacionados__card-img"
+             src="https://picsum.photos/seed/caminata-card/600/400"
+             alt="Persona caminando en silencio por el valle"
+             loading="lazy">
+        <div class="service-relacionados__card-body">
+          <h3 class="service-relacionados__card-title">Caminata Consciente</h3>
+          <div class="service-relacionados__card-meta">
+            <span class="service-relacionados__card-price">25 €</span>
+            <span>~2 h</span>
+          </div>
+          <span class="btn btn--sm btn-outline-dark">Ver más →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

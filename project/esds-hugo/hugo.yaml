@@ -1,0 +1,41 @@
+baseURL: "/"
+title: "El Sonido del Silencio"
+languageCode: "es-es"
+defaultContentLanguage: "es"
+enableRobotsTXT: true
+disableKinds:
+  - RSS
+  - taxonomy
+  - term
+permalinks:
+  page:
+    servicios: "/servicios/:contentbasename/"
+
+params:
+  description: "Experiencias conscientes de bienestar y naturaleza en el Embalse de Guadalest, Valle de Guadalest, Alicante"
+  author: "Elena"
+  instagram: "@elsonido.silencio"
+  instagram_url: "https://instagram.com/elsonido.silencio"
+  whatsapp_number: "+34"
+  whatsapp_message: "Hola%20El%20Sonido%20del%20Silencio%2C%20quiero%20informaci%C3%B3n%20sobre..."
+  email: ""
+
+menu:
+  main:
+    - identifier: "inicio"
+      name: "Inicio"
+      url: "/"
+      weight: 1
+    - identifier: "experiencias"
+      name: "Experiencias"
+      url: "/servicios/"
+      weight: 2
+    - identifier: "informacion"
+      name: "Información"
+      url: "/#informacion"
+      weight: 3
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

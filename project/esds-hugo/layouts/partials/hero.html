@@ -1,0 +1,82 @@
+{{/* ============================================================
+  Hero Partial — El Sonido del Silencio
+  ============================================================ */}}
+<section class="hero" aria-label="Hero principal {{ .Site.Title }}">
+
+  {{- /* Imagen de fondo */}}
+  <div class="hero__background" style="background-image: url('https://picsum.photos/seed/esds-hero/1600/900');" aria-hidden="true"></div>
+
+  {{- /* Overlay */}}
+  <div class="hero__overlay" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    {{- /* Título */}}
+    <h1 class="hero__title">Reconecta con la naturaleza y contigo</h1>
+
+    {{- /* Línea manuscrita (subtítulo decorativo) */}}
+    <p class="hero__title-manuscrita">Experiencias conscientes en el Embalse de Guadalest</p>
+
+    {{- /* Subtítulo descriptivo */}}
+    <p class="hero__subtitle">Yoga · Kayak · Caminatas conscientes · Mini Retiros</p>
+
+    {{- /* Iconos de actividades */}}
+    <ul class="hero__actividades" aria-label="Actividades disponibles">
+      <li class="hero__actividad">
+        <span class="hero__actividad-icon" aria-hidden="true">🧘</span>
+        <span>Yoga</span>
+      </li>
+      <li class="hero__actividad">
+        <span class="hero__actividad-icon" aria-hidden="true">🛶</span>
+        <span>Kayak</span>
+      </li>
+      <li class="hero__actividad">
+        <span class="hero__actividad-icon" aria-hidden="true">🥾</span>
+        <span>Caminata</span>
+      </li>
+    </ul>
+
+    {{- /* Botones CTA */}}
+    <div class="hero__cta">
+      <a href="#experiencias" class="btn btn-primary">Ver Experiencias</a>
+      <a href="#conecta" class="btn btn-outline-dark">Reservar</a>
+    </div>
+
+    {{- /* Early Bird - DENTRO de hero__content */}}
+    <div class="hero__early-bird">
+      <span class="hero__early-bird-label">★ EARLY BIRD</span>
+      <h2 class="hero__early-bird-title">Reserva con anticipación</h2>
+      <p class="hero__early-bird-text">Reserva con anticipación y asegura tu plaza este verano.</p>
+      <p class="hero__early-bird-aviso">¡Plazas limitadas!</p>
+    </div>
+
+  </div>{{- /* /.hero__content */}}
+</section>{{- /* /.hero */}}
+
+{{- /* ------------------------------------------------------------------ */}}
+{{- /* FRANJA INFORMATIVA — 3 columnas                                    */}}
+{{- /* ------------------------------------------------------------------ */}}
+<section class="info-bar" aria-label="Información práctica">
+  <div class="container">
+  <div class="info-bar__grid">
+
+    <article class="info-bar__item">
+      <span class="info-bar__icon" aria-hidden="true">📍</span>
+      <h3 class="info-bar__title">Ubicación</h3>
+      <p class="info-bar__text">Todas las actividades se realizan cerca del Embalse de Guadalest</p>
+    </article>
+
+    <article class="info-bar__item">
+      <span class="info-bar__icon" aria-hidden="true">⏱</span>
+      <h3 class="info-bar__title">Duración</h3>
+      <p class="info-bar__text">Duración aproximada de cada experiencia: 1h30</p>
+    </article>
+
+    <article class="info-bar__item">
+      <span class="info-bar__icon" aria-hidden="true">👥</span>
+      <h3 class="info-bar__title">Grupos</h3>
+      <p class="info-bar__text">Grupos pequeños para una experiencia más personal</p>
+    </article>
+
+  </div>{{- /* /.info-bar__grid */}}
+  </div>{{- /* /.container */}}
+</section>{{- /* /.info-bar */}}

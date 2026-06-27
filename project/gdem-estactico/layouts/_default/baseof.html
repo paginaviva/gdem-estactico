@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="{{ .Site.LanguageCode }}">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="{{ with .Params.keywords }}{{ . }}{{ end }}">
+  <meta name="description" content="{{ with .Params.description }}{{ . }}{{ end }}">
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  {{ partial "head.html" . }}
+</head>
+<body data-path-to-root="/" data-include-products="false" class="u-body u-xl-mode" data-lang="{{ .Site.LanguageCode }}">
+  {{ partial "header.html" . }}
+
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+</body>
+</html>

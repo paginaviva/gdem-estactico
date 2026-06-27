@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ .Site.Params.description | default "Experiencias conscientes en el Embalse de Guadalest — Yoga, Kayak, Caminatas y Retiros en el Valle de Guadalest, Alicante." }}">
+  <meta name="keywords" content="{{ .Site.Params.keywords | default "yoga, kayak, caminata consciente, Guadalest, bienestar, naturaleza, aventura, Alicante, Costa Blanca, retiro, meditación, mindfulness" }}">
+
+  <!-- Google Fonts: Playfair Display (titulares), Pacifico (manuscrita), Inter (cuerpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Paleta de colores ESDS — variables CSS -->
+  <style>
+    :root {
+      --beige: #F5EDE4;
+      --verde-bosque: #3E4A3C;
+      --dorado: #B8A88A;
+      --verde-oliva: #8A9A7B;
+      --azul-cielo: #B8CDD6;
+      --blanco-hueso: #F0EDE4;
+      --verde-oscuro: #2D3A2C;
+    }
+
+    /* --- Clases utilitarias básicas ---
+     * Completar en /css/style.css:
+     * .text-beige       { color: var(--beige); }
+     * .text-verde-bosque  { color: var(--verde-bosque); }
+     * .bg-beige         { background-color: var(--beige); }
+     * .bg-verde-oscuro  { background-color: var(--verde-oscuro); }
+     * .font-display     { font-family: 'Playfair Display', serif; }
+     * .font-script      { font-family: 'Pacifico', cursive; }
+     * .font-body        { font-family: 'Inter', sans-serif; }
+     * .skip-link        { position: absolute; left: -9999px; top: 0; }
+     * .skip-link:focus  { left: 0; background: var(--verde-bosque); color: #fff; padding: 0.5rem 1rem; z-index: 9999; }
+     */
+
+    /* Skip link accesible — oculto por defecto, visible al recibir foco */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 9999;
+    }
+    .skip-link:focus {
+      left: 0;
+      top: 0;
+      background: var(--verde-bosque);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+  </style>
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+  {{ block "head" . }}{{ end }}
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  {{ partial "header.html" . }}
+
+  <main id="main-content">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "footer.html" . }}
+
+  {{ block "scripts" . }}{{ end }}
+</body>
+</html>
