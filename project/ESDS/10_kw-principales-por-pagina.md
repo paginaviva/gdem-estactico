@@ -1,10 +1,10 @@
 # Keywords Principales por Página — ESDS
 
-**Propósito:** Asignar la keyword principal (KW pilar) de cada página del sitio, su title tag y H1. Este documento es la referencia directa para el copywriter al redactar el contenido de cada página. Cada ficha incluye: KW principal, title tag, H1, intención de búsqueda, tono, qué comunicar, keywords secundarias, datos clave.
+**Propósito:** Asignar la keyword principal (KW pilar) de cada página del sitio, su title tag, H1, KW long-tail, preguntas FAQ para GEO y apoyo semántico. Este documento es la referencia directa para el copywriter al redactar el contenido de cada página. Cada ficha incluye: KW principal, title tag, H1, intención de búsqueda, tono, qué comunicar, keywords secundarias, KW long-tail, preguntas FAQ (GEO), apoyo semántico/entidades, datos clave.
 
 **Proyecto:** El Sonido del Silencio (elsonidodelsilencio.com / .es)
 **Creado:** 2026-06-27
-**Modificado:** 2026-06-27 (añadidos title tag + H1 por página)
+**Modificado:** 2026-06-27 (añadidos title tag + H1 + KW long-tail + FAQ GEO + apoyo semántico/entidades)
 **Fuente:** Informe Fase 1 (`08_informe-fase1-keyword-research.md`) + decisiones de arquitectura (`PdTbjo-esds-fase-2.md`)
 
 ---
@@ -40,6 +40,9 @@
 | **Keywords secundarias** | `turismo consciente alicante`, `escapada bienestar alicante`, `bienestar naturaleza guadalest`, `retiro bienestar alicante` |
 | **GEO** | Incluir definición de "turismo consciente" (potencial AI Overview) |
 | **Canibalización** | Ninguna — es la página principal, no compite con páginas de servicio |
+| **KW Long-tail** | `retiro bienestar alicante`, `escapada bienestar alicante`, `turismo consciente alicante`, `retiro yoga guadalest`, `escapada rural alicante`, `bienestar naturaleza guadalest`, `planes escapada alicante pareja`, `turismo naturaleza alicante`, `viaje consciente costa blanca` |
+| **Preguntas FAQ (GEO)** | ¿Qué es el turismo consciente? ¿Qué experiencias de bienestar hay en Guadalest? ¿Qué incluye una experiencia de bienestar al aire libre en Guadalest? ¿Qué diferencia el bienestar activo de un spa? |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, bienestar activo al aire libre, experiencias en naturaleza, yoga + kayak + caminata consciente, El Sonido del Silencio (marca), conexión con la naturaleza, grupo reducido, Costa Blanca, turismo consciente |
 
 ---
 
@@ -57,6 +60,9 @@
 | **Keywords secundarias** | `que hacer en guadalest`, `planes en guadalest`, `excursiones guadalest` |
 | **Nota** | No redactar contenido extenso aquí. Es una página puente con cards que enlazan a cada servicio. El contenido SEO principal está en cada ficha individual |
 | **Canibalización** | No canibaliza con Home (Home es de marca, esta es de navegación). Peligro con `que hacer en guadalest` si se crea una página de blog con esa KW — decidir en Fase 3 |
+| **KW Long-tail** | `que hacer en guadalest`, `planes en guadalest`, `excursiones guadalest`, `escapadas rurales alicante`, `escapadas fin de semana alicante`, `planes escapada alicante pareja`, `que ver en guadalest` |
+| **Preguntas FAQ (GEO)** | ¿Qué hacer en Guadalest? ¿Cuáles son las mejores actividades en Guadalest? ¿Cuál es la mejor época para visitar Guadalest? ¿Qué ver en Guadalest además del embalse? |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, Embalse de Guadalest, Castell de Guadalest, Fonts d'Algar, Beniardà, Costa Blanca, provincia de Alicante, planes de naturaleza, turismo activo |
 
 ---
 
@@ -75,6 +81,9 @@
 | **Datos clave** | 50€/persona, 5h (8:30-14:00), mín 2 / máx 6 personas, incluye guía + esterilla + chaleco |
 | **GEO** | Incluir "¿qué incluye un mini retiro?" como pregunta-respuesta |
 | **Canibalización** | No. Compite con "Tarde de Conexión" pero son servicios distintos (mañana vs tarde, 3 actividades vs 2) |
+| **KW Long-tail** | `retiro yoga guadalest`, `retiro bienestar alicante`, `retiro fin de semana alicante`, `retiro silencio alicante`, `retiro bienestar costa blanca`, `plan pareja guadalest`, `escapada bienestar alicante` |
+| **Preguntas FAQ (GEO)** | ¿Qué incluye un mini retiro en Guadalest? ¿Cuánto dura un mini retiro en El Sonido del Silencio? ¿Qué actividades se hacen en un mini retiro? ¿Es apto para principiantes el mini retiro? ¿Qué es un retiro de bienestar de medio día? |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, yoga al aire libre, caminata consciente, kayak en silencio, bienestar activo, grupo reducido (máx 6 personas), mañana completa (5 horas), todos los niveles, conexión con la naturaleza |
 
 ---
 
@@ -92,6 +101,9 @@
 | **Keywords secundarias** | `kayak y yoga guadalest`, `plan atardecer guadalest`, `pack kayak yoga guadalest` |
 | **Datos clave** | 35€/persona, 3:30h (17:00-20:30), mín 2 / máx 6-10 personas |
 | **Canibalización** | Prestar atención a que no canibalice con Mini Retiro. Diferenciar bien: una es pack mañana (3 actividades), otra es pack tarde (2 actividades) |
+| **KW Long-tail** | `kayak y yoga guadalest`, `plan atardecer guadalest`, `pack kayak yoga guadalest`, `yoga naturaleza alicante`, `kayak embalse guadalest precio`, `yoga embalse guadalest`, `planes escapada alicante pareja` |
+| **Preguntas FAQ (GEO)** | ¿Qué incluye la Tarde de Conexión en Guadalest? ¿Cuánto dura la Tarde de Conexión? ¿Qué hacer al atardecer en Guadalest? ¿Se puede hacer yoga y kayak en la misma tarde? |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, atardecer en el embalse, kayak guiado, Hatha Yoga al aire libre, aguas turquesa, montañas, transición movimiento → calma, grupo reducido (máx 6-10 personas) |
 
 ---
 
@@ -109,6 +121,9 @@
 | **Keywords secundarias** | `yoga naturaleza alicante`, `yoga embalse guadalest`, `clases yoga guadalest`, `meditacion guadalest` |
 | **Datos clave** | 30€/persona, 1:30h, horarios 8:30 y 19:00, mín 2 / máx 6 personas |
 | **Canibalización** | No. Es la página específica de yoga. No confundir con el yoga incluido en Mini Retiro o Tarde de Conexión — esos son packs, esta es la actividad individual |
+| **KW Long-tail** | `yoga naturaleza alicante`, `yoga embalse guadalest`, `clases yoga guadalest`, `meditacion guadalest`, `mejor yoga guadalest`, `yoga guadalest precios`, `yoga para principiantes guadalest` |
+| **Preguntas FAQ (GEO)** | ¿Qué incluye una clase de yoga al aire libre en Guadalest? ¿Hay clases de yoga para principiantes en Guadalest? ¿Qué horarios hay para yoga en el embalse? ¿Qué es el Hatha Yoga en la naturaleza? ¿Se puede hacer meditación en Guadalest? |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, Hatha Yoga, meditación guiada, pranayama (respiración consciente), asanas, amanecer y atardecer, práctica al aire libre, naturaleza, conexión cuerpo-mente, grupo reducido (máx 6 personas) |
 
 ---
 
@@ -126,6 +141,9 @@
 | **Keywords secundarias** | `kayak guadalest precio`, `rutas kayak guadalest`, `alquiler kayak guadalest`, `kayak en silencio guadalest` |
 | **Datos clave** | 20€/persona, 1:30h, horarios 12:30 y 17:30, mín 2 / máx 10 personas |
 | **Canibalización** | No confundir con kayak dentro del Mini Retiro. Esta página es para quien quiere solo kayak |
+| **KW Long-tail** | `kayak guadalest precio`, `rutas kayak guadalest`, `alquiler kayak guadalest`, `kayak en silencio guadalest`, `kayak embalse guadalest precio` |
+| **Preguntas FAQ (GEO)** | ¿Cuánto cuesta el kayak en el embalse de Guadalest? ¿Se puede alquilar un kayak en Guadalest? ¿Qué rutas de kayak hay en el embalse de Guadalest? ¿Es necesario saber remar para hacer kayak en Guadalest? ¿Cuál es la mejor hora para hacer kayak en Guadalest? |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, aguas turquesa, Beniardà, Costa Blanca, remar en silencio, chaleco de seguridad, kayak guiado (no alquiler libre), montañas alrededor, todos los niveles |
 | **Nota proveedor** | Elena opera con kayakbeni.com como proveedor. No mencionar a no ser que sea relevante |
 
 ---
@@ -144,6 +162,9 @@
 | **Keywords secundarias** | `senderismo guadalest`, `caminatas guiadas guadalest`, `rutas silencio guadalest`, `meditacion caminando alicante` |
 | **Datos clave** | 25€/persona, ~2h, horario a convenir, mín 2 / máx 12 personas |
 | **Canibalización** | No. Si se crea un artículo de blog sobre "rutas de senderismo en Guadalest", ese artículo informacional puede alimentar tráfico a esta página |
+| **KW Long-tail** | `senderismo guadalest`, `caminatas guiadas guadalest`, `rutas silencio guadalest`, `meditacion caminando alicante` |
+| **Preguntas FAQ (GEO)** | ¿Qué es una caminata consciente? ¿Qué rutas de senderismo hay en Guadalest? ¿Qué es el senderismo con atención plena? ¿Cuánto dura la caminata consciente en Guadalest? ¿Qué diferencia una caminata consciente de una ruta de senderismo normal? |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, silencio, atención plena (mindfulness), pasos y respiración, sonidos de la naturaleza, montañas, rutas de silencio, grupo reducido (máx 12 personas), meditación caminando, cada salida es única |
 
 ---
 
@@ -161,6 +182,9 @@
 | **Keywords secundarias** | `como llegar al embalse guadalest`, `transporte guadalest`, `recogida beniarda guadalest` |
 | **Datos clave** | 10€/persona, 12 min trayecto, Beniardà → Embalse, horarios 8:00 y 16:30, mín 2 / máx 6 personas |
 | **Canibalización** | No. "Transfer Privado" cubre otros destinos (Fonts d'Algar, Castillo) — diferenciar claramente |
+| **KW Long-tail** | `como llegar al embalse guadalest`, `transporte guadalest`, `recogida beniarda guadalest` |
+| **Preguntas FAQ (GEO)** | ¿Cómo llegar al embalse de Guadalest? ¿Cómo llegar al embalse de Guadalest sin coche? ¿Hay transporte público a Guadalest? ¿Dónde aparcar en el embalse de Guadalest? ¿Cuánto cuesta el transfer al embalse de Guadalest? |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, Beniardà, punto de encuentro en Beniardà, acceso al embalse, parking, carretera de montaña, Multivan Volkswagen, 12 minutos de trayecto, transporte compartido |
 
 ---
 
@@ -178,6 +202,9 @@
 | **Keywords secundarias** | `font d algar como llegar`, `transporte font d algar`, `traslado guadalest`, `taxi guadalest` |
 | **Datos clave** | Bajo presupuesto, mín 2 / máx 6 personas, Multivan Volkswagen, destinos: Fonts d'Algar + Castillo de Guadalest |
 | **Canibalización** | Diferenciar de "Transfer Actividad" (este es privado y a más destinos, aquel es compartido y solo al embalse) |
+| **KW Long-tail** | `font d algar como llegar`, `transporte font d algar`, `como llegar font d algar`, `font d algar precio`, `font d algar horario`, `taxi guadalest`, `traslado guadalest`, `cascada font d algar` |
+| **Preguntas FAQ (GEO)** | ¿Cómo llegar a Fonts d'Algar? ¿Cuánto cuesta la entrada a Fonts d'Algar? ¿Cuál es el horario de Fonts d'Algar? ¿Qué ver en el Valle de Guadalest? ¿Cómo moverse por el Valle de Guadalest sin coche? |
+| **Apoyo semántico / Entidades** | Fonts d'Algar (cascadas), Castillo de Guadalest, Valle de Guadalest, Beniardà, Costa Blanca, Multivan Volkswagen, servicio bajo demanda, traslado privado, destinos a medida, turismo rural |
 
 ---
 
@@ -195,6 +222,9 @@
 | **Keywords secundarias** | `quien es elena guadalest`, `guia bienestar guadalest`, `valle guadalest turismo` |
 | **Nota** | Esta página puede reforzar la marca y generar confianza. No tiene KW de alta competencia pero es importante para conversión |
 | **Canibalización** | No. Es una página de marca, no compite con las de servicio |
+| **KW Long-tail** | `turismo consciente alicante`, `quien es elena guadalest`, `guia bienestar guadalest`, `valle guadalest turismo`, `turismo bienestar alicante`, `turismo rural guadalest`, `viaje consciente costa blanca` |
+| **Preguntas FAQ (GEO)** | ¿Qué es el turismo consciente? ¿Quién es Elena de El Sonido del Silencio? ¿Qué es El Sonido del Silencio? ¿Qué significa turismo consciente en Alicante? ¿Por qué elegir un guía de bienestar en Guadalest? |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, Elena (fundadora), bienestar consciente, grupos reducidos, respeto por la naturaleza, El Sonido del Silencio (marca), conexión con el entorno, experiencias transformadoras, Costa Blanca, turismo rural, filosofía de bienestar |
 
 ---
 

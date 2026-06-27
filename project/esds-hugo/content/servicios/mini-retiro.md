@@ -63,6 +63,27 @@ imagenes_galeria:
     alt: "Atardecer sobre las montañas desde el embalse"
 weight: 1
 whatsapp_mensaje: "Hola, quiero reservar el Mini Retiro (Yoga + Caminata + Kayak) para el día %FECHA% y somos %NUM% personas"
+para_quien_es: |
+  El Mini Retiro está diseñado para cualquier persona que necesite una pausa verdadera. No importa si nunca has hecho yoga, si no has montado en kayak o si crees que no sabes caminar en silencio. Las actividades están guiadas por Elena, que adapta cada práctica al nivel del grupo.
+
+  Es para ti si:
+  
+  — Sientes que el ruido del día a día te ha desconectado de ti mismo
+  
+  — Buscas una experiencia completa que combine movimiento, quietud y naturaleza
+  
+  — Quieres compartir una mañana especial en pareja, con amigas o en solitario
+  
+  — Deseas descubrir el Valle de Guadalest de una forma auténtica y consciente
+  
+  Grupos reducidos de dos a seis personas garantizan una atención cercana y personalizada.
+
+por_que_elegir: |
+  **Tres actividades, una sola mañana.** El Mini Retiro no es la suma de tres experiencias independientes: es un viaje diseñado con intención. El yoga prepara el cuerpo para la caminata. La caminata aquieta la mente para recibir el kayak. El kayak integra todo lo vivido mientras te deslizas sobre el agua.
+
+  **Un entorno único.** El Embalse de Guadalest, rodeado de montañas y bañado por una luz que cambia con cada hora, es el escenario que convierte una actividad en un recuerdo imborrable. No hay dos mañanas iguales.
+
+  **Guiado con corazón.** Elena conoce cada rincón de este valle y lo entrega con la generosidad de quien ha encontrado aquí su lugar en el mundo. Cada actividad se vive con presencia, con calma, con la certeza de que estás exactamente donde debes estar.
 ---
 
 ## La experiencia completa
@@ -95,32 +116,6 @@ Desde el centro del embalse, la perspectiva es otra: ves el valle entero, el cie
 
 > "Cuando una persona vive el ciclo completo —despertar el cuerpo, caminar en silencio, navegar sobre el agua— algo en ella se recoloca. Vuelve a casa con una paz que no se explica, se siente."
 > — **Elena**
-
----
-
-## Para quién es
-
-El Mini Retiro está diseñado para cualquier persona que necesite una pausa verdadera. No importa si nunca has hecho yoga, si no has montado en kayak o si crees que no sabes caminar en silencio. Las actividades están guiadas por Elena, que adapta cada práctica al nivel del grupo.
-
-Es para ti si:
-
-- Sientes que el ruido del día a día te ha desconectado de ti mismo
-- Buscas una experiencia completa que combine movimiento, quietud y naturaleza
-- Quieres compartir una mañana especial en pareja, con amigas o en solitario
-- Deseas descubrir el Valle de Guadalest de una forma auténtica y consciente
-
-Grupos reducidos de dos a seis personas garantizan una atención cercana y personalizada.
-
----
-
-## Por qué elegir esta experiencia
-
-**Tres actividades, una sola mañana.** El Mini Retiro no es la suma de tres experiencias independientes: es un viaje diseñado con intención. El yoga prepara el cuerpo para la caminata. La caminata aquieta la mente para recibir el kayak. El kayak integra todo lo vivido mientras te deslizas sobre el agua.
-
-**Un entorno único.** El Embalse de Guadalest, rodeado de montañas y bañado por una luz que cambia con cada hora, es el escenario que convierte una actividad en un recuerdo imborrable. No hay dos mañanas iguales.
-
-**Guiado con corazón.** Elena conoce cada rincón de este valle y lo entrega con la generosidad de quien ha encontrado aquí su lugar en el mundo. Cada actividad se vive con presencia, con calma, con la certeza de que estás exactamente donde debes estar.
-
 ---
 
 *El Sonido del Silencio. Donde el Silencio tiene voz.*

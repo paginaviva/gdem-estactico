@@ -311,7 +311,7 @@ La estructura de páginas no se definió durante el keyword research, sino en el
 
 ### 6.3 Documentación generada
 
-- [x] `10_kw-principales-por-pagina.md` — 10 fichas con KW principal, intención, tono, qué comunicar, keywords secundarias, datos clave, advertencias de canibalización y notas para el copywriter
+- [x] `10_kw-principales-por-pagina.md` — 10 fichas con KW principal, title tag, H1, intención, tono, qué comunicar, keywords secundarias, KW long-tail, preguntas FAQ (GEO), apoyo semántico/entidades, datos clave, advertencias de canibalización y notas para el copywriter
 
 ### 6.4 Lecciones aprendidas
 
@@ -336,14 +336,14 @@ Por tanto, Fase 3 se divide en dos tracks que pueden ejecutarse en paralelo:
 
 | Track | Enfoque | Dónde se define |
 |-------|---------|-----------------|
-| **F3a — SEO de contenido** | Title tags, H1 — se añaden a las fichas de `10_kw-principales-por-pagina.md` | `10_kw-principales-por-pagina.md` (extensión de cada ficha) |
+| **F3a — SEO de contenido** | Title tags, H1, KW long-tail, preguntas FAQ (GEO), apoyo semántico/entidades — se añaden a las fichas de `10_kw-principales-por-pagina.md` | `10_kw-principales-por-pagina.md` (extensión de cada ficha) |
 | **F3b — SEO técnico** | Meta tags dinámicos, sitemap, JSON-LD, schema | `PdTbjo-esds-fase-2.md` (Bloque D) |
 
 ### Entrada (desde Fase 2)
 
 - [x] 10 KW principales asignadas por página (`10_kw-principales-por-pagina.md`)
 - [x] Cada ficha incluye: intención, tono, keywords secundarias, datos clave
-- [ ] Pendiente: añadir title tag y H1 a cada ficha
+- [x] Añadidos: title tag, H1, KW long-tail, preguntas FAQ (GEO) y apoyo semántico/entidades a cada ficha
 
 ### Tareas previstas
 
@@ -351,9 +351,10 @@ Por tanto, Fase 3 se divide en dos tracks que pueden ejecutarse en paralelo:
 
 - [x] Para cada página, definir **title tag** (50-60 caracteres, KW ppal al inicio) y **H1** (con KW ppal, distinto del title)
 - [x] Añadir ambos campos como nuevas filas en cada ficha de `10_kw-principales-por-pagina.md`
+- [x] Para cada página, añadir **KW long-tail**, **preguntas FAQ (GEO)** y **apoyo semántico/entidades** extraídos de los clusters de F1
 - [ ] Identificar qué páginas pueden incluir preguntas frecuentes (FAQ) para GEO
 - [ ] Validar que no haya solapamiento de intención entre páginas
-- [x] Output: `10_kw-principales-por-pagina.md` extendido con title + H1 por página — el copywriter tiene todo en un solo archivo
+- [x] Output: `10_kw-principales-por-pagina.md` extendido con title + H1 + long-tail + FAQ + entidades por página — el copywriter tiene todo en un solo archivo
 
 #### F3b — SEO técnico (implementación Hugo)
 
@@ -370,8 +371,8 @@ Por tanto, Fase 3 se divide en dos tracks que pueden ejecutarse en paralelo:
 
 ### Output esperado
 
-- [ ] `10_kw-principales-por-pagina.md` extendido con title tag + H1 por página
-- [ ] Copywriter tiene todo en un solo archivo: KW principal + intención + tono + title + H1 + datos clave
+- [x] `10_kw-principales-por-pagina.md` extendido con title tag, H1, KW long-tail, preguntas FAQ (GEO) y apoyo semántico/entidades por página
+- [x] Copywriter tiene todo en un solo archivo: KW principal + intención + tono + title + H1 + long-tail + FAQ + entidades + datos clave
 - [ ] Validación cruzada final (keywords, intención, canibalización)
 
 ---

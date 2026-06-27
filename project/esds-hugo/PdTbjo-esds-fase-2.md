@@ -321,120 +321,43 @@ Datos extraídos de `conocimiento-proyecto-esds.md` §03. Cada página de servic
 
 ---
 
-### Diagrama mobile-first (orden de apilado)
-
-En móvil, el usuario hace scroll vertical. Cada bloque ocupa el 100% del ancho.
+### NUEVO DIAGRAMA MOBILE-FIRST (orden de apilado)
 
 ```
 ┌─────────────────────────────────────────────┐
 │ ❶ HERO — Foto grande a sangre              │
-│ ┌─────────────────────────────────────────┐ │
-│ │                                         │ │
-│ │         🖼️  FOTO GRANDE                │ │
-│ │       del servicio (full width)         │ │
-│ │                                         │ │
-│ │  ┌─ breadcrumb ──────────────────────┐  │ │
-│ │  │  Inicio > Servicios > Yoga        │  │ │
-│ │  └───────────────────────────────────┘  │ │
-│ │                                         │ │
-│ │     TÍTULO DEL SERVICIO (h1)            │ │
-│ │     Subtítulo breve (opcional)          │ │
-│ │                                         │ │
-│ │            ┌──────────────┐             │ │
-│ │            │ 🏷️  30€/pers │             │ │
-│ │            │  badge precio│             │ │
-│ │            └──────────────┘             │ │
-│ └─────────────────────────────────────────┘ │
+│  Breadcrumb | Título | Badge precio         │
 ├─────────────────────────────────────────────┤
-│ ❷ GALERÍA FOTOGRÁFICA                       │
-│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐      │
-│  │ 🖼️ 1 │ │ 🖼️ 2 │ │ 🖼️ 3 │ │ 🖼️ 4 │ ← │
-│  │      │ │      │ │      │ │      │  scroll│
-│  └──────┘ └──────┘ └──────┘ └──────┘      │
-│  Strip horizontal con scroll touch          │
-│  4 fotos: actividad, paisaje, grupo, detalle│
+│ ❷ CONTENIDO PRINCIPAL (stack vertical)      │
+│  "La experiencia completa" (h2)            │
+│  🖼️ img 2/4                                 │
+│  Yoga al amanecer (texto)                   │
+│  Caminata Consciente (texto)                │
+│  Kayak en el Embalse (texto)               │
+│  💬 Comentario de Elena (blockquote)       │
 ├─────────────────────────────────────────────┤
-│ ❸ DESCRIPCIÓN VISUAL                       │
-│ ┌─────────────────────────────────────────┐ │
-│ │  Texto corto de Elena (2-3 frases)      │ │
-│ │  "Despierta el cuerpo con yoga al       │ │
-│ │  amanecer, camina en silencio..."       │ │
-│ │                                         │ │
-│ │  ┌─ Cita destacada ──────────────────┐  │ │
-│ │  │ "El embalse te espera en calma"   │  │ │
-│ │  │ — Elena                           │  │ │
-│ │  └───────────────────────────────────┘  │ │
-│ └─────────────────────────────────────────┘ │
+│ ❸ DATOS PRÁCTICOS                           │
+│  💰 Precio | ⏱ Duración | 🕐 Horario       │
+│  👥 Personas | 📍 Punto encuentro           │
 ├─────────────────────────────────────────────┤
-│ ❹ DATOS PRÁCTICOS — Icon grid              │
-│ ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐│
-│ │ 💰     │ │ ⏱     │ │ 🕐     │ │ 👥     ││
-│ │ 30€    │ │ 1:30h   │ │ 8:30   │ │ 2-6    ││
-│ │ precio │ │duración│ │horario │ │personas││
-│ └────────┘ └────────┘ └────────┘ └────────┘│
-│ 4 iconos con etiqueta — grid 2×2 en móvil  │
-│ 1×4 en desktop                              │
+│ ❹ BANNER — 🖼️ img 1/4 (ancho completo)    │
 ├─────────────────────────────────────────────┤
-│ ❺ PROGRAMA (solo packs S1, S2)             │
-│  Timeline visual con fotos                 │
-│ ┌─────────────────────────────────────────┐ │
-│ │  ①  Yoga (1:30h)                       │ │
-│ │  🖼️ foto yoga                  [08:30]  │ │
-│ │  ─ ─ ─ ☕ Pausa café ─ ─ ─             │ │
-│ │  ②  Caminata (1:30h)                   │ │
-│ │  🖼️ foto caminata              [10:30]  │ │
-│ │  ─ ─ ─ ☕ Pausa ─ ─ ─                  │ │
-│ │  ③  Kayak (1:30h)                       │ │
-│ │  🖼️ foto kayak                 [12:30]  │ │
-│ │                         Fin ~14:00 🏁   │ │
-│ └─────────────────────────────────────────┘ │
-│  (Para actividades individuales: omitir     │
-│   o mostrar timeline simplificado)          │
+│ ❺ PROGRAMA DE LA EXPERIENCIA               │
+│  Timeline visual con fotos (si tipo pack)   │
+├───────────────────┬───────────┬─────────────┤
+│ ❻ ✅ INCLUYE     │ ❌ NO     │ 🎒 LLEVAR  │
+│                   │ INCLUYE   │ (equipaje)  │
+│ 3 columnas iguales│           │             │
+├───────────────────┴───────────┴─────────────┤
+│ ❼ 🖼️ img 3/4                               │
+│  📝 "Para quién es" (texto)                 │
 ├─────────────────────────────────────────────┤
-│ ❻ INCLUYE / NO INCLUYE — Badges visuales   │
-│ ┌──────────────────┐ ┌──────────────────┐  │
-│ │ ✅ Guía           │ │ ❌ Comida        │  │
-│ │    especializada  │ │    y bebida      │  │
-│ ├──────────────────┤ ├──────────────────┤  │
-│ │ ✅ Esterilla yoga │ │ ❌ Transporte    │  │
-│ └──────────────────┘ └──────────────────┘  │
-│  Badges con iconos, 2 columnas en móvil     │
+│ ❽ 📝 "Por qué elegir esta experiencia"     │
+│  🖼️ img 4/4                                 │
 ├─────────────────────────────────────────────┤
-│ ❼ EQUIPAJE — Icon strip visual             │
-│                                             │
-│  🎒 Ropa   🧴 Prot.  💧 Agua  🧢 Gorro    │
-│  cómoda    solar                            │
-│                                             │
-│  Iconos + etiqueta,一行en scroll horizontal │
-│  (ocultar en S6, S7 — transfers)            │
+│ ❾ CTA WHATSAPP — Foto + botón              │
 ├─────────────────────────────────────────────┤
-│ ❽ CTA WHATSAPP — Foto + botón             │
-│ ┌─────────────────────────────────────────┐ │
-│ │  🖼️  Foto de fondo (atardecer, grupo)   │ │
-│ │                                         │ │
-│ │   ¿Te animas a vivirlo?                 │ │
-│ │                                         │ │
-│ │  ┌─────────────────────────────────┐    │ │
-│ │  │  💬  Reservar por WhatsApp →    │    │ │
-│ │  └─────────────────────────────────┘    │ │
-│ │                                         │ │
-│ │  Mensaje predefinido:                   │ │
-│ │  "Hola, quiero reservar el Mini Retiro  │ │
-│ │   para el [día] y somos [N] personas"   │ │
-│ └─────────────────────────────────────────┘ │
-├─────────────────────────────────────────────┤
-│ ❾ SERVICIOS RELACIONADOS (con foto)        │
-│  (excepto S6, S7 — transfers)              │
-│ ┌──────────┐ ┌──────────┐ ┌──────────┐    │
-│ │ 🖼️ Yoga  │ │ 🖼️ Kayak │ │ 🖼️ Camin │    │
-│ │          │ │          │ │          │    │
-│ │ 30€      │ │ 20€      │ │ 25€      │    │
-│ │ 1:30h    │ │ 1:30h    │ │ ~2h      │    │
-│ │ [Ver]    │ │ [Ver]    │ │ [Ver]    │    │
-│ └──────────┘ └──────────┘ └──────────┘    │
-│  Cards con foto de cada servicio           │
-│  3 columnas en desktop / scroll horizontal │
-│  en móvil                                  │
+│ ❿ SERVICIOS RELACIONADOS (cards con foto)   │
 └─────────────────────────────────────────────┘
 ```
 
@@ -442,141 +365,67 @@ En móvil, el usuario hace scroll vertical. Cada bloque ocupa el 100% del ancho.
 
 ### Comportamiento responsive
 
-Todos los bloques mantienen su naturaleza visual en todos los tamaños. En desktop, los bloques ❸+❹ y ❻+❼ se organizan en 2 columnas (65% contenido / 35% sidebar), pero cada bloque conserva sus fotos, iconos y badges — no se reduce a texto.
-
-| Bloque | Móvil (<768px) | Tablet (768-1024px) | Desktop (>1024px) |
-|--------|---------------|---------------------|-------------------|
-| **❶ Hero** | 50vh, foto full-width, badge precio flotante | 60vh, foto más grande | 70vh, foto panorámica, breadcrumb + badge |
-| **❷ Galería** | Scroll horizontal touch, thumbnails | Grid 2×2 con fotos medianas | Grid 2×2 con fotos grandes + lightbox al clicar |
-| **❸ Descripción** | Texto breve + cita destacada con fondo sutil | Texto + cita, más aire | 65% columna izda, con foto de ambientación de fondo |
-| **❹ Datos prácticos** | Grid 2×2 iconos grandes | Grid 2×2 iconos + etiqueta | Sidebar 35% sticky — **tarjetas visuales con icono + foto de fondo** |
-| **❺ Programa** | Timeline vertical con foto por paso | Timeline con fotos más grandes | Timeline horizontal, fotos grandes, línea temporal expandida |
-| **❻ Incluye** | Badges 2 columnas con iconos | Badges 2 cols más grandes | 65% columna izda — badges visuales grandes con icono |
-| **❼ Equipaje** | Icon strip horizontal scroll | Iconos一行, más separados | 35% sidebar — iconos grandes con etiqueta, bajo datos prácticos |
-| **❽ CTA WhatsApp** | Ancho completo con foto de fondo | Foto de fondo más grande, botón destacado | Ancho completo — **foto de fondo panorámica con overlay y botón grande** |
-| **❾ Relacionados** | Scroll horizontal, cards con foto | Grid 3 cols, cards con foto mediana | Grid 4 cols, **cards con foto grande + precio + CTA** |
-
----
-
-### Diagrama desktop — Misma filosofía visual, más espacio
-
-Cada bloque conserva su identidad visual del móvil. La columna derecha no es texto seco: son tarjetas visuales con iconos y fotos.
-
-```
-┌──────────────────────────────────────────────────────────────────┐
-│ ❶ HERO — Foto panorámica a sangre (full width, 70vh)            │
-│  Breadcrumb: Inicio > Servicios > Yoga                           │
-│  Título del servicio (h1)                          ┌──────────┐ │
-│  Subtítulo breve                                   │ 🏷️ 30€   │ │
-│                                                   │  /persona│ │
-│                                                   └──────────┘ │
-├───────────────────────────────────────┬──────────────────────────┤
-│ ❷ GALERÍA — Grid 2×2 con fotos        │ ❹ DATOS PRÁCTICOS        │
-│                                       │  (sticky, sidebar visual) │
-│  ┌────────────┐ ┌────────────┐       │ ┌──────────────────────┐ │
-│  │  🖼️ Yoga   │ │  🖼️ Paisaje│       │ │ 💰 30€/persona      │ │
-│  │  al atard. │ │  embalse  │       │ │ 🏷️ Precio            │ │
-│  └────────────┘ └────────────┘       │ ├──────────────────────┤ │
-│  ┌────────────┐ ┌────────────┐       │ │ ⏱ 1:30 horas        │ │
-│  │  🖼️ Grupo  │ │  🖼️ Detalle│       │ │ 🕐 Duración          │ │
-│  │  practica  │ │  esterilla │       │ ├──────────────────────┤ │
-│  └────────────┘ └────────────┘       │ │ 🕐 8:30 / 19:00      │ │
-│                                       │ │ 👥 Horarios          │ │
-│ ❸ DESCRIPCIÓN VISUAL                  │ ├──────────────────────┤ │
-│  ┌─────────────────────────────────┐ │ │ 👥 2-6 personas      │ │
-│  │ Texto corto de Elena (2-3       │ │ │ 📍 Mín/Máx           │ │
-│  │ frases) con foto de ambientación│ │ ├──────────────────────┤ │
-│  │ de fondo (sutil, opacidad baja) │ │ │ 📍 Embalse           │ │
-│  │                                 │ │ │    Guadalest         │ │
-│  │ "Despierta el cuerpo con yoga   │ │ │ 🗺️ Punto encuentro   │ │
-│  │  al amanecer..."                │ │ ├──────────────────────┤ │
-│  │                                 │ │ │                      │ │
-│  │ ┌── Cita destacada ──────────┐ │ │ │  🖼️ Foto pequeña     │ │
-│  │ │ "El embalse te espera      │ │ │ │  del servicio         │ │
-│  │ │  en calma" — Elena         │ │ │ │  (ambientación)       │ │
-│  │ └────────────────────────────┘ │ │ │                      │ │
-│  └─────────────────────────────────┘ │ ├──────────────────────┤ │
-│                                       │ │ 🚐 Acceso: montaña  │ │
-│ ═════════════════════════════════════╗ │ │ Recomendamos        │ │
-│ ❺ PROGRAMA — Timeline visual        ║ │ │ transfer            │ │
-│  (ocupa las 2 columnas, ancho       ║ │ ├──────────────────────┤ │
-│   completo para dar protagonismo    ║ │ │                      │ │
-│   a las fotos de cada paso)         ║ │ │ [💬 Reservar por     │ │
-│                                     ║ │ │  WhatsApp →]         │ │
-│  ┌──────┐  ① Yoga (1:30h) [08:30]  ║ │ └──────────────────────┘ │
-│  │ 🖼️  │  Práctica de Hatha Yoga   ║ │                          │
-│  │ yoga │  al amanecer              ║ │                          │
-│  └──────┘                           ║ │                          │
-│  ─ ─ ─ ─ ☕ Pausa café ─ ─ ─ ─ ─ ─ ║ │                          │
-│  ┌──────┐  ② Caminata (1:30h)[10:30]║ │                          │
-│  │ 🖼️  │  Caminata meditativa en   ║ │                          │
-│  │ cami │  silencio por el valle    ║ │                          │
-│  └──────┘                           ║ │                          │
-│  ─ ─ ─ ─ ☕ Pausa ─ ─ ─ ─ ─ ─ ─ ─ ║ │                          │
-│  ┌──────┐  ③ Kayak (1:30h) [12:30] ║ │                          │
-│  │ 🖼️  │  Navegar por el embalse   ║ │                          │
-│  │ kayak│                     🏁    ║ │                          │
-│  └──────┘  Fin ~14:00               ║ │                          │
-│  ═══════════════════════════════════╝ │                          │
-│                                       │                          │
-│ ❻ INCLUYE / NO INCLUYE                │ ❼ EQUIPAJE              │
-│  (badges visuales grandes)            │  (iconos grandes)        │
-│                                       │                          │
-│  ┌──────────┐ ┌──────────┐           │  🎒 Ropa cómoda          │
-│  │ ✅ Guía   │ │ ❌ Comida│           │  🧴 Prot. solar          │
-│  │especializ.│ │ y bebida│           │  💧 Agua                 │
-│  └──────────┘ └──────────┘           │  🧢 Gorro                │
-│  ┌──────────┐ ┌──────────┐           │  🥾 Calzado deportivo    │
-│  │ ✅ Ester. │ │ ❌ Transp│           │  🏊 Bañador (opcional)   │
-│  │   yoga   │ │  porte  │           │                          │
-│  └──────────┘ └──────────┘           │                          │
-├───────────────────────────────────────┴──────────────────────────┤
-│ ❽ CTA WHATSAPP — Banner visual completo (full width)             │
-│ ┌──────────────────────────────────────────────────────────────┐ │
-│ │                                                               │ │
-│ │            🖼️  Foto de fondo panorámica                       │ │
-│ │         (atardecer en el embalse / grupo remando)             │ │
-│ │                                                               │ │
-│ │            ¿Te animas a vivirlo?                               │ │
-│ │                                                               │ │
-│ │       ┌─────────────────────────────────┐                     │ │
-│ │       │  💬  Reservar por WhatsApp →    │                     │ │
-│ │       └─────────────────────────────────┘                     │ │
-│ │                                                               │ │
-│ │  Mensaje predefinido: "Hola, quiero reservar el Mini Retiro   │ │
-│ │  para el [día] y somos [N] personas"                          │ │
-│ └──────────────────────────────────────────────────────────────┘ │
-├──────────────────────────────────────────────────────────────────┤
-│ ❾ SERVICIOS RELACIONADOS — Cards con foto grande (grid 4 cols)   │
-│                                                                   │
-│  ┌──────────────┐ ┌──────────────┐ ┌──────────────┐ ┌──────────┐ │
-│  │  🖼️ Yoga     │ │  🖼️ Kayak    │ │  🖼️ Caminata │ │ 🖼️ Tarde │ │
-│  │  30€         │ │  20€         │ │  25€         │ │ 35€     │ │
-│  │  1:30h       │ │  1:30h       │ │  ~2h         │ │ 3:30h   │ │
-│  │  [Ver más →] │ │  [Ver más →] │ │  [Ver más →] │ │[Ver→]  │ │
-│  └──────────────┘ └──────────────┘ └──────────────┘ └──────────┘ │
-└──────────────────────────────────────────────────────────────────┘
-```
-
-**Clave del diseño desktop**: No hay "columna de texto" y "columna de datos". Ambas columnas son visuales. La sidebar usa tarjetas con iconos + foto. El timeline del programa cruza a las 2 columnas para dar protagonismo a las fotos. El CTA mantiene su foto de fondo panorámica. Los relacionados tienen fotos grandes.
+| Bloque | Móvil (<768px) | Desktop (≥768px) |
+|--------|---------------|------------------|
+| ❶ Hero | 50vh, foto full-width | 60-70vh, foto panorámica |
+| ❷ Contenido principal | Stack vertical: título, img 2/4, textos, cita | Columna izquierda (7fr) |
+| ❸ Datos prácticos | Grid 2×2 | Columna derecha (4fr), sticky |
+| ❹ Banner img 1/4 | Ancho completo | Ancho completo entre 2-col y programa |
+| ❺ Programa | Timeline vertical | Timeline expandido |
+| ❻ Incluye/No incluye/Llevar | 3 columnas iguales | 3 columnas iguales |
+| ❼ img 3/4 + "Para quién" | Stack: img luego texto | 2 columnas: img izq, texto dcha |
+| ❽ "Por qué elegir" + img 4/4 | Stack: texto luego img | 2 columnas: texto izq, img dcha |
+| ❾ CTA WhatsApp | Ancho completo | Ancho completo con foto |
+| ❿ Relacionados | Scroll horizontal | Grid 3-4 cards |
 
 ---
 
-### Mapeo de contenido por tipo de servicio
+### NUEVO DIAGRAMA DESKTOP (≥768px)
 
-La plantilla debe adaptar las secciones visibles según el `tipo:` del front matter:
+```
+┌────────────────────────────────────────────────────────────┐
+│ ❶ HERO — foto a sangre (sin cambios)                       │
+├───────────────────────────┬────────────────────────────────┤
+│ COL IZQ                   │ COL DCHA                       │
+│                           │                                 │
+│ "La experiencia completa" │ 🗂️ Datos prácticos              │
+│ 🖼️ **img 2/4**            │  (precio, duración,            │
+│                           │   horario, personas,           │
+│ Yoga al amanecer          │   punto encuentro)              │
+│ Caminata Consciente       │                                 │
+│ Kayak en el Embalse       │                                 │
+│                           │                                 │
+│ 💬 Comentario de Elena    │                                 │
+├───────────────────────────┴────────────────────────────────┤
+│ 🖼️ **img 1/4** — BANNER ANCHO COMPLETO                    │
+├────────────────────────────────────────────────────────────┤
+│ ❺ PROGRAMA DE LA EXPERIENCIA (ancho completo)              │
+├──────────────────────┬──────────────┬──────────────────────┤
+│ ✅ INCLUYE           │ ❌ NO INCLUYE│ 🎒 LLEVAR (equipaje) │
+├──────────────────────┴──────────────┴──────────────────────┤
+├───────────────────────────┬────────────────────────────────┤
+│ 🖼️ **img 3/4** (izquierda)│ 📝 "Para quién es" (derecha) │
+├───────────────────────────┼────────────────────────────────┤
+│ 📝 "Por qué elegir" (izq) │ 🖼️ **img 4/4** (derecha)     │
+├───────────────────────────┴────────────────────────────────┤
+│ ❾ CTA WHATSAPP (sin cambios)                               │
+├────────────────────────────────────────────────────────────┤
+│ ❿ SERVICIOS RELACIONADOS (sin cambios)                     │
+└────────────────────────────────────────────────────────────┘
+```
 
-| Sección | Actividades (S3, S4, S5) | Packs (S1, S2) | Transfers (S6, S7) |
-|---------|--------------------------|----------------|---------------------|
-| **Hero** | 🖼️ Foto actividad | 🖼️ Foto del pack / collage | 🖼️ Foto furgoneta |
-| **Galería** | 4 fotos: actividad, paisaje, grupo, detalle | 4 fotos: cada actividad del pack | 2-3 fotos: vehículo, ruta, paisaje |
-| **Descripción** | Texto cálido de Elena sobre esa práctica | Texto del pack completo, concepto | Descripción del servicio + ventajas |
-| **Datos prácticos** | Precio, duración, horario, mín/máx | Precio, duración total, mín/máx, horario | Precio (o "bajo presupuesto"), origen/destino, duración, vehículo |
-| **Programa** | Solo si aplica (S3: secuencia yoga) | ✅ Timeline completo con 3-5 pasos | ❌ Ocultar |
-| **Incluye/No incluye** | Estándar | Más completo | Capacidad vehículo |
-| **Equipaje** | Estándar | Más detallado (5h) | ❌ Ocultar |
-| **CTA WhatsApp** | "Reservar [servicio]" | "Reservar pack completo" | "Consultar disponibilidad" |
-| **Relacionados** | ✅ Servicios complementarios | ✅ Actividades individuales | ❌ No aplica |
+---
+
+### Mapeo de contenido
+
+| Sección | Actividades (S3-S5) | Packs (S1, S2) | Transfers (S6, S7) |
+|---------|-------------------|----------------|---------------------|
+| **❷ Contenido** | Texto propio de la actividad | Yoga/Caminata/Kayak + cita | Descripción del servicio |
+| **❺ Programa** | Si aplica | ✅ Timeline con fotos | ❌ Ocultar |
+| **❻ Incluye/No/Llevar** | Estándar | Más completo | Capacidad vehículo |
+| **❼ "Para quién es"** | Del front matter | Del front matter | ❌ Ocultar |
+| **❽ "Por qué elegir"** | Del front matter | Del front matter | ❌ Ocultar |
+| **Relacionados** | ✅ | ✅ | ❌ |
 
 ---
 
@@ -599,6 +448,8 @@ incluye:
 no_incluye:
   - "Comida y bebida"
   - "Transporte"
+para_quien_es: "El Mini Retiro está diseñado para cualquier persona que necesite una pausa verdadera..."
+por_que_elegir: "Tres actividades, una sola mañana. El Mini Retiro no es la suma..."
 programa:                      # opcional — solo packs
   - paso: "Yoga al amanecer"
     hora: "08:30"
@@ -640,6 +491,7 @@ whatsapp_mensaje: "Hola, quiero reservar la experiencia de Yoga"
 - **Transfer actividad** (S6): `tipo: "transfer"`. Sin `programa`, sin `equipaje`. Añade `origen:`, `destino:`, `vehiculo:`.
 - **Transfer privado** (S7): `tipo: "transfer"`. `precio_texto: "Bajo presupuesto"`. Sin programa, sin equipaje. `destinos_posibles:` como array.
 - **Actividades** (S3, S4, S5): `tipo: "actividad"`. Estructura estándar. `programa` opcional, array simple de strings si aplica.
+- **"Para quién es" y "Por qué elegir"** se renderizan desde front matter, no desde `.Content`.
 
 ---
 

@@ -5,7 +5,7 @@
 **Última modificación:** 2026-06-27
 **Idioma:** Español
 **Enfoque geográfico:** Alicante y provincias colindantes (Valencia, Murcia, Albacete) — escapadas y turismo regional
-**Estado:** Pendiente — se ejecutará como parte del Bloque D (SEO) de la Fase 2
+**Estado:** Completada — fases ejecutadas. Resultados en `08_informe-fase1-keyword-research.md` (F1), `10_kw-principales-por-pagina.md` (F2+F3), proceso replicable en `09_proceso-keyword-research.md`.
 
 ---
 
@@ -55,14 +55,14 @@ Son guías metodológicas (SKILL.md) que el agente sigue paso a paso, no scripts
 ### Fase 2: Selección de KW principales por página
 **Objetivo:** Asignar una keyword principal a cada página del sitio (home + interiores).
 
-**Contexto:** Esta fase se ejecutará como parte del **Bloque D (SEO)** del plan [`PdTbjo-esds-fase-2.md`](../esds-hugo/PdTbjo-esds-fase-2.md) (tareas D1–D4). El método concreto se definirá al iniciar el Bloque D, usando los resultados de la Fase 1 como base.
+**Contexto:** Esta fase se ejecutó manualmente a partir de los clusters de Fase 1 y la estructura de páginas definida en `PdTbjo-esds-fase-2.md`. Resultado completo en `10_kw-principales-por-pagina.md`.
 
 **Páginas que recibirán KW principal:**
 
 | # | Página | Ruta | Tipo de KW |
 |---|--------|------|------------|
 | H | Home (landing) | `/` | KW principal del sitio + variantes semánticas |
-| S1 | Mini Retiro — Mañana completa | `/servicios/mini-retiro/ | Transaccional pack |
+| S1 | Mini Retiro — Mañana completa | `/servicios/mini-retiro/` | Transaccional pack |
 | S2 | Tarde de Conexión | `/servicios/tarde-conexion/ | Transaccional pack |
 | S3 | Yoga & Mindfulness | `/servicios/yoga/ | Transaccional actividad |
 | S4 | Kayak Embalse | `/servicios/kayak/ | Transaccional actividad |
@@ -71,24 +71,25 @@ Son guías metodológicas (SKILL.md) que el agente sigue paso a paso, no scripts
 | S7 | Transfer Privado | `/servicios/transfer-privado/ | Informativo servicio |
 | I | Información | `/informacion/ | Informativo marca |
 
-**Actividades:**
-- Seleccionar KW principal para cada página de la tabla superior
-- Apoyarse en los clusters y volumen estimado de la Fase 1
-- Priorizar intención transaccional para páginas de servicio (S1–S5)
-- Validar que no haya canibalización entre páginas
-- **Output:** Lista de KW principales por página (1 KW ppal por página)
+**Actividades ejecutadas:**
+- [x] Seleccionar KW principal para cada página (10 páginas)
+- [x] Validar que no haya canibalización entre páginas (ninguna repetida)
+- [x] Documentar en `10_kw-principales-por-pagina.md` con: KW principal, title tag, H1, intención, tono, qué comunicar, keywords secundarias, KW long-tail, preguntas FAQ (GEO), apoyo semántico/entidades, datos clave, notas copywriter
 
-### Fase 3: Definición de title tags y H1
-**Objetivo:** Cerrar el keyword research definiendo el title tag y H1 de cada página.
+### Fase 3: Definición de title tags, H1 y apoyo semántico
+**Objetivo:** Completar el keyword research añadiendo a cada ficha el title tag, H1, KW long-tail, preguntas FAQ (GEO) y apoyo semántico/entidades.
 
-**Actividades:**
-- Partir de `10_kw-principales-por-pagina.md` (ya tiene KW principal, intención, tono, datos clave)
-- Añadir a cada ficha:
-  - **Title tag** (50-60 caracteres, KW principal al inicio)
-  - **H1** (incluye KW principal, distinto del title)
+**Actividades ejecutadas:**
+- Partir de `10_kw-principales-por-pagina.md` (contenía KW principal, intención, tono, datos clave)
+- Añadir a cada ficha (10 páginas):
+  - [x] **Title tag** (50-60 caracteres, KW principal al inicio)
+  - [x] **H1** (incluye KW principal, distinto del title)
+  - [x] **KW long-tail** extraídas de clusters F1
+  - [x] **Preguntas FAQ (GEO)** para potencial AI Overviews
+  - [x] **Apoyo semántico / Entidades** (lugares, conceptos, términos a mencionar)
 - Validar consistencia semántica entre páginas
 - Identificar páginas con potencial FAQ para GEO
-- **Output:** `10_kw-principales-por-pagina.md` extendido — el copywriter tiene todo en un solo archivo
+- **Output:** `10_kw-principales-por-pagina.md` completo — el copywriter tiene todo en un solo archivo
 
 ---
 
@@ -101,7 +102,7 @@ Son guías metodológicas (SKILL.md) que el agente sigue paso a paso, no scripts
 ## Notas
 - Español, enfoque en Alicante y provincias colindantes (Valencia, Murcia, Albacete)
 - Fase 2 completada: 10 KW principales asignadas en `10_kw-principales-por-pagina.md`
-- Fase 3 (title tags + H1) se añade al mismo archivo `10_kw-principales-por-pagina.md`
+- Fase 3 completada: title tags, H1, KW long-tail, preguntas FAQ (GEO) y apoyo semántico/entidades añadidos al mismo archivo
 - El SEO técnico (meta tags dinámicos, sitemap, JSON-LD) se ejecuta en el plan Hugo: `PdTbjo-esds-fase-2.md` (Bloque D)
 - MCPs descartados (ni Firecrawl ni DataForSEO)
 

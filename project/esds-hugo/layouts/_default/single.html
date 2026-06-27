@@ -1,25 +1,29 @@
 {{/* ========================================
    Layout: _default/single.html
-   Página de servicio individual (9 bloques)
-   Mobile-first · Anexo 2 de PdTbjo-esds-fase-2.md
+   Página de servicio individual (10 bloques)
+   Mobile-first · NUEVO layout con galería eliminada
    ========================================
 
    ORDEN DE BLOQUES (mobile):
      ❶ Hero — foto a sangre, breadcrumb, título, badge precio
-     ❷ Galería fotográfica — scroll horizontal (mobile) / grid 2×2 (≥768px)
-     ❸ Descripción visual — .Content + blockquote styling
-     ❹ Datos prácticos — grid 2×2 iconos
+     ❷ Contenido principal — .Content + img 2/4
+     ❸ Datos prácticos — partial datos-servicio (dentro del wrapper)
+     ❹ Banner — img 1/4 a ancho completo
      ❺ Programa — timeline visual (solo si tipo == "pack")
-     ❻ Incluye / No incluye — badges con iconos
-     ❼ Equipaje — icon strip (oculto si tipo == "transfer")
-     ❽ CTA WhatsApp — foto fondo + botón wa.me
-     ❾ Servicios relacionados — cards (oculto si tipo == "transfer")
+     ❻ Tres columnas: Incluye | No incluye | Llevar
+     ❼ img 3/4 + Para quién es (img luego texto)
+     ❽ Por qué elegir + img 4/4 (texto luego img)
+     ❾ CTA WhatsApp — foto fondo + botón wa.me
+     ❿ Servicios relacionados — cards (oculto si tipo == "transfer")
 
    COMPORTAMIENTO DESKTOP (≥768px):
-     - ❷ Galería: full-width, grid 2×2
-     - ❸+❹+❻+❼: wrapper 2 columnas (65% / 35% sidebar sticky)
-     - ❺ Programa: cruza ambas columnas (grid-column: 1 / -1)
-     - ❶, ❷, ❽, ❾: full-width
+     - ❷+❸: wrapper 2 columnas (7fr descripción / 4fr datos sticky)
+     - ❹ Banner: full-width
+     - ❺ Programa: full-width, timeline horizontal
+     - ❻ Tres columnas: grid 3 columnas iguales
+     - ❼ Media: img izquierda | texto derecha (2 cols)
+     - ❽ Media: texto izquierda | img derecha (2 cols)
+     - ❾, ❿: full-width
    ======================================== */}}
 
 {{ define "head" }}
@@ -116,58 +120,7 @@
 }
 
 /* ----------------------------------------------------------
-   ❷ GALERÍA FOTOGRÁFICA
-   ---------------------------------------------------------- */
-.service-galeria {
-  padding: var(--space-2xl) 0;
-  background-color: var(--blanco-hueso);
-}
-
-.service-galeria__scroll {
-  display: flex;
-  gap: var(--space-md);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: var(--space-sm);
-  scrollbar-width: thin;
-  scrollbar-color: var(--dorado) var(--borde);
-}
-
-.service-galeria__scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.service-galeria__scroll::-webkit-scrollbar-track {
-  background: var(--borde);
-  border-radius: 2px;
-}
-
-.service-galeria__scroll::-webkit-scrollbar-thumb {
-  background: var(--dorado);
-  border-radius: 2px;
-}
-
-.service-galeria__img {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  width: 100%;
-  transition: transform var(--transition-base);
-}
-
-.service-galeria__img:hover {
-  transform: scale(1.02);
-}
-
-.service-galeria__grid {
-  display: none;
-}
-
-/* ----------------------------------------------------------
-   ❸ DESCRIPCIÓN VISUAL
+   ❷ DESCRIPCIÓN VISUAL (contenido principal)
    ---------------------------------------------------------- */
 .service-descripcion {
   padding: var(--space-2xl) 0;
@@ -211,69 +164,30 @@
   color: var(--dorado);
 }
 
-/* ----------------------------------------------------------
-   ❹ DATOS PRÁCTICOS
-   ---------------------------------------------------------- */
-.service-datos {
-  padding: var(--space-2xl) 0;
-  background-color: var(--blanco-hueso);
-}
-
-.service-datos__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
-}
-
-.service-datos__item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background-color: var(--blanco);
-  border-radius: var(--radius-md);
-  box-shadow: var(--sombra-suave);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
-}
-
-.service-datos__item:hover {
-  transform: translateY(-2px);
+/* Imagen 2/4 dentro del contenido */
+.service-content-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  margin: var(--space-xl) 0;
   box-shadow: var(--sombra-media);
 }
 
-.service-datos__icon {
-  font-size: 1.25rem;
-  line-height: 1;
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(138, 154, 123, 0.12);
-  border-radius: var(--radius-full);
+/* ----------------------------------------------------------
+   ❹ BANNER — Imagen a ancho completo
+   ---------------------------------------------------------- */
+.service-banner {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--blanco-hueso);
 }
 
-.service-datos__info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.service-datos__label {
-  font-size: 0.688rem;
-  font-weight: 600;
-  color: var(--texto-secundario);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.service-datos__value {
-  font-size: 0.938rem;
-  font-weight: 600;
-  color: var(--texto-oscuro);
-  word-break: break-word;
+.service-banner__img {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  object-fit: cover;
+  display: block;
 }
 
 /* ----------------------------------------------------------
@@ -392,20 +306,27 @@
 }
 
 /* ----------------------------------------------------------
-   ❻ INCLUYE / NO INCLUYE
+   ❻ TRES COLUMNAS: Incluye | No incluye | Llevar
    ---------------------------------------------------------- */
-.service-incluye {
+.service-tres-col-wrap {
   padding: var(--space-2xl) 0;
   background-color: var(--beige);
 }
 
-.service-incluye__grid {
+.service-tres-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
 }
 
-.service-incluye__col-title {
+.service-tres-col__item {
+  background-color: var(--blanco);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--sombra-suave);
+}
+
+.service-tres-col__title {
   font-family: var(--font-serif);
   font-size: 1.125rem;
   font-weight: 600;
@@ -416,93 +337,88 @@
   gap: var(--space-sm);
 }
 
-.service-incluye__item {
+.service-tres-col__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.service-tres-col__li {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
-  background-color: var(--blanco);
+  background-color: var(--blanco-hueso);
   border-radius: var(--radius-sm);
-  margin-bottom: var(--space-sm);
   font-size: 0.875rem;
   color: var(--texto-oscuro);
   line-height: 1.4;
 }
 
-.service-incluye__item--si {
+.service-tres-col__li--si {
   border-left: 3px solid var(--verde-oliva);
 }
 
-.service-incluye__item--no {
+.service-tres-col__li--no {
   border-left: 3px solid var(--dorado);
   color: var(--texto-secundario);
 }
 
+.service-tres-col__li--equipaje {
+  border-left: 3px solid var(--azul-cielo);
+}
+
 /* ----------------------------------------------------------
-   ❼ EQUIPAJE — Icon strip
+   ❼ & ❽ MEDIA ROWS — Imagen + Texto (stack en mobile)
    ---------------------------------------------------------- */
-.service-equipaje {
+.service-media {
   padding: var(--space-2xl) 0;
   background-color: var(--blanco-hueso);
 }
 
-.service-equipaje__scroll {
-  display: flex;
-  gap: var(--space-md);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: var(--space-sm);
-  scrollbar-width: thin;
-  scrollbar-color: var(--dorado) var(--borde);
+.service-media + .service-media {
+  border-top: 2px solid var(--borde);
 }
 
-.service-equipaje__scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.service-equipaje__scroll::-webkit-scrollbar-track {
-  background: var(--borde);
-  border-radius: 2px;
-}
-
-.service-equipaje__scroll::-webkit-scrollbar-thumb {
-  background: var(--dorado);
-  border-radius: 2px;
-}
-
-.service-equipaje__item {
-  flex: 0 0 auto;
+.service-media__container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-md) var(--space-lg);
-  background-color: var(--blanco);
-  border-radius: var(--radius-md);
-  box-shadow: var(--sombra-suave);
-  min-width: 90px;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  gap: var(--space-xl);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
 }
 
-.service-equipaje__item:hover {
-  transform: translateY(-2px);
+.service-media__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
   box-shadow: var(--sombra-media);
 }
 
-.service-equipaje__icon {
+.service-media__title {
+  font-family: var(--font-serif);
   font-size: 1.5rem;
-  line-height: 1;
+  font-weight: 700;
+  color: var(--texto-oscuro);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
 }
 
-.service-equipaje__label {
-  font-size: 0.75rem;
-  color: var(--texto-secundario);
-  text-align: center;
-  font-weight: 500;
+.service-media__body {
+  font-size: 1.063rem;
+  line-height: 1.7;
+  color: var(--texto-oscuro);
+}
+
+.service-media__body p:last-child {
+  margin-bottom: 0;
 }
 
 /* ----------------------------------------------------------
-   ❽ CTA WHATSAPP
+   ❾ CTA WHATSAPP
    ---------------------------------------------------------- */
 .service-cta {
   position: relative;
@@ -563,7 +479,7 @@
 }
 
 /* ----------------------------------------------------------
-   ❾ SERVICIOS RELACIONADOS
+   ❿ SERVICIOS RELACIONADOS
    ---------------------------------------------------------- */
 .service-relacionados {
   padding: var(--space-3xl) 0;
@@ -646,14 +562,11 @@
 
 /* ----------------------------------------------------------
    TWO-COLUMN LAYOUT WRAPPER (desktop ≥768px)
+   Solo contiene: descripcion + datos
    ---------------------------------------------------------- */
 .service-two-col-wrapper {
   /* Mobile: single column by default */
   display: block;
-}
-
-.service-two-col__sidebar-inner {
-  /* Sticky wrapper for sidebar content */
 }
 
 /* ============================================================
@@ -673,39 +586,20 @@
     padding: var(--space-3xl) var(--content-padding);
   }
 
-  /* --- ❷ Galería: grid 2×2 (ocultar scroll) --- */
-  .service-galeria__scroll {
-    display: none;
-  }
-
-  .service-galeria__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-  }
-
-  .service-galeria__grid .service-galeria__img {
-    flex: none;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-
-  .service-galeria__grid .service-galeria__img:first-child {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 7;
-  }
-
-  /* --- Two-column layout (65% / 35%) --- */
+  /* --- Two-column layout (7fr descripcion / 4fr datos) --- */
   .service-two-col-wrapper {
     display: grid;
-    grid-template-columns: 65fr 35fr;
+    grid-template-columns: 7fr 4fr;
     gap: var(--space-xl);
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 var(--content-padding);
   }
 
-  /* Place items in grid positions */
+  .service-two-col-wrapper > * {
+    min-width: 0;
+  }
+
   .service-descripcion {
     grid-column: 1;
     grid-row: 1;
@@ -720,41 +614,29 @@
     padding-right: 0;
   }
 
-  .service-programa {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .service-incluye {
-    grid-column: 1;
-    grid-row: 3;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .service-equipaje {
-    grid-column: 2;
-    grid-row: 3;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
   /* Sidebar sticky */
   .service-datos {
     position: sticky;
     top: calc(var(--header-height) + var(--space-lg));
   }
 
-  /* --- ❸ Descripción: más aire --- */
+  .service-datos .service-data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- ❷ Descripción: más aire --- */
   .service-descripcion__content {
     font-size: 1.125rem;
   }
 
-  .service-datos__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-sm);
+  .service-content-img {
+    aspect-ratio: 16 / 9;
+    margin: var(--space-xl) 0;
+  }
+
+  /* --- ❹ Banner: más grande --- */
+  .service-banner__img {
+    aspect-ratio: 21 / 9;
   }
 
   /* --- ❺ Programa: timeline horizontal --- */
@@ -778,22 +660,51 @@
     grid-column: 1 / -1;
   }
 
-  /* --- ❼ Equipaje: vertical en sidebar --- */
-  .service-equipaje__scroll {
-    flex-direction: column;
-    overflow-x: visible;
-    gap: var(--space-sm);
-    padding-bottom: 0;
+  /* --- ❻ Tres columnas: grid 3 cols --- */
+  .service-tres-col {
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .service-equipaje__item {
-    flex-direction: row;
-    min-width: auto;
-    padding: var(--space-sm) var(--space-md);
-    gap: var(--space-md);
+  /* --- ❼ & ❽ Media rows: grid 2 cols --- */
+  .service-media__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
   }
 
-  /* --- ❽ CTA --- */
+  .service-media--img-izq .service-media__img {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .service-media--img-izq .service-media__text {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .service-media--img-dcha .service-media__img {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .service-media--img-dcha .service-media__text {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .service-media__img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .service-media__title {
+    font-size: 1.75rem;
+  }
+
+  /* --- ❾ CTA --- */
   .service-cta {
     min-height: 50vh;
   }
@@ -802,7 +713,7 @@
     font-size: 2.5rem;
   }
 
-  /* --- ❾ Relacionados: grid --- */
+  /* --- ❿ Relacionados: grid --- */
   .service-relacionados__scroll {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -849,21 +760,10 @@
 }
 
 /* ============================================================
-   RESPONSIVE: MOBILE MAX (for grid reset)
-   ============================================================ */
-@media (max-width: 767px) {
-  .service-two-col-wrapper > * {
-    /* On mobile, sections inside the wrapper keep their container padding */
-  }
-}
-
-/* ============================================================
    ACCESIBILIDAD: REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .service-galeria__img,
-  .service-datos__item,
-  .service-equipaje__item,
+  .service-data-card,
   .service-relacionados__card {
     transition: none;
   }
@@ -897,219 +797,205 @@
   </div>
 </section>
 
-{{/* ========================================
-     ❷ GALERÍA FOTOGRÁFICA
-     ======================================== */}}
+{{/* ==============================================
+     TWO-COLUMN WRAPPER (desktop 7fr / 4fr)
+     Contiene: ❷ Contenido principal + ❸ Datos
+     ============================================== */}}
+<div class="service-two-col-wrapper">
+
+  {{/* === ❷ CONTENIDO PRINCIPAL (left column) === */}}
+  <section class="service-descripcion" aria-labelledby="descripcion-title">
+    <div class="container">
+      <h2 id="descripcion-title" class="sr-only">La experiencia completa</h2>
+      <div class="service-descripcion__content">
+        {{ .Content }}
+
+        {{/* 🖼️ img 2/4 — después del contenido renderizado */}}
+        {{ with .Params.imagenes_galeria }}
+          {{ range $i, $img := . }}
+            {{ if eq $i 1 }}
+            <img src="{{ $img.src }}"
+                 alt="{{ $img.alt }}"
+                 loading="lazy"
+                 class="service-content-img">
+            {{ end }}
+          {{ end }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  {{/* === ❸ DATOS PRÁCTICOS (right column sticky) === */}}
+  {{ partial "datos-servicio" . }}
+
+</div>{{/* /service-two-col-wrapper */}}
+
+{{/* ==============================================
+     ❹ BANNER — Imagen 1/4 a ancho completo
+     ============================================== */}}
 {{ with .Params.imagenes_galeria }}
-<section class="service-galeria" aria-labelledby="galeria-title">
-  <div class="container">
-    <h2 id="galeria-title" class="sr-only">Galería de imágenes</h2>
-    <!-- Mobile: scroll horizontal -->
-    <div class="service-galeria__scroll" role="list" aria-label="Galería de fotos, desliza para ver más">
-      {{ range $i, $img := . }}
-      <img class="service-galeria__img"
-           src="{{ $img.src }}"
+  {{ range $i, $img := . }}
+    {{ if eq $i 0 }}
+    <section class="service-banner" aria-label="Imagen destacada de la experiencia">
+      <img src="{{ $img.src }}"
            alt="{{ $img.alt }}"
            loading="lazy"
-           role="listitem"
-           {{ if eq $i 0 }}fetchpriority="high"{{ end }}>
+           class="service-banner__img">
+    </section>
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* ==============================================
+     ❺ PROGRAMA — Timeline visual (solo packs)
+     Fuera del two-col-wrapper, full-width
+     ============================================== */}}
+{{ if eq .Params.tipo "pack" }}
+{{ with .Params.programa }}
+<section class="service-programa" aria-labelledby="programa-title">
+  <div class="container">
+    <h2 id="programa-title" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
+    <div class="service-programa__steps">
+      {{ range $i, $step := . }}
+      <div class="service-programa__step">
+        <div class="service-programa__step-header">
+          <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
+          <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
+          {{ with $step.hora }}
+          <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+          {{ end }}
+        </div>
+        {{ with $step.imagen }}
+        <img class="service-programa__step-img"
+             src="{{ . }}"
+             alt="{{ $step.paso }}"
+             loading="lazy">
+        {{ end }}
+        {{ with $step.desc }}
+        <p class="service-programa__step-desc">{{ . }}</p>
+        {{ end }}
+      </div>
       {{ end }}
     </div>
-    <!-- Desktop: grid 2×2 -->
-    <div class="service-galeria__grid" role="list" aria-label="Galería de fotos">
-      {{ range $i, $img := . }}
-      <img class="service-galeria__img"
-           src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           role="listitem">
+    <div class="service-programa__fin">
+      <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
+      <span>Fin de la experiencia</span>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ end }}
+
+{{/* ==============================================
+     ❻ TRES COLUMNAS: Incluye | No incluye | Llevar
+     Grid 3 columnas iguales
+     ============================================== */}}
+{{ if or .Params.incluye .Params.no_incluye .Params.equipaje }}
+<section class="service-tres-col-wrap" aria-labelledby="tres-col-title">
+  <div class="container">
+    <h2 id="tres-col-title" class="sr-only">Qué incluye, qué no incluye y qué llevar</h2>
+    <div class="service-tres-col">
+      {{ with .Params.incluye }}
+      <div class="service-tres-col__item">
+        <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> Incluye</h3>
+        <ul class="service-tres-col__list">
+          {{ range . }}
+          <li class="service-tres-col__li service-tres-col__li--si">
+            <span aria-hidden="true">✓</span>
+            <span>{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
+      {{ with .Params.no_incluye }}
+      <div class="service-tres-col__item">
+        <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> No incluye</h3>
+        <ul class="service-tres-col__list">
+          {{ range . }}
+          <li class="service-tres-col__li service-tres-col__li--no">
+            <span aria-hidden="true">✗</span>
+            <span>{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ end }}
+
+      {{ with .Params.equipaje }}
+      <div class="service-tres-col__item">
+        <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> Qué llevar</h3>
+        <ul class="service-tres-col__list">
+          {{ range . }}
+          <li class="service-tres-col__li service-tres-col__li--equipaje">
+            <span aria-hidden="true">🎒</span>
+            <span>{{ . }}</span>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
       {{ end }}
     </div>
   </div>
 </section>
 {{ end }}
 
-{{/* ========================================
-     TWO-COLUMN WRAPPER (desktop 65/35)
-     Contiene: ❸ ❹ ❺ ❻ ❼
-     ======================================== */}}
-<div class="service-two-col-wrapper">
-
-  {{/* === ❸ DESCRIPCIÓN VISUAL (left column) === */}}
-  <section class="service-descripcion" aria-labelledby="descripcion-title">
-    <div class="container">
-      <h2 id="descripcion-title" class="sr-only">Descripción de la experiencia</h2>
-      <div class="service-descripcion__content">
-        {{ .Content }}
+{{/* ==============================================
+     ❼ IMG 3/4 + PARA QUIÉN ES
+     Mobile: img luego texto (stack)
+     Desktop: grid 2 cols (img | texto)
+     ============================================== */}}
+{{ if and .Params.imagenes_galeria .Params.para_quien_es }}
+<section class="service-media service-media--img-izq" aria-labelledby="para-quien-title">
+  <div class="service-media__container">
+    {{ range $i, $img := $.Params.imagenes_galeria }}
+      {{ if eq $i 2 }}
+      <img src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           class="service-media__img">
+      {{ end }}
+    {{ end }}
+    <div class="service-media__text">
+      <h2 id="para-quien-title" class="service-media__title">Para quién es</h2>
+      <div class="service-media__body">
+        {{ .Params.para_quien_es | markdownify }}
       </div>
     </div>
-  </section>
+  </div>
+</section>
+{{ end }}
 
-  {{/* === ❹ DATOS PRÁCTICOS (right column — sticky) === */}}
-  <section class="service-datos" aria-labelledby="datos-title">
-    <div class="container">
-      <h2 id="datos-title" class="sr-only">Datos prácticos</h2>
-      <div class="service-datos__grid">
-        {{ with .Params.precio_texto }}
-        <div class="service-datos__item">
-          <span class="service-datos__icon" aria-hidden="true">💰</span>
-          <div class="service-datos__info">
-            <span class="service-datos__label">Precio</span>
-            <span class="service-datos__value">{{ . }}</span>
-          </div>
-        </div>
-        {{ end }}
-
-        {{ with .Params.duracion }}
-        <div class="service-datos__item">
-          <span class="service-datos__icon" aria-hidden="true">⏱️</span>
-          <div class="service-datos__info">
-            <span class="service-datos__label">Duración</span>
-            <span class="service-datos__value">{{ . }}</span>
-          </div>
-        </div>
-        {{ end }}
-
-        {{ with .Params.horario }}
-        <div class="service-datos__item">
-          <span class="service-datos__icon" aria-hidden="true">🕐</span>
-          <div class="service-datos__info">
-            <span class="service-datos__label">Horario</span>
-            <span class="service-datos__value">{{ . }}</span>
-          </div>
-        </div>
-        {{ end }}
-
-        {{ if or .Params.min_personas .Params.max_personas }}
-        <div class="service-datos__item">
-          <span class="service-datos__icon" aria-hidden="true">👥</span>
-          <div class="service-datos__info">
-            <span class="service-datos__label">Participantes</span>
-            <span class="service-datos__value">
-              {{- if .Params.min_personas }}{{ .Params.min_personas }}{{ end }}
-              {{- if and .Params.min_personas .Params.max_personas }} — {{ end }}
-              {{- if .Params.max_personas }}{{ .Params.max_personas }}{{ end }}
-              {{- if or .Params.min_personas .Params.max_personas }} personas{{ end -}}
-            </span>
-          </div>
-        </div>
-        {{ end }}
-
-        {{ with .Params.punto_encuentro }}
-        <div class="service-datos__item">
-          <span class="service-datos__icon" aria-hidden="true">📍</span>
-          <div class="service-datos__info">
-            <span class="service-datos__label">Punto de encuentro</span>
-            <span class="service-datos__value">{{ . }}</span>
-          </div>
-        </div>
-        {{ end }}
-
-        {{ with .Params.acceso }}
-        <div class="service-datos__item">
-          <span class="service-datos__icon" aria-hidden="true">🚐</span>
-          <div class="service-datos__info">
-            <span class="service-datos__label">Acceso</span>
-            <span class="service-datos__value">{{ . }}</span>
-          </div>
-        </div>
-        {{ end }}
+{{/* ==============================================
+     ❽ POR QUÉ ELEGIR + IMG 4/4
+     Mobile: texto luego img (stack)
+     Desktop: grid 2 cols (texto | img)
+     ============================================== */}}
+{{ if and .Params.imagenes_galeria .Params.por_que_elegir }}
+<section class="service-media service-media--img-dcha" aria-labelledby="por-que-elegir-title">
+  <div class="service-media__container">
+    <div class="service-media__text">
+      <h2 id="por-que-elegir-title" class="service-media__title">Por qué elegir esta experiencia</h2>
+      <div class="service-media__body">
+        {{ .Params.por_que_elegir | markdownify }}
       </div>
     </div>
-  </section>
+    {{ range $i, $img := $.Params.imagenes_galeria }}
+      {{ if eq $i 3 }}
+      <img src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           class="service-media__img">
+      {{ end }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
 
-  {{/* === ❺ PROGRAMA (full-width, cruza ambas columnas) === */}}
-  {{ if eq .Params.tipo "pack" }}
-  {{ with .Params.programa }}
-  <section class="service-programa" aria-labelledby="programa-title">
-    <div class="container">
-      <h2 id="programa-title" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
-      <div class="service-programa__steps">
-        {{ range $i, $step := . }}
-        <div class="service-programa__step">
-          <div class="service-programa__step-header">
-            <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
-            <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
-            {{ with $step.hora }}
-            <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
-            {{ end }}
-          </div>
-          {{ with $step.imagen }}
-          <img class="service-programa__step-img"
-               src="{{ . }}"
-               alt="{{ $step.paso }}"
-               loading="lazy">
-          {{ end }}
-          {{ with $step.desc }}
-          <p class="service-programa__step-desc">{{ . }}</p>
-          {{ end }}
-        </div>
-        {{ end }}
-      </div>
-      <div class="service-programa__fin">
-        <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
-        <span>Fin de la experiencia</span>
-      </div>
-    </div>
-  </section>
-  {{ end }}
-  {{ end }}
-
-  {{/* === ❻ INCLUYE / NO INCLUYE (left column) === */}}
-  {{ if or .Params.incluye .Params.no_incluye }}
-  <section class="service-incluye" aria-labelledby="incluye-title">
-    <div class="container">
-      <h2 id="incluye-title" class="sr-only">Qué incluye y qué no incluye</h2>
-      <div class="service-incluye__grid">
-        {{ with .Params.incluye }}
-        <div>
-          <h3 class="service-incluye__col-title"><span aria-hidden="true">✅</span> Incluye</h3>
-          {{ range . }}
-          <div class="service-incluye__item service-incluye__item--si">
-            <span aria-hidden="true">✓</span>
-            <span>{{ . }}</span>
-          </div>
-          {{ end }}
-        </div>
-        {{ end }}
-        {{ with .Params.no_incluye }}
-        <div>
-          <h3 class="service-incluye__col-title"><span aria-hidden="true">❌</span> No incluye</h3>
-          {{ range . }}
-          <div class="service-incluye__item service-incluye__item--no">
-            <span aria-hidden="true">✗</span>
-            <span>{{ . }}</span>
-          </div>
-          {{ end }}
-        </div>
-        {{ end }}
-      </div>
-    </div>
-  </section>
-  {{ end }}
-
-  {{/* === ❼ EQUIPAJE (right column) === */}}
-  {{ if and .Params.equipaje (ne .Params.tipo "transfer") }}
-  <section class="service-equipaje" aria-labelledby="equipaje-title">
-    <div class="container">
-      <h2 id="equipaje-title" class="section-title__heading mb-4">Qué llevar</h2>
-      <div class="service-equipaje__scroll" role="list" aria-label="Lista de equipaje recomendado">
-        {{ range .Params.equipaje }}
-        <div class="service-equipaje__item" role="listitem">
-          <span class="service-equipaje__icon" aria-hidden="true">🎒</span>
-          <span class="service-equipaje__label">{{ . }}</span>
-        </div>
-        {{ end }}
-      </div>
-    </div>
-  </section>
-  {{ end }}
-
-</div>{{/* /service-two-col-wrapper */}}
-
-{{/* ========================================
-     ❽ CTA WHATSAPP — Full-width
-     ======================================== */}}
+{{/* ==============================================
+     ❾ CTA WHATSAPP — Full-width
+     ============================================== */}}
 <section class="service-cta"
          style="background-image: url('{{ .Params.imagen_hero | default "/images/default-cta.jpg" }}');"
          aria-label="Reserva tu experiencia">
@@ -1135,10 +1021,10 @@
   </div>
 </section>
 
-{{/* ========================================
-     ❾ SERVICIOS RELACIONADOS
+{{/* ==============================================
+     ❿ SERVICIOS RELACIONADOS
      (oculto en transfers)
-     ======================================== */}}
+     ============================================== */}}
 {{ if ne .Params.tipo "transfer" }}
 <section class="service-relacionados" aria-labelledby="relacionados-title">
   <div class="container">
