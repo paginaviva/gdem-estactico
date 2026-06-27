@@ -4,7 +4,7 @@
 >
 > **Fecha de creación:** 2026-06-25
 > **Última actualización:** 2026-06-25
-> **Total de documentos:** 14 archivos (6.501 líneas)
+> **Total de documentos:** 13 archivos
 
 ---
 
@@ -24,7 +24,6 @@
   - [08 — Incidencias Hugo vs Static](#08--08_incidencias-hugo-vs-staticmd)
   - [09 — Control de incidencias pendientes](#09--09_control-incidencias-pendientesmd)
 - [Grupo 5: PCI (Post-Implementation)](#grupo-5-pci-post-implementation)
-  - [10 — PCI menús desplegables Simply Static](#10--10_pci-menus-desplegablesmd)
   - [11 — PCI decisión menús dinámicos](#11--11_pci-decision-menus-dinamicosmd)
   - [12 — PCI dominio personalizado Cloudflare](#12--12_pci-dominio-personalizadomd)
   - [13 — PCI optimizaciones rendimiento Cloudflare](#13--13_pci-optimizaciones-rendimientomd)
@@ -159,17 +158,6 @@ Documentos que evalúan la calidad de la migración y controlan el estado de las
 
 Documentos técnicos que registran problemas encontrados durante la implementación, las soluciones aplicadas y las lecciones aprendidas. Organizados por orden cronológico de resolución.
 
-### 10 — `10_pci-menus-desplegables.md`
-
-| Campo | Valor |
-|-------|-------|
-| **Nombre original** | `PCI_20260624_MenusDesplegables.md` |
-| **Ruta relativa** | `doc-proceso/10_pci-menus-desplegables.md` |
-| **Líneas** | 694 |
-| **Finalidad** | PCI sobre menús desplegables no funcionales en exportación Simply Static. Investiga la causa raíz, documenta el diagnóstico y propone 3 soluciones. |
-| **Dependencias** | Concepto de SWE, Simply Static, Blocksy webpack |
-| **Resumen** | **Causa raíz:** URLs protocol-relative en `ct_localizations.public_url` no reescritas por Simply Static → chunks webpack (907, 834, 892) con URL incorrecta → menús no se inicializan. Simply Static reescribe URLs en atributos HTML (`src`, `href`) pero no modifica cadenas URL dentro de bloques `<script>` inline. 3 soluciones propuestas: (1) parchear `public_url` con `sed` en todos los HTMLs exportados, (2) precargar chunks como scripts estáticos en `<head>`, (3) reexportar desde WordPress usando Absolute URLs. Incluye lecciones aprendidas sobre Simply Static y webpack, un checklist genérico para diagnosticar problemas similares en otros proyectos, y plan de rollback. |
-
 ### 11 — `11_pci-decision-menus-dinamicos.md`
 
 | Campo | Valor |
@@ -178,7 +166,7 @@ Documentos técnicos que registran problemas encontrados durante la implementaci
 | **Ruta relativa** | `doc-proceso/11_pci-decision-menus-dinamicos.md` |
 | **Líneas** | 458 |
 | **Finalidad** | Decisión técnica documentada sobre la solución elegida para el problema de menús dinámicos en Simply Static. Guía reusable para otros proyectos con el mismo problema. |
-| **Dependencias** | `10_pci-menus-desplegables.md` |
+| **Dependencias** | `PCI_20260624_MenusDesplegables.md` (`project/doc-proceso/`) |
 | **Resumen** | Análisis comparativo entre 3 soluciones para chunks webpack no cargados en Simply Static. **Decisión:** Solución 1 (parchear `public_url` con `sed`). Criterios de evaluación: robustez, mantenibilidad, automatización, reusabilidad. Justificación: corrige la causa raíz, sobrevive a actualizaciones del tema, se aplica con un solo comando. Documenta temas conocidos con webpack dynamic chunks (Blocksy, Astra, Kadence, GeneratePress). Incluye guía de implementación con comandos exactos, casos donde la Opción 2 (precargar chunks) tendría sentido, y referencias a la documentación técnica. Archivo diseñado como plantilla reusable para cualquier proyecto que enfrente el mismo problema. |
 
 ### 12 — `12_pci-dominio-personalizado.md`
@@ -216,4 +204,4 @@ Documentos técnicos que registran problemas encontrados durante la implementaci
 
 ---
 
-*Fin del índice — 14 documentos documentados (6.501 líneas totales)*
+*Fin del índice — 13 documentos documentados*

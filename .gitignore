@@ -38,3 +38,9 @@ logs/
 .idea/
 cop-seg-gobernanza.*
 *.zip
+
+# Exportaciones estáticas (grandes, no deben versionarse)
+project/GDEM/gaia-static/
+project/GDEM/gaia-hugo/
+project/ocmib-estactico/
+project/pviva-estactico/

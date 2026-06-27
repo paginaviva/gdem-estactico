@@ -3,7 +3,7 @@
 
 **Propósito:** Documentar la investigación, diagnóstico y soluciones del problema de menús desplegables no funcionales en la exportación estática de Gaia Evolución del Ser mediante Simply Static, para permitir su resolución futura por otra IA o desarrollador sin contexto adicional.
 **Fecha de creación:** 2026-06-24
-**Última modificación:** 2026-06-24
+**Última modificación:** 2026-06-26
 **Responsable:** OpenAgent
 **Revisor:** [Pendiente]
 
@@ -692,3 +692,319 @@ Si las soluciones anteriores no funcionan:
 
 ### Autorización de rollback
 Cualquier miembro del equipo con acceso a Cloudflare Dashboard puede realizar un rollback de deployment. Para cambios en los archivos de exportación, se requiere acceso al sistema de archivos local o al repositorio.
+
+---
+
+## Anexo A — Corrección aplicada en PVIVA (2026-06-26)
+
+### A.1 Contexto
+
+El sitio **PVIVA** (exportación Simply Static, tema Blocksy, desplegado en `cfpg-pviva-estactico.pages.dev`) presentaba el mismo problema de menús desplegables que el documentado en este PCI. Sin embargo, al aplicar la Solución 1 exactamente como está redactada, los menús funcionaban solo en la homepage y fallaban en las subpáginas.
+
+### A.2 Causa raíz del fallo parcial
+
+La Solución 1 propone reemplazar `"public_url":"//wp-content/..."` por `"public_url":"./wp-content/..."`. Este cambio **funciona en la homepage** (raíz del sitio) porque el navegador resuelve `./ruta` contra la URL base del dominio:
+
+| Página | URL base del navegador | Resolución de `./wp-content/...` | Resultado |
+|--------|------------------------|-----------------------------------|-----------|
+| Homepage | `https://sitio.pages.dev/` | `https://sitio.pages.dev/wp-content/...` | ✅ Correcto |
+| Subpágina | `https://sitio.pages.dev/subpagina/` | `https://sitio.pages.dev/subpagina/wp-content/...` | ❌ Incorrecto |
+
+El navegador interpreta `./` como relativo a la URL actual, no a la raíz del sitio. Simply Static sí ajusta las rutas de los atributos HTML (`<script src>`, `<link href>`) según la profundidad de cada página (usando `./../wp-content/...`), pero la variable JavaScript `public_url` es un valor fijo que no se adapta a la profundidad.
+
+### A.3 Solución correcta
+
+Usar **ruta absoluta de raíz** (con `/` inicial) en lugar de ruta relativa (con `./`):
+
+| Variable | Valor original (protocol-relative) | 1.er parche (erróneo en subpáginas) | 2.º parche (correcto) |
+|----------|-----------------------------------|-------------------------------------|-----------------------|
+| `public_url` | `//wp-content/themes/blocksy/static/bundle/` | `./wp-content/themes/blocksy/static/bundle/` | `/wp-content/themes/blocksy/static/bundle/` |
+
+Una ruta que comienza con `/` es **absoluta respecto a la raíz del dominio** y funciona desde cualquier profundidad de página.
+
+### A.4 Comandos ejecutados
+
+**Paso 1 — Parche inicial (funciona solo en homepage):**
+```bash
+find /ruta/exportacion/ -name "index.html" -exec sed -i \
+  's|"public_url":"//wp-content/themes/blocksy/static/bundle/"|"public_url":"./wp-content/themes/blocksy/static/bundle/"|g' {} \;
+```
+
+**Paso 2 — Parche correcto (funciona en todas las páginas):**
+```bash
+find /ruta/exportacion/ -name "index.html" -exec sed -i \
+  's|"public_url":"\./wp-content/themes/blocksy/static/bundle/"|"public_url":"/wp-content/themes/blocksy/static/bundle/"|g' {} \;
+```
+
+**Despliegue en Cloudflare Pages:**
+```bash
+export CLOUDFLARE_ACCOUNT_ID="[ACCOUNT_ID]"
+export CLOUDFLARE_API_TOKEN="[API_TOKEN]"
+
+npx wrangler pages deploy /ruta/exportacion \
+  --project-name cfpg-pviva-estactico \
+  --commit-message "Fix: public_url root-relative para funcionar en subpaginas" \
+  --branch main
+```
+
+### A.5 Verificación
+
+```bash
+# Verificar que el valor servido es correcto
+curl -s "https://sitio.pages.dev/" | grep -oP '"public_url":"[^"]*"'
+# Debe devolver: "public_url":"/wp-content/themes/blocksy/static/bundle/"
+
+# Verificar en subpágina
+curl -s "https://sitio.pages.dev/subpagina/" | grep -oP '"public_url":"[^"]*"'
+# Debe devolver el mismo valor
+
+# Verificar que los chunks JS cargan desde la subpágina
+curl -s -o /dev/null -w "%{http_code}" \
+  "https://sitio.pages.dev/wp-content/themes/blocksy/static/bundle/main.js"
+# Debe devolver: 200
+```
+
+### A.6 Lección aprendida
+
+**Al parchear variables JavaScript** que contienen rutas en exportaciones estáticas:
+
+1. **`./ruta`** — relativa a la página actual. Solo funciona desde la raíz.
+2. **`../ruta`** — relativa subiendo un nivel. Funciona desde profundidad 1.
+3. **`/ruta`** — absoluta de raíz. **Funciona desde cualquier profundidad.**
+
+Para proyectos Simply Static que usan URLs relativas (`destination_url_type = "relative"` o "Offline Usage"), **siempre usar `/ruta`** (absoluta de raíz) al parchear variables JavaScript como `public_url`, ya que las páginas pueden estar a distintas profundidades.
+
+### A.7 Proyectos donde se aplicó
+
+| Proyecto | Fecha | URL | Resultado |
+|----------|-------|-----|-----------|
+| PVIVA | 2026-06-26 | `https://cfpg-pviva-estactico.pages.dev` | ✅ Menús funcionales al 100% |
+
+### A.8 — Parche global de URLs protocol-relative en JS inline
+
+Además de `public_url`, Simply Static deja sin reescribir **todas** las URLs protocol-relative dentro de bloques `<script>` inline. En PVIVA se identificaron 55 URLs en estos bloques:
+
+| Ubicación | Ejemplo de URL | Efecto si no se parchea |
+|-----------|---------------|------------------------|
+| `ct_localizations.dynamic_js_chunks[].url` | `//wp-content/plugins/blocksy-companion-pro/static/bundle/sticky.js` | Sticky header no carga |
+| `complianz` config | `//wp-content/plugins/complianz-gdpr/...` | Banner GDPR no funciona |
+| `fluent-booking` config | `//wp-content/plugins/fluent-booking/...` | Reservas no funcionan |
+| `dynamic_styles` / `dynamic_styles_selectors` | `//wp-content/...` | Estilos dinámicos no cargan |
+
+**Comando único** (parchea todas las URLs protocol-relative a root-relative en todos los HTMLs):
+
+```bash
+find ./ -name "index.html" -exec sed -i \
+  's|"//\(wp-content\|wp-includes\)|"/\1|g' {} \;
+```
+
+**Nota:** Este comando solo cubre URLs que comienzan con `//wp-content` o `//wp-includes`. URLs como `//fonts.googleapis.com` (Google Fonts) no se parchean porque son CDN externos y funcionan con protocol-relative.
+
+**Verificación:**
+```bash
+# No deberían quedar URLs protocol-relative a wp-content
+curl -s "https://sitio.pages.dev/" | grep -oP '"//wp-[^"]*"'
+# Debe devolver: (nada, vacío)
+```
+
+### A.9 — Parche ancho Elementor a 1290px
+
+Simply Static exporta los contenedores Elementor con su ancho por defecto (`1140px`). El tema Blocksy usa `--theme-normal-container-max-width: 1290px`. El contenido Elementor se renderiza más estrecho que el layout del tema.
+
+**Archivos a modificar:** Todos los `index.html` + `wp-content/plugins/elementor/assets/css/frontend.min.css`
+
+**Comando para HTMLs:**
+```bash
+find ./ -name "index.html" -exec sed -i \
+  's|"container_width":[^,]*|"container_width":{"unit":"px","size":1290}|g' {} \;
+```
+
+**Comando para CSS de Elementor:**
+```bash
+sed -i 's|max-width:1140px|max-width:1290px|g' \
+  wp-content/plugins/elementor/assets/css/frontend.min.css
+```
+
+**Verificación:**
+```bash
+# En el CSS servido
+curl -s "https://sitio.pages.dev/wp-content/plugins/elementor/assets/css/frontend.min.css" \
+  | grep -oP 'max-width:1290px' | head -1
+# Debe devolver: max-width:1290px
+
+# En el HTML (config Elementor global)
+curl -s "https://sitio.pages.dev/" | grep -oP 'container_width[^}]*'
+# Debe contener: "size":1290
+```
+
+---
+
+## Anexo B — Corrección de error sticky.js y marco blanco en PVIVA (2026-06-26)
+
+### B.1 Contexto
+
+Tras resolver los menús desplegables (Anexo A), el sitio PVIVA presentaba dos problemas adicionales:
+
+1. **Error JavaScript en sticky.js** — `Uncaught TypeError: Cannot read properties of undefined (reading 'indexOf')` en línea 7415. El header no podía adoptar el estado transparente/sticky.
+2. **Marco blanco alrededor de toda la página** — Cabecera, pie y secciones de contenido no ocupaban el ancho completo del viewport. Quedaba un marco blanco alrededor de toda la apariencia que no existía en el WordPress original.
+
+### B.2 Diagnóstico
+
+#### B.2.1 Error sticky.js
+
+**Causa raíz:** El atributo `data-header` no se incluye en la etiqueta `<body>` durante la exportación estática. En WordPress, Blocksy lo genera dinámicamente vía PHP.
+
+**Código problemático** (sticky.js, fuente sin minificar, líneas 281-286):
+```js
+setTimeout(() => {
+    if (isSticky && document.body.dataset.header.indexOf('shrink') === -1) {
+        document.body.dataset.header = `${document.body.dataset.header}:shrink`
+    }
+    if (!isSticky && document.body.dataset.header.indexOf('shrink') > -1) {
+        document.body.dataset.header = document.body.dataset.header.replace(':shrink', '')
+    }
+}, 300)
+```
+
+`document.body.dataset.header` es `undefined` porque el `<body>` HTML no tiene el atributo `data-header`. Llamar `.indexOf()` sobre `undefined` lanza TypeError.
+
+**Archivo:** `wp-content/plugins/blocksy-companion-pro/static/bundle/sticky.js` (minificado, línea 7415) / `static/js/frontend/sticky.js` (fuente, líneas 281-286).
+
+#### B.2.2 Marco blanco (layout)
+
+**Causa raíz:** El motor de Blocksy extiende las secciones `ct-section-stretched` mediante JavaScript en cliente, calculando el ancho real del viewport y aplicando `margin-left` negativo + `width` en píxeles. En la exportación estática, este JS no se ejecuta porque no hay servidor WordPress que lo inicie.
+
+**Factores contribuyentes:**
+
+| Factor | Valor | Efecto |
+|--------|-------|--------|
+| `body { background-color }` | `#ffffff` (blanco) | El fondo del body se ve alrededor de cualquier elemento que no ocupe todo el ancho |
+| `#main-container { overflow }` | `hidden; clip` | Impide que los fondos de las secciones se extiendan más allá de los límites del contenedor |
+| `.ct-section-stretched { max-width }` | `1290px` | Las 6 secciones Elementor con clase stretched quedan centradas sin extenderse |
+| `--theme-container-edge-spacing` | `88vw` | Limitaba el ancho del contenedor al 88% del viewport (parcialmente corregido en intento previo a 100vw) |
+| `.ct-container { max-width }` | `1290px` | El header y footer usan `ct-container` limitado a 1290px |
+
+**Por qué funcionaba en WordPress:** Blocksy inyecta CSS en línea con `width` y `margin-left` calculados por JS para cada sección `ct-section-stretched`. Sin ese JS, las reglas CSS estáticas las limitan a `max-width: 1290px`.
+
+### B.3 Soluciones aplicadas
+
+#### B.3.1 Corrección sticky.js (error JavaScript)
+
+**Cambio:** Añadir `data-header="type-1"` a la etiqueta `<body>` en todos los HTMLs.
+
+**Archivos modificados:** 27 `index.html` en `project/pviva-estactico/`.
+
+**Comando:**
+```bash
+find project/pviva-estactico/ -name "index.html" -exec sed -i \
+  's|<body class="|<body data-header="type-1" class="|g' {} \;
+```
+
+**Efecto:**
+- `document.body.dataset.header` devuelve `"type-1"` en lugar de `undefined`
+- `document.body.dataset.header.indexOf('shrink')` ejecuta sin error
+- El header puede alternar entre estado transparente y sticky correctamente
+
+#### B.3.2 Corrección marco blanco (layout CSS)
+
+**Cambio:** Inyectar CSS de corrección al final de `wp-content/uploads/blocksy/css/global.css` para reemplazar el comportamiento que hacía el JS de Blocksy.
+
+**CSS añadido:**
+
+```css
+/* === PVIVA FIX: Ancho completo (exportación estática) === */
+
+/* 1. Permitir que las secciones se extiendan sin recorte */
+#main-container {
+	overflow: visible !important;
+}
+
+/* 2. Secciones stretched: ocupar todo el viewport (reemplaza el JS de Blocksy) */
+.ct-section-stretched {
+	width: 100vw !important;
+	max-width: 100vw !important;
+	margin-left: calc(-50vw + 50%) !important;
+	margin-right: calc(-50vw + 50%) !important;
+}
+
+/* 3. Flexbox Containers Elementor con fondo: ocupar todo el viewport */
+.elementor-element.e-con-boxed.e-parent {
+	width: 100vw !important;
+	max-width: 100vw !important;
+	margin-left: calc(-50vw + 50%) !important;
+	margin-right: calc(-50vw + 50%) !important;
+}
+
+/* 4. El contenido interior de los Flexbox Containers centrado */
+.elementor-element.e-con-boxed.e-parent > .e-con-inner {
+	width: 100% !important;
+	max-width: var(--theme-normal-container-max-width, 1290px) !important;
+	margin-inline: auto !important;
+}
+
+/* 5. Contenedor del contenido principal sin límite de ancho */
+.ct-container-full {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+```
+
+**Fundamento técnico del truco `calc(-50vw + 50%)`:**
+
+Un elemento hijo dentro de un contenedor centrado puede "escaparse" al ancho completo del viewport usando:
+- `width: 100vw` → ancho igual al viewport
+- `margin-left: calc(-50vw + 50%)` → desplazar a la izquierda la mitad del viewport menos la mitad del contenedor padre
+- `margin-right: calc(-50vw + 50%)` → desplazar a la derecha simétricamente
+
+El resultado neto es que el elemento ocupa exactamente el ancho del viewport independientemente del ancho de su contenedor padre.
+
+#### B.3.3 Corrección previa (container-edge-spacing)
+
+En un intento anterior, se había cambiado `--theme-container-edge-spacing` de `88vw` a `100vw` en global.css. Esta corrección por sí sola no resolvió el marco blanco porque el problema principal era la falta de extensión de las secciones stretched (no el espaciado del contenedor). El cambio se mantiene como parte de la solución global.
+
+### B.4 Archivos modificados
+
+| Archivo | Cambio | Propósito |
+|---------|--------|-----------|
+| 27× `index.html` | `data-header="type-1"` en `<body>` | Arreglar sticky.js TypeError |
+| `wp-content/uploads/blocksy/css/global.css` | CSS fix ancho completo (5 reglas) | Eliminar marco blanco |
+
+### B.5 Verificación
+
+```bash
+# Verificar body tag
+curl -s "https://cfpg-pviva-estactico.pages.dev/" | grep -oP '<body[^>]*data-header[^>]*>'
+# Debe devolver: <body data-header="type-1" class="home ...">
+
+# Verificar CSS de corrección servido
+curl -s "https://cfpg-pviva-estactico.pages.dev/wp-content/uploads/blocksy/css/global.css" \
+  | grep -c 'PVIVA FIX'
+# Debe devolver: 1
+
+# Verificar que sticky.js ya no da error (consola limpia de ese error)
+# No hay test automático; ver manualmente en navegador → Consola
+```
+
+### B.6 Resultado final (confirmado por el usuario)
+
+| Problema | Antes | Después |
+|----------|-------|---------|
+| Menús desplegables | ❌ No funcionales | ✅ 100% funcionales en todas las páginas |
+| sticky.js TypeError | ❌ `Cannot read properties of undefined (reading 'indexOf')` | ✅ Error eliminado |
+| Marco blanco / ancho completo | ❌ Marco blanco alrededor; secciones no ocupaban ancho completo | ✅ Sin marco blanco; cabecera, contenido y pie ocupan todo el ancho |
+
+### B.7 Lecciones aprendidas
+
+1. **El stretched de Blocksy depende de JS.** Las secciones `ct-section-stretched` no se extienden con CSS puro en el tema base. En exportaciones estáticas, hay que inyectar CSS que emule el cálculo de viewport que hace el JS.
+
+2. **`overflow: clip` en `#main-container` impide la extensión.** Incluso con el truco de `calc(-50vw + 50%)`, el `overflow: clip` del contenedor principal recorta los márgenes negativos. Hay que desactivarlo.
+
+3. **`data-header` es necesario para sticky.js.** Sin este atributo en el `<body>`, el sticky header no puede funcionar porque el JS espera leer `document.body.dataset.header`.
+
+4. **Probar cambios en secciones antes de saltar a conclusiones globales.** El primer intento de cambiar `--theme-container-edge-spacing` a `100vw` no funcionó porque no atacaba la causa raíz (secciones stretched no extendidas). El enfoque sistemático de diagnóstico (plantilla 04-P-diagnostico-errores.md) permitió identificar correctamente el problema.
+
+### B.8 Proyectos donde se aplicó
+
+| Proyecto | Fecha | URL | Estado |
+|----------|-------|-----|--------|
+| PVIVA | 2026-06-26 | `https://cfpg-pviva-estactico.pages.dev` | ✅ Completo: menús, sticky y ancho completo |
