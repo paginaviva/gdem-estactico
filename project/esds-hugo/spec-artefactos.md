@@ -26,6 +26,25 @@
 
 ---
 
+## Resumen de artefactos
+
+| ID | Artefacto | Opción | Tipo | Descripción | Encaje en el proyecto |
+|:--:|-----------|--------|:----:|-------------|-----------------------|
+| 01 | Calendario + Reservas | Cal.com | Embed externo | Widget de disponibilidad y booking de servicios | Los usuarios ven disponibilidad real y reservan sin intermediarios desde cada página de servicio |
+| 02 | Formulario | CF Worker + Turnstile | Custom CF | Formulario de contacto con validación anti-bot y envío a WhatsApp | Usuarios que prefieren formulario en vez de WhatsApp directo; datos seguros en CF |
+| 03 | Mapa | Leaflet.js + OSM | Partial custom | Mapa interactivo con ubicaciones clave del Valle de Guadalest | Sustituye al mapa de Google; muestra Embalse, Beniardà, Fonts d'Algar, Castillo en sección "Cómo llegar" |
+| 04 | Submenú Experiencias | Nativo Hugo | Nativo Hugo | Menú desplegable con los 7 servicios bajo "Experiencias" | Navegación directa a cada servicio desde el header, mejora UX y SEO interno |
+| 05 | FAQ / GEO | Custom JSON-LD | Partial custom | Preguntas frecuentes con estructura FAQPage para buscadores | Aparecer en AI Overviews de Google y mejorar visibilidad orgánica con contenido FAQ |
+| 06 | Meta tags OG/Twitter | Nativo Hugo | Nativo Hugo | Open Graph y Twitter Cards para compartir en redes | Cada página se comparte con imagen, título y descripción correctos en redes sociales |
+| 07 | Sitemap.xml | Nativo Hugo | Nativo Hugo | Archivo sitemap.xml para motores de búsqueda | Google indexa todas las páginas del sitio correctamente |
+| 08 | JSON-LD structured data | HugoMods + custom | Partial custom | Datos estructurados LocalBusiness + Product para SEO | Google entiende que es un negocio local con servicios y precios específicos |
+| 09 | SEO local títulos/descripciones | Nativo Hugo | Nativo Hugo | Meta tags title, description, keywords por página con keywords asignadas | Cada página optimizada para su keyword objetivo según plan SEO de ESDS |
+| 10 | Hugo Pipes (WebP, srcset) | Nativo Hugo | Nativo Hugo | Optimización de imágenes: WebP, tamaños responsive, lazy loading | Sitio más rápido, mejor Core Web Vitals, menor consumo de ancho de banda |
+
+> **Nota:** Todos los artefactos son **Gratis** en coste (no se añade columna de coste).
+
+---
+
 ## <span id="01"></span>01. Calendario + Reservas → Cal.com
 
 ### 1. Contexto
@@ -100,10 +119,324 @@ Formulario de contacto/reserva para usuarios que prefieran no usar WhatsApp dire
 CF Pages Function + Turnstile (anti-bot gratuito) + envío a WhatsApp de Elena. Flujo: usuario rellena → Turnstile valida → Worker procesa → Worker envía a WhatsApp.
 
 ### 4. Implementación
-Pendiente (sin datos de ExternalScout)
+
+**4.1. Estructura de archivos**
+
+El proyecto Hugo lleva la Pages Function en la raíz del repositorio (no dentro de `public/`):
+
+```
+raiz-del-proyecto-hugo/
+├── functions/
+│   └── api/
+│       └── contacto.ts         ← Handler POST /api/contacto
+├── layouts/
+│   └── _default/
+│       └── contacto.html       ← Formulario HTML con Turnstile
+├── .dev.vars                   ← Secretos locales (NO commitear)
+├── .gitignore
+└── wrangler.toml               ← Config de Wrangler
+```
+
+Pages Functions usa **file-based routing**: `functions/api/contacto.ts` se asigna automáticamente a la ruta `/api/contacto`.
+
+**4.2. Formulario HTML (`layouts/_default/contacto.html`)**
+
+El formulario incluye el widget Turnstile que se renderiza automáticamente. El token se envía como campo `cf-turnstile-response`:
+
+```html
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<form id="contactForm" action="/api/contacto" method="POST">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div>
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" required></textarea>
+  </div>
+
+  <!-- Turnstile widget — site key pública -->
+  <div class="cf-turnstile" data-sitekey="0x4AAAAAAA..."></div>
+
+  <button type="submit">Enviar mensaje</button>
+</form>
+
+<div id="formResponse"></div>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+      });
+      const result = await response.json();
+      document.getElementById("formResponse").innerHTML =
+        `<p style="color: ${result.success ? 'green' : 'red'}">${result.message}</p>`;
+    } catch (err) {
+      document.getElementById("formResponse").innerHTML =
+        `<p style="color: red">Error de conexión. Intenta de nuevo.</p>`;
+    }
+  });
+</script>
+```
+
+La site key se obtiene desde https://dash.cloudflare.com/ → **Turnstile** → crear widget. Para desarrollo local usar la site key de prueba: `1x00000000000000000000AA`.
+
+**4.3. Handler completo (`functions/api/contacto.ts`)**
+
+La función `onRequestPost` recibe el FormData, valida Turnstile, envía WhatsApp a Elena y devuelve JSON:
+
+```ts
+interface Env {
+  TURNSTILE_SECRET: string;
+  WHATSAPP_TOKEN: string;
+  WHATSAPP_PHONE_NUMBER_ID: string;
+  WHATSAPP_TO_NUMBER: string;
+}
+
+// ─── Validación Turnstile ───────────────────────────────────────────
+
+async function validateTurnstile(
+  token: string,
+  secret: string,
+  ip: string
+): Promise<{ success: boolean; error?: string }> {
+  const response = await fetch(
+    "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ secret, response: token, remoteip: ip }),
+    }
+  );
+
+  const outcome = await response.json();
+
+  if (!outcome.success) {
+    return {
+      success: false,
+      error: (outcome["error-codes"] as string[])?.[0] || "unknown",
+    };
+  }
+
+  return { success: true };
+}
+
+// ─── Envío WhatsApp ─────────────────────────────────────────────────
+
+async function sendWhatsAppMessage(
+  token: string,
+  phoneNumberId: string,
+  to: string,
+  body: string
+): Promise<boolean> {
+  const url = `https://graph.facebook.com/v23.0/${phoneNumberId}/messages`;
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      messaging_product: "whatsapp",
+      recipient_type: "individual",
+      to,
+      type: "text",
+      text: { body },
+    }),
+  });
+
+  return response.ok;
+}
+
+// ─── Handler principal ──────────────────────────────────────────────
+
+export const onRequestPost: PagesFunction<Env> = async (context) => {
+  const { request, env } = context;
+
+  try {
+    // 1. Parsear FormData del formulario Hugo
+    const formData = await request.formData();
+    const nombre = (formData.get("nombre") as string)?.trim();
+    const email = (formData.get("email") as string)?.trim();
+    const mensaje = (formData.get("mensaje") as string)?.trim();
+    const turnstileToken = formData.get("cf-turnstile-response") as string;
+
+    // 2. Validar campos requeridos
+    if (!nombre || !email || !mensaje) {
+      return Response.json(
+        { success: false, message: "Todos los campos son requeridos" },
+        { status: 400 }
+      );
+    }
+
+    // 3. Validar token Turnstile contra API de Cloudflare
+    const ip = request.headers.get("CF-Connecting-IP") || "";
+    const turnstileResult = await validateTurnstile(
+      turnstileToken,
+      env.TURNSTILE_SECRET,
+      ip
+    );
+
+    if (!turnstileResult.success) {
+      console.warn("Turnstile validation failed:", turnstileResult.error);
+      return Response.json(
+        { success: false, message: "Verificación de seguridad fallada. Recarga la página." },
+        { status: 400 }
+      );
+    }
+
+    // 4. Componer mensaje y enviar por WhatsApp a Elena
+    const whatsappBody = [
+      `Nuevo mensaje desde el sitio web`,
+      ``,
+      `Nombre: ${nombre}`,
+      `Email: ${email}`,
+      `Mensaje: ${mensaje}`,
+    ].join("\n");
+
+    const whatsappSent = await sendWhatsAppMessage(
+      env.WHATSAPP_TOKEN,
+      env.WHATSAPP_PHONE_NUMBER_ID,
+      env.WHATSAPP_TO_NUMBER,
+      whatsappBody
+    );
+
+    if (!whatsappSent) {
+      console.error("WhatsApp notification failed");
+      // El formulario se recibió pero la notificación falló
+      // Se responde éxito igualmente para no bloquear al usuario
+    }
+
+    // 5. Responder JSON al usuario
+    return Response.json({
+      success: true,
+      message: "Mensaje recibido. Te contactaremos pronto.",
+    });
+  } catch (err) {
+    console.error("Contact form error:", err);
+    return Response.json(
+      { success: false, message: "Error interno del servidor." },
+      { status: 500 }
+    );
+  }
+};
+```
+
+**4.4. Flujo completo**
+
+```
+Usuario                    Cloudflare Edge                    Meta/Facebook
+  │                             │                                  │
+  ├─ POST /api/contacto ──────► │                                  │
+  │  form data + token          │                                  │
+  │                             ├─ POST /siteverify ──────────────► │
+  │                             │  (validar token Turnstile)       │
+  │                             │◄──── { success: true } ──────────│
+  │                             │                                  │
+  │                             ├─ POST /v23.0/{id}/messages ────► │
+  │                             │  (enviar WhatsApp a Elena)       │
+  │                             │◄─── { messages: [{id:...}] } ────│
+  │                             │                                  │
+  │◄─── { success: true } ──────┤                                  │
+```
+
+**4.5. Configuración de secretos en Cloudflare Pages Dashboard**
+
+Las variables sensibles **no van en `wrangler.toml`** sino como secretos en el dashboard:
+
+1. Ir a https://dash.cloudflare.com/ → **Workers & Pages**
+2. Seleccionar el proyecto → **Settings** → **Variables and Secrets**
+3. **Add** cada secreto marcando **Encrypt**:
+
+| Secreto | Valor | Dónde obtenerlo |
+|---------|-------|-----------------|
+| `TURNSTILE_SECRET` | `0x4AAAAAAA...` | Dashboard Cloudflare → Turnstile → widget |
+| `WHATSAPP_TOKEN` | `EAAx...` | Meta Business Settings → System Users → Generate Token |
+| `WHATSAPP_PHONE_NUMBER_ID` | `123456789` | Meta App Dashboard → WhatsApp → API Setup |
+| `WHATSAPP_TO_NUMBER` | `521234567890` | Número WhatsApp de Elena (formato internacional) |
+
+4. **Save** y **redeploy** el proyecto para aplicar los cambios
+
+**4.6. Desarrollo local con `.dev.vars`**
+
+Crear en la raíz del proyecto un archivo `.dev.vars` con los mismos nombres (pero valores de prueba):
+
+```bash
+# .dev.vars  (NO commitear — agregar a .gitignore)
+TURNSTILE_SECRET="1x00000000000000000000AA"
+WHATSAPP_TOKEN="tu-token-de-prueba"
+WHATSAPP_PHONE_NUMBER_ID="123456789"
+WHATSAPP_TO_NUMBER="521234567890"
+```
+
+Ejecutar entorno local:
+
+```bash
+hugo                    # Build Hugo → public/
+npx wrangler pages dev public   # Servir con Functions localmente
+```
+
+La secret key de prueba de Turnstile (`1x00000000000000000000AA`) siempre devuelve `success: true`.
+
+**4.7. Despliegue**
+
+```bash
+hugo
+npx wrangler pages deploy public
+```
+
+**4.8. Uso de la API v23.0 de WhatsApp**
+
+El endpoint de mensajes usa la versión más reciente estable de Graph API:
+
+```
+POST https://graph.facebook.com/v23.0/{WHATSAPP_PHONE_NUMBER_ID}/messages
+Authorization: Bearer {WHATSAPP_TOKEN}
+Content-Type: application/json
+
+{
+  "messaging_product": "whatsapp",
+  "recipient_type": "individual",
+  "to": "521234567890",
+  "type": "text",
+  "text": { "body": "Nuevo contacto..." }
+}
+```
+
+El token debe ser un **System User Access Token permanente** (no el token temporal del dashboard). Se genera desde **Meta Business Settings** → **System Users** con permisos `business_management`, `whatsapp_business_messaging` y `whatsapp_business_management`.
 
 ### 5. Dependencias
-Pendiente (sin datos de ExternalScout)
+
+| Dependencia | Versión/Plan | Coste | Detalle |
+|-------------|-------------|-------|---------|
+| Cuenta Cloudflare Pages | Gratis | €0 | Sitio estático ilimitado, 100k solicitudes Functions/día |
+| Turnstile Site Key + Secret Key | Widget gratuito | €0 | Ilimitado. Dashboard Cloudflare → Turnstile |
+| Meta App for Developers | Gratis | €0 | https://developers.facebook.com/ → Create App → WhatsApp |
+| WhatsApp Business Account (WABA) | Gratis | €0 | Se asocia durante el setup de la app |
+| System User Access Token | Permanente | €0 | Meta Business Settings → System Users → Generate Token |
+| Phone Number ID WhatsApp | — | €0 | Dashboard de la app Meta → WhatsApp → API Setup |
+| WhatsApp Cloud API | 1000 conversaciones/mes gratis | €0 | Las iniciadas por usuario son gratuitas en ventana 24h |
+| Node.js + npm | ≥ 18 LTS | €0 | Para Wrangler CLI |
+| Wrangler CLI | Última | €0 | `npm install -g wrangler` o `npx wrangler` |
+| Hugo | v0.123.0+ | €0 | Build del sitio estático |
+
+**Notas sobre límites gratuitos:**
+
+- **Pages Functions**: 100.000 solicitudes/día. Si se excede, el sitio sigue sirviendo estáticos (fail-open). Se puede eliminar el límite con Workers Standard ($5/mes).
+- **WhatsApp Cloud API**: 1.000 conversaciones/mes gratuitas. Las conversaciones de servicio al cliente (iniciadas por el usuario) no tienen coste dentro de la ventana de 24h. Como solo enviamos notificaciones a Elena, el consumo es mínimo.
+- **Turnstile**: completamente gratuito e ilimitado, sin límite de solicitudes.
 
 ## <span id="03"></span>03. Mapa → Leaflet.js + OpenStreetMap
 
@@ -942,11 +1275,3 @@ imaging:
 | `loading="lazy"` | HTML nativo | Atributo estándar, no requiere JS |
 | `decoding="async"` | HTML nativo | Decodificación asíncrona de imagen |
 | Ninguna librería JS | — | Sin dependencias externas |
-
----
-
-## Pendiente
-
-### Artefacto 02 — Formulario (CF Worker + Turnstile + WhatsApp)
-La búsqueda externa para este artefacto no obtuvo resultados. 
-Pendiente de realizar una nueva consulta para documentar las secciones 4 y 5.

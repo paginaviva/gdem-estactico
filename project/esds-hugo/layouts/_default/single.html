@@ -179,15 +179,18 @@
    ---------------------------------------------------------- */
 .service-banner {
   width: 100%;
-  overflow: hidden;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
   background-color: var(--blanco-hueso);
 }
 
 .service-banner__img {
   width: 100%;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   display: block;
+  border-radius: var(--radius-lg);
 }
 
 /* ----------------------------------------------------------
@@ -586,6 +589,21 @@
     padding: var(--space-3xl) var(--content-padding);
   }
 
+  /* --- Separación Hero → contenido --- */
+  .service-desktop-layout {
+    padding-top: var(--space-2xl);
+  }
+
+  /* --- Título "La experiencia completa" en desktop --- */
+  .service-descripcion__content > h2:first-child {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--verde-bosque);
+    margin-bottom: var(--space-lg);
+    line-height: 1.2;
+  }
+
   /* --- Two-column layout (7fr descripcion / 4fr datos) --- */
   .service-two-col-wrapper {
     display: grid;
@@ -634,9 +652,9 @@
     margin: var(--space-xl) 0;
   }
 
-  /* --- ❹ Banner: más grande --- */
-  .service-banner__img {
-    aspect-ratio: 21 / 9;
+  /* --- ❹ Banner: separación con programa --- */
+  .service-banner {
+    margin-bottom: var(--space-xl);
   }
 
   /* --- ❺ Programa: timeline horizontal --- */
@@ -1178,9 +1196,8 @@
 <div class="service-two-col-wrapper">
 
   {{/* === ❷ CONTENIDO PRINCIPAL (left column) === */}}
-  <section class="service-descripcion" aria-labelledby="descripcion-title">
+  <section class="service-descripcion" aria-labelledby="la-experiencia-completa">
     <div class="container">
-      <h2 id="descripcion-title" class="sr-only">La experiencia completa</h2>
       <div class="service-descripcion__content">
         {{ .Content }}
 
