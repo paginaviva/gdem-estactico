@@ -7,9 +7,9 @@
   <div class="container">
 
   <div class="section-title">
-    <h2 id="como-llegar-title" class="section-title__heading">¿Cómo llegar?</h2>
+    <h2 id="como-llegar-title" class="section-title__heading">{{ i18n "como_llegar_title" }}</h2>
     <div class="section-title__divider" aria-hidden="true">
-      <span class="section-title__divider-icon">✦</span>
+      <span class="section-title__divider-icon">{{ i18n "como_llegar_divider" }}</span>
     </div>
   </div>
 
@@ -18,53 +18,49 @@
     {{/* Columna 1: Transfer Recomendado */}}
     <article class="transfer-card">
       <div class="transfer-card__icon" aria-hidden="true">🚐</div>
-      <h3 class="transfer-card__title">Transfer Recomendado</h3>
-      <p class="transfer-card__subtitle">Desde Beniardà o Puerto de Guadalest</p>
-      <p class="transfer-card__text">Punto de encuentro fácil y con parking. La forma más cómoda de llegar.</p>
+      <h3 class="transfer-card__title">{{ i18n "como_llegar_transfer_title" }}</h3>
+      <p class="transfer-card__subtitle">{{ i18n "como_llegar_transfer_subtitle" }}</p>
+      <p class="transfer-card__text">{{ i18n "como_llegar_transfer_desc" }}</p>
       <ul class="transfer-card__points">
-        <li>Punto de encuentro fácil y con parking</li>
-        <li>La forma más cómoda para disfrutar sin preocupaciones</li>
+        {{ range (strings.Split (i18n "como_llegar_transfer_puntos") "|") }}<li>{{ . }}</li>{{ end }}
       </ul>
       <div class="transfer-detalle">
         <span class="transfer-detalle__icon" aria-hidden="true">💰</span>
-        <strong class="transfer-detalle__title">10€/persona</strong>
-        <span class="transfer-detalle__text">12 min · Multivan Volkswagen</span>
+        <strong class="transfer-detalle__title">{{ i18n "como_llegar_transfer_precio" }}</strong>
+        <span class="transfer-detalle__text">{{ i18n "como_llegar_transfer_detalle" }}</span>
       </div>
     </article>
 
     {{/* Columna 2: Transfer Privado */}}
     <article class="transfer-card">
       <div class="transfer-card__icon" aria-hidden="true">🚙</div>
-      <h3 class="transfer-card__title">Transfer Privado</h3>
-      <p class="transfer-card__subtitle">Desde otros lugares</p>
-      <p class="transfer-card__text">Servicio opcional y a consultar. Destinos disponibles:</p>
+      <h3 class="transfer-card__title">{{ i18n "como_llegar_privado_title" }}</h3>
+      <p class="transfer-card__subtitle">{{ i18n "como_llegar_privado_subtitle" }}</p>
+      <p class="transfer-card__text">{{ i18n "como_llegar_privado_desc" }}</p>
       <ul class="transfer-card__points">
-        <li>Fonts d'Algar</li>
-        <li>Castillo de Guadalest</li>
+        {{ range (strings.Split (i18n "como_llegar_privado_destinos") "|") }}<li>{{ . }}</li>{{ end }}
       </ul>
       <p class="transfer-card__text" style="margin-top: 0.5rem;">
-        <a href="#conecta" class="btn btn-secondary">Consultar</a>
+        <a href="#conecta" class="btn btn-secondary">{{ i18n "como_llegar_privado_cta" }}</a>
       </p>
     </article>
 
     {{/* Columna 3: Puntos de encuentro */}}
     <article class="transfer-card">
       <div class="transfer-card__icon" aria-hidden="true">📍</div>
-      <h3 class="transfer-card__title">Puntos de encuentro</h3>
+      <h3 class="transfer-card__title">{{ i18n "como_llegar_puntos_title" }}</h3>
       <ul class="transfer-card__points">
-        <li>Puerto de Guadalest</li>
-        <li>Beniardà</li>
-        <li>Embalse de Guadalest</li>
+        {{ range (strings.Split (i18n "como_llegar_puntos_lista") "|") }}<li>{{ . }}</li>{{ end }}
       </ul>
-      <p class="transfer-card__text">Los puntos de encuentro se confirman al reservar</p>
+      <p class="transfer-card__text">{{ i18n "como_llegar_puntos_desc" }}</p>
     </article>
 
   </div>{{/* /.como-llegar__grid */}}
 
   {{/* Aviso importante */}}
   <div class="como-llegar__aviso" role="alert">
-    <p class="como-llegar__aviso-title">⚠ Importante</p>
-    <p class="como-llegar__aviso-text">El acceso al embalse es por carretera de montaña. Recomendamos vehículos pequeños. Plazas de parking limitadas.</p>
+    <p class="como-llegar__aviso-title">{{ i18n "como_llegar_aviso_title" }}</p>
+    <p class="como-llegar__aviso-text">{{ i18n "como_llegar_aviso_text" }}</p>
   </div>
 
   </div>{{/* /.container */}}

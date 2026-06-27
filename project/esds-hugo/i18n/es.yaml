@@ -1,3 +1,7 @@
+# ── Meta defaults ──────────────────────────────────
+baseof_meta_desc: "Experiencias conscientes en el Embalse de Guadalest — Yoga, Kayak, Caminatas y Retiros en el Valle de Guadalest, Alicante."
+baseof_meta_keywords: "yoga, kayak, caminata consciente, Guadalest, bienestar, naturaleza, aventura, Alicante, Costa Blanca, retiro, meditación, mindfulness"
+
 # ── Hero ──────────────────────────────────────────
 hero_title: "Reconecta con la naturaleza y contigo"
 hero_subtitle_manuscrita: "Experiencias conscientes en el Embalse de Guadalest"
@@ -70,20 +74,13 @@ conversion_divider: "✦"
 
 # Tarjeta 1: Reserva anticipada
 conversion_card1_title: "Reserva anticipada"
-conversion_card1_items:
-  - "Aseguras tu plaza y disponibilidad"
-  - "Garantizamos los kayaks para tu grupo"
-  - "Mejor organización para todos"
+conversion_card1_items: "Aseguras tu plaza y disponibilidad|Garantizamos los kayaks para tu grupo|Mejor organización para todos"
 conversion_card1_highlight: "¡Plazas limitadas cada día!"
 
 # Tarjeta 2: Este verano
 conversion_card2_title: "Este verano es solo el comienzo"
 conversion_card2_intro: "Si esta experiencia funciona… habrá más aventura:"
-conversion_card2_items:
-  - "Yoga en la playa"
-  - "Miradores"
-  - "Visitas a cuevas"
-  - "¡Y mucho más!"
+conversion_card2_items: "Yoga en la playa|Miradores|Visitas a cuevas|¡Y mucho más!"
 conversion_card2_outro: "¡Síguenos y no te lo pierdas!"
 
 # Tarjeta 3: Reserva fácil
@@ -100,9 +97,7 @@ como_llegar_divider: "✦"
 como_llegar_transfer_title: "Transfer Recomendado"
 como_llegar_transfer_subtitle: "Desde Beniardà o Puerto de Guadalest"
 como_llegar_transfer_desc: "Punto de encuentro fácil y con parking. La forma más cómoda de llegar."
-como_llegar_transfer_puntos:
-  - "Punto de encuentro fácil y con parking"
-  - "La forma más cómoda para disfrutar sin preocupaciones"
+como_llegar_transfer_puntos: "Punto de encuentro fácil y con parking|La forma más cómoda para disfrutar sin preocupaciones"
 como_llegar_transfer_precio: "10€/persona"
 como_llegar_transfer_detalle: "12 min · Multivan Volkswagen"
 
@@ -110,17 +105,12 @@ como_llegar_transfer_detalle: "12 min · Multivan Volkswagen"
 como_llegar_privado_title: "Transfer Privado"
 como_llegar_privado_subtitle: "Desde otros lugares"
 como_llegar_privado_desc: "Servicio opcional y a consultar. Destinos disponibles:"
-como_llegar_privado_destinos:
-  - "Fonts d'Algar"
-  - "Castillo de Guadalest"
+como_llegar_privado_destinos: "Fonts d'Algar|Castillo de Guadalest"
 como_llegar_privado_cta: "Consultar"
 
 # Puntos de encuentro
 como_llegar_puntos_title: "Puntos de encuentro"
-como_llegar_puntos_lista:
-  - "Puerto de Guadalest"
-  - "Beniardà"
-  - "Embalse de Guadalest"
+como_llegar_puntos_lista: "Puerto de Guadalest|Beniardà|Embalse de Guadalest"
 como_llegar_puntos_desc: "Los puntos de encuentro se confirman al reservar"
 
 # Aviso
@@ -143,7 +133,7 @@ conecta_instagram_cta: "Seguir en Instagram"
 # ── Footer ────────────────────────────────────────
 footer_claim: "Naturaleza. Bienestar. Aventura. Tú."
 footer_location: "Hecho con amor en Guadalest Valley"
-footer_copyright: "© 2026 {{ .Year }}"
+footer_copyright: "© 2026"
 
 # ── Single (servicio) ──────────────────────────────
 single_cta_title: "¿Te animas a vivirlo?"
@@ -174,6 +164,18 @@ single_que_llevar: "Qué llevar"
 # Para quién / Por qué
 single_para_quien: "Para quién es"
 single_por_que_elegir: "Por qué elegir esta experiencia"
+
+# Programa: aria-label
+single_programa_aria_horario: "Horario: "
+
+# Relacionados: precios
+single_relacionados_precio_yoga: "30 €"
+single_relacionados_precio_kayak: "20 €"
+single_relacionados_precio_caminata: "25 €"
+
+# Relacionados: duraciones
+single_relacionados_duracion_yoga_kayak: "1:30 h"
+single_relacionados_duracion_caminata: "~2 h"
 
 # ── List (servicios) ──────────────────────────────
 list_breadcrumb_inicio: "Inicio"

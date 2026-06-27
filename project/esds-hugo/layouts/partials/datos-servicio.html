@@ -110,7 +110,7 @@
 
 <section class="service-datos" aria-labelledby="datos-servicio-title">
   <div class="container">
-    <h2 id="datos-servicio-title" class="sr-only">Datos prácticos</h2>
+    <h2 id="datos-servicio-title" class="sr-only">{{ i18n "datos_sr_title" }}</h2>
     <div class="service-data-grid">
 
       {{- /* 💰 Precio */}}
@@ -118,7 +118,7 @@
       <div class="service-data-card">
         <span class="service-data-card__icon" aria-hidden="true">💰</span>
         <span class="service-data-card__value">{{ . }}</span>
-        <span class="service-data-card__label">Precio</span>
+        <span class="service-data-card__label">{{ i18n "datos_precio" }}</span>
       </div>
       {{ end }}
 
@@ -127,7 +127,7 @@
       <div class="service-data-card">
         <span class="service-data-card__icon" aria-hidden="true">⏱</span>
         <span class="service-data-card__value">{{ . }}</span>
-        <span class="service-data-card__label">Duración</span>
+        <span class="service-data-card__label">{{ i18n "datos_duracion" }}</span>
       </div>
       {{ end }}
 
@@ -136,7 +136,7 @@
       <div class="service-data-card">
         <span class="service-data-card__icon" aria-hidden="true">🕐</span>
         <span class="service-data-card__value">{{ . }}</span>
-        <span class="service-data-card__label">Horario</span>
+        <span class="service-data-card__label">{{ i18n "datos_horario" }}</span>
       </div>
       {{ end }}
 
@@ -148,9 +148,9 @@
           {{- if .Params.min_personas }}{{ .Params.min_personas }}{{ end -}}
           {{- if and .Params.min_personas .Params.max_personas }} — {{ end -}}
           {{- if .Params.max_personas }}{{ .Params.max_personas }}{{ end -}}
-          {{ if or .Params.min_personas .Params.max_personas }} personas{{ end -}}
+          {{ if or .Params.min_personas .Params.max_personas }} {{ i18n "datos_personas" | lower }}{{ end -}}
         </span>
-        <span class="service-data-card__label">Personas</span>
+        <span class="service-data-card__label">{{ i18n "datos_personas" }}</span>
       </div>
       {{ end }}
 
@@ -159,7 +159,7 @@
       <div class="service-data-card">
         <span class="service-data-card__icon" aria-hidden="true">📍</span>
         <span class="service-data-card__value">{{ . }}</span>
-        <span class="service-data-card__label">Punto de encuentro</span>
+        <span class="service-data-card__label">{{ i18n "datos_punto_encuentro" }}</span>
       </div>
       {{ end }}
 

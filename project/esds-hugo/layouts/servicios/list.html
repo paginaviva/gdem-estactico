@@ -351,8 +351,8 @@
          aria-label="{{ .Params.image_hero_alt | default "Experiencias en el Valle de Guadalest" }}">
   <div class="serv-list-hero__overlay" aria-hidden="true"></div>
   <div class="serv-list-hero__content">
-    <nav class="serv-list-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Inicio</a>
+    <nav class="serv-list-breadcrumb" aria-label='{{ i18n "list_aria_label_breadcrumb" }}'>
+      <a href="/">{{ i18n "list_breadcrumb_inicio" }}</a>
       <span class="serv-list-breadcrumb__sep" aria-hidden="true">›</span>
       <span aria-current="page">{{ .Title | default "Experiencias" }}</span>
     </nav>
@@ -374,12 +374,12 @@
     {{ $pages := .Pages.ByWeight }}
     {{ if $pages }}
 
-    <div class="serv-list-grid" role="list" aria-label="Experiencias">
+    <div class="serv-list-grid" role="list" aria-label='{{ i18n "list_aria_label_grid" }}'>
       {{ range $pages }}
       <a href="{{ .Permalink }}"
          class="serv-list-card"
          role="listitem"
-         aria-label="Ver {{ .Title }}">
+         aria-label='{{ i18n "list_card_cta_aria" . }}'>
         <div class="serv-list-card__image-wrap">
           <img class="serv-list-card__image"
                src="{{ .Params.imagen_hero | default "https://picsum.photos/seed/default-card/800/600" }}"
@@ -391,12 +391,12 @@
 
           <div class="serv-list-card__meta">
             {{ with .Params.precio_texto }}
-            <span class="serv-list-card__price" aria-label="Precio: {{ . }}">
+            <span class="serv-list-card__price" aria-label='{{ i18n "list_price_aria" }} {{ . }}'>
               {{ . }}
             </span>
             {{ end }}
             {{ with .Params.duracion }}
-            <span class="serv-list-card__duration" aria-label="Duración: {{ . }}">
+            <span class="serv-list-card__duration" aria-label='{{ i18n "list_duration_aria" }} {{ . }}'>
               <span aria-hidden="true">⏱</span>
               {{ . }}
             </span>
@@ -408,7 +408,7 @@
           </p>
 
           <span class="btn btn--sm btn-outline-dark serv-list-card__cta" aria-hidden="true">
-            Ver experiencia →
+            {{ i18n "list_card_cta" }}
           </span>
         </div>
       </a>
@@ -422,11 +422,8 @@
          ============================================================ */}}
     <div class="serv-list-empty" role="status" aria-live="polite">
       <span class="serv-list-empty__icon" aria-hidden="true">🌿</span>
-      <h2 class="serv-list-empty__title">Próximamente</h2>
-      <p class="serv-list-empty__text">
-        Estamos preparando nuevas experiencias para ti en el Valle de Guadalest.
-        Vuelve pronto para descubrirlas.
-      </p>
+      <h2 class="serv-list-empty__title">{{ i18n "list_empty_title" }}</h2>
+      <p class="serv-list-empty__text">{{ i18n "list_empty_text" }}</p>
     </div>
 
     {{ end }}

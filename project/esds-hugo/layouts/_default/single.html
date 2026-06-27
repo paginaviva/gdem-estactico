@@ -1013,7 +1013,7 @@
   {{ with .Params.programa }}
   <section class="service-programa" aria-labelledby="programa-title-mobile">
     <div class="container">
-      <h2 id="programa-title-mobile" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
+      <h2 id="programa-title-mobile" class="section-title__heading text-center mb-4">{{ i18n "single_programa_title" }}</h2>
       <div class="service-programa__steps">
         {{ range $i, $step := . }}
         <div class="service-programa__step">
@@ -1021,7 +1021,7 @@
             <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
             <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
             {{ with $step.hora }}
-            <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+            <span class="service-programa__step-time" aria-label='{{ i18n "single_programa_aria_horario" }}{{ . }}'>{{ . }}</span>
             {{ end }}
           </div>
           {{ with $step.imagen }}
@@ -1038,7 +1038,7 @@
       </div>
       <div class="service-programa__fin">
         <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
-        <span>Fin de la experiencia</span>
+        <span>{{ i18n "single_programa_fin" }}</span>
       </div>
     </div>
   </section>
@@ -1049,11 +1049,11 @@
   {{ if or .Params.incluye .Params.no_incluye .Params.equipaje }}
   <section class="service-tres-col-wrap" aria-labelledby="tres-col-title-mobile">
     <div class="container">
-      <h2 id="tres-col-title-mobile" class="sr-only">Qué incluye, qué no incluye y qué llevar</h2>
+      <h2 id="tres-col-title-mobile" class="sr-only">{{ i18n "single_tres_col_sr" }}</h2>
       <div class="service-tres-col">
         {{ with .Params.incluye }}
         <div class="service-tres-col__item">
-          <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> Incluye</h3>
+          <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> {{ i18n "single_incluye" }}</h3>
           <ul class="service-tres-col__list">
             {{ range . }}
             <li class="service-tres-col__li service-tres-col__li--si">
@@ -1067,7 +1067,7 @@
 
         {{ with .Params.no_incluye }}
         <div class="service-tres-col__item">
-          <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> No incluye</h3>
+          <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> {{ i18n "single_no_incluye" }}</h3>
           <ul class="service-tres-col__list">
             {{ range . }}
             <li class="service-tres-col__li service-tres-col__li--no">
@@ -1081,7 +1081,7 @@
 
         {{ with .Params.equipaje }}
         <div class="service-tres-col__item">
-          <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> Qué llevar</h3>
+          <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> {{ i18n "single_que_llevar" }}</h3>
           <ul class="service-tres-col__list">
             {{ range . }}
             <li class="service-tres-col__li service-tres-col__li--equipaje">
@@ -1166,7 +1166,7 @@
   {{ with .Params.para_quien_es }}
   <section class="service-media service-media--stack" aria-labelledby="para-quien-mobile-title">
     <div class="container">
-      <h2 id="para-quien-mobile-title" class="service-media__title">Para quién es</h2>
+      <h2 id="para-quien-mobile-title" class="service-media__title">{{ i18n "single_para_quien" }}</h2>
       <div class="service-media__body">{{ . | markdownify }}</div>
     </div>
   </section>
@@ -1176,7 +1176,7 @@
   {{ with .Params.por_que_elegir }}
   <section class="service-media service-media--stack" aria-labelledby="por-que-mobile-title">
     <div class="container">
-      <h2 id="por-que-mobile-title" class="service-media__title">Por qué elegir esta experiencia</h2>
+      <h2 id="por-que-mobile-title" class="service-media__title">{{ i18n "single_por_que_elegir" }}</h2>
       <div class="service-media__body">{{ . | markdownify }}</div>
     </div>
   </section>
@@ -1258,7 +1258,7 @@
   {{ with .Params.programa }}
   <section class="service-programa" aria-labelledby="programa-title">
     <div class="container">
-      <h2 id="programa-title" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
+      <h2 id="programa-title" class="section-title__heading text-center mb-4">{{ i18n "single_programa_title" }}</h2>
       <div class="service-programa__steps">
         {{ range $i, $step := . }}
         <div class="service-programa__step">
@@ -1266,7 +1266,7 @@
             <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
             <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
             {{ with $step.hora }}
-            <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+            <span class="service-programa__step-time" aria-label='{{ i18n "single_programa_aria_horario" }}{{ . }}'>{{ . }}</span>
             {{ end }}
           </div>
           {{ with $step.imagen }}
@@ -1283,7 +1283,7 @@
       </div>
       <div class="service-programa__fin">
         <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
-        <span>Fin de la experiencia</span>
+        <span>{{ i18n "single_programa_fin" }}</span>
       </div>
     </div>
   </section>
@@ -1294,11 +1294,11 @@
   {{ if or .Params.incluye .Params.no_incluye .Params.equipaje }}
   <section class="service-tres-col-wrap" aria-labelledby="tres-col-title">
     <div class="container">
-      <h2 id="tres-col-title" class="sr-only">Qué incluye, qué no incluye y qué llevar</h2>
+      <h2 id="tres-col-title" class="sr-only">{{ i18n "single_tres_col_sr" }}</h2>
       <div class="service-tres-col">
         {{ with .Params.incluye }}
         <div class="service-tres-col__item">
-          <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> Incluye</h3>
+          <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> {{ i18n "single_incluye" }}</h3>
           <ul class="service-tres-col__list">
             {{ range . }}
             <li class="service-tres-col__li service-tres-col__li--si">
@@ -1311,7 +1311,7 @@
         {{ end }}
         {{ with .Params.no_incluye }}
         <div class="service-tres-col__item">
-          <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> No incluye</h3>
+          <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> {{ i18n "single_no_incluye" }}</h3>
           <ul class="service-tres-col__list">
             {{ range . }}
             <li class="service-tres-col__li service-tres-col__li--no">
@@ -1324,7 +1324,7 @@
         {{ end }}
         {{ with .Params.equipaje }}
         <div class="service-tres-col__item">
-          <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> Qué llevar</h3>
+          <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> {{ i18n "single_que_llevar" }}</h3>
           <ul class="service-tres-col__list">
             {{ range . }}
             <li class="service-tres-col__li service-tres-col__li--equipaje">
@@ -1353,7 +1353,7 @@
         {{ end }}
       {{ end }}
       <div class="service-media__text">
-        <h2 id="para-quien-title" class="service-media__title">Para quién es</h2>
+        <h2 id="para-quien-title" class="service-media__title">{{ i18n "single_para_quien" }}</h2>
         <div class="service-media__body">
           {{ .Params.para_quien_es | markdownify }}
         </div>
@@ -1367,7 +1367,7 @@
   <section class="service-media service-media--img-dcha" aria-labelledby="por-que-elegir-title">
     <div class="service-media__container">
       <div class="service-media__text">
-        <h2 id="por-que-elegir-title" class="service-media__title">Por qué elegir esta experiencia</h2>
+        <h2 id="por-que-elegir-title" class="service-media__title">{{ i18n "single_por_que_elegir" }}</h2>
         <div class="service-media__body">
           {{ .Params.por_que_elegir | markdownify }}
         </div>
@@ -1391,25 +1391,22 @@
      ============================================== */}}
 <section class="service-cta"
          style="background-image: url('{{ .Params.imagen_hero | default "/images/default-cta.jpg" }}');"
-         aria-label="Reserva tu experiencia">
+         aria-label='{{ i18n "single_cta_label" }}'>
   <div class="service-cta__overlay" aria-hidden="true"></div>
   <div class="service-cta__content">
-    <h2 class="service-cta__title">¿Te animas a vivirlo?</h2>
-    <p class="service-cta__text">
-      Reserva tu plaza y vive una experiencia única en el Valle de Guadalest.
-      Elena te guiará en cada momento.
-    </p>
+    <h2 class="service-cta__title">{{ i18n "single_cta_title" }}</h2>
+    <p class="service-cta__text">{{ i18n "single_cta_text" }}</p>
     {{ $whatsappNum := .Site.Params.whatsapp_number | default "34600000000" }}
     {{ $mensaje := .Params.whatsapp_mensaje | default "Hola, quiero reservar una experiencia" }}
     <a href="https://wa.me/{{ $whatsappNum }}?text={{ $mensaje | urlquery }}"
        class="btn btn-whatsapp"
        target="_blank"
        rel="noopener noreferrer"
-       aria-label="Reservar por WhatsApp">
-      💬 Reservar por WhatsApp →
+       aria-label='{{ i18n "single_cta_btn" }}'>
+      {{ i18n "single_cta_btn" }}
     </a>
     <p class="service-cta__mensaje">
-      Mensaje: "{{ $mensaje }}"
+      {{ i18n "single_cta_mensaje_prefix" }} "{{ $mensaje }}"
     </p>
   </div>
 </section>
@@ -1422,8 +1419,8 @@
 <section class="service-relacionados" aria-labelledby="relacionados-title">
   <div class="container">
     <div class="section-title">
-      <h2 id="relacionados-title" class="section-title__heading">Otras experiencias</h2>
-      <p class="section-title__sub">Descubre más formas de conectar contigo en la naturaleza</p>
+      <h2 id="relacionados-title" class="section-title__heading">{{ i18n "single_relacionados_title" }}</h2>
+      <p class="section-title__sub">{{ i18n "single_relacionados_subtitle" }}</p>
       <div class="section-title__divider" aria-hidden="true">
         <span></span>
         <span class="section-title__divider-icon">✦</span>
@@ -1438,12 +1435,12 @@
              alt="Persona practicando yoga al aire libre"
              loading="lazy">
         <div class="service-relacionados__card-body">
-          <h3 class="service-relacionados__card-title">Yoga &amp; Mindfulness</h3>
+          <h3 class="service-relacionados__card-title">{{ i18n "single_relacionados_yoga" }}</h3>
           <div class="service-relacionados__card-meta">
-            <span class="service-relacionados__card-price">30 €</span>
-            <span>1:30 h</span>
+            <span class="service-relacionados__card-price">{{ i18n "single_relacionados_precio_yoga" }}</span>
+            <span>{{ i18n "single_relacionados_duracion_yoga_kayak" }}</span>
           </div>
-          <span class="btn btn--sm btn-outline-dark">Ver más →</span>
+          <span class="btn btn--sm btn-outline-dark">{{ i18n "single_relacionados_card_cta" }}</span>
         </div>
       </a>
 
@@ -1454,12 +1451,12 @@
              alt="Kayak en el embalse de Guadalest"
              loading="lazy">
         <div class="service-relacionados__card-body">
-          <h3 class="service-relacionados__card-title">Kayak en el Embalse</h3>
+          <h3 class="service-relacionados__card-title">{{ i18n "single_relacionados_kayak" }}</h3>
           <div class="service-relacionados__card-meta">
-            <span class="service-relacionados__card-price">20 €</span>
-            <span>1:30 h</span>
+            <span class="service-relacionados__card-price">{{ i18n "single_relacionados_precio_kayak" }}</span>
+            <span>{{ i18n "single_relacionados_duracion_yoga_kayak" }}</span>
           </div>
-          <span class="btn btn--sm btn-outline-dark">Ver más →</span>
+          <span class="btn btn--sm btn-outline-dark">{{ i18n "single_relacionados_card_cta" }}</span>
         </div>
       </a>
 
@@ -1470,12 +1467,12 @@
              alt="Persona caminando en silencio por el valle"
              loading="lazy">
         <div class="service-relacionados__card-body">
-          <h3 class="service-relacionados__card-title">Caminata Consciente</h3>
+          <h3 class="service-relacionados__card-title">{{ i18n "single_relacionados_caminata" }}</h3>
           <div class="service-relacionados__card-meta">
-            <span class="service-relacionados__card-price">25 €</span>
-            <span>~2 h</span>
+            <span class="service-relacionados__card-price">{{ i18n "single_relacionados_precio_caminata" }}</span>
+            <span>{{ i18n "single_relacionados_duracion_caminata" }}</span>
           </div>
-          <span class="btn btn--sm btn-outline-dark">Ver más →</span>
+          <span class="btn btn--sm btn-outline-dark">{{ i18n "single_relacionados_card_cta" }}</span>
         </div>
       </a>
     </div>

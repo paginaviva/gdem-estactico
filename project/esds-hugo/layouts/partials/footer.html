@@ -7,7 +7,7 @@
       <a href="/" class="site-footer__logo" aria-label="{{ .Site.Title }} — Ir a inicio">
         {{ .Site.Title }}
       </a>
-      <p class="site-footer__claim">Naturaleza. Bienestar. Aventura. Tú.</p>
+      <p class="site-footer__claim">{{ i18n "footer_claim" }}</p>
     </div>
 
     {{/* Divider */}}
@@ -28,10 +28,10 @@
     </div>
 
     {{/* Location */}}
-    <p class="site-footer__location">Hecho con amor en Guadalest Valley</p>
+    <p class="site-footer__location">{{ i18n "footer_location" }}</p>
 
     {{/* Copyright */}}
-    <p class="site-footer__copyright">&copy; 2026 {{ .Site.Title }}</p>
+    <p class="site-footer__copyright">{{ replace (i18n "footer_copyright") "2026" (now.Year) }}</p>
 
   </div>
 </footer>

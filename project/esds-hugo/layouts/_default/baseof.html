@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="{{ .Site.Params.description | default "Experiencias conscientes en el Embalse de Guadalest — Yoga, Kayak, Caminatas y Retiros en el Valle de Guadalest, Alicante." }}">
-  <meta name="keywords" content="{{ .Site.Params.keywords | default "yoga, kayak, caminata consciente, Guadalest, bienestar, naturaleza, aventura, Alicante, Costa Blanca, retiro, meditación, mindfulness" }}">
+  <meta name="description" content="{{ .Site.Params.description | default (i18n "baseof_meta_desc") }}">
+  <meta name="keywords" content="{{ .Site.Params.keywords | default (i18n "baseof_meta_keywords") }}">
 
   <!-- Google Fonts: Playfair Display (titulares), Pacifico (manuscrita), Inter (cuerpo) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
