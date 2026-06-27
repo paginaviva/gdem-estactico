@@ -1531,3 +1531,92 @@ p {
     color: black;
   }
 }
+
+
+/* ============================================================
+   SUBMENÚ DROPDOWN — .nav__item--has-children / .nav__sublist
+   Mantiene convención BEM del nav existente
+   ============================================================ */
+
+/* --- Item padre con hijos --- */
+.nav__item--has-children {
+  position: relative;
+}
+
+/* --- Submenú oculto por defecto --- */
+.nav__sublist {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--blanco, #ffffff);
+  min-width: 220px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 var(--radius-md, 8px) var(--radius-md, 8px);
+  padding: 0.5rem 0;
+  z-index: 100;
+  list-style: none;
+  margin: 0;
+}
+
+/* --- Mostrar en hover / focus (desktop) --- */
+.nav__item--has-children:hover > .nav__sublist,
+.nav__item--has-children:focus-within > .nav__sublist {
+  display: block;
+}
+
+/* --- Enlaces del submenú --- */
+.nav__sublink {
+  display: block;
+  padding: 0.5rem 1.25rem;
+  color: var(--verde-bosque, #3E4A3C);
+  text-decoration: none;
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transition: background-color var(--transition-fast, 0.2s), color var(--transition-fast, 0.2s);
+}
+
+.nav__sublink:hover,
+.nav__sublink:focus-visible {
+  background-color: var(--beige, #F5EDE4);
+  color: var(--verde-oscuro, #2D3A2C);
+}
+
+/* --- Responsive móvil: submenú estático --- */
+@media (max-width: 767px) {
+  .nav__item--has-children {
+    position: static;
+  }
+
+  .nav__sublist {
+    position: static;
+    box-shadow: none;
+    padding-left: var(--space-lg, 1.25rem);
+    border-radius: 0;
+    display: none;
+  }
+
+  /* Desactivar hover/focus en móvil — solo .open controla */
+  .nav__item--has-children:hover > .nav__sublist,
+  .nav__item--has-children:focus-within > .nav__sublist {
+    display: none;
+  }
+
+  /* Abierto con JS (clase .open añadida por toggle) */
+  .nav__item--has-children.open > .nav__sublist {
+    display: block;
+  }
+
+  .nav__sublink {
+    white-space: normal;
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* --- Accesibilidad: reducir movimiento --- */
+@media (prefers-reduced-motion: reduce) {
+  .nav__sublink {
+    transition: none;
+  }
+}

@@ -210,3 +210,9 @@ menu_caminata: "Caminata Consciente"
 menu_transfer_actividad: "Transfer Actividad"
 menu_transfer_privado: "Transfer Privado"
 menu_informacion: "Información"
+
+# ── Header (aria-labels) ──────────────────────────
+header_aria_nav: "Navegación principal"
+header_aria_toggle: "Abrir menú de navegación"
+header_aria_logo: "{{ .SiteTitle }} — Ir a inicio"
+header_aria_instagram: "Síguenos en Instagram @elsonido.silencio"

@@ -33,31 +33,31 @@ menu:
       url: "/servicios/"
       weight: 2
 
-    - identifier: "exp-1"
+    - identifier: "mini_retiro"
       name: "Mini Retiro"
       parent: "experiencias"
       url: "/servicios/mini-retiro/"
       weight: 1
 
-    - identifier: "exp-2"
+    - identifier: "tarde_conexion"
       name: "Tarde de Conexión"
       parent: "experiencias"
       url: ""
       weight: 2
 
-    - identifier: "exp-3"
+    - identifier: "yoga"
       name: "Yoga & Mindfulness"
       parent: "experiencias"
       url: ""
       weight: 3
 
-    - identifier: "exp-4"
+    - identifier: "kayak"
       name: "Kayak"
       parent: "experiencias"
       url: ""
       weight: 4
 
-    - identifier: "exp-5"
+    - identifier: "caminata"
       name: "Caminata Consciente"
       parent: "experiencias"
       url: ""
@@ -68,19 +68,19 @@ menu:
       url: "#"
       weight: 3
 
-    - identifier: "srv-1"
+    - identifier: "transfer_actividad"
       name: "Transfer Actividad"
       parent: "servicios"
       url: ""
       weight: 1
 
-    - identifier: "srv-2"
+    - identifier: "transfer_privado"
       name: "Transfer Privado"
       parent: "servicios"
       url: ""
       weight: 2
 
-    - identifier: "srv-3"
+    - identifier: "informacion"
       name: "Información"
       parent: "servicios"
       url: "#informacion"
