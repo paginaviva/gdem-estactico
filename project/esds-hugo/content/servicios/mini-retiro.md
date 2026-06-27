@@ -84,6 +84,26 @@ por_que_elegir: |
   **Un entorno único.** El Embalse de Guadalest, rodeado de montañas y bañado por una luz que cambia con cada hora, es el escenario que convierte una actividad en un recuerdo imborrable. No hay dos mañanas iguales.
 
   **Guiado con corazón.** Elena conoce cada rincón de este valle y lo entrega con la generosidad de quien ha encontrado aquí su lugar en el mundo. Cada actividad se vive con presencia, con calma, con la certeza de que estás exactamente donde debes estar.
+
+actividades:
+  - titulo: "Yoga al amanecer"
+    descripcion: |
+      La mañana despierta y tú con ella. Sobre la tierra aún fresca, junto al embalse, iniciamos la práctica de Hatha Yoga con asanas suaves que estiran y fortalecen el cuerpo. Los pranayamas —ejercicios de respiración consciente— llenan los pulmones de aire puro mientras el sol asoma entre las montañas. Cerramos con una meditación guiada en la que el único sonido es el de la naturaleza desperezándose.
+
+      El cuerpo se despierta, la mente se aquieta y el silencio se instala en ti.
+  - titulo: "Caminata Consciente"
+    descripcion: |
+      Con el cuerpo ya despierto, emprendemos una caminata meditativa en absoluto silencio por los senderos del valle. Aquí no hay prisa, no hay destino, no hay móvil. Solo tus pasos sobre la tierra, el roce del viento entre los pinos, el canto lejano de un pájaro, tu respiración acompañando cada zancada.
+
+      Cada paso es una vuelta a casa. Cada instante, una oportunidad para escuchar lo que el valle tiene que decirte.
+  - titulo: "Kayak en el Embalse"
+    descripcion: |
+      La mañana culmina sobre el agua. Te deslizas en kayak por las aguas del embalse de Guadalest mientras las montañas te abrazan desde todas las direcciones. El remo entra y sale del agua con un sonido suave y rítmico. El silencio se vuelve líquido.
+
+      Desde el centro del embalse, la perspectiva es otra: ves el valle entero, el cielo reflejado, la vida desde una nueva orilla.
+cita_elena: >
+  "Cuando una persona vive el ciclo completo —despertar el cuerpo, caminar en silencio, navegar sobre el agua— algo en ella se recoloca. Vuelve a casa con una paz que no se explica, se siente."
+cita_elena_autor: "Elena"
 ---
 
 ## La experiencia completa
@@ -91,31 +111,5 @@ por_que_elegir: |
 Hay mañanas que lo cambian todo. Esta empieza con el sol besando la lámina del embalse, continúa con tus pasos sobre la tierra del valle y termina deslizándote sobre aguas que reflejan montañas milenarias. El Mini Retiro es la esencia de El Sonido del Silencio condensada en cinco horas: una mañana para reconectar contigo a través de tres disciplinas que abrazan el cuerpo, la mente y el espíritu.
 
 No necesitas experiencia previa. Solo llegar con el corazón abierto y las ganas de regalarte un día diferente.
-
----
-
-### Yoga al amanecer
-
-La mañana despierta y tú con ella. Sobre la tierra aún fresca, junto al embalse, iniciamos la práctica de Hatha Yoga con asanas suaves que estiran y fortalecen el cuerpo. Los pranayamas —ejercicios de respiración consciente— llenan los pulmones de aire puro mientras el sol asoma entre las montañas. Cerramos con una meditación guiada en la que el único sonido es el de la naturaleza desperezándose.
-
-El cuerpo se despierta, la mente se aquieta y el silencio se instala en ti.
-
-### Caminata Consciente
-
-Con el cuerpo ya despierto, emprendemos una caminata meditativa en absoluto silencio por los senderos del valle. Aquí no hay prisa, no hay destino, no hay móvil. Solo tus pasos sobre la tierra, el roce del viento entre los pinos, el canto lejano de un pájaro, tu respiración acompañando cada zancada.
-
-Cada paso es una vuelta a casa. Cada instante, una oportunidad para escuchar lo que el valle tiene que decirte.
-
-### Kayak en el Embalse
-
-La mañana culmina sobre el agua. Te deslizas en kayak por las aguas del embalse de Guadalest mientras las montañas te abrazan desde todas las direcciones. El remo entra y sale del agua con un sonido suave y rítmico. El silencio se vuelve líquido.
-
-Desde el centro del embalse, la perspectiva es otra: ves el valle entero, el cielo reflejado, la vida desde una nueva orilla.
-
----
-
-> "Cuando una persona vive el ciclo completo —despertar el cuerpo, caminar en silencio, navegar sobre el agua— algo en ella se recoloca. Vuelve a casa con una paz que no se explica, se siente."
-> — **Elena**
----
 
 *El Sonido del Silencio. Donde el Silencio tiene voz.*

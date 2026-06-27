@@ -762,6 +762,166 @@
 /* ============================================================
    ACCESIBILIDAD: REDUCED MOTION
    ============================================================ */
+/* ============================================================
+   LAYOUT TOGGLE: MOBILE ↔ DESKTOP
+   ============================================================ */
+.service-mobile-layout {
+  display: block;
+}
+
+.service-desktop-layout {
+  display: none;
+}
+
+/* ----------------------------------------------------------
+   MOBILE: Imagen a ancho completo entre bloques
+   ---------------------------------------------------------- */
+.service-mobile-img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background-color: var(--blanco-hueso);
+}
+
+/* ----------------------------------------------------------
+   MOBILE: Contenedor datos + img 1/4
+   ---------------------------------------------------------- */
+.service-datos-contenedor {
+  padding: var(--space-lg) 0 0;
+  background-color: var(--beige);
+}
+
+.service-datos-contenedor .service-datos {
+  padding-bottom: var(--space-lg);
+}
+
+.service-datos-contenedor .service-data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+/* ----------------------------------------------------------
+   MOBILE: Cita de Elena (bloque destacado)
+   ---------------------------------------------------------- */
+.service-cita-block {
+  padding: var(--space-xl) 0;
+  background-color: var(--blanco-hueso);
+  border-top: 2px solid var(--borde);
+  border-bottom: 2px solid var(--borde);
+}
+
+.service-cita-block__quote {
+  margin: 0;
+  padding: var(--space-lg) var(--space-xl);
+  background-color: var(--blanco);
+  border-left: 4px solid var(--dorado);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  color: var(--texto-oscuro);
+  line-height: 1.5;
+}
+
+.service-cita-block__quote p {
+  margin-bottom: 0;
+}
+
+.service-cita-block__autor {
+  display: block;
+  margin-top: var(--space-sm);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-style: normal;
+  color: var(--dorado);
+}
+
+/* ----------------------------------------------------------
+   MOBILE: Actividades (Yoga, Caminata, Kayak)
+   ---------------------------------------------------------- */
+.service-actividades {
+  padding: var(--space-xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.service-actividad {
+  margin-bottom: var(--space-lg);
+}
+
+.service-actividad:last-child {
+  margin-bottom: 0;
+}
+
+.service-actividad__titulo {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--verde-bosque);
+  margin-bottom: var(--space-sm);
+}
+
+.service-actividad__desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--texto-oscuro);
+}
+
+.service-actividad__desc p:last-child {
+  margin-bottom: 0;
+}
+
+/* ----------------------------------------------------------
+   MOBILE: Para quién / Por qué (stack, sin grid)
+   ---------------------------------------------------------- */
+.service-media--stack {
+  padding: var(--space-2xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.service-media--stack + .service-media--stack {
+  border-top: 2px solid var(--borde);
+}
+
+.service-media--stack .service-media__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--texto-oscuro);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+.service-media--stack .service-media__body {
+  font-size: 1.063rem;
+  line-height: 1.7;
+  color: var(--texto-oscuro);
+}
+
+.service-media--stack .service-media__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   DESKTOP (≥768px): Mostrar desktop, ocultar mobile
+   ============================================================ */
+@media (min-width: 768px) {
+  .service-mobile-layout {
+    display: none;
+  }
+
+  .service-desktop-layout {
+    display: block;
+  }
+}
+
+/* ============================================================
+   ACCESIBILIDAD: REDUCED MOTION
+   ============================================================ */
 @media (prefers-reduced-motion: reduce) {
   .service-data-card,
   .service-relacionados__card {
@@ -798,9 +958,223 @@
 </section>
 
 {{/* ==============================================
-     TWO-COLUMN WRAPPER (desktop 7fr / 4fr)
-     Contiene: ❷ Contenido principal + ❸ Datos
+     LAYOUT MÓVIL (< 768px)
+     Orden definido por el usuario:
+     A=Content → B=Datos+img1/4 → C=Programa → D=TresCol → E=img2/4 → F=Cita → G=img3/4 → H=Actividades → I=img4/4 → J=ParaQuien → K=PorQueElegir
      ============================================== */}}
+<div class="service-mobile-layout">
+
+  {{/* A — La experiencia completa (.Content) */}}
+  <section class="service-descripcion" aria-labelledby="descripcion-title-mobile">
+    <div class="container">
+      <h2 id="descripcion-title-mobile" class="sr-only">La experiencia completa</h2>
+      <div class="service-descripcion__content">
+        {{ .Content }}
+      </div>
+    </div>
+  </section>
+
+  {{/* B — Datos prácticos + img 1/4 */}}
+  <div class="service-datos-contenedor">
+    {{ partial "datos-servicio" . }}
+
+    {{ with .Params.imagenes_galeria }}
+      {{ range $i, $img := . }}
+        {{ if eq $i 0 }}
+        <img src="{{ $img.src }}"
+             alt="{{ $img.alt }}"
+             loading="lazy"
+             class="service-mobile-img">
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  </div>
+
+  {{/* C — Programa (solo packs) */}}
+  {{ if eq .Params.tipo "pack" }}
+  {{ with .Params.programa }}
+  <section class="service-programa" aria-labelledby="programa-title-mobile">
+    <div class="container">
+      <h2 id="programa-title-mobile" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
+      <div class="service-programa__steps">
+        {{ range $i, $step := . }}
+        <div class="service-programa__step">
+          <div class="service-programa__step-header">
+            <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
+            <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
+            {{ with $step.hora }}
+            <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ with $step.imagen }}
+          <img class="service-programa__step-img"
+               src="{{ . }}"
+               alt="{{ $step.paso }}"
+               loading="lazy">
+          {{ end }}
+          {{ with $step.desc }}
+          <p class="service-programa__step-desc">{{ . }}</p>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+      <div class="service-programa__fin">
+        <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
+        <span>Fin de la experiencia</span>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+  {{ end }}
+
+  {{/* D — Incluye | No incluye | Llevar */}}
+  {{ if or .Params.incluye .Params.no_incluye .Params.equipaje }}
+  <section class="service-tres-col-wrap" aria-labelledby="tres-col-title-mobile">
+    <div class="container">
+      <h2 id="tres-col-title-mobile" class="sr-only">Qué incluye, qué no incluye y qué llevar</h2>
+      <div class="service-tres-col">
+        {{ with .Params.incluye }}
+        <div class="service-tres-col__item">
+          <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> Incluye</h3>
+          <ul class="service-tres-col__list">
+            {{ range . }}
+            <li class="service-tres-col__li service-tres-col__li--si">
+              <span aria-hidden="true">✓</span>
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+
+        {{ with .Params.no_incluye }}
+        <div class="service-tres-col__item">
+          <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> No incluye</h3>
+          <ul class="service-tres-col__list">
+            {{ range . }}
+            <li class="service-tres-col__li service-tres-col__li--no">
+              <span aria-hidden="true">✗</span>
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+
+        {{ with .Params.equipaje }}
+        <div class="service-tres-col__item">
+          <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> Qué llevar</h3>
+          <ul class="service-tres-col__list">
+            {{ range . }}
+            <li class="service-tres-col__li service-tres-col__li--equipaje">
+              <span aria-hidden="true">🎒</span>
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* E — img 2/4 */}}
+  {{ with .Params.imagenes_galeria }}
+    {{ range $i, $img := . }}
+      {{ if eq $i 1 }}
+      <img src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           class="service-mobile-img">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* F — Cita de Elena */}}
+  {{ with .Params.cita_elena }}
+  <section class="service-cita-block" aria-label="Cita de Elena">
+    <div class="container">
+      <blockquote class="service-cita-block__quote">
+        <p>{{ . | markdownify }}</p>
+        {{ with $.Params.cita_elena_autor }}
+        <footer class="service-cita-block__autor">— <cite>{{ . }}</cite></footer>
+        {{ end }}
+      </blockquote>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* G — img 3/4 */}}
+  {{ with .Params.imagenes_galeria }}
+    {{ range $i, $img := . }}
+      {{ if eq $i 2 }}
+      <img src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           class="service-mobile-img">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* H — Actividades (Yoga, Caminata, Kayak) */}}
+  {{ with .Params.actividades }}
+  <section class="service-actividades" aria-labelledby="actividades-title-mobile">
+    <div class="container">
+      <h2 id="actividades-title-mobile" class="sr-only">Actividades de la experiencia</h2>
+      {{ range . }}
+      <div class="service-actividad">
+        <h3 class="service-actividad__titulo">{{ .titulo }}</h3>
+        <div class="service-actividad__desc">{{ .descripcion | markdownify }}</div>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* I — img 4/4 */}}
+  {{ with .Params.imagenes_galeria }}
+    {{ range $i, $img := . }}
+      {{ if eq $i 3 }}
+      <img src="{{ $img.src }}"
+           alt="{{ $img.alt }}"
+           loading="lazy"
+           class="service-mobile-img">
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/* J — Para quién es */}}
+  {{ with .Params.para_quien_es }}
+  <section class="service-media service-media--stack" aria-labelledby="para-quien-mobile-title">
+    <div class="container">
+      <h2 id="para-quien-mobile-title" class="service-media__title">Para quién es</h2>
+      <div class="service-media__body">{{ . | markdownify }}</div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* K — Por qué elegir */}}
+  {{ with .Params.por_que_elegir }}
+  <section class="service-media service-media--stack" aria-labelledby="por-que-mobile-title">
+    <div class="container">
+      <h2 id="por-que-mobile-title" class="service-media__title">Por qué elegir esta experiencia</h2>
+      <div class="service-media__body">{{ . | markdownify }}</div>
+    </div>
+  </section>
+  {{ end }}
+
+</div>{{/* /service-mobile-layout */}}
+
+{{/* ==============================================
+     LAYOUT DESKTOP (≥ 768px)
+     Mismo orden que el original:
+     ❷ Contenido+actividades+cita+img2/4 | ❸ Datos
+     ❹ Banner img1/4 → ❺ Programa → ❻ TresCol
+     ❼ img3/4+ParaQuien → ❽ PorQueElegir+img4/4
+     ============================================== */}}
+<div class="service-desktop-layout">
+
 <div class="service-two-col-wrapper">
 
   {{/* === ❷ CONTENIDO PRINCIPAL (left column) === */}}
@@ -810,7 +1184,25 @@
       <div class="service-descripcion__content">
         {{ .Content }}
 
-        {{/* 🖼️ img 2/4 — después del contenido renderizado */}}
+        {{/* Actividades desde front matter */}}
+        {{ with .Params.actividades }}
+          {{ range . }}
+            <h3>{{ .titulo }}</h3>
+            <p>{{ .descripcion | markdownify }}</p>
+          {{ end }}
+        {{ end }}
+
+        {{/* Cita de Elena */}}
+        {{ with .Params.cita_elena }}
+          <blockquote>
+            <p>{{ . | markdownify }}</p>
+            {{ with $.Params.cita_elena_autor }}
+            <footer>— <cite>{{ . }}</cite></footer>
+            {{ end }}
+          </blockquote>
+        {{ end }}
+
+        {{/* 🖼️ img 2/4 */}}
         {{ with .Params.imagenes_galeria }}
           {{ range $i, $img := . }}
             {{ if eq $i 1 }}
@@ -830,168 +1222,152 @@
 
 </div>{{/* /service-two-col-wrapper */}}
 
-{{/* ==============================================
-     ❹ BANNER — Imagen 1/4 a ancho completo
-     ============================================== */}}
-{{ with .Params.imagenes_galeria }}
-  {{ range $i, $img := . }}
-    {{ if eq $i 0 }}
-    <section class="service-banner" aria-label="Imagen destacada de la experiencia">
-      <img src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           class="service-banner__img">
-    </section>
+  {{/* ❹ BANNER — img 1/4 */}}
+  {{ with .Params.imagenes_galeria }}
+    {{ range $i, $img := . }}
+      {{ if eq $i 0 }}
+      <section class="service-banner" aria-label="Imagen destacada de la experiencia">
+        <img src="{{ $img.src }}"
+             alt="{{ $img.alt }}"
+             loading="lazy"
+             class="service-banner__img">
+      </section>
+      {{ end }}
     {{ end }}
   {{ end }}
-{{ end }}
 
-{{/* ==============================================
-     ❺ PROGRAMA — Timeline visual (solo packs)
-     Fuera del two-col-wrapper, full-width
-     ============================================== */}}
-{{ if eq .Params.tipo "pack" }}
-{{ with .Params.programa }}
-<section class="service-programa" aria-labelledby="programa-title">
-  <div class="container">
-    <h2 id="programa-title" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
-    <div class="service-programa__steps">
-      {{ range $i, $step := . }}
-      <div class="service-programa__step">
-        <div class="service-programa__step-header">
-          <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
-          <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
-          {{ with $step.hora }}
-          <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+  {{/* ❺ PROGRAMA (solo packs) */}}
+  {{ if eq .Params.tipo "pack" }}
+  {{ with .Params.programa }}
+  <section class="service-programa" aria-labelledby="programa-title">
+    <div class="container">
+      <h2 id="programa-title" class="section-title__heading text-center mb-4">Programa de la experiencia</h2>
+      <div class="service-programa__steps">
+        {{ range $i, $step := . }}
+        <div class="service-programa__step">
+          <div class="service-programa__step-header">
+            <span class="service-programa__step-num" aria-hidden="true">{{ add $i 1 }}</span>
+            <h3 class="service-programa__step-title">{{ $step.paso }}</h3>
+            {{ with $step.hora }}
+            <span class="service-programa__step-time" aria-label="Horario: {{ . }}">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ with $step.imagen }}
+          <img class="service-programa__step-img"
+               src="{{ . }}"
+               alt="{{ $step.paso }}"
+               loading="lazy">
+          {{ end }}
+          {{ with $step.desc }}
+          <p class="service-programa__step-desc">{{ . }}</p>
           {{ end }}
         </div>
-        {{ with $step.imagen }}
-        <img class="service-programa__step-img"
-             src="{{ . }}"
-             alt="{{ $step.paso }}"
-             loading="lazy">
-        {{ end }}
-        {{ with $step.desc }}
-        <p class="service-programa__step-desc">{{ . }}</p>
         {{ end }}
       </div>
-      {{ end }}
-    </div>
-    <div class="service-programa__fin">
-      <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
-      <span>Fin de la experiencia</span>
-    </div>
-  </div>
-</section>
-{{ end }}
-{{ end }}
-
-{{/* ==============================================
-     ❻ TRES COLUMNAS: Incluye | No incluye | Llevar
-     Grid 3 columnas iguales
-     ============================================== */}}
-{{ if or .Params.incluye .Params.no_incluye .Params.equipaje }}
-<section class="service-tres-col-wrap" aria-labelledby="tres-col-title">
-  <div class="container">
-    <h2 id="tres-col-title" class="sr-only">Qué incluye, qué no incluye y qué llevar</h2>
-    <div class="service-tres-col">
-      {{ with .Params.incluye }}
-      <div class="service-tres-col__item">
-        <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> Incluye</h3>
-        <ul class="service-tres-col__list">
-          {{ range . }}
-          <li class="service-tres-col__li service-tres-col__li--si">
-            <span aria-hidden="true">✓</span>
-            <span>{{ . }}</span>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-
-      {{ with .Params.no_incluye }}
-      <div class="service-tres-col__item">
-        <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> No incluye</h3>
-        <ul class="service-tres-col__list">
-          {{ range . }}
-          <li class="service-tres-col__li service-tres-col__li--no">
-            <span aria-hidden="true">✗</span>
-            <span>{{ . }}</span>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-
-      {{ with .Params.equipaje }}
-      <div class="service-tres-col__item">
-        <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> Qué llevar</h3>
-        <ul class="service-tres-col__list">
-          {{ range . }}
-          <li class="service-tres-col__li service-tres-col__li--equipaje">
-            <span aria-hidden="true">🎒</span>
-            <span>{{ . }}</span>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{/* ==============================================
-     ❼ IMG 3/4 + PARA QUIÉN ES
-     Mobile: img luego texto (stack)
-     Desktop: grid 2 cols (img | texto)
-     ============================================== */}}
-{{ if and .Params.imagenes_galeria .Params.para_quien_es }}
-<section class="service-media service-media--img-izq" aria-labelledby="para-quien-title">
-  <div class="service-media__container">
-    {{ range $i, $img := $.Params.imagenes_galeria }}
-      {{ if eq $i 2 }}
-      <img src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           class="service-media__img">
-      {{ end }}
-    {{ end }}
-    <div class="service-media__text">
-      <h2 id="para-quien-title" class="service-media__title">Para quién es</h2>
-      <div class="service-media__body">
-        {{ .Params.para_quien_es | markdownify }}
+      <div class="service-programa__fin">
+        <span class="service-programa__fin-icon" aria-hidden="true">🏁</span>
+        <span>Fin de la experiencia</span>
       </div>
     </div>
-  </div>
-</section>
-{{ end }}
+  </section>
+  {{ end }}
+  {{ end }}
 
-{{/* ==============================================
-     ❽ POR QUÉ ELEGIR + IMG 4/4
-     Mobile: texto luego img (stack)
-     Desktop: grid 2 cols (texto | img)
-     ============================================== */}}
-{{ if and .Params.imagenes_galeria .Params.por_que_elegir }}
-<section class="service-media service-media--img-dcha" aria-labelledby="por-que-elegir-title">
-  <div class="service-media__container">
-    <div class="service-media__text">
-      <h2 id="por-que-elegir-title" class="service-media__title">Por qué elegir esta experiencia</h2>
-      <div class="service-media__body">
-        {{ .Params.por_que_elegir | markdownify }}
+  {{/* ❻ TRES COLUMNAS */}}
+  {{ if or .Params.incluye .Params.no_incluye .Params.equipaje }}
+  <section class="service-tres-col-wrap" aria-labelledby="tres-col-title">
+    <div class="container">
+      <h2 id="tres-col-title" class="sr-only">Qué incluye, qué no incluye y qué llevar</h2>
+      <div class="service-tres-col">
+        {{ with .Params.incluye }}
+        <div class="service-tres-col__item">
+          <h3 class="service-tres-col__title"><span aria-hidden="true">✅</span> Incluye</h3>
+          <ul class="service-tres-col__list">
+            {{ range . }}
+            <li class="service-tres-col__li service-tres-col__li--si">
+              <span aria-hidden="true">✓</span>
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+        {{ with .Params.no_incluye }}
+        <div class="service-tres-col__item">
+          <h3 class="service-tres-col__title"><span aria-hidden="true">❌</span> No incluye</h3>
+          <ul class="service-tres-col__list">
+            {{ range . }}
+            <li class="service-tres-col__li service-tres-col__li--no">
+              <span aria-hidden="true">✗</span>
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+        {{ with .Params.equipaje }}
+        <div class="service-tres-col__item">
+          <h3 class="service-tres-col__title"><span aria-hidden="true">🎒</span> Qué llevar</h3>
+          <ul class="service-tres-col__list">
+            {{ range . }}
+            <li class="service-tres-col__li service-tres-col__li--equipaje">
+              <span aria-hidden="true">🎒</span>
+              <span>{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
       </div>
     </div>
-    {{ range $i, $img := $.Params.imagenes_galeria }}
-      {{ if eq $i 3 }}
-      <img src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           class="service-media__img">
+  </section>
+  {{ end }}
+
+  {{/* ❼ IMG 3/4 + PARA QUIÉN */}}
+  {{ if and .Params.imagenes_galeria .Params.para_quien_es }}
+  <section class="service-media service-media--img-izq" aria-labelledby="para-quien-title">
+    <div class="service-media__container">
+      {{ range $i, $img := $.Params.imagenes_galeria }}
+        {{ if eq $i 2 }}
+        <img src="{{ $img.src }}"
+             alt="{{ $img.alt }}"
+             loading="lazy"
+             class="service-media__img">
+        {{ end }}
       {{ end }}
-    {{ end }}
-  </div>
-</section>
-{{ end }}
+      <div class="service-media__text">
+        <h2 id="para-quien-title" class="service-media__title">Para quién es</h2>
+        <div class="service-media__body">
+          {{ .Params.para_quien_es | markdownify }}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ❽ POR QUÉ ELEGIR + IMG 4/4 */}}
+  {{ if and .Params.imagenes_galeria .Params.por_que_elegir }}
+  <section class="service-media service-media--img-dcha" aria-labelledby="por-que-elegir-title">
+    <div class="service-media__container">
+      <div class="service-media__text">
+        <h2 id="por-que-elegir-title" class="service-media__title">Por qué elegir esta experiencia</h2>
+        <div class="service-media__body">
+          {{ .Params.por_que_elegir | markdownify }}
+        </div>
+      </div>
+      {{ range $i, $img := $.Params.imagenes_galeria }}
+        {{ if eq $i 3 }}
+        <img src="{{ $img.src }}"
+             alt="{{ $img.alt }}"
+             loading="lazy"
+             class="service-media__img">
+        {{ end }}
+      {{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+</div>{{/* /service-desktop-layout */}}
 
 {{/* ==============================================
      ❾ CTA WHATSAPP — Full-width
