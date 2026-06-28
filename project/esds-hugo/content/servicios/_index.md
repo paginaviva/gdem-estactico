@@ -1,8 +1,10 @@
 ---
-title: "Actividades en Guadalest — Descubre todas nuestras experiencias"
-description: "Descubre nuestras experiencias de bienestar y naturaleza en el Embalse de Guadalest: Yoga, Kayak, Caminatas Conscientes y Retiros en el Valle de Guadalest, Alicante."
-image_hero: "/images/servicios/servicios-hero.jpg"
-image_hero_alt: "Vista del Embalse de Guadalest al atardecer"
+title: "Servicios logísticos | Transfer en Guadalest"
+description: "Servicios de transfer y transporte para tus actividades en el Embalse de Guadalest. Te recogemos en Beniardà y te llevamos al punto de encuentro."
+image_hero: "https://picsum.photos/seed/esds-servicios-hero/1600/900"
+image_hero_alt: "Vista del valle de Guadalest"
+date: 2026-06-28
+draft: false
 ---
 
-Aquí encontrarás todas las experiencias que Elena ha diseñado para ti en el Valle de Guadalest.
+<!-- Contenido pendiente de redacción por el copywriter -->

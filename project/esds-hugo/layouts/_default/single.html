@@ -962,7 +962,11 @@
     <nav class="service-breadcrumb" aria-label="Breadcrumb">
       <a href="/">{{ i18n "menu_inicio" }}</a>
       <span class="service-breadcrumb__sep" aria-hidden="true">›</span>
+      {{ if eq .Section "experiencias" }}
+      <a href="/experiencias/">{{ i18n "menu_experiencias" }}</a>
+      {{ else }}
       <a href="/servicios/">{{ i18n "menu_servicios" }}</a>
+      {{ end }}
       <span class="service-breadcrumb__sep" aria-hidden="true">›</span>
       <span aria-current="page">{{ .Title }}</span>
     </nav>
@@ -1429,7 +1433,7 @@
     </div>
     <div class="service-relacionados__scroll" role="list" aria-label="Servicios relacionados">
       {{/* Yoga — 30€ */}}
-      <a href="/servicios/yoga/" class="service-relacionados__card" role="listitem">
+      <a href="/experiencias/yoga/" class="service-relacionados__card" role="listitem">
         <img class="service-relacionados__card-img"
              src="https://picsum.photos/seed/yoga-card/600/400"
              alt="Persona practicando yoga al aire libre"
@@ -1445,7 +1449,7 @@
       </a>
 
       {{/* Kayak — 20€ */}}
-      <a href="/servicios/kayak/" class="service-relacionados__card" role="listitem">
+      <a href="/experiencias/kayak/" class="service-relacionados__card" role="listitem">
         <img class="service-relacionados__card-img"
              src="https://picsum.photos/seed/kayak-card/600/400"
              alt="Kayak en el embalse de Guadalest"
@@ -1461,7 +1465,7 @@
       </a>
 
       {{/* Caminata — 25€ */}}
-      <a href="/servicios/caminata-consciente/" class="service-relacionados__card" role="listitem">
+      <a href="/experiencias/caminata-consciente/" class="service-relacionados__card" role="listitem">
         <img class="service-relacionados__card-img"
              src="https://picsum.photos/seed/caminata-card/600/400"
              alt="Persona caminando en silencio por el valle"

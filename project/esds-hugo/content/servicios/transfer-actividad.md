@@ -71,7 +71,7 @@ Es un servicio compartido —de 2 a 6 personas—, así que es posible que viaje
 - **Puntualidad:** la salida es en punto. Tiempo de espera máximo: 5 minutos.
 - **Pago:** en efectivo el día de la actividad.
 
-El transfer no es una actividad independiente: se añade a cualquiera de nuestras experiencias ([Yoga](/servicios/yoga/), [Kayak](/servicios/kayak/), [Caminata Consciente](/servicios/caminata-consciente/) o los packs [Mini Retiro](/servicios/mini-retiro/) y [Tarde de Conexión](/servicios/tarde-conexion/)). Si necesitas un servicio más personalizado o con otros destinos, consulta nuestro [Transfer Privado](/servicios/transfer-privado/).
+El transfer no es una actividad independiente: se añade a cualquiera de nuestras experiencias ([Yoga](/experiencias/yoga/), [Kayak](/experiencias/kayak/), [Caminata Consciente](/experiencias/caminata-consciente/) o los packs [Mini Retiro](/experiencias/mini-retiro/) y [Tarde de Conexión](/experiencias/tarde-conexion/)). Si necesitas un servicio más personalizado o con otros destinos, consulta nuestro [Transfer Privado](/servicios/transfer-privado/).
 
 {{< faq >}}
 ### ¿Cómo llegar al embalse de Guadalest?

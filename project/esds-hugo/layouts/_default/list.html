@@ -1,0 +1,434 @@
+{{/* ========================================
+   Layout: _default/list.html
+   Listado genérico — grid de cards visuales
+   Funciona para cualquier sección (experiencias, servicios, etc.)
+   Mobile-first
+
+   HERO de sección desde _index.md:
+     - Foto de fondo (.Params.image_hero)
+     - Título (.Title del _index.md)
+     - Descripción breve
+     - Breadcrumb dinámico: Inicio > [Section]
+
+   GRID de cards con:
+     - Foto (.Params.imagen_hero)
+     - Título (.Params.title_breve o .Title)
+     - Precio (.Params.precio_texto) en dorado
+     - Duración (.Params.duracion)
+     - Descripción breve (.Summary truncado)
+     - CTA → .Permalink
+
+   Breakpoints responsive:
+     Mobile (<768px): 1 columna
+     Tablet (≥768px): 2 columnas
+     Desktop (≥1024px): 3 columnas
+
+   Orden: .Pages.ByWeight
+   ======================================== */}}
+
+{{ define "head" }}
+<style>
+/* ============================================================
+   Service List Styles (prefijo: serv-list-)
+   Mobile-first · ESDS Design System
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   HERO de sección — foto a sangre
+   ---------------------------------------------------------- */
+.serv-list-hero {
+  position: relative;
+  min-height: 40vh;
+  display: flex;
+  align-items: flex-end;
+  margin-top: var(--header-height);
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.serv-list-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(45, 58, 44, 0.80) 0%,
+    rgba(45, 58, 44, 0.35) 50%,
+    rgba(45, 58, 44, 0.10) 100%
+  );
+  z-index: 1;
+}
+
+.serv-list-hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: var(--space-2xl) var(--content-padding);
+  color: var(--blanco);
+}
+
+/* Breadcrumb */
+.serv-list-breadcrumb {
+  font-family: var(--font-sans);
+  font-size: 0.813rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.85;
+}
+
+.serv-list-breadcrumb a {
+  color: var(--blanco);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(255, 255, 255, 0.3);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.serv-list-breadcrumb a:hover {
+  color: var(--dorado);
+  text-decoration-color: var(--dorado);
+}
+
+.serv-list-breadcrumb__sep {
+  margin: 0 var(--space-xs);
+  opacity: 0.5;
+}
+
+/* Hero title + description */
+.serv-list-hero__title {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--blanco);
+  margin-bottom: var(--space-sm);
+  max-width: 800px;
+  line-height: 1.15;
+}
+
+.serv-list-hero__desc {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 640px;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+/* ----------------------------------------------------------
+   SECTION — contenedor del grid
+   ---------------------------------------------------------- */
+.serv-list-section {
+  padding: var(--space-3xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.serv-list-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+/* ----------------------------------------------------------
+   CARD de servicio
+   ---------------------------------------------------------- */
+.serv-list-card {
+  display: block;
+  background-color: var(--blanco);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  text-decoration: none;
+  color: inherit;
+}
+
+.serv-list-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-media);
+}
+
+.serv-list-card:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+/* Imagen con zoom suave al hover */
+.serv-list-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.serv-list-card__image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.serv-list-card:hover .serv-list-card__image {
+  transform: scale(1.05);
+}
+
+/* Body de la card */
+.serv-list-card__body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.serv-list-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+  color: var(--texto-oscuro);
+  line-height: 1.3;
+}
+
+/* Meta: precio + duración */
+.serv-list-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--borde);
+}
+
+.serv-list-card__price {
+  font-family: var(--font-serif);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--dorado);
+  line-height: 1;
+}
+
+.serv-list-card__price-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--texto-secundario);
+  font-family: var(--font-sans);
+  display: block;
+}
+
+.serv-list-card__duration {
+  font-size: 0.813rem;
+  color: var(--texto-secundario);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Descripción breve — clamp a 3 líneas */
+.serv-list-card__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--texto-secundario);
+  margin-bottom: var(--space-lg);
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* CTA al final de la card */
+.serv-list-card__cta {
+  align-self: flex-start;
+  pointer-events: none; /* el <a> padre maneja el click */
+}
+
+/* ----------------------------------------------------------
+   EMPTY STATE — sin servicios
+   ---------------------------------------------------------- */
+.serv-list-empty {
+  text-align: center;
+  padding: var(--space-4xl) var(--content-padding);
+  background-color: var(--blanco);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--sombra-suave);
+}
+
+.serv-list-empty__icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: var(--space-md);
+  display: block;
+  color: var(--verde-oliva);
+}
+
+.serv-list-empty__title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--texto-oscuro);
+  margin-bottom: var(--space-sm);
+}
+
+.serv-list-empty__text {
+  font-size: 0.938rem;
+  color: var(--texto-secundario);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   RESPONSIVE: TABLET (≥768px)
+   2 columnas
+   ============================================================ */
+@media (min-width: 768px) {
+  .serv-list-hero {
+    min-height: 45vh;
+  }
+
+  .serv-list-hero__title {
+    font-size: 2.75rem;
+  }
+
+  .serv-list-hero__content {
+    padding: var(--space-3xl) var(--content-padding);
+  }
+
+  .serv-list-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE: DESKTOP (≥1024px)
+   3 columnas
+   ============================================================ */
+@media (min-width: 1024px) {
+  .serv-list-hero {
+    min-height: 50vh;
+  }
+
+  .serv-list-hero__title {
+    font-size: 3.25rem;
+  }
+
+  .serv-list-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2xl);
+  }
+
+  .serv-list-card__body {
+    padding: var(--space-xl);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE: LARGE DESKTOP (≥1440px)
+   ============================================================ */
+@media (min-width: 1440px) {
+  .serv-list-hero__title {
+    font-size: 3.75rem;
+  }
+}
+
+/* ============================================================
+   ACCESIBILIDAD: REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .serv-list-card,
+  .serv-list-card__image {
+    transition: none;
+  }
+}
+</style>
+{{ end }}
+
+
+{{ define "main" }}
+
+{{/* ============================================================
+     HERO de sección
+     Datos desde _index.md (content/servicios/_index.md)
+     image_hero, title, description
+     ============================================================ */}}
+<section class="serv-list-hero"
+         style="background-image: url('{{ .Params.image_hero | default "/images/servicios/servicios-hero.jpg" }}');"
+         aria-label="{{ .Params.image_hero_alt | default "Experiencias en el Valle de Guadalest" }}">
+  <div class="serv-list-hero__overlay" aria-hidden="true"></div>
+  <div class="serv-list-hero__content">
+    <nav class="serv-list-breadcrumb" aria-label='{{ i18n "list_aria_label_breadcrumb" }}'>
+      <a href="/">{{ i18n "list_breadcrumb_inicio" }}</a>
+      <span class="serv-list-breadcrumb__sep" aria-hidden="true">›</span>
+      <span aria-current="page">{{ .Title | default "Experiencias" }}</span>
+    </nav>
+    <h1 class="serv-list-hero__title">{{ .Title | default "Experiencias" }}</h1>
+    {{ with .Params.description }}
+    <p class="serv-list-hero__desc">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>
+
+{{/* ============================================================
+     GRID de cards
+     Itera sobre .Pages.ByWeight (hijas de la sección actual)
+     ============================================================ */}}
+<section class="serv-list-section" aria-labelledby="servicios-listado-title">
+  <div class="container">
+    <h2 id="servicios-listado-title" class="sr-only">{{ i18n "list_sr_titulo" }}</h2>
+
+    {{ $pages := .Pages.ByWeight }}
+    {{ if $pages }}
+
+    <div class="serv-list-grid" role="list" aria-label='{{ i18n "list_aria_label_grid" }}'>
+      {{ range $pages }}
+      <a href="{{ .Permalink }}"
+         class="serv-list-card"
+         role="listitem"
+         aria-label='{{ i18n "list_card_cta_aria" . }}'>
+        <div class="serv-list-card__image-wrap">
+          <img class="serv-list-card__image"
+               src="{{ .Params.imagen_hero | default "https://picsum.photos/seed/default-card/800/600" }}"
+               alt="{{ .Params.imagen_hero_alt | default (printf "Foto de %s" .Title) }}"
+               loading="lazy">
+        </div>
+        <div class="serv-list-card__body">
+          <h2 class="serv-list-card__title">{{ .Params.title_breve | default .Title }}</h2>
+
+          <div class="serv-list-card__meta">
+            {{ with .Params.precio_texto }}
+            <span class="serv-list-card__price" aria-label='{{ i18n "list_price_aria" }} {{ . }}'>
+              {{ . }}
+            </span>
+            {{ end }}
+            {{ with .Params.duracion }}
+            <span class="serv-list-card__duration" aria-label='{{ i18n "list_duration_aria" }} {{ . }}'>
+              <span aria-hidden="true">⏱</span>
+              {{ . }}
+            </span>
+            {{ end }}
+          </div>
+
+          <p class="serv-list-card__desc">
+            {{ .Summary | plainify | truncate 150 }}
+          </p>
+
+          <span class="btn btn--sm btn-outline-dark serv-list-card__cta" aria-hidden="true">
+            {{ i18n "list_card_cta" }}
+          </span>
+        </div>
+      </a>
+      {{ end }}
+    </div>
+
+    {{ else }}
+
+    {{/* ============================================================
+         Empty state — no hay servicios publicados
+         ============================================================ */}}
+    <div class="serv-list-empty" role="status" aria-live="polite">
+      <span class="serv-list-empty__icon" aria-hidden="true">🌿</span>
+      <h2 class="serv-list-empty__title">{{ i18n "list_empty_title" }}</h2>
+      <p class="serv-list-empty__text">{{ i18n "list_empty_text" }}</p>
+    </div>
+
+    {{ end }}
+  </div>
+</section>
+
+{{ end }}

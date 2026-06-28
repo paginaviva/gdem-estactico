@@ -1,7 +1,7 @@
 ---
 title: "Mini retiro en Guadalest — Yoga, caminata consciente y kayak"
 title_breve: "Mini Retiro"
-description: "Mini retiro en Guadalest: yoga al amanecer, caminata consciente y kayak en el embalse. Cinco horas de bienestar activo en la naturaleza. Grupos reducidos."
+description: "Mini retiro en Guadalest: yoga al amanecer, caminata consciente y kayak en el embalse. Cinco horas de bienestar activo en la naturaleza con grupos reducidos."
 tipo: "pack"
 precio: 50
 precio_texto: "50 €/persona"
@@ -52,7 +52,7 @@ equipaje:
   - "Snacks ligeros"
   - "Ganas de desconectar"
 imagen_hero: "https://picsum.photos/seed/esds-mini-retiro-hero/1600/900"
-imagen_hero_alt: "Amanecer en el embalse de Guadalest con una persona practicando yoga"
+imagen_hero_alt: "Amanecer en el embalse de Guadalest con una persona practicando yoga junto al agua"
 imagenes_galeria:
   - src: "https://picsum.photos/seed/esds-mini-retiro-01/800/600"
     alt: "Persona practicando yoga al amanecer junto al embalse de Guadalest"
@@ -113,13 +113,15 @@ keywords:
 
 Has quedado a las ocho y veinte en la orilla del embalse de Guadalest. El sol acaba de asomarse entre las montañas, el agua está en calma y el aire huele a tierra mojada y a pino. Delante de ti tienes cinco horas para ti, para reconectar contigo a través de tres disciplinas: yoga, caminata consciente y kayak. Cinco horas para recordar lo que se siente al estar presente.
 
-Este es el **Mini Retiro en Guadalest**, la experiencia más completa de El Sonido del Silencio. Una mañana de bienestar activo en plena naturaleza, en grupo reducido, guiada por Elena de principio a fin. Combina tres de nuestras [actividades individuales](/servicios/) —[yoga](/servicios/yoga/), [caminata consciente](/servicios/caminata-consciente/) y [kayak](/servicios/kayak/)— en un solo viaje.
+Este es el **Mini Retiro en Guadalest**, la experiencia más completa de El Sonido del Silencio. Una mañana de bienestar activo en plena naturaleza, en grupo reducido, guiada por Elena de principio a fin. También puedes llamarla **Mañana de Retiro**, porque eso es exactamente lo que es: una mañana entera para ti, diseñada con intención.
 
 ### ¿Cómo es la mañana?
 
 Empieza con una **clase de Hatha Yoga al aire libre** junto al embalse. Asanas suaves, respiración consciente y meditación guiada para despertar el cuerpo mientras el sol ilumina el valle. Después de una pausa para hidratarte, continúas con una **caminata meditativa en silencio** por los senderos del valle de Guadalest. Sin prisa, sin destino. Solo tus pasos, tu respiración y el sonido de la naturaleza.
 
 Tras una segunda pausa, la mañana culmina sobre el agua. **Remas en kayak por el embalse**, rodeado de montañas, en absoluta calma. Las aguas turquesa reflejan el cielo y, desde el centro del embalse, el mundo se ve de otra manera.
+
+Cada actividad está guiada por Elena y adaptada a tu nivel. No necesitas experiencia previa en nada. Solo ganas de desconectar.
 
 ### Información práctica
 
@@ -132,6 +134,8 @@ Tras una segunda pausa, la mañana culmina sobre el agua. **Remas en kayak por e
 - **Cancelaciones:** con al menos 24 horas de antelación.
 
 El programa puede sufrir variaciones por las condiciones meteorológicas o el ritmo del grupo. Y sí, es posible que en el kayak te mojes. Si quieres, trae un cambio de ropa.
+
+Si prefieres una experiencia más corta por la tarde, echa un vistazo a nuestra [Tarde de Conexión](/experiencias/tarde-conexion/): kayak y yoga al atardecer, 35 euros, de 17:00 a 20:30. La versión resumida del Mini Retiro, ideal para quien no tiene toda la mañana.
 
 {{< faq >}}
 ### ¿Qué incluye un mini retiro en Guadalest?
@@ -156,5 +160,5 @@ Recomendamos ropa cómoda y bañador, calzado deportivo o de agua, protección s
 El acceso es por una carretera de montaña muy estrecha. El parking tiene espacio para dos o tres coches y en temporada alta se llena rápido. Recomendamos contratar el [transfer desde Beniardà](/servicios/transfer-actividad/), que te deja directamente en el punto de encuentro sin preocupaciones.
 
 ### ¿Cuál es la diferencia entre el Mini Retiro y la Tarde de Conexión?
-El Mini Retiro es la experiencia de mañana completa (5 horas, 50 euros) e incluye tres actividades: yoga, caminata consciente y kayak. La [Tarde de Conexión](/servicios/tarde-conexion/) es la versión de tarde (3 horas y media, 35 euros) e incluye dos actividades: kayak y yoga al atardecer. Ambos son packs de bienestar activo en Guadalest.
+El Mini Retiro es la experiencia de mañana completa (5 horas, 50 euros) e incluye tres actividades: yoga, caminata consciente y kayak. La [Tarde de Conexión](/experiencias/tarde-conexion/) es la versión de tarde (3 horas y media, 35 euros) e incluye dos actividades: kayak y yoga al atardecer. Ambos son packs de bienestar activo en Guadalest.
 {{< /faq >}}

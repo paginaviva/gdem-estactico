@@ -10,6 +10,7 @@ disableKinds:
 permalinks:
   page:
     servicios: "/servicios/:contentbasename/"
+    experiencias: "/experiencias/:contentbasename/"
 
 params:
   description: "Bienestar · Naturaleza · Aventura · Reconexión · Silencio. Experiencias conscientes en el Embalse de Guadalest, Valle de Guadalest, Alicante."
@@ -43,37 +44,37 @@ menu:
 
     - identifier: "experiencias"
       name: "Experiencias"
-      url: "/servicios/"
+      url: "/experiencias/"
       weight: 2
 
     - identifier: "mini_retiro"
       name: "Mini Retiro"
       parent: "experiencias"
-      url: "/servicios/mini-retiro/"
+      url: "/experiencias/mini-retiro/"
       weight: 1
 
     - identifier: "tarde_conexion"
       name: "Tarde de Conexión"
       parent: "experiencias"
-      url: "/servicios/tarde-conexion/"
+      url: "/experiencias/tarde-conexion/"
       weight: 2
 
     - identifier: "yoga"
       name: "Yoga & Mindfulness"
       parent: "experiencias"
-      url: "/servicios/yoga/"
+      url: "/experiencias/yoga/"
       weight: 3
 
     - identifier: "kayak"
       name: "Kayak"
       parent: "experiencias"
-      url: "/servicios/kayak/"
+      url: "/experiencias/kayak/"
       weight: 4
 
     - identifier: "caminata"
       name: "Caminata Consciente"
       parent: "experiencias"
-      url: "/servicios/caminata-consciente/"
+      url: "/experiencias/caminata-consciente/"
       weight: 5
 
     - identifier: "servicios"

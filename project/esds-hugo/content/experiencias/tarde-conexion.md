@@ -125,7 +125,7 @@ No, ninguna. Las dos actividades están adaptadas a todos los niveles. Elena gu�
 Recomendamos ropa cómoda, calzado deportivo, protección solar, toalla, botella de agua y gorro. Lleva también tu esterilla de yoga si tienes. Como es posible que en el kayak te mojes, puedes traer un cambio de ropa si lo deseas. Todo lo demás —kayak, chaleco, esterilla— lo proporcionamos nosotros.
 
 ### ¿Cuál es la diferencia entre la Tarde de Conexión y el Mini Retiro?
-La Tarde de Conexión es la versión de tarde (17:00 a 20:30, 35 euros) e incluye dos actividades: kayak y yoga al atardecer. El [Mini Retiro](/servicios/mini-retiro/) es la experiencia de mañana completa (8:30 a 14:00, 50 euros) e incluye tres actividades: yoga, caminata consciente y kayak. Ambas son packs de bienestar activo en Guadalest, pero en distinto momento del día y con diferente duración.
+La Tarde de Conexión es la versión de tarde (17:00 a 20:30, 35 euros) e incluye dos actividades: kayak y yoga al atardecer. El [Mini Retiro](/experiencias/mini-retiro/) es la experiencia de mañana completa (8:30 a 14:00, 50 euros) e incluye tres actividades: yoga, caminata consciente y kayak. Ambas son packs de bienestar activo en Guadalest, pero en distinto momento del día y con diferente duración.
 
 ### ¿Cómo llegar al embalse de Guadalest para la Tarde de Conexión?
 El acceso al embalse es por una carretera de montaña muy estrecha. El parking tiene espacio limitado y en temporada alta se llena rápido. Recomendamos contratar el [transfer desde Beniardà](/servicios/transfer-actividad/), que te deja directamente en el punto de encuentro a las 16:50 sin preocuparte del aparcamiento.

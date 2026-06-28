@@ -123,7 +123,7 @@ Sí, la clase incluye una meditación guiada al final de la práctica. Después 
 Recomendamos ropa cómoda que permita el movimiento, protección solar aunque sea al atardecer, agua y una toalla. Si tienes esterilla propia, puedes traerla, aunque nosotros proporcionamos una. Para la meditación final, un pareo o una chaqueta ligera pueden venir bien si la temperatura baja.
 
 ### ¿Cuál es la diferencia entre esta clase y el yoga incluido en los packs?
-El yoga que se practica en el [Mini Retiro](/servicios/mini-retiro/) y en la [Tarde de Conexión](/servicios/tarde-conexion/) forma parte de un pack de actividades combinadas. Esta clase es la actividad individual de yoga: sesión única de hora y media, sin caminata ni kayak. Ideal para quienes quieren solo yoga, en el horario que prefieran.
+El yoga que se practica en el [Mini Retiro](/experiencias/mini-retiro/) y en la [Tarde de Conexión](/experiencias/tarde-conexion/) forma parte de un pack de actividades combinadas. Esta clase es la actividad individual de yoga: sesión única de hora y media, sin caminata ni kayak. Ideal para quienes quieren solo yoga, en el horario que prefieran.
 
 ### ¿Cómo llegar al embalse de Guadalest para la clase de yoga?
 El acceso es por una carretera de montaña muy estrecha con parking limitado. Recomendamos contratar el [transfer desde Beniardà](/servicios/transfer-actividad/) para llegar sin preocupaciones. El punto de encuentro es el propio embalse, donde Elena os esperará 10 minutos antes de cada horario.
