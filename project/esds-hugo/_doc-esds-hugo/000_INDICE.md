@@ -3,8 +3,19 @@
 **Propósito:** Documentar y relacionar todos los archivos del directorio `_doc-esds-hugo/`, que contiene la documentación técnica, planes de trabajo, especificaciones, briefs de copywriting y registros de implementación del proyecto Hugo de El Sonido del Silencio (ESDS).
 
 **Fecha de creación:** 2026-06-28
-**Última modificación:** 2026-06-28
-**Directorio raíz:** `project/esds-hugo/_doc-esds-hugo/` (solo raíz, sin subcarpetas)
+**Directorio raíz:** `project/esds-hugo/_doc-esds-hugo/` (raíz + subcarpeta `legado/`)
+
+### Historial de cambios
+
+| Fecha | Acción | Archivo | Motivo |
+|-------|--------|---------|--------|
+| 2026-06-28 | AÑADIR | `070_cw-aglutinador-fase2.md` | Nuevo documento aglutinador para ejecución de Fase 2 |
+| 2026-06-28 | AÑADIR | `070B_prompt-inicio-pagina-fase2.md` | Prompt reutilizable para iniciar páginas de Fase 2 |
+| 2026-06-28 | AÑADIR | `103_PCI-reestructuracion-contenido.md` | PCI-003: reestructuración experiencias/servicios |
+
+---
+
+**Última modificación:** 2026-06-28 (2ª actualización)
 
 ---
 
@@ -35,8 +46,11 @@
 | 066 | `066_cw-flujo-capas.md` | Raíz | Copywriting (flujo) | Definir el flujo de redacción por capas para agentes de IA | Depende de `064_cw-brief-copywriter.md` | Versión temporal del flujo de 6 capas de mejora progresiva para redactar contenido mediante agentes de IA especializados. Cada capa se auto-revisa y pasa a la siguiente. | `066_cw-flujo-capas.md` |
 | 068 | `068_cw-flujo-redaccion.md` | Raíz | Copywriting (flujo) | Versión definitiva del flujo de redacción por capas | Sustituye a `066_cw-flujo-capas.md` | Documento definitivo (v1.0) del proceso de 6 capas para redactar contenido. Versión refinada y validada del flujo de trabajo. | `068_cw-flujo-redaccion.md` |
 | 069 | `069_cw-proceso-occ.md` | Raíz | Copywriting (QA) | Proceso de auditoría OCC para verificar coherencia entre output del CW y layouts reales | Depende de `068_cw-flujo-redaccion.md` | Procedimiento de verificación post-Capa 6 que compara cada dimensión SEO contra el HTML real generado por Hugo, detectando discrepancias entre el archivo .md y el output renderizado. | `069_cw-proceso-occ.md` |
+| 070 | `070_cw-aglutinador-fase2.md` | Raíz | Copywriting (flujo) | Punto de entrada y orquestador para el agente CW en Fase 2 | Depende de `068_cw-flujo-redaccion.md` y `064_cw-brief-copywriter.md` | Aglutinador que unifica fuentes de verdad, contexto operativo, fichas rápidas de 10 páginas y mapeo layout→front matter para ejecutar la Fase 2. | `070_cw-aglutinador-fase2.md` |
+| 070B | `070B_prompt-inicio-pagina-fase2.md` | Raíz | Copywriting (prompt) | Prompt reutilizable para iniciar cada página de la Fase 2 | Depende de `070_cw-aglutinador-fase2.md` | Plantilla de prompt de 2 fases que el usuario copia/pega para que el agente CW ejecute las 6 capas sobre una página concreta. | `070B_prompt-inicio-pagina-fase2.md` |
 | 101 | `101_PCI-migracion-i18n.md` | Raíz | PCI (registro) | Documentar la migración i18n + menú dropdown completada | Depende de `025_plan-i18n.md` y `052_spec-artefactos.md` | PCI-001: Registro completo de la migración de textos a i18n, reestructuración del menú con submenús desplegables, incidencias, configuraciones y lecciones aprendidas. | `101_PCI-migracion-i18n.md` |
 | 102 | `102_PCI-integracion-artefactos.md` | Raíz | PCI (registro) | Documentar la implementación de 4 artefactos técnicos | Depende de `052_spec-artefactos.md` | PCI-002: Registro completo de la implementación de SEO local, OG/Twitter, FAQ shortcode y JSON-LD. Incluye incidencias (precio vs price), configuraciones, comandos, agentes utilizados y plan de rollback. | `102_PCI-integracion-artefactos.md` |
+| 103 | `103_PCI-reestructuracion-contenido.md` | Raíz | PCI (registro) | Documentar la reestructuración física del contenido separando experiencias/servicios | Depende de `052_spec-artefactos.md` | PCI-003: Registro completo de la separación de `content/servicios/` en dos ramas, movimiento de 5 archivos, actualización de config Hugo, layouts, breadcrumbs y corrección de 22 enlaces internos rotos. | `103_PCI-reestructuracion-contenido.md` |
 
 <a id="02"></a>
 ## 02 — Descripción de archivos
@@ -117,6 +131,21 @@ Versión definitiva (v1.0) del flujo de redacción por capas. Mismo enfoque de 6
 
 Incluye el caso real de la Home I00 como ejemplo documentado.
 
+#### 070_cw-aglutinador-fase2.md
+
+**Aglutinador de Fase 2.** Punto de entrada único para el agente Copywriter durante la ejecución de la Fase 2 del proyecto. Centraliza:
+- Fuentes de verdad (keywords, formulario de Elena, layouts)
+- Plan de control y contexto operativo (tono, FAQ, precios, WhatsApp)
+- Fichas rápidas de las 10 páginas (I00–I21) con datos compactos
+- Mapeo completo layout → front matter para `single.html` (10 bloques)
+- Proceso de 6 capas (esquema operativo) y checklist de validación final
+
+Diseñado para leerse cada vez que se inicia una nueva página, evitando tener que buscar en múltiples documentos.
+
+#### 070B_prompt-inicio-pagina-fase2.md
+
+**Prompt de inicio de página.** Plantilla de 2 fases que el usuario copia y pega en el chat para lanzar al agente CW sobre una página concreta de la Fase 2. La Fase 1 carga contexto de las fuentes; la Fase 2 ejecuta las 6 capas. Sustituir `[ID_PAGINA]` y `[NOMBRE_PAGINA]` según la tabla del aglutinador.
+
 ---
 
 ### PCI (Post-Implementation Summary)
@@ -140,6 +169,15 @@ Incluye el caso real de la Home I00 como ejemplo documentado.
 - Agentes utilizados: TaskManager, CoderAgent, CodeReviewer, Hugo Skill
 - 5 CodeReviews todos aprobados sin regresiones
 - Plan de reversión completo
+
+#### 103_PCI-reestructuracion-contenido.md
+
+**PCI-003**: Registro completo de la reestructuración del contenido del sitio para separar físicamente la carpeta `content/servicios/` en dos ramas independientes (`experiencias/` y `servicios/`). Documenta:
+- Movimiento de 5 archivos de experiencias a su nueva carpeta
+- Creación de `_default/list.html` y breadcrumb dinámico
+- Actualización de `hugo.yaml` (menú + permalinks)
+- Corrección de 22 enlaces internos rotos detectados por CodeReviewer
+- 0 errores en build, commit `c73c12b`
 
 ---
 
@@ -167,11 +205,19 @@ Incluye el caso real de la Home I00 como ejemplo documentado.
          │              │
          │              ├──► 066_cw-flujo-capas.md (flujo v0)
          │              │
-              │              ├──► 068_cw-flujo-redaccion.md (flujo v1)
-              │              │
-              │              └──► 069_cw-proceso-occ.md (QA post-CW)
-              │
-              └──► 102_PCI-integracion-artefactos.md (registro PCI-002)
+               │              ├──► 068_cw-flujo-redaccion.md (flujo v1)
+               │              │
+               │              ├──► 069_cw-proceso-occ.md (QA post-CW)
+               │              │
+               │              ├──► 070_cw-aglutinador-fase2.md (aglutinador Fase 2)
+               │              │      │
+               │              │      └──► 070B_prompt-inicio-pagina-fase2.md (prompt inicio)
+               │              │
+               │              └──► ... (resto de documentos CW)
+               │
+               ├──► 102_PCI-integracion-artefactos.md (registro PCI-002)
+               │
+               └──► 103_PCI-reestructuracion-contenido.md (registro PCI-003)
 
 009_despliegue-cloudflare-pages.md (independiente — despliegue)
 
@@ -195,11 +241,11 @@ Incluye el caso real de la Home I00 como ejemplo documentado.
 | Rol | Archivos prioritarios |
 |-----|----------------------|
 | **Desarrollador** | `052_spec-artefactos.md`, `102_PCI-integracion-artefactos.md`, `054_spec-seo-optimizar-tec.md`, `009_despliegue-cloudflare-pages.md` |
-| **Copywriter** | `064_cw-brief-copywriter.md`, `068_cw-flujo-redaccion.md` |
+| **Copywriter** | `064_cw-brief-copywriter.md`, `068_cw-flujo-redaccion.md`, `070_cw-aglutinador-fase2.md`, `070B_prompt-inicio-pagina-fase2.md` |
 | **QA / OCC** | `069_cw-proceso-occ.md` |
 | **Project Manager** | `020_PdTbjo-esds.md`, `022_PdTbjo-esds-fase-2.md`, `025_plan-i18n.md` |
-| **Mantenimiento** | `101_PCI-migracion-i18n.md`, `102_PCI-integracion-artefactos.md`, `009_despliegue-cloudflare-pages.md` |
+| **Mantenimiento** | `101_PCI-migracion-i18n.md`, `102_PCI-integracion-artefactos.md`, `103_PCI-reestructuracion-contenido.md`, `009_despliegue-cloudflare-pages.md` |
 
 ---
 
-*Fin del índice. Archivos documentados: 13 (solo raíz). Última modificación: 2026-06-28.*
+*Fin del índice. Archivos documentados: 16 (raíz + subcarpeta `legado/`). Última modificación: 2026-06-28 (2ª actualización).*
