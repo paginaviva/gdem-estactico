@@ -86,7 +86,7 @@ El plan detallado de Fase 2 se ha movido a un documento independiente para mante
 | Paleta de colores | Del logo: Beige #F5EDE4, Verde bosque #3E4A3C, Dorado #B8A88A, Verde oliva #8A9A7B, Azul cielo #B8CDD6 |
 | Tipografía | Playfair Display (titulares), Pacifico/Dancing Script (eslogan), Inter/Open Sans (cuerpo) |
 | Contacto | WhatsApp + Instagram únicamente |
-| Menú | Inicio | Experiencias | Información |
+| Menú | Ver estructura detallada en `PdTbjo-esds-fase-2.md` §02b (líneas 104-107): 3 padres + 8 hijos con submenús |
 
 ---
 

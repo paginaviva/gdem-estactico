@@ -3,7 +3,7 @@ baseof_meta_desc: "Experiencias conscientes en el Embalse de Guadalest — Yoga,
 baseof_meta_keywords: "yoga, kayak, caminata consciente, Guadalest, bienestar, naturaleza, aventura, Alicante, Costa Blanca, retiro, meditación, mindfulness"
 
 # ── Hero ──────────────────────────────────────────
-hero_title: "Reconecta con la naturaleza y contigo"
+hero_title: "Experiencias de bienestar en Guadalest — El Sonido del Silencio"
 hero_subtitle_manuscrita: "Experiencias conscientes en el Embalse de Guadalest"
 hero_subtitle: "Yoga · Kayak · Caminatas conscientes · Mini Retiros"
 hero_actividad_yoga: "Yoga"
@@ -22,7 +22,7 @@ hero_early_bird_aviso: "¡Plazas limitadas!"
 info_bar_title_ubicacion: "Ubicación"
 info_bar_text_ubicacion: "Todas las actividades se realizan cerca del Embalse de Guadalest"
 info_bar_title_duracion: "Duración"
-info_bar_text_duracion: "Duración aproximada de cada experiencia: 1h30"
+info_bar_text_duracion: "Duración variable según la experiencia"
 info_bar_title_grupos: "Grupos"
 info_bar_text_grupos: "Grupos pequeños para una experiencia más personal"
 
@@ -134,6 +134,8 @@ conecta_instagram_cta: "Seguir en Instagram"
 footer_claim: "Naturaleza. Bienestar. Aventura. Tú."
 footer_location: "Hecho con amor en Guadalest Valley"
 footer_copyright: "© 2026"
+claim_principal: "Donde el Silencio tiene voz"
+claim_descubre: "Descubre el Valle de Guadalest"
 
 # ── Single (servicio) ──────────────────────────────
 single_cta_title: "¿Te animas a vivirlo?"
@@ -216,3 +218,9 @@ header_aria_nav: "Navegación principal"
 header_aria_toggle: "Abrir menú de navegación"
 header_aria_logo: "{{ .SiteTitle }} — Ir a inicio"
 header_aria_instagram: "Síguenos en Instagram @elsonido.silencio"
+
+# ── Accesibilidad ──────────────────────────
+baseof_skip_link: "Saltar al contenido principal"
+single_sr_descripcion: "La experiencia completa"
+single_sr_actividades: "Actividades de la experiencia"
+list_sr_titulo: "Listado de experiencias disponibles"

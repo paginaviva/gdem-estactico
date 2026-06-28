@@ -58,12 +58,12 @@
   <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="/css/style.css">
 
-  <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <title>{{ if .IsHome }}{{ .Title }} | {{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
   {{ block "head" . }}{{ end }}
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  <a href="#main-content" class="skip-link">{{ i18n "baseof_skip_link" }}</a>
 
   {{ partial "header.html" . }}
 

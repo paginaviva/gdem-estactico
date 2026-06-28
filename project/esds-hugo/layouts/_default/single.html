@@ -985,7 +985,7 @@
   {{/* A — La experiencia completa (.Content) */}}
   <section class="service-descripcion" aria-labelledby="descripcion-title-mobile">
     <div class="container">
-      <h2 id="descripcion-title-mobile" class="sr-only">La experiencia completa</h2>
+      <h2 id="descripcion-title-mobile" class="sr-only">{{ i18n "single_sr_descripcion" }}</h2>
       <div class="service-descripcion__content">
         {{ .Content }}
       </div>
@@ -1139,7 +1139,7 @@
   {{ with .Params.actividades }}
   <section class="service-actividades" aria-labelledby="actividades-title-mobile">
     <div class="container">
-      <h2 id="actividades-title-mobile" class="sr-only">Actividades de la experiencia</h2>
+      <h2 id="actividades-title-mobile" class="sr-only">{{ i18n "single_sr_actividades" }}</h2>
       {{ range . }}
       <div class="service-actividad">
         <h3 class="service-actividad__titulo">{{ .titulo }}</h3>

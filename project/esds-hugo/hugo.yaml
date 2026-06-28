@@ -12,7 +12,7 @@ permalinks:
     servicios: "/servicios/:contentbasename/"
 
 params:
-  description: "Experiencias conscientes de bienestar y naturaleza en el Embalse de Guadalest, Valle de Guadalest, Alicante"
+  description: "Bienestar · Naturaleza · Aventura · Reconexión · Silencio. Experiencias conscientes en el Embalse de Guadalest, Valle de Guadalest, Alicante."
   keywords: "yoga, kayak, caminata consciente, Guadalest, bienestar, naturaleza, aventura, Alicante, Costa Blanca, retiro, meditación, mindfulness"
   author: "Elena"
   instagram: "@elsonido.silencio"
@@ -42,25 +42,25 @@ menu:
     - identifier: "tarde_conexion"
       name: "Tarde de Conexión"
       parent: "experiencias"
-      url: ""
+      url: "/servicios/tarde-conexion/"
       weight: 2
 
     - identifier: "yoga"
       name: "Yoga & Mindfulness"
       parent: "experiencias"
-      url: ""
+      url: "/servicios/yoga/"
       weight: 3
 
     - identifier: "kayak"
       name: "Kayak"
       parent: "experiencias"
-      url: ""
+      url: "/servicios/kayak/"
       weight: 4
 
     - identifier: "caminata"
       name: "Caminata Consciente"
       parent: "experiencias"
-      url: ""
+      url: "/servicios/caminata-consciente/"
       weight: 5
 
     - identifier: "servicios"
@@ -71,19 +71,19 @@ menu:
     - identifier: "transfer_actividad"
       name: "Transfer Actividad"
       parent: "servicios"
-      url: ""
+      url: "/servicios/transfer-actividad/"
       weight: 1
 
     - identifier: "transfer_privado"
       name: "Transfer Privado"
       parent: "servicios"
-      url: ""
+      url: "/servicios/transfer-privado/"
       weight: 2
 
     - identifier: "informacion"
       name: "Información"
       parent: "servicios"
-      url: "#informacion"
+      url: "/informacion/"
       weight: 3
 
 markup:

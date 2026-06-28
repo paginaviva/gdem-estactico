@@ -12,6 +12,10 @@
 | **Tecnología** | Hugo (estático, layouts propios, sin tema externo) |
 | **Despliegue** | Cloudflare Pages |
 
+> ⚠ **Fuente de verdad obligatoria**: Antes de reescribir o crear cualquier página (home, interiores o listado), el copywriter debe leer `project/ESDS/05_Servicios-eSdS-formulario_revisado.md`. Ese documento contiene las respuestas directas de Elena al cuestionario de servicios. Es la fuente de verdad verificada por la clienta. Las descripciones literales, precios, horarios, capacidades y detalles de cada servicio provienen de ahí. Este spec las incorpora, pero ante cualquier duda, prevalece el formulario de Elena.
+>
+> Cada página de la sección [05](#05) indica, cuando aplica, la línea del formulario donde consultar la respuesta original de Elena.
+
 ---
 
 ## Índice
@@ -89,7 +93,7 @@
 
 - «El Sonido del Silencio»
 - «Reconecta con la naturaleza y contigo»
-- «Descubre el Valle de Guadalest»
+- «Descubre el Valle de Guadalest» (versión en español de «Discover Guadalest Valley»)
 - «Bienestar · Naturaleza · Aventura · Reconexión · Silencio»
 - «Hecho con amor en Guadalest Valley»
 
@@ -126,37 +130,69 @@
 | **Packs (Mini Retiro, Tarde de Conexión)** | Cálido, narrativo. Contar la experiencia completa de principio a fin | «Una mañana para reconectar contigo a través de tres disciplinas: despierta el cuerpo con yoga al amanecer...» |
 | **Actividades individuales (Yoga, Kayak, Caminata)** | Sereno, íntimo, práctico. Describir la práctica en su entorno | Clases al aire libre, horarios, beneficios. Hatha Yoga en plena naturaleza |
 | **Transfers** | Práctico, funcional, tranquilizador. Resolver la preocupación del acceso | «No te preocupes por la carretera ni por el parking. Te recogemos en Beniardà y en 12 minutos estás en el embalse.» |
-| **Información / Sobre Elena** | Personal, biográfico, de confianza. Nota: esta página está pendiente de confirmar si se elimina | — |
+| **Información / Sobre Elena** | Personal, biográfico, de confianza. Página sobre Elena y la marca. | — |
 
 ---
 
 <a id="04"></a>
 ## 04 — Inventario de páginas
 
-### Páginas existentes (contenido a reescribir)
+> ⚠ **IMPORTANTE: Este documento exige que TODAS las páginas listadas a continuación se reescriban o creen desde cero.** No importa si el archivo Markdown ya existe con contenido previo («Mañana de Retiro», «Experiencias», etc.): ese contenido se descarta y se sustituye íntegramente por el que se redacte según esta especificación. Las 10 páginas deben tratarse como trabajo nuevo, sin conservar texto anterior.
+>
+> El único archivo que **no se redacta aquí** es `i18n/es.yaml`, que gestiona los textos de los layouts (hero, tarjetas, footer, etc.) y ya fue migrado en una fase anterior (ver PCI-001).
 
-| # | Ruta | Tipo | Archivo |
-|:-:|------|------|---------|
-| 01 | `/` | Home / Landing | `content/_index.md` |
-| 02 | `/servicios/` | Listado de servicios | `content/servicios/_index.md` |
-| 03 | `/servicios/mini-retiro/` | Pack (3 actividades) | `content/servicios/mini-retiro.md` |
+### Páginas existentes que se REESCRIBEN por completo
 
-### Páginas por crear
+| # | Ruta | Tipo | Archivo | Acción |
+|:-:|------|------|---------|--------|
+| 01 | `/` | Home / Landing | `content/_index.md` | 🔄 Reescribir todo el cuerpo desde cero |
+| 02 | `/servicios/` | Listado de servicios | `content/servicios/_index.md` | 🔄 Reescribir front matter y cuerpo |
+| 03 | `/servicios/mini-retiro/` | Pack (3 actividades) | `content/servicios/mini-retiro.md` | 🔄 Reescribir cuerpo; el front matter ya cumple la especificación pero debe revisarse |
 
-| # | Ruta | Tipo | Archivo |
-|:-:|------|------|---------|
-| 04 | `/servicios/tarde-conexion/` | Pack (2 actividades) | `content/servicios/tarde-conexion.md` |
-| 05 | `/servicios/yoga/` | Actividad individual | `content/servicios/yoga.md` |
-| 06 | `/servicios/kayak/` | Actividad individual | `content/servicios/kayak.md` |
-| 07 | `/servicios/caminata-consciente/` | Actividad individual | `content/servicios/caminata-consciente.md` |
-| 08 | `/servicios/transfer-actividad/` | Transfer | `content/servicios/transfer-actividad.md` |
-| 09 | `/servicios/transfer-privado/` | Transfer | `content/servicios/transfer-privado.md` |
+### Páginas que se CREAN desde cero
 
-### Páginas eliminadas o pendientes de confirmar
+| # | Ruta | Tipo | Archivo | Acción |
+|:-:|------|------|---------|--------|
+| 04 | `/servicios/tarde-conexion/` | Pack (2 actividades) | `content/servicios/tarde-conexion.md` | ✏️ Crear archivo nuevo |
+| 05 | `/servicios/yoga/` | Actividad individual | `content/servicios/yoga.md` | ✏️ Crear archivo nuevo |
+| 06 | `/servicios/kayak/` | Actividad individual | `content/servicios/kayak.md` | ✏️ Crear archivo nuevo |
+| 07 | `/servicios/caminata-consciente/` | Actividad individual | `content/servicios/caminata-consciente.md` | ✏️ Crear archivo nuevo |
+| 08 | `/servicios/transfer-actividad/` | Transfer | `content/servicios/transfer-actividad.md` | ✏️ Crear archivo nuevo |
+| 09 | `/servicios/transfer-privado/` | Transfer | `content/servicios/transfer-privado.md` | ✏️ Crear archivo nuevo |
+| 10 | `/informacion/` | Información / Sobre Elena | `content/informacion/_index.md` | ✏️ Crear archivo nuevo (contenido pendiente de definir con Elena) |
 
-| Ruta | Estado |
-|------|--------|
-| `/informacion/` | ❌ Pendiente de confirmar su eliminación |
+> 🔄 = Reescribir completamente · ✏️ = Crear desde cero
+
+### Arquitectura del menú de navegación
+
+El menú principal está definido en `hugo.yaml` y se renderiza desde `layouts/partials/header.html` con nombres visibles desde `i18n/es.yaml` (claves `menu_*`). La estructura es jerárquica con dos desplegables:
+
+```
+Nivel 1              Nivel 2 (submenú)
+─────────────────────────────────────────────────
+Inicio
+  → /                                    (sin hijos)
+
+Experiencias                             5 hijos
+  → /servicios/
+  ├─ Mini Retiro        → /servicios/mini-retiro/
+  ├─ Tarde de Conexión  → /servicios/tarde-conexion/
+  ├─ Yoga & Mindfulness → /servicios/yoga/
+  ├─ Kayak              → /servicios/kayak/
+  └─ Caminata Consciente→ /servicios/caminata-consciente/
+
+Servicios                                3 hijos
+  → # (sin página propia)
+  ├─ Transfer Actividad → /servicios/transfer-actividad/
+  ├─ Transfer Privado   → /servicios/transfer-privado/
+  └─ Información        → /informacion/
+```
+
+**Reglas**:
+- «Experiencias» es la agrupadora de todas las actividades y packs. Su enlace lleva al listado (`/servicios/`).
+- «Servicios» es la agrupadora de transfers y página de información. No tiene página propia (enlace `#`).
+- Todos los nombres visibles se definen en `i18n/es.yaml`, no en `hugo.yaml`. El `name:` en `hugo.yaml` es un fallback si la clave i18n falta.
+- Las URLs siguen el patrón `/servicios/:slug/` excepto Inicio (`/`) e Información (`/informacion/`).
 
 ---
 
@@ -172,6 +208,15 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 - **Preguntas FAQ**: incluir en formato de bloque FAQ (para GEO / AI Overview)
 - **Apoyo semántico / entidades**: mencionar las ubicaciones, conceptos y términos asociados
 - **Datos clave**: precio, duración, horarios, capacidad — exactos según `conocimiento-proyecto-esds.md`
+- **Textos de layouts**: los textos visibles en secciones gestionadas por las plantillas HTML (hero, tarjetas de experiencias, cómo llegar, footer, etc.) se editan en `i18n/es.yaml`, no en archivos Markdown. Ver sección 06 para más detalles.
+
+Además de los campos siguientes, cada página debe integrar de forma natural:
+- **Keywords secundarias**: según la ficha correspondiente en `10_kw-principales-por-pagina.md`
+- **Long-tail KWs**: según la ficha correspondiente
+- **Preguntas FAQ exactas**: las definidas en la ficha, preparadas para GEO/AI Overview
+- **Entidades semánticas / apoyo semántico**: ubicaciones, conceptos y términos asociados según la ficha
+
+> **Nota**: Consulta `project/ESDS/10_kw-principales-por-pagina.md` para obtener el listado completo de cada página.
 
 ### 05.01 — Home (`/`)
 **Referencia KW:** Ficha 01
@@ -184,7 +229,7 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **Intención** | Comercial |
 | **Tono** | Cálido, sensorial, envolvente. Evocar la experiencia |
 | **Qué comunicar** | Concepto de «bienestar activo al aire libre». No es spa, no es hotel. Yoga, kayak, caminata consciente. La marca «El Sonido del Silencio» |
-| **Estructura propuesta** | Hero (titular + CTA) → Franja informativa → Experiencias (4 cards) → Cómo llegar → Conversión (por qué reservar) → Contacto WhatsApp/Instagram → Footer |
+| **Estructura propuesta** | Hero (titular + CTA + Early Bird) → Franja informativa → Experiencias (4 cards) → Cómo llegar → Conversión (por qué reservar) → Contacto WhatsApp/Instagram → Footer |
 | **FAQ GEO** | Incluir definición de «turismo consciente» (potencial AI Overview) |
 | **Nota** | Es la página principal, no compite con páginas de servicio |
 
@@ -205,6 +250,7 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 
 ### 05.03 — Mini Retiro (`/servicios/mini-retiro/`)
 **Referencia KW:** Ficha 03
+**Fuente Elena:** `05_Servicios-eSdS-formulario_revisado.md` — Servicio 1 (líneas 39-61)
 
 | Campo | Valor |
 |-------|-------|
@@ -214,12 +260,15 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **Intención** | Transaccional |
 | **Tono** | Cálido, narrativo. Contar la experiencia de una mañana completa |
 | **Qué comunicar** | Producto estrella. Incluye 3 actividades en 5 horas. Apto para todos los niveles. El embalse como escenario |
-| **Datos clave** | 50 €/persona, 5 h (8:30-14:00), mín 2 / máx 6 personas, incluye guía + esterilla + chaleco |
+| **Datos clave** | 50 €/persona, 5 h (8:30-14:00), mín 2 / máx 6 personas (máx 10 para actividades individuales que lo componen — fuente L51), incluye guía + esterilla + chaleco |
+| **Hora de encuentro** | 8:20 en Kayak Embalse Guadalest (fuente L55) |
+| **Descripción literal de Elena** | «Reconecta con tu esencia. Aventura, Yoga, meditación en movimiento y conexión con la naturaleza. Prácticas de bienestar integral para regenerarte. Una experiencia restaurativa en un entorno único.» (fuente L45) |
 | **Preguntas FAQ** | ¿Qué incluye? ¿Cuánto dura? ¿Es apto para principiantes? ¿Qué actividades se hacen? |
 | **Nota** | Diferenciar de «Tarde de Conexión»: una es mañana (3 act.), otra es tarde (2 act.) |
 
 ### 05.04 — Tarde de Conexión (`/servicios/tarde-conexion/`)
 **Referencia KW:** Ficha 04
+**Fuente Elena:** `05_Servicios-eSdS-formulario_revisado.md` — Servicio 2 (líneas 64-86)
 
 | Campo | Valor |
 |-------|-------|
@@ -229,11 +278,15 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **Intención** | Transaccional |
 | **Tono** | Cálido, visual. Kayak al atardecer + yoga al ponerse el sol. Transición del movimiento a la calma |
 | **Qué comunicar** | Versión más corta (3:30 h) y más económica (35 €). Ideal para quien no tiene toda la mañana |
-| **Datos clave** | 35 €/persona, 3:30 h (17:00-20:30), mín 2 / máx 6-10 personas |
+| **Datos clave** | 35 €/persona, 3:30 h (17:00-20:30), mín 2 / máx 6 personas (máx 10 para kayak) |
+| **Hora de encuentro** | 16:50 en Kayak Embalse Guadalest (fuente L80) |
+| **Descripción literal de Elena** | «Reconecta con tu esencia. Aventura y Yoga en conexión con la naturaleza. Prácticas de bienestar integral para regenerarte. Una experiencia restaurativa en un entorno único.» (fuente L70) |
+| **Equipaje recomendado** | Ropa cómoda, calzado deportivo, protección solar, toalla, botella de agua, gorro, bañador. Esterilla propia (fuente L84) |
 | **Preguntas FAQ** | ¿Qué incluye? ¿Cuánto dura? ¿Qué hacer al atardecer en Guadalest? ¿Se puede hacer yoga y kayak en la misma tarde? |
 
 ### 05.05 — Yoga & Mindfulness (`/servicios/yoga/`)
 **Referencia KW:** Ficha 05
+**Fuente Elena:** `05_Servicios-eSdS-formulario_revisado.md` — Servicio 3 (líneas 91-113)
 
 | Campo | Valor |
 |-------|-------|
@@ -242,12 +295,16 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **H1** | Yoga en Guadalest — Práctica de Hatha Yoga en plena naturaleza |
 | **Intención** | Comercial / Transaccional |
 | **Tono** | Sereno, íntimo. Describir la práctica al aire libre, con el embalse de fondo |
-| **Qué comunicar** | Hatha Yoga en plena naturaleza. No es una clase en estudio cerrado. Asanas + pranayamas + meditación |
+| **Qué comunicar** | Hatha Yoga en plena naturaleza. No es una clase en estudio cerrado. Asanas + pranayamas + meditación. Tagline de Elena: «La práctica para regresar a Tu silencio interior» (fuente L95) |
 | **Datos clave** | 30 €/persona, 1:30 h, horarios 8:30 y 19:00, mín 2 / máx 6 personas |
+| **Hora de encuentro** | 10 minutos antes en Embalse de Guadalest (fuente L107) |
+| **Descripción literal de Elena** | «Hatha Yoga, Mindfulness y grounding para equilibrar cuerpo, mente y espíritu» (fuente L97) |
+| **Equipaje recomendado** | Ropa cómoda, esterilla propia, toalla, pareo o algo ligero para la meditación (fuente L111) |
 | **Preguntas FAQ** | ¿Qué incluye? ¿Hay clases para principiantes? ¿Qué horarios hay? ¿Qué es Hatha Yoga? |
 
 ### 05.06 — Kayak (`/servicios/kayak/`)
 **Referencia KW:** Ficha 06
+**Fuente Elena:** `05_Servicios-eSdS-formulario_revisado.md` — Servicio 4 (líneas 116-138)
 
 | Campo | Valor |
 |-------|-------|
@@ -258,11 +315,15 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **Tono** | Activo, fresco, aventurero. El agua turquesa, las montañas, remar en silencio |
 | **Qué comunicar** | Kayak guiado, no es alquiler libre. Accesible a todos los niveles. Remar en las aguas del embalse rodeado de montañas |
 | **Datos clave** | 20 €/persona, 1:30 h, horarios 12:30 y 17:30, mín 2 / máx 10 personas |
+| **Hora de encuentro** | 15 minutos antes en Embalse de Guadalest (fuente L132) |
+| **Descripción literal de Elena** | «Experimenta el bienestar de la aventura consciente en las aguas cristalinas del embalse... el agua, el viento, el sol, el silencio, el entorno.» (fuente L122) |
+| **Equipaje recomendado** | Ropa que se pueda mojar, toalla, protección solar (fuente L136) |
 | **Preguntas FAQ** | ¿Cuánto cuesta? ¿Se puede alquilar? ¿Qué rutas hay? ¿Es necesario saber remar? ¿Cuál es la mejor hora? |
 | **Nota** | Elena opera con kayakbeni.com como proveedor. No mencionar a no ser relevante |
 
 ### 05.07 — Caminata Consciente (`/servicios/caminata-consciente/`)
 **Referencia KW:** Ficha 07
+**Fuente Elena:** `05_Servicios-eSdS-formulario_revisado.md` — Servicio 5 (líneas 141-163)
 
 | Campo | Valor |
 |-------|-------|
@@ -271,8 +332,11 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **H1** | Caminata consciente en Guadalest — Una experiencia de silencio y naturaleza |
 | **Intención** | Comercial |
 | **Tono** | Poético, pausado. «Solo tus pasos, tu respiración y el sonido de la naturaleza» |
-| **Qué comunicar** | No es una ruta de senderismo cualquiera. Es caminata en silencio, con atención plena. Cada salida es única |
-| **Datos clave** | 25 €/persona, ~2 h, horario a convenir, mín 2 / máx 12 personas |
+| **Qué comunicar** | No es una ruta de senderismo cualquiera. Es caminata en silencio, con atención plena. Cada salida es única. **Nota: esta actividad NO incluye servicio de transfer** (fuente L146) |
+| **Datos clave** | 25 €/persona, ~2 h, horario a convenir, mín 2 / máx 12 personas. Nivel: fácil-intermedio (fuente L162) |
+| **Hora de encuentro** | A convenir, en Embalse de Guadalest (fuente L157) |
+| **Descripción literal de Elena** | «Unimos los beneficios de la caminata en la naturaleza a los de la meditación en movimiento para un combo de bienestar y paz.» (fuente L147) |
+| **Equipaje recomendado** | Calzado de montaña, agua, protección solar, gorro, palos de trekking (fuente L161) |
 | **Preguntas FAQ** | ¿Qué es una caminata consciente? ¿Qué rutas hay? ¿Cuánto dura? ¿Qué la diferencia de una ruta normal? |
 
 ### 05.08 — Transfer Actividad (`/servicios/transfer-actividad/`)
@@ -286,11 +350,14 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **Intención** | Transaccional |
 | **Tono** | Práctico, funcional, tranquilizador. «No te preocupes por la carretera ni por el parking» |
 | **Qué comunicar** | Solución de transporte desde Beniardà al embalse. 12 minutos en Multivan Volkswagen. Se añade a cualquier actividad |
-| **Datos clave** | 10 €/persona, 12 min trayecto, Beniardà → Embalse, horarios 8:00 y 16:30, mín 2 / máx 6 personas |
+| **Datos clave** | 10 €/persona, 12 min trayecto, Beniardà → Embalse, horarios 8:00 y 16:30 (según tabla resumen de Elena — el detalle del servicio indica 17:00, prevalece 16:30), mín 2 / máx 6 personas |
+| **Hora de encuentro** | Salida desde Beniardà a las 8:00 y 16:30 en punto. Se ruega puntualidad — tiempo de espera máx. 5 min (fuente L184) |
+| **Descripción literal de Elena** | «Servicio de transferencia hacia el embalse» (fuente L172) |
 | **Preguntas FAQ** | ¿Cómo llegar al embalse sin coche? ¿Hay transporte público? ¿Dónde aparcar? ¿Cuánto cuesta? |
 
 ### 05.09 — Transfer Privado (`/servicios/transfer-privado/`)
 **Referencia KW:** Ficha 09
+**Fuente Elena:** `05_Servicios-eSdS-formulario_revisado.md` — Servicio 7 (líneas 188-212)
 
 | Campo | Valor |
 |-------|-------|
@@ -301,63 +368,54 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 | **Tono** | Flexible, resolutivo |
 | **Qué comunicar** | Servicio bajo demanda. Traslado privado a Fonts d'Algar, Castillo de Guadalest y otros destinos. Precio a consultar |
 | **Datos clave** | Bajo presupuesto, mín 2 / máx 6 personas, Multivan Volkswagen |
+| **Descripción literal de Elena** | «¿Quieres visitar Costa Blanca y el valle de Guadalest con todas las comodidades? Reserva tu Servicio de traslado privado» (fuente L194) |
 | **Preguntas FAQ** | ¿Cómo llegar a Fonts d'Algar? ¿Cuánto cuesta su entrada? ¿Cómo moverse por el valle sin coche? |
+
+### 05.10 — Información (`/informacion/`)
+**Referencia KW:** Ficha 10
+
+| Campo | Valor |
+|-------|-------|
+| **KW Principal** | `el sonido del silencio guadalest` |
+| **Title tag** | El Sonido del Silencio \| ESDS |
+| **H1** | El Sonido del Silencio — Experiencias en el Valle de Guadalest |
+| **Intención** | Informacional |
+| **Tono** | Personal, biográfico, de confianza |
+| **Qué comunicar** | Quién es Elena, qué es El Sonido del Silencio, filosofía de la marca. Transmitir autenticidad y cercanía. |
+| **Estructura propuesta** | Hero → Sobre Elena → Filosofía de la marca → CTA de contacto |
+| **FAQ GEO** | ¿Qué es El Sonido del Silencio? ¿Quién es Elena? ¿Por qué Guadalest? |
+| **Nota** | Esta página se mantiene como parte del proyecto. Pendiente de definir contenido exacto con Elena. |
 
 ---
 
 <a id="06"></a>
-## 06 — Textos hardcodeados en layouts (pendientes de migrar)
+## 06 — Gestión de textos en layouts (migración i18n completada)
 
-Como parte del análisis inicial, se han detectado textos literales hardcodeados en las plantillas HTML que **deberían migrarse a archivos Markdown** o a variables de Hugo para centralizar el contenido. Esta migración está planificada para **fase final**.
+Como parte del proyecto, todos los textos visibles al usuario que estaban hardcodeados en las plantillas HTML se migraron al sistema de internacionalización (`i18n`) de Hugo. La migración queda documentada en `PCI-001-migracion-i18n.md`.
 
-### Listado de textos hardcodeados
+### Estado actual
 
-#### `layouts/partials/hero.html`
-- Título H1: «Reconecta con la naturaleza y contigo»
-- Subtítulo manuscrita: «Experiencias conscientes en el Embalse de Guadalest»
-- Subtítulo descriptivo: «Yoga · Kayak · Caminatas conscientes · Mini Retiros»
-- Nombres de actividades: Yoga, Kayak, Caminata
-- Botones CTA: «Ver Experiencias», «Reservar»
-- Bloque Early Bird: título, texto y aviso «¡Plazas limitadas!»
-- Franja informativa: títulos «Ubicación», «Duración», «Grupos» y sus descripciones
+| Aspecto | Descripción |
+|---------|-------------|
+| **Textos migrados** | ~100 cadenas provenientes de 10 archivos de layout |
+| **Destino** | `i18n/es.yaml` — archivo único con todas las claves de texto |
+| **Archivos afectados** | `hero.html`, `experiencias.html`, `conversion.html`, `como-llegar.html`, `conecta.html`, `footer.html`, `baseof.html`, `single.html`, `list.html`, `datos-servicio.html` |
+| **Estado** | ✅ Completada — sitio compila con 0 errores |
 
-#### `layouts/partials/experiencias.html`
-- Título de sección: «Nuestras Experiencias» y subtítulo «Elige tu experiencia favorita»
-- Nombre y descripción de cada tarjeta de servicio (4 tarjetas: Yoga, Kayak, Caminata, Mini Retiro)
-- Precios, duraciones, etiquetas «Mín. 2 personas», badge «Pack estrella»
+### ¿Qué significa esto para el copywriter?
 
-#### `layouts/partials/conversion.html`
-- Título «¿Por qué reservar con anticipación?»
-- Texto completo de las 3 tarjetas de conversión (reserva anticipada, este verano, reserva fácil)
+- **Los textos de los layouts** (hero, tarjetas de experiencias, sección de conversión, cómo llegar, footer, etc.) se editan en `i18n/es.yaml`, NO en los archivos HTML.
+- **Los textos de contenido** (cuerpo de cada página de servicio, descripciones, FAQ, etc.) se editan en los archivos Markdown (`.md`) dentro de `content/`.
+- Si necesitas modificar un texto visible en la web y no está en un archivo `.md`, búscalo en `i18n/es.yaml`.
 
-#### `layouts/partials/como-llegar.html`
-- Título de sección «¿Cómo llegar?»
-- Descripciones de Transfer Recomendado, Transfer Privado y Puntos de encuentro
-- Aviso importante sobre el acceso
+### Pendiente para futuros batches (no crítico)
 
-#### `layouts/partials/conecta.html`
-- Título «Conecta con nosotros»
-- Texto de tarjeta WhatsApp: «Escríbenos directamente por WhatsApp», «Resuelve tus dudas...»
-- Texto de tarjeta Instagram: «Síguenos en Instagram»
+Según `PCI-001-migracion-i18n.md` §09.4, queda pendiente migrar:
+- Textos en `aria-label` de accesibilidad (~22 cadenas)
+- Fallbacks de `default` en templates
+- Alt texts de imágenes hardcodeados
 
-#### `layouts/partials/footer.html`
-- Claim: «Naturaleza. Bienestar. Aventura. Tú.»
-- «Hecho con amor en Guadalest Valley»
-- Texto de copyright
-
-#### `layouts/_default/baseof.html`
-- Meta description por defecto
-- Meta keywords por defecto
-
-#### `layouts/_default/single.html`
-- Texto CTA: «¿Te animas a vivirlo?», «Reserva tu plaza...»
-- Sección «Otras experiencias»: título, subtítulo, nombres y precios de servicios relacionados
-- Texto de tarjetas de servicios relacionados (Yoga, Kayak, Caminata)
-
-#### `layouts/servicios/list.html`
-- Texto de estado vacío: «Próximamente», «Estamos preparando nuevas experiencias...»
-
-> **Nota**: En la fase final del proyecto, todos estos textos se migrarán a archivos Markdown o a variables de configuración de Hugo, de modo que los layouts solo contengan estructura HTML y referencias a datos, sin texto literal visible al usuario.
+> **Nota**: El archivo `i18n/es.yaml` está organizado por secciones con comentarios. Sigue la estructura existente para añadir nuevas claves.
 
 ---
 
@@ -372,7 +430,7 @@ Como parte del análisis inicial, se han detectado textos literales hardcodeados
 | **Beniardà** | Pueblo desde donde sale el transfer. Acentuación correcta |
 | **Fonts d'Algar** | Cascadas. Destino del transfer privado |
 | **Costa Blanca** | Zona turística. Alicante |
-| **Mini Retiro** | Producto estrella (pack de 3 actividades). Nombre comercial: «Mañana de Retiro» |
+| **Mini Retiro** | Nombre corto de menú y URL. El título completo de la página es «Mañana de Retiro». Ambos nombres son válidos: «Mini Retiro» para el menú, slugs y KW; «Mañana de Retiro» como título de la página y nombre descriptivo. |
 | **Tarde de Conexión** | Pack de 2 actividades (kayak + yoga al atardecer) |
 | **Caminata Consciente** | Actividad individual. No usar «senderismo» genérico |
 | **Hatha Yoga** | Estilo de yoga que se practica. Explicar brevemente si aparece |
@@ -420,6 +478,10 @@ Como parte del análisis inicial, se han detectado textos literales hardcodeados
 - Cada KW principal es única por página (validado en el documento KW)
 - Las keywords secundarias pueden solaparse entre páginas: es deseable para reforzar el cluster semántico
 
+### Sobre la migración de textos
+
+La migración de textos hardcodeados de las plantillas HTML a `i18n/es.yaml` está completada. Consulta `PCI-001-migracion-i18n.md` para ver el detalle de la migración, las incidencias resueltas y el plan de reversión.
+
 ---
 
-*Fin del documento de especificación. Mantenido en `project/ESDS/spec-copywriter.md`. Próxima actualización: al inicio de la fase de redacción.*
+*Fin del documento de especificación. Mantenido en `project/esds-hugo/spec-copywriter.md`. Próxima actualización: al inicio de la fase de redacción.*

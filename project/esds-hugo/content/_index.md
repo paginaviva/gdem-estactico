@@ -1,5 +1,5 @@
 ---
-title: "El Sonido del Silencio"
+title: "Experiencias bienestar Guadalest"
 description: "Experiencias conscientes de bienestar y naturaleza en el Embalse de Guadalest, Valle de Guadalest"
 date: 2026-06-27
 draft: false
@@ -70,3 +70,17 @@ Escríbenos directamente por WhatsApp para consultar disponibilidad, resolver du
 *Donde el Silencio tiene voz.*
 
 **Naturaleza. Bienestar. Aventura. Tú.**
+
+## Preguntas frecuentes
+
+### ¿Qué es el turismo consciente?
+El turismo consciente es una forma de viajar que prioriza la conexión auténtica con el entorno natural y cultural, minimizando el impacto y maximizando la experiencia sensorial. En El Sonido del Silencio, cada actividad está diseñada para que reconectes contigo mientras cuidas del Valle de Guadalest.
+
+### ¿Necesito experiencia previa en yoga o kayak?
+No. Todas nuestras experiencias están guiadas por Elena y adaptadas a todos los niveles. Solo necesitas ganas de desconectar y reconectar con la naturaleza.
+
+### ¿Cuál es la mejor época para visitar Guadalest?
+La temporada principal va de julio a septiembre, cuando el embalse está en su máximo nivel y las temperaturas son ideales para las actividades al aire libre.
+
+### ¿Cómo puedo reservar una experiencia?
+Escríbenos directamente por WhatsApp. Te responderemos con la calidez de quien conoce cada rincón de este valle.
