@@ -404,4 +404,4 @@ Esta maqueta combina lo mejor de ambas referencias, adaptado al proyecto ESDS.
 
 ---
 
-*Fin del documento de conocimiento. Mantenido en `project/esds-hugo/conocimiento-proyecto-esds.md`*
+*Fin del documento de conocimiento. Mantenido en `project/esds-hugo/_doc-esds-hugo/legado/conocimiento-proyecto-esds.md`*

@@ -1,13 +1,13 @@
 # Anexo Técnico — El Sonido del Silencio (ESDS)
 
-**Propósito:** Recoger el contexto técnico, histórico y de infraestructura del proyecto que NO necesita el copywriter para redactar, pero que debe conservarse como referencia del proyecto. Complementa a `cw-brief-copywriter.md`.
+**Propósito:** Recoger el contexto técnico, histórico y de infraestructura del proyecto que NO necesita el copywriter para redactar, pero que debe conservarse como referencia del proyecto. Complementa a `064_cw-brief-copywriter.md`.
 
 | Campo | Valor |
 |-------|-------|
 | **Proyecto** | El Sonido del Silencio (ESDS) |
 | **Fecha** | 2026-06-28 |
-| **Documento relacionado** | `cw-brief-copywriter.md` |
-| **Plan de trabajo** | `PdTbjo-esds-fase-2.md` |
+| **Documento relacionado** | `064_cw-brief-copywriter.md` |
+| **Plan de trabajo** | `022_PdTbjo-esds-fase-2.md` |
 | **Tecnología** | Hugo (estático, layouts propios) |
 | **Despliegue** | Cloudflare Pages |
 
@@ -31,24 +31,24 @@
 <a id="01"></a>
 ## 01 — Historial del documento original
 
-El documento `spec-copywriter.md` fue el primer artefacto de especificación del proyecto. Se archivó en `legado/` el 2026-06-28.
+El documento `legado/spec-copywriter.md` fue el primer artefacto de especificación del proyecto. Se archivó en `legado/` el 2026-06-28.
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Ruta original** | `project/esds-hugo/spec-copywriter.md` |
+| **Ruta original** | `project/esds-hugo/legado/spec-copywriter.md` |
 | **Ruta archivada** | `project/esds-hugo/legado/spec-copywriter.md` |
 | **Tamaño original** | 487 líneas, 10 secciones |
-| **Motivo del archivado** | Mezclaba capas de copy (tono, audiencia, especificaciones) con capa técnica (arquitectura del menú, migración i18n). Se separó en dos documentos: `cw-brief-copywriter.md` (solo copy) y `cw-anexo-tecnico-espec.md` (solo técnica). |
+| **Motivo del archivado** | Mezclaba capas de copy (tono, audiencia, especificaciones) con capa técnica (arquitectura del menú, migración i18n). Se separó en dos documentos: `064_cw-brief-copywriter.md` (solo copy) y `062_cw-anexo-tecnico-espec.md` (solo técnica). |
 | **Contenido original** | 01 — Público objetivo · 02 — Estilo y tono · 03 — Variantes de tono · 04 — Inventario de páginas · 05 — Especificaciones por página · 06 — Gestión de textos en layouts · 07 — Glosario · 08 — Notas adicionales |
 
-**Decisión tomada el 2026-06-28**: Separar las capas técnica y de copy para que el copywriter disponga de un documento limpio (`cw-brief-copywriter.md`) sin secciones técnicas que no le competen, y el equipo técnico conserve toda la trazabilidad en este anexo.
+**Decisión tomada el 2026-06-28**: Separar las capas técnica y de copy para que el copywriter disponga de un documento limpio (`064_cw-brief-copywriter.md`) sin secciones técnicas que no le competen, y el equipo técnico conserve toda la trazabilidad en este anexo.
 
 ---
 
 <a id="02"></a>
 ## 02 — Decisiones de arquitectura
 
-Fuente: `PdTbjo-esds-fase-2.md` §02b.
+Fuente: `022_PdTbjo-esds-fase-2.md` §02b.
 
 ### Opción A vs Opción B
 
@@ -87,7 +87,7 @@ Fuente: `PdTbjo-esds-fase-2.md` §02b.
 <a id="03"></a>
 ## 03 — Arquitectura del menú de navegación
 
-Fuente: `legado/spec-copywriter.md` §04 y `PdTbjo-esds-fase-2.md` §02b.
+Fuente: `legado/spec-copywriter.md` §04 y `022_PdTbjo-esds-fase-2.md` §02b.
 
 ### Diagrama de árbol
 
@@ -201,7 +201,7 @@ El menú se renderiza desde `layouts/partials/header.html` usando `HasChildren` 
 <a id="04"></a>
 ## 04 — Migración i18n
 
-Fuente: `spec-copywriter.md` §06 y `PCI-001-migracion-i18n.md`.
+Fuente: `legado/spec-copywriter.md` §06 y `101_PCI-migracion-i18n.md`.
 
 ### Estado
 
@@ -245,23 +245,23 @@ menu_mini_retiro: "Mini Retiro"
 
 ### Pendiente para futuros batches
 
-Según `PCI-001-migracion-i18n.md` §09.4:
+Según `101_PCI-migracion-i18n.md` §09.4:
 
 - ~22 textos en `aria-label` de accesibilidad
 - Fallbacks de `default` en templates (ej. `| default "Experiencias"`)
 - Alt texts de imágenes hardcodeados
 - Considerar migración a archivos de datos (`data/`) para estructuras más complejas
 
-**Documento de referencia**: `PCI-001-migracion-i18n.md` (contiene el plan de reversión con 4 commits identificables por hash).
+**Documento de referencia**: `101_PCI-migracion-i18n.md` (contiene el plan de reversión con 4 commits identificables por hash).
 
 ---
 
 <a id="05"></a>
 ## 05 — Auditoría spec vs código — Bloque H
 
-Fuente: `PdTbjo-esds-fase-2.md` §02i.
+Fuente: `022_PdTbjo-esds-fase-2.md` §02i.
 
-Auditoría realizada el 2026-06-27 comparando el código real contra `spec-copywriter.md`. Se detectaron 14 hallazgos (H1–H14).
+Auditoría realizada el 2026-06-27 comparando el código real contra `legado/spec-copywriter.md`. Se detectaron 14 hallazgos (H1–H14).
 
 | # | Hallazgo | Severidad | Corrección aplicada | Estado |
 |---|----------|-----------|---------------------|--------|
@@ -287,7 +287,7 @@ Auditoría realizada el 2026-06-27 comparando el código real contra `spec-copyw
 <a id="06"></a>
 ## 06 — Contexto de descubrimientos y lecciones aprendidas
 
-Fuente: `PdTbjo-esds-fase-2.md` Anexo 3.
+Fuente: `022_PdTbjo-esds-fase-2.md` Anexo 3.
 
 ### 1. Migración i18n
 
@@ -297,13 +297,13 @@ Fuente: `PdTbjo-esds-fase-2.md` Anexo 3.
 - Hugo `i18n` NO itera listas YAML → usar strings planos con separador `|` y `strings.Split`
 - No usar `{{ .Variable }}` dentro de valores i18n → usar `replace` en el template
 - Los `identifier` del menú deben coincidir con las claves `menu_*` en i18n
-- Ver `PCI-001-migracion-i18n.md` para el detalle completo
+- Ver `101_PCI-migracion-i18n.md` para el detalle completo
 
 **Estado**: ✅ Completada. Quedan ~22 textos en aria-label y fallbacks de `default` para un batch futuro.
 
 ### 2. Auditoría spec vs código (Bloque H)
 
-**Qué pasó**: Se comparó el código real contra `spec-copywriter.md`. 14 divergencias detectadas, 11 corregidas, 3 pendientes.
+**Qué pasó**: Se comparó el código real contra `legado/spec-copywriter.md`. 14 divergencias detectadas, 11 corregidas, 3 pendientes.
 
 **Lecciones**:
 - Los title tags y H1 deben verificarse contra el documento KW en cada fase
@@ -346,7 +346,7 @@ Fuente: `PdTbjo-esds-fase-2.md` Anexo 3.
 
 ### 7. Criterio de replicabilidad (scaffolding)
 
-El plan de trabajo (`PdTbjo-esds-fase-2.md`) está diseñado para ser replicable como plantilla:
+El plan de trabajo (`022_PdTbjo-esds-fase-2.md`) está diseñado para ser replicable como plantilla:
 - Bloques de trabajo A–I como fases genéricas
 - Criterios de calidad transferibles a cualquier proyecto Hugo
 - Errores documentados en PCI-001 prevenibles en proyectos futuros
@@ -359,14 +359,15 @@ El plan de trabajo (`PdTbjo-esds-fase-2.md`) está diseñado para ser replicable
 
 | Documento | Descripción |
 |-----------|-------------|
-| **`project/esds-hugo/cw-brief-copywriter.md`** | **Brief de copywriting (documento complementario).** Contiene toda la especificación de copy: audiencia, tono, especificaciones por página. Este anexo es su contraparte técnica. |
-| `project/esds-hugo/PdTbjo-esds-fase-2.md` | Plan de trabajo detallado de la Fase 2. Contiene bloques A–I, decisiones arquitectura, anexos. |
+| **`project/esds-hugo/_doc-esds-hugo/064_cw-brief-copywriter.md`** | **Brief de copywriting (documento complementario).** Contiene toda la especificación de copy: audiencia, tono, especificaciones por página. Este anexo es su contraparte técnica. |
+| `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Plan de trabajo detallado de la Fase 2. Contiene bloques A–I, decisiones arquitectura, anexos. |
 | `project/esds-hugo/legado/spec-copywriter.md` | Especificación original del proyecto (archivada). 487 líneas, 10 secciones. Mezclaba copy y técnica. |
 | `project/esds-hugo/legado/conocimiento-proyecto-esds.md` | Conocimiento del proyecto: datos de servicios, precios, horarios, capacidades. Fuente secundaria de verdad. |
 | `project/ESDS/10_kw-principales-por-pagina.md` | Keywords SEO principales por página. Define title tags, H1, KW secundarias, FAQ GEO. |
 | `project/ESDS/05_Servicios-eSdS-formulario_revisado.md` | Formulario de Elena. **Fuente de verdad** para datos de servicios. Respuestas literales de la clienta. |
-| `project/esds-hugo/PCI-001-migracion-i18n.md` | Documentación completa de la migración i18n. 630 líneas. Incluye incidencias, lecciones y plan de reversión. |
-| `project/esds-hugo/spec-artefactos.md` | Especificación de artefactos técnicos: calendario, formulario, mapa, menú, FAQ, meta tags, sitemap, JSON-LD, SEO, Hugo Pipes. |
+| `project/esds-hugo/_doc-esds-hugo/101_PCI-migracion-i18n.md` | Documentación completa de la migración i18n. 630 líneas. Incluye incidencias, lecciones y plan de reversión. |
+| `project/esds-hugo/_doc-esds-hugo/052_spec-artefactos.md` | Especificación de artefactos técnicos: calendario, formulario, mapa, menú, FAQ, meta tags, sitemap, JSON-LD, SEO, Hugo Pipes. |
+| `project/esds-hugo/_doc-esds-hugo/102_PCI-integracion-artefactos.md` | Documentación de implementación de artefactos 05, 06, 08, 09 (FAQ, OG/Twitter, JSON-LD, SEO local). 789 líneas. Incluye incidencias, configuraciones, lecciones. |
 
 ---
 
@@ -379,11 +380,14 @@ Elementos que NO bloquean al copywriter pero están abiertos técnicamente:
 |---|-----------|--------|------------|-----------|
 | 1 | Página de Información: contenido pendiente de definir con Elena | A4 | Elena | Baja |
 | 2 | Imágenes reales: sustituir placeholders Lorem Picsum | Bloque F | Fotos de Elena | Media |
-| 3 | SEO avanzado: JSON-LD (LocalBusiness + Product) | Bloque D (D3) | Contenido finalizado | Media |
-| 4 | Meta tags dinámicos: og:title, og:description, twitter:card por página | Bloque D (D1) | — | Media |
-| 5 | Sitemap.xml: verificar generación automática | Bloque D (D2) | — | Baja |
+| 3 | ~~SEO avanzado: JSON-LD (LocalBusiness + Product)~~ | ~~Bloque D (D3)~~ | ~~Contenido finalizado~~ | ~~Media~~ |
+| | ✅ **JSON-LD implementado** en `partials/jsonld/` + `baseof.html`. Ver PCI-002 §03.4. | — | — | — |
+| 4 | ~~Meta tags dinámicos: og:title, og:description, twitter:card por página~~ | ~~Bloque D (D1)~~ | ~~—~~ | ~~Media~~ |
+| | ✅ **OG/Twitter implementado** mediante partials nativos Hugo en `baseof.html`. Ver PCI-002 §03.2. | — | — | — |
+| 5 | ~~Sitemap.xml: verificar generación automática~~ | ~~Bloque D (D2)~~ | ~~—~~ | ~~Baja~~ |
+| | ✅ **Sitemap operativo** (generación automática Hugo, artefacto 07). Ver PCI-002 §05. | — | — | — |
 | 6 | CMS: evaluar Sveltia para que Elena edite contenido | Bloque G | Páginas creadas | Baja |
-| 7 | Servicios relacionados: enlaces a páginas aún no creadas (generan 404) | H10 | Creación de páginas (H1) | Media |
+| 7 | Servicios relacionados: enlaces a páginas aún no creadas (generan 404) | H10 | Se resuelve automáticamente al crear las páginas (Fase 2, Bloque I) | Media |
 | 8 | Migración pendiente i18n: ~22 aria-labels, fallbacks default, alt texts | PCI-001 §09.4 | — | Baja |
 | 9 | Evaluar formulario de contacto (CF Worker + Turnstile) | Bloque E (E2) | — | Baja |
 | 10 | Evaluar Calendly / widget de calendario | Bloque E (E3) | — | Baja |
@@ -394,4 +398,4 @@ Elementos que NO bloquean al copywriter pero están abiertos técnicamente:
 
 ---
 
-*Fin del anexo técnico. Última actualización: 2026-06-28. Mantenido en `project/esds-hugo/cw-anexo-tecnico-espec.md`.*
+*Fin del anexo técnico. Última actualización: 2026-06-28. Mantenido en `project/esds-hugo/_doc-esds-hugo/062_cw-anexo-tecnico-espec.md`.*

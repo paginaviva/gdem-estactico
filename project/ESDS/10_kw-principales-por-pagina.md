@@ -42,7 +42,7 @@
 | **Canibalización** | Ninguna — es la página principal, no compite con páginas de servicio |
 | **KW Long-tail** | `retiro bienestar alicante`, `escapada bienestar alicante`, `turismo consciente alicante`, `retiro yoga guadalest`, `escapada rural alicante`, `bienestar naturaleza guadalest`, `planes escapada alicante pareja`, `turismo naturaleza alicante`, `viaje consciente costa blanca` |
 | **Preguntas FAQ (GEO)** | ¿Qué es el turismo consciente? ¿Qué experiencias de bienestar hay en Guadalest? ¿Qué incluye una experiencia de bienestar al aire libre en Guadalest? ¿Qué diferencia el bienestar activo de un spa? |
-| **Apoyo semántico / Entidades** | Valle de Guadalest, bienestar activo al aire libre, experiencias en naturaleza, yoga + kayak + caminata consciente, El Sonido del Silencio (marca), conexión con la naturaleza, grupo reducido, Costa Blanca, turismo consciente |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, bienestar activo al aire libre, experiencias en naturaleza, yoga + kayak + caminata consciente, El Sonido del Silencio (marca), conexión con la naturaleza, grupo reducido, Costa Blanca, Marina Baixa, Benimantell, turismo consciente |
 
 ---
 
@@ -62,7 +62,7 @@
 | **Canibalización** | No canibaliza con Home (Home es de marca, esta es de navegación). Peligro con `que hacer en guadalest` si se crea una página de blog con esa KW — decidir en Fase 3 |
 | **KW Long-tail** | `que hacer en guadalest`, `planes en guadalest`, `excursiones guadalest`, `escapadas rurales alicante`, `escapadas fin de semana alicante`, `planes escapada alicante pareja`, `que ver en guadalest` |
 | **Preguntas FAQ (GEO)** | ¿Qué hacer en Guadalest? ¿Cuáles son las mejores actividades en Guadalest? ¿Cuál es la mejor época para visitar Guadalest? ¿Qué ver en Guadalest además del embalse? |
-| **Apoyo semántico / Entidades** | Valle de Guadalest, Embalse de Guadalest, Castell de Guadalest, Fonts d'Algar, Beniardà, Costa Blanca, provincia de Alicante, planes de naturaleza, turismo activo |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, Embalse de Guadalest, Castell de Guadalest, Fonts d'Algar, Beniardà, Costa Blanca, provincia de Alicante, Marina Baixa, planes de naturaleza, turismo activo |
 
 ---
 
@@ -143,7 +143,7 @@
 | **Canibalización** | No confundir con kayak dentro del Mini Retiro. Esta página es para quien quiere solo kayak |
 | **KW Long-tail** | `kayak guadalest precio`, `rutas kayak guadalest`, `alquiler kayak guadalest`, `kayak en silencio guadalest`, `kayak embalse guadalest precio` |
 | **Preguntas FAQ (GEO)** | ¿Cuánto cuesta el kayak en el embalse de Guadalest? ¿Se puede alquilar un kayak en Guadalest? ¿Qué rutas de kayak hay en el embalse de Guadalest? ¿Es necesario saber remar para hacer kayak en Guadalest? ¿Cuál es la mejor hora para hacer kayak en Guadalest? |
-| **Apoyo semántico / Entidades** | Embalse de Guadalest, aguas turquesa, Beniardà, Costa Blanca, remar en silencio, chaleco de seguridad, kayak guiado (no alquiler libre), montañas alrededor, todos los niveles |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, aguas turquesa, Beniardà, Costa Blanca, Marina Baixa, remar en silencio, chaleco de seguridad, kayak guiado (no alquiler libre), montañas alrededor, todos los niveles |
 | **Nota proveedor** | Elena opera con kayakbeni.com como proveedor. No mencionar a no ser que sea relevante |
 
 ---
@@ -184,7 +184,7 @@
 | **Canibalización** | No. "Transfer Privado" cubre otros destinos (Fonts d'Algar, Castillo) — diferenciar claramente |
 | **KW Long-tail** | `como llegar al embalse guadalest`, `transporte guadalest`, `recogida beniarda guadalest` |
 | **Preguntas FAQ (GEO)** | ¿Cómo llegar al embalse de Guadalest? ¿Cómo llegar al embalse de Guadalest sin coche? ¿Hay transporte público a Guadalest? ¿Dónde aparcar en el embalse de Guadalest? ¿Cuánto cuesta el transfer al embalse de Guadalest? |
-| **Apoyo semántico / Entidades** | Embalse de Guadalest, Beniardà, punto de encuentro en Beniardà, acceso al embalse, parking, carretera de montaña, Multivan Volkswagen, 12 minutos de trayecto, transporte compartido |
+| **Apoyo semántico / Entidades** | Embalse de Guadalest, Beniardà, punto de encuentro en Beniardà, Puerto de Guadalest, acceso al embalse, parking, carretera de montaña, Multivan Volkswagen, 12 minutos de trayecto, transporte compartido, Marina Baixa |
 
 ---
 
@@ -204,7 +204,7 @@
 | **Canibalización** | Diferenciar de "Transfer Actividad" (este es privado y a más destinos, aquel es compartido y solo al embalse) |
 | **KW Long-tail** | `font d algar como llegar`, `transporte font d algar`, `como llegar font d algar`, `font d algar precio`, `font d algar horario`, `taxi guadalest`, `traslado guadalest`, `cascada font d algar` |
 | **Preguntas FAQ (GEO)** | ¿Cómo llegar a Fonts d'Algar? ¿Cuánto cuesta la entrada a Fonts d'Algar? ¿Cuál es el horario de Fonts d'Algar? ¿Qué ver en el Valle de Guadalest? ¿Cómo moverse por el Valle de Guadalest sin coche? |
-| **Apoyo semántico / Entidades** | Fonts d'Algar (cascadas), Castillo de Guadalest, Valle de Guadalest, Beniardà, Costa Blanca, Multivan Volkswagen, servicio bajo demanda, traslado privado, destinos a medida, turismo rural |
+| **Apoyo semántico / Entidades** | Fonts d'Algar (cascadas), Castillo de Guadalest, Valle de Guadalest, Beniardà, Puerto de Guadalest, Costa Blanca, Marina Baixa, Multivan Volkswagen, servicio bajo demanda, traslado privado, destinos a medida, turismo rural |
 
 ---
 
@@ -224,7 +224,7 @@
 | **Canibalización** | No. Es una página de marca, no compite con las de servicio |
 | **KW Long-tail** | `turismo consciente alicante`, `quien es elena guadalest`, `guia bienestar guadalest`, `valle guadalest turismo`, `turismo bienestar alicante`, `turismo rural guadalest`, `viaje consciente costa blanca` |
 | **Preguntas FAQ (GEO)** | ¿Qué es el turismo consciente? ¿Quién es Elena de El Sonido del Silencio? ¿Qué es El Sonido del Silencio? ¿Qué significa turismo consciente en Alicante? ¿Por qué elegir un guía de bienestar en Guadalest? |
-| **Apoyo semántico / Entidades** | Valle de Guadalest, Elena (fundadora), bienestar consciente, grupos reducidos, respeto por la naturaleza, El Sonido del Silencio (marca), conexión con el entorno, experiencias transformadoras, Costa Blanca, turismo rural, filosofía de bienestar |
+| **Apoyo semántico / Entidades** | Valle de Guadalest, Elena (fundadora), bienestar consciente, grupos reducidos, respeto por la naturaleza, El Sonido del Silencio (marca), conexión con el entorno, experiencias transformadoras, Costa Blanca, Marina Baixa, Benimantell, turismo rural, filosofía de bienestar |
 
 ---
 

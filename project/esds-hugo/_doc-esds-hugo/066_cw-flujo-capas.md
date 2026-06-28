@@ -165,7 +165,7 @@ Si se desea trazabilidad, cada capa puede dejar una copia en `/tmp/` con el patr
 
 ## Documentos de referencia
 
-- `project/esds-hugo/cw-brief-copywriter.md` — Brief de copywriting (fuente principal para el agente)
+- `project/esds-hugo/_doc-esds-hugo/064_cw-brief-copywriter.md` — Brief de copywriting (fuente principal para el agente)
 - `project/ESDS/10_kw-principales-por-pagina.md` — Keywords, title tags, H1, FAQ, entidades
 - `project/ESDS/05_Servicios-eSdS-formulario_revisado.md` — Formulario de Elena (datos factuales)
-- `project/esds-hugo/PdTbjo-esds-fase-2.md` — Plan de trabajo (tareas I0-I7)
+- `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` — Plan de trabajo (tareas I0-I7)

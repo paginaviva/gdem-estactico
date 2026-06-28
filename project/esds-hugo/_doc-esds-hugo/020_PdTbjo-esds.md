@@ -40,13 +40,13 @@
 | C3 | Doble `@@` en Instagram (`@@elsonido.silencio`) | `@{{ .Site.Params.instagram }}` → `{{ .Site.Params.instagram }}` | ✅ |
 | C4 | Secciones a 100% de ancho (experiencias, como-llegar, conversion, info-bar, conecta) | Envuelto contenido en `<div class="container">` con `max-width: 1200px` centrado | ✅ |
 
-### Fase 2: Páginas interiores (servicios) — Ver `PdTbjo-esds-fase-2.md`
+### Fase 2: Páginas interiores (servicios) — Ver `022_PdTbjo-esds-fase-2.md`
 
 El plan detallado de Fase 2 se ha movido a un documento independiente para mantener este plan general más manejable.
 
 **Enfoque**: Desarrollo incremental comenzando con el **piloto Mini Retiro** (una página de servicio completa de principio a fin). Una vez validado, se replica a las 6 páginas restantes.
 
-→ Ver [`PdTbjo-esds-fase-2.md`](./PdTbjo-esds-fase-2.md) para el desglose completo por bloques (A–G), tareas, dependencias y orden de ejecución.
+→ Ver [`022_PdTbjo-esds-fase-2.md`](./022_PdTbjo-esds-fase-2.md) para el desglose completo por bloques (A–G), tareas, dependencias y orden de ejecución.
 
 ### Fase 3: Despliegue y mejoras — ✅ PARCIAL (CF Pages activo)
 
@@ -86,7 +86,7 @@ El plan detallado de Fase 2 se ha movido a un documento independiente para mante
 | Paleta de colores | Del logo: Beige #F5EDE4, Verde bosque #3E4A3C, Dorado #B8A88A, Verde oliva #8A9A7B, Azul cielo #B8CDD6 |
 | Tipografía | Playfair Display (titulares), Pacifico/Dancing Script (eslogan), Inter/Open Sans (cuerpo) |
 | Contacto | WhatsApp + Instagram únicamente |
-| Menú | Ver estructura detallada en `PdTbjo-esds-fase-2.md` §02b (líneas 104-107): 3 padres + 8 hijos con submenús |
+| Menú | Ver estructura detallada en `022_PdTbjo-esds-fase-2.md` §02b (líneas 104-107): 3 padres + 8 hijos con submenús |
 
 ---
 
@@ -94,7 +94,7 @@ El plan detallado de Fase 2 se ha movido a un documento independiente para mante
 
 El flujo completo de despliegue, configuración, checklist e historial se ha movido a un documento independiente:
 
-→ **[`despliegue-cloudflare-pages.md`](./despliegue-cloudflare-pages.md)**
+→ **[`009_despliegue-cloudflare-pages.md`](./009_despliegue-cloudflare-pages.md)**
 
 Incluye: infraestructura, token de API, comandos de despliegue (inicial y posteriores),
 configuración `wrangler.jsonc`, variable `baseURL`, checklist de 8 pasos,
@@ -102,4 +102,4 @@ dominio personalizado (fase posterior) e historial de despliegues.
 
 ---
 
-*Fin del plan de trabajo. Mantenido en project/esds-hugo/PdTbjo-esds.md*
+*Fin del plan de trabajo. Mantenido en project/esds-hugo/_doc-esds-hugo/020_PdTbjo-esds.md*

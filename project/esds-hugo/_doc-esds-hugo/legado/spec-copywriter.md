@@ -207,7 +207,7 @@ Cada página debe respetar los siguientes campos definidos en el documento `10_k
 - **Keywords secundarias**: integrar de forma natural, sin forzar
 - **Preguntas FAQ**: incluir en formato de bloque FAQ (para GEO / AI Overview)
 - **Apoyo semántico / entidades**: mencionar las ubicaciones, conceptos y términos asociados
-- **Datos clave**: precio, duración, horarios, capacidad — exactos según `conocimiento-proyecto-esds.md`
+- **Datos clave**: precio, duración, horarios, capacidad — exactos según `legado/conocimiento-proyecto-esds.md`
 - **Textos de layouts**: los textos visibles en secciones gestionadas por las plantillas HTML (hero, tarjetas de experiencias, cómo llegar, footer, etc.) se editan en `i18n/es.yaml`, no en archivos Markdown. Ver sección 06 para más detalles.
 
 Además de los campos siguientes, cada página debe integrar de forma natural:
@@ -391,7 +391,7 @@ Además de los campos siguientes, cada página debe integrar de forma natural:
 <a id="06"></a>
 ## 06 — Gestión de textos en layouts (migración i18n completada)
 
-Como parte del proyecto, todos los textos visibles al usuario que estaban hardcodeados en las plantillas HTML se migraron al sistema de internacionalización (`i18n`) de Hugo. La migración queda documentada en `PCI-001-migracion-i18n.md`.
+Como parte del proyecto, todos los textos visibles al usuario que estaban hardcodeados en las plantillas HTML se migraron al sistema de internacionalización (`i18n`) de Hugo. La migración queda documentada en `101_PCI-migracion-i18n.md`.
 
 ### Estado actual
 
@@ -410,7 +410,7 @@ Como parte del proyecto, todos los textos visibles al usuario que estaban hardco
 
 ### Pendiente para futuros batches (no crítico)
 
-Según `PCI-001-migracion-i18n.md` §09.4, queda pendiente migrar:
+Según `101_PCI-migracion-i18n.md` §09.4, queda pendiente migrar:
 - Textos en `aria-label` de accesibilidad (~22 cadenas)
 - Fallbacks de `default` en templates
 - Alt texts de imágenes hardcodeados
@@ -480,8 +480,8 @@ Según `PCI-001-migracion-i18n.md` §09.4, queda pendiente migrar:
 
 ### Sobre la migración de textos
 
-La migración de textos hardcodeados de las plantillas HTML a `i18n/es.yaml` está completada. Consulta `PCI-001-migracion-i18n.md` para ver el detalle de la migración, las incidencias resueltas y el plan de reversión.
+La migración de textos hardcodeados de las plantillas HTML a `i18n/es.yaml` está completada. Consulta `101_PCI-migracion-i18n.md` para ver el detalle de la migración, las incidencias resueltas y el plan de reversión.
 
 ---
 
-*Fin del documento de especificación. Mantenido en `project/esds-hugo/spec-copywriter.md`. Próxima actualización: al inicio de la fase de redacción.*
+*Fin del documento de especificación. Mantenido en `project/esds-hugo/_doc-esds-hugo/legado/spec-copywriter.md`. Próxima actualización: al inicio de la fase de redacción.*

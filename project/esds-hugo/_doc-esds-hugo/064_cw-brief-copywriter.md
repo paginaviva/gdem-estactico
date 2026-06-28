@@ -41,7 +41,7 @@
 |-----------|------|-----|
 | **Formulario de servicios (Elena)** | `project/ESDS/05_Servicios-eSdS-formulario_revisado.md` | 🥇 **Fuente principal. Prevalece ante cualquier duda.** Contiene respuestas literales de Elena: precios, horarios, descripciones, equipaje, capacidades. |
 | **Keywords por página** | `project/ESDS/10_kw-principales-por-pagina.md` | Define KW principal, title tag, H1, FAQ, long-tail KWs y entidades semánticas por página. |
-| **Plan de trabajo Fase 2** | `project/esds-hugo/PdTbjo-esds-fase-2.md` | Plan de trabajo con tareas I0–I7 y anexos. Las especificaciones de este brief ya incorporan su contenido. |
+| **Plan de trabajo Fase 2** | `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Plan de trabajo con tareas I0–I7 y anexos. Las especificaciones de este brief ya incorporan su contenido. |
 
 > ⚠ **Regla de oro**: Si este brief contradice alguna otra fuente, prevalece el formulario de Elena (`05_Servicios-eSdS-formulario_revisado.md`).
 
@@ -584,7 +584,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 | **Vehículo** | Multivan Volkswagen |
 | **Hora de encuentro** | Salida desde Beniardà a las 8:00 y 16:30 en punto. Tiempo de espera máx. 5 minutos (formulario línea 184). |
 
-> ⚠ **IMPORTANTE — Horario de tarde**: El horario correcto de la salida de tarde es **16:30**, según la tabla resumen de Elena (formulario línea 224). Aunque el detalle del servicio (línea 175) indica 17:00, **prevalece la tabla resumen (16:30)**. Esta discrepancia está resuelta y documentada en el plan de trabajo (PdTbjo-fase-2, hallazgo H9).
+> ⚠ **IMPORTANTE — Horario de tarde**: El horario correcto de la salida de tarde es **16:30**, según la tabla resumen de Elena (formulario línea 224). Aunque el detalle del servicio (línea 175) indica 17:00, **prevalece la tabla resumen (16:30)**. Esta discrepancia está resuelta y documentada en el plan de trabajo (022_PdTbjo-esds-fase-2, hallazgo H9).
 
 #### Descripción literal de Elena
 
@@ -719,7 +719,17 @@ Cada página debe incluir un botón «Reservar por WhatsApp» que abre `wa.me/..
 - **Respuestas claras y completas de 40-60 palabras**.
 - Responder directamente a la pregunta en la primera frase.
 - Incluir la keyword principal de forma natural en la respuesta.
-- Las FAQ deben marcarse con el formato de bloque FAQ en el contenido (no JSON-LD).
+- Las FAQ se marcan con el shortcode `{{< faq >}}...{{< /faq >}}`, ya disponible en Hugo.
+  El shortcode genera automáticamente el JSON-LD FAQPage en el `<head>` de la página.
+  Formato dentro del shortcode:
+  ```markdown
+  {{< faq >}}
+  ### ¿Pregunta aquí?
+  Respuesta aquí, 40-60 palabras.
+  {{< /faq >}}
+  ```
+  Cada pregunta empieza con `### ` (heading level 3). La respuesta es el texto hasta el siguiente `### ` o el cierre del shortcode.
+- Google deprecó los FAQ rich results en mayo 2026, pero el schema sigue siendo válido para Bing, Yahoo, Yandex y preparación para futuros cambios.
 
 ### Sobre las keywords
 
@@ -727,17 +737,30 @@ Cada página debe incluir un botón «Reservar por WhatsApp» que abre `wa.me/..
 - **Las keywords secundarias pueden solaparse** entre páginas: es deseable para reforzar el cluster semántico.
 - Las KW principales deben aparecer en: title tag (ya definido), H1 (ya definido), primer párrafo y al menos una vez más en el body.
 - Las keywords secundarias deben integrarse de forma natural, sin forzar.
+- Las keywords en el front matter deben ir en formato array YAML:
+  ```yaml
+  keywords:
+    - mini retiro guadalest
+    - bienestar alicante
+  ```
+  No usar formato string (`keywords: "mini retiro, bienestar"`) porque Hugo espera un array para `delimit`.
 
 ### Sobre datos estructurados
 
-- Los datos estructurados JSON-LD (LocalBusiness + Product para servicios con precio) se implementarán en los layouts, no en el contenido.
+- Los datos estructurados JSON-LD (LocalBusiness + Product para servicios con precio) ya están implementados en los layouts (`partials/jsonld/` + `baseof.html`). El copywriter no debe incluir JSON-LD en los archivos Markdown.
 - El contenido debe estar preparado para que esos datos estructurados sean coherentes.
 - No incluir JSON-LD en los archivos Markdown.
 
+### Sobre el campo `precio` en front matter
+
+- Las páginas de servicio usan el campo `precio:` en el front matter (ej: `precio: 50`, número entero), no `price:`.
+- El partial JSON-LD Product lo lee de `precio` y lo emite como `"price"` en el schema (estándar Schema.org).
+- Al crear nuevas páginas, mantener `precio:` para consistencia con el archivo existente `mini-retiro.md`.
+
 ### Sobre las imágenes
 
-- En Fase 1 se usan placeholders de Lorem Picsum con seeds fijos.
-- En Fase 2 se sustituirán por fotos reales.
+- Actualmente se usan placeholders de Lorem Picsum (`picsum.photos/seed/...`).
+- Se sustituirán por fotos reales cuando Elena las proporcione (pendiente de definir).
 - El texto debe describir la experiencia sin depender de que la imagen lo haga.
 
 ### Sobre la autoría de citas
@@ -757,14 +780,14 @@ Durante la validación final de cada página se ejecuta un checklist de 8 dimens
 7. **Slug URL** — minúsculas, guiones, incluye KW principal, menos de 60 caracteres
 8. **Schema on-page** — Schema.org apropiado (FAQPage para FAQ, Product para servicios con precio)
 
-Si algo no pasa, se corrige antes de dar la página por terminada. Ver flujo de redacción en `cw-flujo-redaccion.md`.
+Si algo no pasa, se corrige antes de dar la página por terminada. Ver flujo de redacción en `068_cw-flujo-redaccion.md`.
 
 ---
 
 <a id="11"></a>
 ## 11. Referencia al plan de trabajo
 
-Las tareas de redacción están definidas en el **Bloque I** del plan de trabajo `project/esds-hugo/PdTbjo-esds-fase-2.md`. A continuación, la tabla resumen:
+Las tareas de redacción están definidas en el **Bloque I** del plan de trabajo `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md`. A continuación, la tabla resumen:
 
 | # | Página | Archivo | Acción | Prioridad |
 |:-:|--------|---------|--------|-----------|
@@ -779,7 +802,7 @@ Las tareas de redacción están definidas en el **Bloque I** del plan de trabajo
 | **I6** | Transfer Privado | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Media |
 | **I7** | Información | `content/informacion/_index.md` | ✏️ Crear desde cero (contenido pte. de definir con Elena) | Baja |
 
-> **Orden sugerido**: I0 → I01 → I1 → I2 → I3 → I4 → I00 → I5 → I6 → I7 (se priorizan las páginas de conversión directa). El plan detallado completo está en `project/esds-hugo/PdTbjo-esds-fase-2.md`.
+> **Orden sugerido**: I0 → I01 → I1 → I2 → I3 → I4 → I00 → I5 → I6 → I7 (se priorizan las páginas de conversión directa). El plan detallado completo está en `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md`.
 
 ---
 
@@ -795,7 +818,7 @@ El producto estrella tiene dos nombres que conviven:
 
 **Ambos son correctos en su contexto.** El menú y la URL usarán siempre «Mini Retiro». El cuerpo de la página puede usar «Mañana de Retiro» como título descriptivo siempre que la keyword principal («mini retiro guadalest») aparezca en el H1, primer párrafo y body.
 
-> ✅ **Decisión tomada**: «Mini Retiro» es el nombre comercial de la experiencia (menú, URL, keyword). «Mañana de Retiro» es una explicación descriptiva de que se realiza por la mañana. Ambos son correctos en su contexto. Ver PdTbjo-fase-2, hallazgo H4.
+> ✅ **Decisión tomada**: «Mini Retiro» es el nombre comercial de la experiencia (menú, URL, keyword). «Mañana de Retiro» es una explicación descriptiva de que se realiza por la mañana. Ambos son correctos en su contexto. Ver 022_PdTbjo-esds-fase-2, hallazgo H4.
 
 ---
 

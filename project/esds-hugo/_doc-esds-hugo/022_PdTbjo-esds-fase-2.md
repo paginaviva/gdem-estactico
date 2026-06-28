@@ -8,7 +8,7 @@
 | **Proyecto** | `project/esds-hugo/` |
 | **Cliente** | Elena |
 | **Marca** | El Sonido del Silencio |
-| **Fase base** | `PdTbjo-esds.md` (plan general) |
+| **Fase base** | `020_PdTbjo-esds.md` (plan general) |
 | **Fecha creación** | 2026-06-27 |
 | **Última modificación** | 2026-06-27 |
 | **Estado** | En progreso — estructura y plantillas completadas. Contenido textual: 3 páginas a reescribir (Home, Listado, Mini Retiro) + 7 a crear |
@@ -124,7 +124,7 @@ Tras evaluar las dos opciones posibles, se acordó la **Opción B**.
 
 | # | Servicio | Archivo | Contenido desde | Depende de | Estado | Contexto |
 |---|----------|---------|-----------------|------------|--------|----------|
-| **C1** | 🟡 Mini Retiro (piloto) | `content/servicios/mini-retiro.md` | Conocimiento §03 — Servicio 1 | P1, P2, P3 | ⏳ **Hecho solo en estructura — contenido pendiente de reescribir** | La **estructura** (front matter, programa, datos clave) está validada y correcta. Pero el **contenido textual del body** se creó con texto ad-hoc de prueba para validar la plantilla. `spec-copywriter.md` §04 exige reescribir todo el cuerpo desde cero. Pendiente también resolver naming dual (Mini Retiro vs Mañana de Retiro). |
+| **C1** | 🟡 Mini Retiro (piloto) | `content/servicios/mini-retiro.md` | Conocimiento §03 — Servicio 1 | P1, P2, P3 | ⏳ **Hecho solo en estructura — contenido pendiente de reescribir** | La **estructura** (front matter, programa, datos clave) está validada y correcta. Pero el **contenido textual del body** se creó con texto ad-hoc de prueba para validar la plantilla. `legado/spec-copywriter.md` §04 exige reescribir todo el cuerpo desde cero. Pendiente también resolver naming dual (Mini Retiro vs Mañana de Retiro). |
 | **C2** | Tarde de Conexión | `content/servicios/tarde-conexion.md` | Conocimiento §03 — Servicio 2 | B1 | ⏳ **Pendiente** | Usar mini-retiro.md como plantilla. Tipo: pack. Precio: 35 €. Duración: 3:30h. Capacidad: máx 6 (yoga) / máx 10 (kayak). |
 | **C3** | Yoga & Mindfulness | `content/servicios/yoga.md` | Conocimiento §03 — Servicio 3 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 30 €. Duración: 1:30h. Horarios: 8:30 / 19:00. |
 | **C4** | Kayak | `content/servicios/kayak.md` | Conocimiento §03 — Servicio 4 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 20 €. Duración: 1:30h. Horarios: 12:30 / 17:30. |
@@ -132,9 +132,9 @@ Tras evaluar las dos opciones posibles, se acordó la **Opción B**.
 | **C6** | Transfer Actividad | `content/servicios/transfer-actividad.md` | Conocimiento §03 — Servicio 6 | B1 | ⏳ **Pendiente** | Tipo: transfer. Precio: 10 €. ⚠ Horario de tarde PENDIENTE DE ACLARAR CON ELENA (16:30 vs 17:00). |
 | **C7** | Transfer Privado | `content/servicios/transfer-privado.md` | Conocimiento §03 — Servicio 7 | B1 | ⏳ **Pendiente** | Tipo: transfer. Precio: bajo presupuesto. Destinos: Fonts d'Algar, Castillo de Guadalest. |
 
-**Nota importante sobre el piloto Mini Retiro (C1)**: Lo que se validó en el piloto es la **estructura** (plantilla `single.html`, front matter, programa, datos prácticos, CTA, menú). El **contenido textual del cuerpo** (descripciones, narrativa, FAQs) se creó con texto ad-hoc de prueba para poder visualizar la plantilla. `spec-copywriter.md` §04 exige reescribir completamente el cuerpo de Mini Retiro (I01), al igual que el de Home (I0) y Listado de servicios (I00). Ningún texto actual del body se conserva.
+**Nota importante sobre el piloto Mini Retiro (C1)**: Lo que se validó en el piloto es la **estructura** (plantilla `single.html`, front matter, programa, datos prácticos, CTA, menú). El **contenido textual del cuerpo** (descripciones, narrativa, FAQs) se creó con texto ad-hoc de prueba para poder visualizar la plantilla. `legado/spec-copywriter.md` §04 exige reescribir completamente el cuerpo de Mini Retiro (I01), al igual que el de Home (I0) y Listado de servicios (I00). Ningún texto actual del body se conserva.
 
-Cada página de servicio sigue la misma plantilla validada en el piloto. El contenido se extrae de `spec-copywriter.md` §05 y `10_kw-principales-por-pagina.md`. Ver Anexo 1 para el detalle de cada servicio.
+Cada página de servicio sigue la misma plantilla validada en el piloto. El contenido se extrae de `legado/spec-copywriter.md` §05 y `10_kw-principales-por-pagina.md`. Ver Anexo 1 para el detalle de cada servicio.
 
 ---
 
@@ -145,7 +145,7 @@ Cada página de servicio sigue la misma plantilla validada en el piloto. El cont
 |---|-------|-------------|------------|--------|----------|
 | **D1** | Meta tags dinámicos en `baseof.html` | Inyectar `description`, `og:title`, `og:description`, `og:image`, `twitter:card` desde front matter de cada página | — | ⏳ **Pendiente** | Actualmente usa valores por defecto del site. Falta implementar meta tags específicos por página. |
 | **D2** | Sitemap.xml automático | Hugo lo genera — activar y verificar | — | ⏳ **Pendiente** | `enableRobotsTXT: true` está en hugo.yaml. El sitemap se genera pero hay que verificar su contenido. |
-| **D3** | Datos estructurados JSON-LD | Añadir `LocalBusiness` y `Product` (para servicios con precio) en `single.html` mediante partial | B1 | ⏳ **Pendiente** | Documentado en spec-artefactos.md (artefacto 08). Pendiente de implementar. |
+| **D3** | Datos estructurados JSON-LD | Añadir `LocalBusiness` y `Product` (para servicios con precio) en `single.html` mediante partial | B1 | ⏳ **Pendiente** | Documentado en 052_spec-artefactos.md (artefacto 08). Pendiente de implementar. |
 | **D4** | SEO local | Revisar títulos y descripciones de cada página contra `10_kw-principales-por-pagina.md` | C1–C7 | ⏳ **Pendiente** | Keywords identificadas. Pendiente de aplicar título por título. |
 | **D5** | Alinear title tags y H1 con spec | **Home**: title tag corregido a «Experiencias bienestar Guadalest \| ESDS» y H1 a «Experiencias de bienestar en Guadalest — El Sonido del Silencio» | — | ✅ **Hecho** | Ver bloque H (hallazgo H2). |
 | **D6** | Alinear title tag del listado | `content/servicios/_index.md`: title actualizado a «Actividades en Guadalest — Descubre todas nuestras experiencias» | A2 | ✅ **Hecho** | Ver bloque H (hallazgo H3). |
@@ -188,7 +188,7 @@ Cada página de servicio sigue la misma plantilla validada en el piloto. El cont
 <a id="02i"></a>
 ### Bloque H — Alineamiento spec vs código
 
-**Origen**: Auditoría realizada el 2026-06-27 comparando el código real (layouts, i18n, contenido, config) contra `spec-copywriter.md`. Se detectaron 14 hallazgos que se corrigieron en esta ronda. Ver `/tmp/hallazgos-codigo-vs-spec.md`.
+**Origen**: Auditoría realizada el 2026-06-27 comparando el código real (layouts, i18n, contenido, config) contra `legado/spec-copywriter.md`. Se detectaron 14 hallazgos que se corrigieron en esta ronda. Ver `/tmp/hallazgos-codigo-vs-spec.md`.
 
 | # | Hallazgo | Severidad | Archivos afectados | Corrección aplicada | Estado |
 |---|----------|-----------|-------------------|---------------------|--------|
@@ -200,7 +200,7 @@ Cada página de servicio sigue la misma plantilla validada en el piloto. El cont
 | **H6** | URL de Información incorrecta (#informacion) | 🟡 Importante | `hugo.yaml` | Cambiada a `/informacion/` | ✅ **Hecho** |
 | **H7** | 4 textos hardcodeados sin migrar a i18n | 🟡 Importante | `baseof.html`, `single.html`, `list.html`, `i18n/es.yaml` | Migrados: skip-link, sr-only headings | ✅ **Hecho** |
 | **H8** | Claim principal sin clave i18n | 🟡 Importante | `i18n/es.yaml` | Añadido `claim_principal: "Donde el Silencio tiene voz"` | ✅ **Hecho** |
-| **H9** | Transfer Actividad: horario discrepante resuelto | 🟡 Importante | `spec-copywriter.md` | Resuelto: 16:30 según tabla resumen de Elena. La tabla detalle del servicio indicaba 17:00, prevalece el resumen. | ✅ **Resuelto** |
+| **H9** | Transfer Actividad: horario discrepante resuelto | 🟡 Importante | `legado/spec-copywriter.md` | Resuelto: 16:30 según tabla resumen de Elena. La tabla detalle del servicio indicaba 17:00, prevalece el resumen. | ✅ **Resuelto** |
 | **H10** | Servicios relacionados enlazan a páginas inexistentes | 🟡 Importante | `layouts/_default/single.html` | Los enlaces existen pero las páginas de destino no. Depende de H1 | ⏳ **Pendiente** |
 | **H11** | Home no incluye bloque FAQ GEO | 🔵 Menor | `content/_index.md` | FAQ añadido con 4 preguntas (turismo consciente, experiencia previa, mejor época, cómo reservar) | ✅ **Hecho** |
 | **H12** | Frase «Bienestar·Naturaleza·Aventura·Reconexión·Silencio» ausente | 🔵 Menor | `hugo.yaml` | Incorporada al meta description del site | ✅ **Hecho** |
@@ -212,7 +212,7 @@ Cada página de servicio sigue la misma plantilla validada en el piloto. El cont
 <a id="02j"></a>
 ### Bloque I — Contenido pendiente (fase de copywriting)
 
-Una vez completados los bloques A–H (infraestructura y alineamiento), el siguiente paso es la creación del contenido de cada página siguiendo `spec-copywriter.md` y `10_kw-principales-por-pagina.md`.
+Una vez completados los bloques A–H (infraestructura y alineamiento), el siguiente paso es la creación del contenido de cada página siguiendo `legado/spec-copywriter.md` y `10_kw-principales-por-pagina.md`.
 
 | # | Página | Archivo | Acción | Referencias | Prioridad |
 |---|--------|---------|--------|-------------|-----------|
@@ -240,7 +240,7 @@ Fase 2-A (completada):
   ├── ⚡ PILOTO Mini Retiro (P1-P4) → validar plantilla
   ├── Bloque B (plantillas) → consolidar single.html, partials, menú
   ├── PCI-001: Migración i18n → textos hardcodeados a i18n/es.yaml
-  ├── spec-copywriter.md → especificación de copy
+  ├── legado/spec-copywriter.md → especificación de copy
   ├── Auditoría spec vs código → bloque H (11 de 14 hallazgos corregidos)
   └── Resultado: sitio compila (5 páginas, 0 errores)
 
@@ -271,11 +271,11 @@ Fase 2-C (después del contenido):
 - Cada página de servicio compila sin errores Hugo (0 errores, 0 warnings)
 - Coherencia visual con la landing: misma paleta, tipografía, espaciado
 - Navegación funcional: menú → servicio → volver, sin enlaces rotos
-- Contenido veraz: precios, horarios, capacidades según `conocimiento-proyecto-esds.md`
+- Contenido veraz: precios, horarios, capacidades según `legado/conocimiento-proyecto-esds.md`
 - Sin abreviaciones en textos visibles al usuario
 - Textos en español de España (RAE), tono cálido y sensorial
 - **Sin hardcoding**: todo texto visible debe estar en `i18n/es.yaml` (layouts) o en archivos `.md` (contenido). Ver PCI-001.
-- **Correspondencia con spec**: el código no debe desviarse de `spec-copywriter.md`. Si hay discrepancia, actualizar el spec o el código según corresponda.
+- **Correspondencia con spec**: el código no debe desviarse de `legado/spec-copywriter.md`. Si hay discrepancia, actualizar el spec o el código según corresponda.
 - **Los title tags y H1** deben coincidir con `10_kw-principales-por-pagina.md`.
 
 ---
@@ -283,7 +283,7 @@ Fase 2-C (después del contenido):
 <a id="a1"></a>
 ## Anexo 1: Listado de secciones de cada servicio
 
-Datos extraídos de `conocimiento-proyecto-esds.md` §03 y `spec-copywriter.md` §05. Cada página de servicio contendrá estos campos en su front matter y cuerpo.
+Datos extraídos de `legado/conocimiento-proyecto-esds.md` §03 y `legado/spec-copywriter.md` §05. Cada página de servicio contendrá estos campos en su front matter y cuerpo.
 
 > **Nota**: Estos datos son la fuente de verdad para el contenido. Cualquier discrepancia entre este anexo y otros documentos debe resolverse actualizando este anexo.
 
@@ -570,19 +570,19 @@ whatsapp_mensaje: "Hola, quiero reservar la experiencia de Yoga"
 
 ### 1. Migración i18n (PCI-001)
 
-**Qué pasó**: Tras crear el `spec-copywriter.md`, se descubrió que ~100 cadenas de texto estaban hardcodeadas en 10 layouts HTML. Se migraron a `i18n/es.yaml` en 4 batches con 27 subtareas.
+**Qué pasó**: Tras crear el `legado/spec-copywriter.md`, se descubrió que ~100 cadenas de texto estaban hardcodeadas en 10 layouts HTML. Se migraron a `i18n/es.yaml` en 4 batches con 27 subtareas.
 
 **Lecciones**:
 - Hugo `i18n` NO itera listas YAML → usar strings planos con separador `|` y `strings.Split`
 - No usar `{{ .Variable }}` dentro de valores i18n → usar `replace` en el template
 - Los `identifier` del menú deben coincidir con las claves `menu_*` en i18n
-- Ver `PCI-001-migracion-i18n.md` para el detalle completo.
+- Ver `101_PCI-migracion-i18n.md` para el detalle completo.
 
 **Estado**: ✅ Completada. Quedan ~22 textos en aria-label y fallbacks de `default` para un batch futuro.
 
 ### 2. Auditoría spec vs código (Bloque H)
 
-**Qué pasó**: Se comparó el código real contra `spec-copywriter.md` y se detectaron 14 divergencias. 11 se corrigieron inmediatamente. 3 quedan pendientes de Elena.
+**Qué pasó**: Se comparó el código real contra `legado/spec-copywriter.md` y se detectaron 14 divergencias. 11 se corrigieron inmediatamente. 3 quedan pendientes de Elena.
 
 **Lecciones**:
 - Los title tags y H1 deben verificarse contra el documento KW en cada fase
@@ -626,4 +626,4 @@ Para que este PdTbjo pueda usarse como plantilla en otros proyectos:
 
 ---
 
-*Fin del plan de Fase 2. Última actualización: 2026-06-27. Este documento reemplaza la sección Fase 2 del plan general (`PdTbjo-esds.md`).*
+*Fin del plan de Fase 2. Última actualización: 2026-06-27. Este documento reemplaza la sección Fase 2 del plan general (`020_PdTbjo-esds.md`).*

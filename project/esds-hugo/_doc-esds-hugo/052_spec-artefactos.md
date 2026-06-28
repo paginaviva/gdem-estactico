@@ -3,7 +3,9 @@
 > **Propósito:** Especificar las soluciones técnicas para cada artefacto funcional del proyecto El Sonido del Silencio, evaluando disponibilidad en el ecosistema Hugo y seleccionando la opción más viable para despliegue en Cloudflare Pages.
 >
 > **Creación:** 2026-06-27
-> **Última modificación:** 2026-06-28
+> **Última modificación:** 2026-06-28 (actualizado estados tras PCI-002)
+>
+> **Documento de implementación:** `102_PCI-integracion-artefactos.md` (registro completo de la implementación, incidencias, configuraciones y lecciones aprendidas)
 >
 > **Fuentes:** project/ESDS/ + project/esds-hugo/ + gohugo.io/documentation + docs.hugomods.com
 
@@ -16,12 +18,12 @@
 | [01](/spec-artefactos.md#01) | Calendario + Reservas | Cal.com | Spec |
 | [02](/spec-artefactos.md#02) | Formulario | CF Worker + Turnstile | Spec |
 | [03](/spec-artefactos.md#03) | Mapa | Leaflet.js + OSM | Spec |
-| [04](/spec-artefactos.md#04) | Submenú Experiencias | Nativo Hugo | Spec |
-| [05](/spec-artefactos.md#05) | FAQ / GEO | Custom JSON-LD | Spec |
-| [06](/spec-artefactos.md#06) | Meta tags OG/Twitter | Nativo Hugo | Spec |
-| [07](/spec-artefactos.md#07) | Sitemap.xml | Nativo Hugo | Spec |
-| [08](/spec-artefactos.md#08) | JSON-LD structured data | HugoMods + custom | Spec |
-| [09](/spec-artefactos.md#09) | SEO local títulos/descripciones | Nativo Hugo | Spec |
+| [04](/spec-artefactos.md#04) | Submenú Experiencias | Nativo Hugo | ✅ Implementado en Hugo |
+| [05](/spec-artefactos.md#05) | FAQ / GEO | Custom JSON-LD | ✅ Implementado en Hugo |
+| [06](/spec-artefactos.md#06) | Meta tags OG/Twitter | Nativo Hugo | ✅ Implementado en Hugo |
+| [07](/spec-artefactos.md#07) | Sitemap.xml | Nativo Hugo | ✅ Implementado en Hugo |
+| [08](/spec-artefactos.md#08) | JSON-LD structured data | Partials custom | ✅ Implementado en Hugo |
+| [09](/spec-artefactos.md#09) | SEO local títulos/descripciones | Nativo Hugo | ✅ Implementado en Hugo |
 | [10](/spec-artefactos.md#10) | Hugo Pipes (WebP, srcset) | Nativo Hugo | Spec |
 
 ---
@@ -37,7 +39,7 @@
 | 05 | FAQ / GEO | Custom JSON-LD | Partial custom | Preguntas frecuentes con estructura FAQPage para buscadores | Aparecer en AI Overviews de Google y mejorar visibilidad orgánica con contenido FAQ |
 | 06 | Meta tags OG/Twitter | Nativo Hugo | Nativo Hugo | Open Graph y Twitter Cards para compartir en redes | Cada página se comparte con imagen, título y descripción correctos en redes sociales |
 | 07 | Sitemap.xml | Nativo Hugo | Nativo Hugo | Archivo sitemap.xml para motores de búsqueda | Google indexa todas las páginas del sitio correctamente |
-| 08 | JSON-LD structured data | HugoMods + custom | Partial custom | Datos estructurados LocalBusiness + Product para SEO | Google entiende que es un negocio local con servicios y precios específicos |
+| 08 | JSON-LD structured data | Partials custom JSON-LD | Partial custom | Datos estructurados LocalBusiness + Product para SEO | Google entiende que es un negocio local con servicios y precios específicos |
 | 09 | SEO local títulos/descripciones | Nativo Hugo | Nativo Hugo | Meta tags title, description, keywords por página con keywords asignadas | Cada página optimizada para su keyword objetivo según plan SEO de ESDS |
 | 10 | Hugo Pipes (WebP, srcset) | Nativo Hugo | Nativo Hugo | Optimización de imágenes: WebP, tamaños responsive, lazy loading | Sitio más rápido, mejor Core Web Vitals, menor consumo de ancho de banda |
 
@@ -48,7 +50,7 @@
 ## <span id="01"></span>01. Calendario + Reservas → Cal.com
 
 ### 1. Contexto
-Necesidad de mostrar disponibilidad y permitir reservas de servicios de Elena. Referencias: PdTbjo-esds-fase-2.md E3, 01_AnalisisAudios.md, 02_Listas_consolidadas.md
+Necesidad de mostrar disponibilidad y permitir reservas de servicios de Elena. Referencias: 022_PdTbjo-esds-fase-2.md E3, 01_AnalisisAudios.md, 02_Listas_consolidadas.md
 
 ### 2. Disponibilidad en ecosistema Hugo
 ❌ No existe nada nativo. Hugo es SSG puro. Shortcode custom para embed externo.
@@ -110,7 +112,7 @@ Uso en cada página de servicio: `{{< calcom meeting="mini-retiro" >}}`
 ## <span id="02"></span>02. Formulario → CF Worker + Turnstile + WhatsApp
 
 ### 1. Contexto
-Formulario de contacto/reserva para usuarios que prefieran no usar WhatsApp directo. Referencia: PdTbjo-esds-fase-2.md E2
+Formulario de contacto/reserva para usuarios que prefieran no usar WhatsApp directo. Referencia: 022_PdTbjo-esds-fase-2.md E2
 
 ### 2. Disponibilidad en ecosistema Hugo
 ❌ No existe nada nativo. Hugo solo tiene embedded templates para Disqus, Google Analytics, Open Graph, Schema, Twitter Cards, Pagination. No hay formularios.
@@ -534,7 +536,7 @@ Crear icono custom: `L.icon({ iconUrl: '...', iconSize: [25, 41], iconAnchor: [1
 ## <span id="04"></span>04. Submenú Experiencias → Nativo Hugo
 
 ### 1. Contexto
-Navegación con desplegable de servicios bajo "Experiencias" en el menú principal. Referencia: PdTbjo-esds-fase-2.md B2
+Navegación con desplegable de servicios bajo "Experiencias" en el menú principal. Referencia: 022_PdTbjo-esds-fase-2.md B2
 
 ### 2. Disponibilidad en ecosistema Hugo
 ✅ Nativo. Hugo soporta menús anidados con propiedad `parent` + `.Children` + `.HasChildren`. Verificado en gohugo.io/configuration/menus.
@@ -759,7 +761,7 @@ Para evitar duplicar bloques JSON-LD, usar shortcode acumulador:
 ## <span id="06"></span>06. Meta tags OG/Twitter → Nativo Hugo
 
 ### 1. Contexto
-Open Graph y Twitter Cards para compartir en redes sociales. Referencia: PdTbjo-esds-fase-2.md D1
+Open Graph y Twitter Cards para compartir en redes sociales. Referencia: 022_PdTbjo-esds-fase-2.md D1
 
 ### 2. Disponibilidad en ecosistema Hugo
 ✅ Nativo. `{{ partial "opengraph.html" . }}` y `{{ partial "twitter_cards.html" . }}` incluidos en Hugo. Verificado en gohugo.io/templates/embedded.
@@ -862,7 +864,7 @@ Para añadir `twitter:creator` por página u otros campos:
 ## <span id="07"></span>07. Sitemap.xml → Nativo Hugo
 
 ### 1. Contexto
-Sitemap para motores de búsqueda. Referencia: PdTbjo-esds-fase-2.md D2
+Sitemap para motores de búsqueda. Referencia: 022_PdTbjo-esds-fase-2.md D2
 
 ### 2. Disponibilidad en ecosistema Hugo
 ✅ Nativo. Hugo genera sitemap.xml automáticamente. Configurable en `[sitemap]`. Verificado en gohugo.io/templates/sitemap.
@@ -938,7 +940,7 @@ disableKinds:
 ## <span id="08"></span>08. JSON-LD structured data → HugoMods + custom
 
 ### 1. Contexto
-Datos estructurados LocalBusiness + Product para SEO. Referencia: PdTbjo-esds-fase-2.md D3
+Datos estructurados LocalBusiness + Product para SEO. Referencia: 022_PdTbjo-esds-fase-2.md D3
 
 ### 2. Disponibilidad en ecosistema Hugo
 ⚠️ Parcial. Hugo tiene schema microdata (`{{ partial "schema.html" . }}`). HugoMods SEO module da JSON-LD genérico. LocalBusiness + Product específico va custom.
@@ -1076,7 +1078,7 @@ price: "45.00"
 ## <span id="09"></span>09. SEO local títulos/descripciones → Nativo Hugo
 
 ### 1. Contexto
-Títulos y meta descriptions optimizados por página con keywords asignadas. Referencia: PdTbjo-esds-fase-2.md D4, 10_kw-principales-por-pagina.md
+Títulos y meta descriptions optimizados por página con keywords asignadas. Referencia: 022_PdTbjo-esds-fase-2.md D4, 10_kw-principales-por-pagina.md
 
 ### 2. Disponibilidad en ecosistema Hugo
 ✅ Nativo. `.Title`, `.Description`, `.Params` accesibles en templates. Solo falta implementar.
@@ -1168,7 +1170,7 @@ keywords:
 ## <span id="10"></span>10. Hugo Pipes (WebP, srcset) → Nativo Hugo
 
 ### 1. Contexto
-Optimización de imágenes: formato WebP, tamaños responsive, carga diferida. Referencia: PdTbjo-esds-fase-2.md F3
+Optimización de imágenes: formato WebP, tamaños responsive, carga diferida. Referencia: 022_PdTbjo-esds-fase-2.md F3
 
 ### 2. Disponibilidad en ecosistema Hugo
 ✅ Nativo. `images.Process` para redimensionar/formatear, `images.Filter` para efectos. Verificado en gohugo.io/content-management/image-processing.

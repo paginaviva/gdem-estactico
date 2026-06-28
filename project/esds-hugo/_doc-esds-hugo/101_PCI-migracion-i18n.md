@@ -51,7 +51,7 @@ en producción.
 
 ### ¿Por qué se hizo?
 
-El `spec-copywriter.md` (sección 06) documentó que existían textos literales hardcodeados en las plantillas HTML.
+El `legado/spec-copywriter.md` (sección 06) documentó que existían textos literales hardcodeados en las plantillas HTML.
 Esto es un problema grave de mantenimiento porque:
 
 1. **El copywriter no puede editar el contenido** sin modificar HTML.
@@ -466,7 +466,7 @@ grep '^[a-z]' i18n/es.yaml | wc -l
 | **ContextScout** | Pre-ejecución | Descubrir context files (Hugo menus, i18n, accesibilidad, proyecto) |
 | **CodeReviewer** | 04, 16, 21, 24-26 | Validar cada batch antes de commit + post-migración |
 | **CoderAgent** | 01-03, 05-15, 17-20, 22-23, 27 | Ejecutar las migraciones de código |
-| **DocWriter** | Post-plan | Actualizar `plan-i18n.md` con hallazgos de revisión |
+| **DocWriter** | Post-plan | Actualizar `025_plan-i18n.md` con hallazgos de revisión |
 | **TaskManager** | Pre-ejecución | Desglose atómico del plan en 27 subtareas |
 
 ### Context files consultados
@@ -564,7 +564,7 @@ Todas las páginas comprobadas contra el HTML generado:
    antes con una prueba unitaria.
 
 3. **Documentar las claves i18n en el plan con su valor EXACTO** para que el CoderAgent
-   no tenga que adivinar. En esta migración, el valor venía del `spec-copywriter.md` y del
+   no tenga que adivinar. En esta migración, el valor venía del `legado/spec-copywriter.md` y del
    propio código, lo que funcionó bien.
 
 4. **Usar `{{ T }}` en lugar de `{{ i18n }}`** para nombres de menú porque `T` es el alias

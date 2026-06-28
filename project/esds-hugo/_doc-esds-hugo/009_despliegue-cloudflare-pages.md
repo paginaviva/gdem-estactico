@@ -196,5 +196,5 @@ redirección desde Cloudflare.
 
 ---
 
-*Fin del documento de despliegue. Mantenido en `project/esds-hugo/despliegue-cloudflare-pages.md`.
+*Fin del documento de despliegue. Mantenido en `project/esds-hugo/_doc-esds-hugo/009_despliegue-cloudflare-pages.md`.
 Primera versión: 2026-06-27. Última modificación: 2026-06-27.*
