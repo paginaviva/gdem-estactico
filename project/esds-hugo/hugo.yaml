@@ -90,3 +90,5 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+capitalizeListTitles: false
+pluralizeListTitles: false
