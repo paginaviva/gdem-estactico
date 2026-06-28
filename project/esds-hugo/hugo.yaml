@@ -24,6 +24,15 @@ params:
     - "https://picsum.photos/seed/esds-social/1200/630.webp"
   social:
     twitter: "elsonido.silencio"
+  businessName: "El Sonido del Silencio"
+  telephone: "+34 611 77 91 87"
+  address:
+    locality: "Benimantell, Costa Blanca"
+    region: "Alicante"
+    postalCode: "03516"
+  geo:
+    latitude: 38.687188852602404
+    longitude: -0.20331697119874015
 
 menu:
   main:

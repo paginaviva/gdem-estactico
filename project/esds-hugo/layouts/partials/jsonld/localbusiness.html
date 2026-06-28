@@ -1,0 +1,31 @@
+{{- $localBusiness := dict
+  "@type" "LocalBusiness"
+  "name" .Site.Params.businessName
+  "description" (printf "%s — Reserva previa requerida" .Site.Params.description)
+  "url" .Site.BaseURL
+  "telephone" .Site.Params.telephone
+  "address" (dict
+    "@type" "PostalAddress"
+    "addressLocality" .Site.Params.address.locality
+    "addressRegion" .Site.Params.address.region
+    "postalCode" .Site.Params.address.postalCode
+    "addressCountry" "ES"
+  )
+  "geo" (dict
+    "@type" "GeoCoordinates"
+    "latitude" .Site.Params.geo.latitude
+    "longitude" .Site.Params.geo.longitude
+  )
+  "openingHoursSpecification" (slice
+    (dict
+      "@type" "OpeningHoursSpecification"
+      "dayOfWeek" (slice "Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday")
+      "opens" "09:00"
+      "closes" "20:00"
+    )
+  )
+  "sameAs" (slice
+    "https://instagram.com/elsonido.silencio"
+  )
+}}
+{{ return $localBusiness }}

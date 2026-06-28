@@ -72,6 +72,15 @@
   {{ partial "twitter_cards.html" . }}
 
   {{ block "head" . }}{{ end }}
+
+  {{- /* JSON-LD STRUCTURED DATA */ -}}
+  {{- $graph := slice (partial "jsonld/localbusiness.html" .) }}
+  {{- if and .IsPage .Params.precio }}
+    {{- $graph = $graph | append (partial "jsonld/product.html" .) }}
+  {{- end }}
+  <script type="application/ld+json">
+  {{ dict "@context" "https://schema.org" "@graph" $graph | jsonify (dict "indent" "  ") | safeHTML }}
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">{{ i18n "baseof_skip_link" }}</a>

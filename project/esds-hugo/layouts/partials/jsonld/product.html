@@ -1,0 +1,13 @@
+{{- $product := dict
+  "@type" "Product"
+  "name" .Title
+  "description" .Description
+  "offers" (dict
+    "@type" "Offer"
+    "price" .Params.precio
+    "priceCurrency" "EUR"
+    "availability" "https://schema.org/InStock"
+    "url" .Permalink
+  )
+}}
+{{ return $product }}
