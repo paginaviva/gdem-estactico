@@ -67,6 +67,10 @@
 
   <title>{{ if .Title }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
 
+  {{- /* OPEN GRAPH + TWITTER CARDS */ -}}
+  {{ partial "opengraph.html" . }}
+  {{ partial "twitter_cards.html" . }}
+
   {{ block "head" . }}{{ end }}
 </head>
 <body>

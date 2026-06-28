@@ -20,6 +20,10 @@ params:
   whatsapp_number: "+34"
   whatsapp_message: "Hola%20El%20Sonido%20del%20Silencio%2C%20quiero%20informaci%C3%B3n%20sobre..."
   email: ""
+  images:
+    - "https://picsum.photos/seed/esds-social/1200/630.webp"
+  social:
+    twitter: "elsonido.silencio"
 
 menu:
   main:
