@@ -41,7 +41,7 @@
 |-----------|------|-----|
 | **Formulario de servicios (Elena)** | `project/ESDS/05_Servicios-eSdS-formulario_revisado.md` | 🥇 **Fuente principal. Prevalece ante cualquier duda.** Contiene respuestas literales de Elena: precios, horarios, descripciones, equipaje, capacidades. |
 | **Keywords por página** | `project/ESDS/10_kw-principales-por-pagina.md` | Define KW principal, title tag, H1, FAQ, long-tail KWs y entidades semánticas por página. |
-| **Plan de trabajo Fase 2** | `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Plan de trabajo con tareas I0–I7 y anexos. Las especificaciones de este brief ya incorporan su contenido. |
+| **Plan de trabajo Fase 2** | `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Plan de trabajo con tareas I00–I30 y anexos. Las especificaciones de este brief ya incorporan su contenido. |
 
 > ⚠ **Regla de oro**: Si este brief contradice alguna otra fuente, prevalece el formulario de Elena (`05_Servicios-eSdS-formulario_revisado.md`).
 
@@ -215,17 +215,17 @@
 | # | Ruta | Tipo | Archivo | Acción |
 |:-:|------|------|---------|--------|
 | 01 | `/` | Home / Landing | `content/_index.md` | 🔄 Reescribir todo el cuerpo desde cero |
-| 02 | `/servicios/` | Listado de servicios | `content/servicios/_index.md` | 🔄 Reescribir front matter y cuerpo |
-| 03 | `/servicios/mini-retiro/` | Pack (3 actividades) | `content/servicios/mini-retiro.md` | 🔄 Reescribir cuerpo; front matter revisable |
+| 02 | `/experiencias/` | Listado de experiencias | `content/experiencias/_index.md` | 🔄 Reescribir front matter y cuerpo |
+| 03 | `/experiencias/mini-retiro/` | Pack (3 actividades) | `content/experiencias/mini-retiro.md` | 🔄 Reescribir cuerpo; front matter revisable |
 
 ### Páginas a CREAR (7)
 
 | # | Ruta | Tipo | Archivo | Acción |
 |:-:|------|------|---------|--------|
-| 04 | `/servicios/tarde-conexion/` | Pack (2 actividades) | `content/servicios/tarde-conexion.md` | ✏️ Crear desde cero |
-| 05 | `/servicios/yoga/` | Actividad individual | `content/servicios/yoga.md` | ✏️ Crear desde cero |
-| 06 | `/servicios/kayak/` | Actividad individual | `content/servicios/kayak.md` | ✏️ Crear desde cero |
-| 07 | `/servicios/caminata-consciente/` | Actividad individual | `content/servicios/caminata-consciente.md` | ✏️ Crear desde cero |
+| 04 | `/experiencias/tarde-conexion/` | Pack (2 actividades) | `content/experiencias/tarde-conexion.md` | ✏️ Crear desde cero |
+| 05 | `/experiencias/yoga/` | Actividad individual | `content/experiencias/yoga.md` | ✏️ Crear desde cero |
+| 06 | `/experiencias/kayak/` | Actividad individual | `content/experiencias/kayak.md` | ✏️ Crear desde cero |
+| 07 | `/experiencias/caminata-consciente/` | Actividad individual | `content/experiencias/caminata-consciente.md` | ✏️ Crear desde cero |
 | 08 | `/servicios/transfer-actividad/` | Transfer | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero |
 | 09 | `/servicios/transfer-privado/` | Transfer | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero |
 | 10 | `/informacion/` | Información / Sobre Elena | `content/informacion/_index.md` | ✏️ Crear desde cero (contenido pendiente de definir con Elena) |
@@ -266,7 +266,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 
 ---
 
-### 08.02 — Listado de servicios (`/servicios/`)
+### 08.02 — Listado de experiencias (`/experiencias/`)
 
 **Referencia:** KW Ficha 02 · Spec §05.02
 
@@ -291,7 +291,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 
 ---
 
-### 08.03 — Mini Retiro (`/servicios/mini-retiro/`)
+### 08.03 — Mini Retiro (`/experiencias/mini-retiro/`)
 
 **Referencia:** KW Ficha 03 · Spec §05.03 · Formulario Elena Servicio 1 (líneas 39–61)
 
@@ -344,7 +344,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 
 ---
 
-### 08.04 — Tarde de Conexión (`/servicios/tarde-conexion/`)
+### 08.04 — Tarde de Conexión (`/experiencias/tarde-conexion/`)
 
 **Referencia:** KW Ficha 04 · Spec §05.04 · Formulario Elena Servicio 2 (líneas 64–86)
 
@@ -394,7 +394,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 
 ---
 
-### 08.05 — Yoga & Mindfulness (`/servicios/yoga/`)
+### 08.05 — Yoga & Mindfulness (`/experiencias/yoga/`)
 
 **Referencia:** KW Ficha 05 · Spec §05.05 · Formulario Elena Servicio 3 (líneas 91–113)
 
@@ -450,7 +450,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 
 ---
 
-### 08.06 — Kayak (`/servicios/kayak/`)
+### 08.06 — Kayak (`/experiencias/kayak/`)
 
 **Referencia:** KW Ficha 06 · Spec §05.06 · Formulario Elena Servicio 4 (líneas 116–138)
 
@@ -502,7 +502,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 
 ---
 
-### 08.07 — Caminata Consciente (`/servicios/caminata-consciente/`)
+### 08.07 — Caminata Consciente (`/experiencias/caminata-consciente/`)
 
 **Referencia:** KW Ficha 07 · Spec §05.07 · Formulario Elena Servicio 5 (líneas 141–163)
 
@@ -677,7 +677,7 @@ Cada ficha incluye los datos extraídos de las fuentes de verdad. Los precios, h
 | **Keywords secundarias** | `quien es elena guadalest`, `guia bienestar guadalest`, `valle guadalest turismo` |
 | **Entidades semánticas** | Valle de Guadalest, Elena (fundadora), bienestar consciente, grupos reducidos, respeto por la naturaleza, conexión con el entorno, Costa Blanca, turismo rural |
 
-> ⚠ **NOTA**: El contenido exacto de esta página está **pendiente de definir con Elena**. Este brief incluye la estructura y datos preparados, pero el texto biográfico y la filosofía de marca deben validarse con ella antes de redactar. Ver tarea I7 del plan de trabajo.
+> ⚠ **NOTA**: El contenido exacto de esta página está **pendiente de definir con Elena**. Este brief incluye la estructura y datos preparados, pero el texto biográfico y la filosofía de marca deben validarse con ella antes de redactar. Ver tarea I30 del plan de trabajo.
 
 ---
 
@@ -791,18 +791,18 @@ Las tareas de redacción están definidas en el **Bloque I** del plan de trabajo
 
 | # | Página | Archivo | Acción | Prioridad |
 |:-:|--------|---------|--------|-----------|
-| **I0** | Home (Landing) | `content/_index.md` | 🔄 Reescribir cuerpo completo | 🔴 Alta |
-| **I00** | Listado de servicios | `content/servicios/_index.md` | 🔄 Reescribir front matter y cuerpo | 🔴 Alta |
-| **I01** | Mini Retiro | `content/servicios/mini-retiro.md` | 🔄 Reescribir cuerpo (front matter ya validado) | 🔴 Alta |
-| **I1** | Tarde de Conexión | `content/servicios/tarde-conexion.md` | ✏️ Crear desde cero | Alta |
-| **I2** | Yoga & Mindfulness | `content/servicios/yoga.md` | ✏️ Crear desde cero | Alta |
-| **I3** | Kayak | `content/servicios/kayak.md` | ✏️ Crear desde cero | Alta |
-| **I4** | Caminata Consciente | `content/servicios/caminata-consciente.md` | ✏️ Crear desde cero | Alta |
-| **I5** | Transfer Actividad | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero | Media |
-| **I6** | Transfer Privado | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Media |
-| **I7** | Información | `content/informacion/_index.md` | ✏️ Crear desde cero (contenido pte. de definir con Elena) | Baja |
+| **I00** | Home (Landing) | `content/_index.md` | 🔄 Reescribir cuerpo completo | 🔴 Alta |
+| **I01** | Listado de experiencias | `content/experiencias/_index.md` | 🔄 Reescribir front matter y cuerpo | 🔴 Alta |
+| **I10** | Mini Retiro | `content/experiencias/mini-retiro.md` | 🔄 Reescribir cuerpo (front matter ya validado) | 🔴 Alta |
+| **I11** | Tarde de Conexión | `content/experiencias/tarde-conexion.md` | ✏️ Crear desde cero | Alta |
+| **I12** | Yoga & Mindfulness | `content/experiencias/yoga.md` | ✏️ Crear desde cero | Alta |
+| **I13** | Kayak | `content/experiencias/kayak.md` | ✏️ Crear desde cero | Alta |
+| **I14** | Caminata Consciente | `content/experiencias/caminata-consciente.md` | ✏️ Crear desde cero | Alta |
+| **I20** | Transfer Actividad | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero | Media |
+| **I21** | Transfer Privado | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Media |
+| **I30** | Información | `content/informacion/_index.md` | ✏️ Crear desde cero (contenido pte. de definir con Elena) | Baja |
 
-> **Orden sugerido**: I0 → I01 → I1 → I2 → I3 → I4 → I00 → I5 → I6 → I7 (se priorizan las páginas de conversión directa). El plan detallado completo está en `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md`.
+> **Orden sugerido**: I00 → I10 → I11 → I12 → I13 → I14 → I01 → I02 → I20 → I21 → I30 (se priorizan las páginas de conversión directa). El plan detallado completo está en `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md`.
 
 ---
 
@@ -813,7 +813,7 @@ El producto estrella tiene dos nombres que conviven:
 
 | Nombre | Ámbito de uso |
 |--------|---------------|
-| **Mini Retiro** | Nombre comercial para el menú, la URL (`/servicios/mini-retiro/`), la keyword principal (`mini retiro guadalest`) y las referencias internas. |
+| **Mini Retiro** | Nombre comercial para el menú, la URL (`/experiencias/mini-retiro/`), la keyword principal (`mini retiro guadalest`) y las referencias internas. |
 | **Mañana de Retiro** | Nombre descriptivo que explica que la experiencia se realiza por la mañana. Puede usarse como título de página o en texto descriptivo. |
 
 **Ambos son correctos en su contexto.** El menú y la URL usarán siempre «Mini Retiro». El cuerpo de la página puede usar «Mañana de Retiro» como título descriptivo siempre que la keyword principal («mini retiro guadalest») aparezca en el H1, primer párrafo y body.

@@ -22,4 +22,11 @@
   {{/* ❼ Conecta con nosotros — WhatsApp + Instagram (id="conecta") */}}
   {{ partial "conecta.html" . }}
 
+  {{/* .Content — FAQ (desde content/_index.md) */}}
+  <section class="home-content">
+    <div class="container">
+      {{ .Content }}
+    </div>
+  </section>
+
 {{ end }}

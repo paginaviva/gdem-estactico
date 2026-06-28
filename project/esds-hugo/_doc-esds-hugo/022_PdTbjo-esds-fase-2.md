@@ -59,7 +59,7 @@ Este enfoque minimiza el riesgo de retrabajo: si algo no funciona en el piloto, 
 
 | # | Tarea | Descripción | Estado | Contexto / lecciones |
 |---|-------|-------------|--------|----------------------|
-| **P1** | Crear `content/servicios/mini-retiro.md` | Archivo Markdown del Mini Retiro con front matter completa (título, descripción, precio, duración, capacidad, programa, imágenes, SEO) | ✅ **Hecho** | El archivo se creó con front matter completo. Queda pendiente resolver la dualidad de nombre: **«Mini Retiro»** (menú, URL, KW) vs **«Mañana de Retiro»** (título de página). Ver [Anexo 3 — hallazgo H4](#a3-h4). |
+| **P1** | Crear `content/experiencias/mini-retiro.md` | Archivo Markdown del Mini Retiro con front matter completa (título, descripción, precio, duración, capacidad, programa, imágenes, SEO) | ✅ **Hecho** | El archivo se creó con front matter completo. Queda pendiente resolver la dualidad de nombre: **«Mini Retiro»** (menú, URL, KW) vs **«Mañana de Retiro»** (título de página). Ver [Anexo 3 — hallazgo H4](#a3-h4). |
 | **P2** | Crear `layouts/_default/single.html` | Plantilla común para páginas de servicio (hero de página, contenido formateado, sidebar con datos prácticos, CTA de WhatsApp) | ✅ **Hecho** | Plantilla validada. Incluye: breadcrumb, hero, contenido principal, datos prácticos, programa, incluye/no incluye/llevar, "para quién es", "por qué elegir", CTA WhatsApp, servicios relacionados. |
 | **P3** | Enlazar el piloto en el menú | Enlace "Mini Retiro" dentro de "Experiencias" como subpágina | ✅ **Hecho** | Menú jerárquico implementado con submenús desplegables (CSS hover + JS toggle móvil). Se corrigieron 6 URLs vacías durante la auditoría (ver bloque H). |
 | **P4** | Verificar navegación completa | Desde la landing → experiencias → Mini Retiro → volver. Comprobar header, footer, enlaces | ✅ **Hecho** | Navegación verificada. Quedan enlaces a servicios relacionados que apuntan a páginas aún no creadas (Yoga, Kayak, Caminata) — generan 404 hasta que se creen. |
@@ -82,7 +82,7 @@ Tras evaluar las dos opciones posibles, se acordó la **Opción B**.
 
 | Aspecto | Opción A: Independientes | Opción B: Agrupadas ✅ |
 |---------|------------------------|----------------------|
-| **URLs** | `/mini-retiro/`, `/yoga/` | `/servicios/`, `/servicios/mini-retiro/` |
+| **URLs** | `/mini-retiro/`, `/yoga/` | `/experiencias/`, `/experiencias/mini-retiro/` |
 | **Menú "Experiencias"** | Apunta a una página concreta o desplegable con 7 enlaces | Apunta a `/servicios/` (listado de todas las experiencias) |
 | **Escalabilidad** | Si hay 10 servicios, el menú crece sin control | El listado absorbe nuevos servicios sin tocar el menú |
 | **SEO** | No hay página agrupadora | `/servicios/` se posiciona como "experiencias en Guadalest" |
@@ -90,12 +90,13 @@ Tras evaluar las dos opciones posibles, se acordó la **Opción B**.
 
 **Estructura resultante**:
 ```
-/servicios/                          → listado con 7 tarjetas + CTA
-/servicios/mini-retiro/              → página individual ✅
-/servicios/tarde-conexion/           → página individual ⏳
-/servicios/yoga/                     → página individual ⏳
-/servicios/kayak/                    → página individual ⏳
-/servicios/caminata-consciente/      → página individual ⏳
+/experiencias/                       → listado de experiencias con 5 tarjetas + CTA
+/servicios/                          → listado de servicios con 2 tarjetas + CTA
+/experiencias/mini-retiro/           → página individual ✅
+/experiencias/tarde-conexion/        → página individual ⏳
+/experiencias/yoga/                  → página individual ⏳
+/experiencias/kayak/                 → página individual ⏳
+/experiencias/caminata-consciente/   → página individual ⏳
 /servicios/transfer-actividad/       → página individual ⏳
 /servicios/transfer-privado/         → página individual ⏳
 /informacion/                        → página independiente ⏳
@@ -103,7 +104,7 @@ Tras evaluar las dos opciones posibles, se acordó la **Opción B**.
 
 **Implicaciones para el menú** (implementado en `hugo.yaml`):
 - **Inicio** → `/` ✅
-- **Experiencias** → `/servicios/` con submenú: Mini Retiro, Tarde de Conexión, Yoga & Mindfulness, Kayak, Caminata Consciente ✅ (URLs corregidas)
+- **Experiencias** → `/experiencias/` con submenú: Mini Retiro, Tarde de Conexión, Yoga & Mindfulness, Kayak, Caminata Consciente ✅ (URLs corregidas)
 - **Servicios** → `#` con submenú: Transfer Actividad, Transfer Privado, Información ✅ (URLs corregidas)
 
 ---
@@ -124,15 +125,15 @@ Tras evaluar las dos opciones posibles, se acordó la **Opción B**.
 
 | # | Servicio | Archivo | Contenido desde | Depende de | Estado | Contexto |
 |---|----------|---------|-----------------|------------|--------|----------|
-| **C1** | 🟡 Mini Retiro (piloto) | `content/servicios/mini-retiro.md` | Conocimiento §03 — Servicio 1 | P1, P2, P3 | ⏳ **Hecho solo en estructura — contenido pendiente de reescribir** | La **estructura** (front matter, programa, datos clave) está validada y correcta. Pero el **contenido textual del body** se creó con texto ad-hoc de prueba para validar la plantilla. `legado/spec-copywriter.md` §04 exige reescribir todo el cuerpo desde cero. Pendiente también resolver naming dual (Mini Retiro vs Mañana de Retiro). |
-| **C2** | Tarde de Conexión | `content/servicios/tarde-conexion.md` | Conocimiento §03 — Servicio 2 | B1 | ⏳ **Pendiente** | Usar mini-retiro.md como plantilla. Tipo: pack. Precio: 35 €. Duración: 3:30h. Capacidad: máx 6 (yoga) / máx 10 (kayak). |
-| **C3** | Yoga & Mindfulness | `content/servicios/yoga.md` | Conocimiento §03 — Servicio 3 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 30 €. Duración: 1:30h. Horarios: 8:30 / 19:00. |
-| **C4** | Kayak | `content/servicios/kayak.md` | Conocimiento §03 — Servicio 4 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 20 €. Duración: 1:30h. Horarios: 12:30 / 17:30. |
-| **C5** | Caminata Consciente | `content/servicios/caminata-consciente.md` | Conocimiento §03 — Servicio 5 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 25 €. Duración: ~2h. Horario: a convenir. |
+| **C1** | 🟡 Mini Retiro (piloto) | `content/experiencias/mini-retiro.md` | Conocimiento §03 — Servicio 1 | P1, P2, P3 | ⏳ **Hecho solo en estructura — contenido pendiente de reescribir** | La **estructura** (front matter, programa, datos clave) está validada y correcta. Pero el **contenido textual del body** se creó con texto ad-hoc de prueba para validar la plantilla. `legado/spec-copywriter.md` §04 exige reescribir todo el cuerpo desde cero. Pendiente también resolver naming dual (Mini Retiro vs Mañana de Retiro). |
+| **C2** | Tarde de Conexión | `content/experiencias/tarde-conexion.md` | Conocimiento §03 — Servicio 2 | B1 | ⏳ **Pendiente** | Usar mini-retiro.md como plantilla. Tipo: pack. Precio: 35 €. Duración: 3:30h. Capacidad: máx 6 (yoga) / máx 10 (kayak). |
+| **C3** | Yoga & Mindfulness | `content/experiencias/yoga.md` | Conocimiento §03 — Servicio 3 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 30 €. Duración: 1:30h. Horarios: 8:30 / 19:00. |
+| **C4** | Kayak | `content/experiencias/kayak.md` | Conocimiento §03 — Servicio 4 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 20 €. Duración: 1:30h. Horarios: 12:30 / 17:30. |
+| **C5** | Caminata Consciente | `content/experiencias/caminata-consciente.md` | Conocimiento §03 — Servicio 5 | B1 | ⏳ **Pendiente** | Tipo: actividad. Precio: 25 €. Duración: ~2h. Horario: a convenir. |
 | **C6** | Transfer Actividad | `content/servicios/transfer-actividad.md` | Conocimiento §03 — Servicio 6 | B1 | ⏳ **Pendiente** | Tipo: transfer. Precio: 10 €. ⚠ Horario de tarde PENDIENTE DE ACLARAR CON ELENA (16:30 vs 17:00). |
 | **C7** | Transfer Privado | `content/servicios/transfer-privado.md` | Conocimiento §03 — Servicio 7 | B1 | ⏳ **Pendiente** | Tipo: transfer. Precio: bajo presupuesto. Destinos: Fonts d'Algar, Castillo de Guadalest. |
 
-**Nota importante sobre el piloto Mini Retiro (C1)**: Lo que se validó en el piloto es la **estructura** (plantilla `single.html`, front matter, programa, datos prácticos, CTA, menú). El **contenido textual del cuerpo** (descripciones, narrativa, FAQs) se creó con texto ad-hoc de prueba para poder visualizar la plantilla. `legado/spec-copywriter.md` §04 exige reescribir completamente el cuerpo de Mini Retiro (I01), al igual que el de Home (I0) y Listado de servicios (I00). Ningún texto actual del body se conserva.
+**Nota importante sobre el piloto Mini Retiro (C1)**: Lo que se validó en el piloto es la **estructura** (plantilla `single.html`, front matter, programa, datos prácticos, CTA, menú). El **contenido textual del cuerpo** (descripciones, narrativa, FAQs) se creó con texto ad-hoc de prueba para poder visualizar la plantilla. `legado/spec-copywriter.md` §04 exige reescribir completamente el cuerpo de Mini Retiro (I10), al igual que el de Home (I00) y Listado de experiencias (I01). Ningún texto actual del body se conserva.
 
 Cada página de servicio sigue la misma plantilla validada en el piloto. El contenido se extrae de `legado/spec-copywriter.md` §05 y `10_kw-principales-por-pagina.md`. Ver Anexo 1 para el detalle de cada servicio.
 
@@ -192,11 +193,11 @@ Cada página de servicio sigue la misma plantilla validada en el piloto. El cont
 
 | # | Hallazgo | Severidad | Archivos afectados | Corrección aplicada | Estado |
 |---|----------|-----------|-------------------|---------------------|--------|
-| **H1** | 7 páginas de contenido no existen + 3 páginas existentes con texto ad-hoc que debe reescribirse | 🔴 Crítico | — | Home (I0), Listado (I00) y Mini Retiro (I01) a reescribir. 7 páginas a crear (I1–I7). Pendiente de fase de copywriting | ⏳ **Pendiente** |
+| **H1** | 7 páginas de contenido no existen + 3 páginas existentes con texto ad-hoc que debe reescribirse | 🔴 Crítico | — | Home (I00), Listado experiencias (I01) y Mini Retiro (I10) a reescribir. 7 páginas a crear (I10–I30). Pendiente de fase de copywriting | ⏳ **Pendiente** |
 | **H2** | Home: title tag y H1 no coinciden con spec | 🔴 Crítico | `content/_index.md`, `i18n/es.yaml`, `baseof.html` | Title: «Experiencias bienestar Guadalest \| ESDS». H1: «Experiencias de bienestar en Guadalest — El Sonido del Silencio» | ✅ **Hecho** |
 | **H3** | Listado: title tag y H1 no coinciden con spec | 🟡 Importante | `content/servicios/_index.md` | Title actualizado a «Actividades en Guadalest — Descubre todas nuestras experiencias» | ✅ **Hecho** |
-| **H4** | Mini Retiro: dualidad naming (Mini Retiro vs Mañana de Retiro) | 🟡 Importante | `content/servicios/mini-retiro.md` | Pendiente de resolver con Elena. El glosario del spec aclara que conviven ambos nombres | ⏳ **Pte. Elena** |
-| **H5** | 6 URLs del menú vacías | 🟡 Importante | `hugo.yaml` | URLs pobladas: `/servicios/tarde-conexion/`, `/servicios/yoga/`, etc. | ✅ **Hecho** |
+| **H4** | Mini Retiro: dualidad naming (Mini Retiro vs Mañana de Retiro) | 🟡 Importante | `content/experiencias/mini-retiro.md` | Pendiente de resolver con Elena. El glosario del spec aclara que conviven ambos nombres | ⏳ **Pte. Elena** |
+| **H5** | 6 URLs del menú vacías | 🟡 Importante | `hugo.yaml` | URLs pobladas: `/experiencias/tarde-conexion/`, `/experiencias/yoga/`, etc. | ✅ **Hecho** |
 | **H6** | URL de Información incorrecta (#informacion) | 🟡 Importante | `hugo.yaml` | Cambiada a `/informacion/` | ✅ **Hecho** |
 | **H7** | 4 textos hardcodeados sin migrar a i18n | 🟡 Importante | `baseof.html`, `single.html`, `list.html`, `i18n/es.yaml` | Migrados: skip-link, sr-only headings | ✅ **Hecho** |
 | **H8** | Claim principal sin clave i18n | 🟡 Importante | `i18n/es.yaml` | Añadido `claim_principal: "Donde el Silencio tiene voz"` | ✅ **Hecho** |
@@ -216,16 +217,16 @@ Una vez completados los bloques A–H (infraestructura y alineamiento), el sigui
 
 | # | Página | Archivo | Acción | Referencias | Prioridad |
 |---|--------|---------|--------|-------------|-----------|
-| **I0** | Home (Landing) | `content/_index.md` | 🔄 Reescribir cuerpo completo desde cero | Spec §05.01, KW Ficha 01 | 🔴 Alta |
-| **I00** | Listado de servicios | `content/servicios/_index.md` | 🔄 Reescribir front matter y cuerpo | Spec §05.02, KW Ficha 02 | 🔴 Alta |
-| **I01** | Mini Retiro | `content/servicios/mini-retiro.md` | 🔄 Reescribir cuerpo completo (front matter ya validado) | Spec §05.03, KW Ficha 03, Conocimiento §03 S1 | 🔴 Alta |
-| **I1** | Tarde de Conexión | `content/servicios/tarde-conexion.md` | ✏️ Crear desde cero | Spec §05.04, KW Ficha 04, Conocimiento §03 S2 | Alta |
-| **I2** | Yoga & Mindfulness | `content/servicios/yoga.md` | ✏️ Crear desde cero | Spec §05.05, KW Ficha 05, Conocimiento §03 S3 | Alta |
-| **I3** | Kayak | `content/servicios/kayak.md` | ✏️ Crear desde cero | Spec §05.06, KW Ficha 06, Conocimiento §03 S4 | Alta |
-| **I4** | Caminata Consciente | `content/servicios/caminata-consciente.md` | ✏️ Crear desde cero | Spec §05.07, KW Ficha 07, Conocimiento §03 S5 | Alta |
-| **I5** | Transfer Actividad | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero | Spec §05.08, KW Ficha 08, Conocimiento §03 S6 | Media |
-| **I6** | Transfer Privado | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Spec §05.09, KW Ficha 09, Conocimiento §03 S7 | Media |
-| **I7** | Información | `content/informacion/_index.md` | ✏️ Crear desde cero (contenido pendiente de definir con Elena) | Spec §05.10, KW Ficha 10 | Baja |
+| **I00** | Home (Landing) | `content/_index.md` | 🔄 Reescribir cuerpo completo desde cero | Spec §05.01, KW Ficha 01 | 🔴 Alta |
+| **I01** | Listado de experiencias | `content/experiencias/_index.md` | 🔄 Reescribir front matter y cuerpo | Spec §05.02, KW Ficha 02 | 🔴 Alta |
+| **I10** | Mini Retiro | `content/experiencias/mini-retiro.md` | 🔄 Reescribir cuerpo completo (front matter ya validado) | Spec §05.03, KW Ficha 03, Conocimiento §03 S1 | 🔴 Alta |
+| **I11** | Tarde de Conexión | `content/experiencias/tarde-conexion.md` | ✏️ Crear desde cero | Spec §05.04, KW Ficha 04, Conocimiento §03 S2 | Alta |
+| **I12** | Yoga & Mindfulness | `content/experiencias/yoga.md` | ✏️ Crear desde cero | Spec §05.05, KW Ficha 05, Conocimiento §03 S3 | Alta |
+| **I13** | Kayak | `content/experiencias/kayak.md` | ✏️ Crear desde cero | Spec §05.06, KW Ficha 06, Conocimiento §03 S4 | Alta |
+| **I14** | Caminata Consciente | `content/experiencias/caminata-consciente.md` | ✏️ Crear desde cero | Spec §05.07, KW Ficha 07, Conocimiento §03 S5 | Alta |
+| **I20** | Transfer Actividad | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero | Spec §05.08, KW Ficha 08, Conocimiento §03 S6 | Media |
+| **I21** | Transfer Privado | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Spec §05.09, KW Ficha 09, Conocimiento §03 S7 | Media |
+| **I30** | Información | `content/informacion/_index.md` | ✏️ Crear desde cero (contenido pendiente de definir con Elena) | Spec §05.10, KW Ficha 10 | Baja |
 
 **Criterio de prioridad**: Las actividades principales (yoga, kayak, caminata) y el pack de tarde tienen más demanda comercial y deben crearse primero. Los transfers son complementarios. La página de información está pendiente de definir su contenido con Elena.
 
@@ -246,10 +247,10 @@ Fase 2-A (completada):
 
 Fase 2-B (ahora):
   ├── Bloque I → contenido (copywriting)
-  │   ├── I0-I01: Home, Listado y Mini Retiro → 🔄 reescribir (prioridad 🔴 alta)
-  │   ├── I1-I4: Tarde de Conexión, Yoga, Kayak, Caminata → ✏️ crear (prioridad alta)
-  │   ├── I5-I6: Transfers → ✏️ crear (prioridad media)
-  │   └── I7: Información → ✏️ crear (prioridad baja, pte. definir con Elena)
+  │   ├── I00-I10: Home, Listado y Mini Retiro → 🔄 reescribir (prioridad 🔴 alta)
+  │   ├── I10-I14: Tarde de Conexión, Yoga, Kayak, Caminata → ✏️ crear (prioridad alta)
+  │   ├── I20-I21: Transfers → ✏️ crear (prioridad media)
+  │   └── I30: Información → ✏️ crear (prioridad baja, pte. definir con Elena)
   ├── Pendientes de Elena:
   │   └── H4: Título Mini Retiro (Mini Retiro vs Mañana de Retiro)
   └── H10: Servicios relacionados → se resolverá al crear las páginas
@@ -593,7 +594,7 @@ whatsapp_mensaje: "Hola, quiero reservar la experiencia de Yoga"
 ### 3. Dualidad de nombres: Mini Retiro vs Mañana de Retiro
 
 **Contexto**: El producto estrella tiene dos nombres que conviven:
-- **Mini Retiro**: nombre corto usado en el menú, la URL (`/servicios/mini-retiro/`), el KW principal (`mini retiro guadalest`) y la referencia en i18n
+- **Mini Retiro**: nombre corto usado en el menú, la URL (`/experiencias/mini-retiro/`), el KW principal (`mini retiro guadalest`) y la referencia en i18n
 - **Mañana de Retiro**: nombre descriptivo usado como título de la página (`title:` en front matter)
 
 **Problema**: El spec §05.03 define el title tag como «Mini retiro en Guadalest \| Yoga, kayak y caminata \| ESDS» y el H1 como «Mini retiro en Guadalest — Yoga, caminata consciente y kayak», pero el front matter actual usa «Mañana de Retiro».

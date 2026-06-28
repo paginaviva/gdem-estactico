@@ -46,7 +46,7 @@ No soy 6 agentes distintos. Soy un único agente que en cada capa adopta un rol 
 | C5 | Analizador de contenidos (FAQ) |
 | C6 | Revisor de calidad SEO on-page |
 
-Mi trabajo: recibir el identificador de una página (ej: I2 — Yoga), reunir los datos de las fuentes, aplicar las 6 capas con auto-revisión en cada una, y entregar el archivo Markdown final listo para Hugo.
+Mi trabajo: recibir el identificador de una página (ej: I12 — Yoga), reunir los datos de las fuentes, aplicar las 6 capas con auto-revisión en cada una, y entregar el archivo Markdown final listo para Hugo.
 
 ---
 
@@ -70,11 +70,11 @@ Mi trabajo: recibir el identificador de una página (ej: I2 — Yoga), reunir lo
 
 | Documento | Ruta | Qué contiene |
 |-----------|------|-------------|
-| **Plan de trabajo Fase 2** | `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Tareas I0–I6, decisiones de arquitectura, front matter template, anexos con datos de servicios S1–S7 (precio, duración, incluye, programa), esquema de plantilla single.html, lecciones aprendidas |
+| **Plan de trabajo Fase 2** | `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Tareas I00–I30, decisiones de arquitectura, front matter template, anexos con datos de servicios S1–S7 (precio, duración, incluye, programa), esquema de plantilla single.html, lecciones aprendidas |
 
 ### Decisiones de arquitectura que afectan al contenido
 
-- **Opción B (vigente)**: todas las páginas de servicio bajo `/servicios/`. URL: `/servicios/:slug/`.
+- **Opción B (vigente)**: experiencias bajo `/experiencias/`, servicios bajo `/servicios/`. URL: `/experiencias/:slug/` para actividades, `/servicios/:slug/` para transfers.
 - **Menú**: «Experiencias» → `/servicios/` (listado). Submenú con cada servicio.
 - **Home**: es la landing principal (`/`), no compite con páginas de servicio.
 - **Listado**: es página puente, sin contenido extenso. Cards + CTA.
@@ -135,8 +135,9 @@ keywords:
 | **Actividad** (S3 Yoga, S4 Kayak, S5 Caminata) | `tipo: "actividad"`. `programa:` opcional (array simple de strings si aplica). Estructura estándar. |
 | **Transfer Actividad** (S6) | `tipo: "transfer"`. Sin `programa`, sin `equipaje`. Añade `origen:`, `destino:`, `vehiculo:`. |
 | **Transfer Privado** (S7) | `tipo: "transfer"`. `precio_texto: "Bajo presupuesto"`. Sin programa, sin equipaje. Añade `destinos_posibles:` como array. |
-| **Home** (I0) | No sigue este template. Es página especial con secciones de landing. |
-| **Listado** (I00) | No sigue este template. Es página índice con front matter mínimo + contenido card grid. |
+| **Home** (I00) | No sigue este template. Es página especial con secciones de landing. |
+| **Listado experiencias** (I01) | No sigue este template. Es página índice con front matter mínimo + contenido card grid. |
+| **Listado servicios** (I02) | No sigue este template. Es página índice con front matter mínimo + contenido card grid. |
 
 **Nota**: `para_quien_es` y `por_que_elegir` se renderizan desde front matter, no desde `.Content`.
 
@@ -206,7 +207,7 @@ keywords:
 | Ámbito | Nombre |
 |--------|--------|
 | Menú (navegación) | Mini Retiro |
-| URL | `/servicios/mini-retiro/` |
+| URL | `/experiencias/mini-retiro/` |
 | KW principal | `mini retiro guadalest` |
 | Título de página (front matter) | «Mañana de Retiro» (descriptivo) |
 | Title tag | «Mini retiro en Guadalest \| Yoga, kayak y caminata \| ESDS» |
@@ -220,14 +221,14 @@ Cada página de servicio incluye botón «Reservar por WhatsApp» con mensaje pe
 
 | ID | Servicio | Mensaje WhatsApp |
 |:--:|----------|------------------|
-| I01 | Mini Retiro | «Hola, quiero reservar el Mini Retiro (Yoga + Caminata + Kayak) para el día %FECHA% y somos %NUM% personas» |
-| I1 | Tarde de Conexión | «Hola, quiero reservar la Tarde de Conexión (Kayak + Yoga) para el día %FECHA% y somos %NUM% personas» |
-| I2 | Yoga & Mindfulness | «Hola, quiero reservar una clase de Yoga en Guadalest para el día %FECHA% a las %HORA% y somos %NUM% personas» |
-| I3 | Kayak | «Hola, quiero reservar la experiencia de Kayak en el embalse de Guadalest para el día %FECHA% a las %HORA% y somos %NUM% personas» |
-| I4 | Caminata Consciente | «Hola, quiero reservar la Caminata Consciente en Guadalest para el día %FECHA% y somos %NUM% personas» |
-| I5 | Transfer Actividad | «Hola, quiero añadir el Transfer de Beniardà al embalse para el día %FECHA% a las %HORA% y somos %NUM% personas» |
-| I6 | Transfer Privado | «Hola, quiero solicitar presupuesto para un Transfer Privado en Guadalest. Destino: %DESTINO%. Somos %NUM% personas.» |
-| I0 / I00 | Home / Listado | «Hola, quiero información sobre vuestras experiencias en Guadalest» (genérico) |
+| I10 | Mini Retiro | «Hola, quiero reservar el Mini Retiro (Yoga + Caminata + Kayak) para el día %FECHA% y somos %NUM% personas» |
+| I11 | Tarde de Conexión | «Hola, quiero reservar la Tarde de Conexión (Kayak + Yoga) para el día %FECHA% y somos %NUM% personas» |
+| I12 | Yoga & Mindfulness | «Hola, quiero reservar una clase de Yoga en Guadalest para el día %FECHA% a las %HORA% y somos %NUM% personas» |
+| I13 | Kayak | «Hola, quiero reservar la experiencia de Kayak en el embalse de Guadalest para el día %FECHA% a las %HORA% y somos %NUM% personas» |
+| I14 | Caminata Consciente | «Hola, quiero reservar la Caminata Consciente en Guadalest para el día %FECHA% y somos %NUM% personas» |
+| I20 | Transfer Actividad | «Hola, quiero añadir el Transfer de Beniardà al embalse para el día %FECHA% a las %HORA% y somos %NUM% personas» |
+| I21 | Transfer Privado | «Hola, quiero solicitar presupuesto para un Transfer Privado en Guadalest. Destino: %DESTINO%. Somos %NUM% personas.» |
+| I00 / I01 / I02 | Home / Listado experiencias / Listado servicios | «Hola, quiero información sobre vuestras experiencias en Guadalest» (genérico) |
 
 ### 4.8. Enlaces a servicios relacionados
 
@@ -248,17 +249,18 @@ En efectivo el día de la actividad. Debe quedar claro en la web.
 
 | ID | Página | Ruta | Archivo | Acción | Prioridad |
 |:--:|--------|------|---------|:------:|:---------:|
-| **I01** | Mini Retiro | `/servicios/mini-retiro/` | `content/servicios/mini-retiro.md` | 🔄 Reescribir cuerpo | 🔴 Alta |
-| **I0** | Home | `/` | `content/_index.md` | 🔄 Reescribir completo | 🔴 Alta |
-| **I00** | Listado servicios | `/servicios/` | `content/servicios/_index.md` | 🔄 Reescribir completo | 🔴 Alta |
-| **I1** | Tarde de Conexión | `/servicios/tarde-conexion/` | `content/servicios/tarde-conexion.md` | ✏️ Crear desde cero | Alta |
-| **I2** | Yoga & Mindfulness | `/servicios/yoga/` | `content/servicios/yoga.md` | ✏️ Crear desde cero | Alta |
-| **I3** | Kayak | `/servicios/kayak/` | `content/servicios/kayak.md` | ✏️ Crear desde cero | Alta |
-| **I4** | Caminata Consciente | `/servicios/caminata-consciente/` | `content/servicios/caminata-consciente.md` | ✏️ Crear desde cero | Alta |
-| **I5** | Transfer Actividad | `/servicios/transfer-actividad/` | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero | Media |
-| **I6** | Transfer Privado | `/servicios/transfer-privado/` | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Media |
+| **I00** | Home | `/` | `content/_index.md` | 🔄 Reescribir completo | 🔴 Alta |
+| **I01** | Listado experiencias | `/experiencias/` | `content/experiencias/_index.md` | 🔄 Reescribir completo | 🔴 Alta |
+| **I02** | Listado servicios | `/servicios/` | `content/servicios/_index.md` | 🔄 Reescribir completo | 🔴 Alta |
+| **I10** | Mini Retiro | `/experiencias/mini-retiro/` | `content/experiencias/mini-retiro.md` | 🔄 Reescribir cuerpo | 🔴 Alta |
+| **I11** | Tarde de Conexión | `/experiencias/tarde-conexion/` | `content/experiencias/tarde-conexion.md` | ✏️ Crear desde cero | Alta |
+| **I12** | Yoga & Mindfulness | `/experiencias/yoga/` | `content/experiencias/yoga.md` | ✏️ Crear desde cero | Alta |
+| **I13** | Kayak | `/experiencias/kayak/` | `content/experiencias/kayak.md` | ✏️ Crear desde cero | Alta |
+| **I14** | Caminata Consciente | `/experiencias/caminata-consciente/` | `content/experiencias/caminata-consciente.md` | ✏️ Crear desde cero | Alta |
+| **I20** | Transfer Actividad | `/servicios/transfer-actividad/` | `content/servicios/transfer-actividad.md` | ✏️ Crear desde cero | Media |
+| **I21** | Transfer Privado | `/servicios/transfer-privado/` | `content/servicios/transfer-privado.md` | ✏️ Crear desde cero | Media |
 
-**I7 (Información)**: excluida. Pendiente de definir contenido con Elena. No se trabaja en esta fase.
+**I30 (Información)**: excluida. Pendiente de definir contenido con Elena. No se trabaja en esta fase.
 
 **Leyenda**: 🔄 = Reescribir · ✏️ = Crear desde cero
 
@@ -271,15 +273,16 @@ Según `068_cw-flujo-redaccion.md` §6:
 
 | Orden | ID | Página | Prioridad |
 |:-----:|:--:|--------|:---------:|
-| 1 | I01 | Mini Retiro (piloto) | 🔴 Alta |
-| 2 | I0 | Home | 🔴 Alta |
-| 3 | I00 | Listado de servicios | 🔴 Alta |
-| 4 | I1 | Tarde de Conexión | Alta |
-| 5 | I2 | Yoga & Mindfulness | Alta |
-| 6 | I3 | Kayak | Alta |
-| 7 | I4 | Caminata Consciente | Alta |
-| 8 | I5 | Transfer Actividad | Media |
-| 9 | I6 | Transfer Privado | Media |
+| 1 | I10 | Mini Retiro (piloto) | 🔴 Alta |
+| 2 | I00 | Home | 🔴 Alta |
+| 3 | I01 | Listado experiencias | 🔴 Alta |
+| 4 | I02 | Listado servicios | 🔴 Alta |
+| 5 | I11 | Tarde de Conexión | Alta |
+| 6 | I12 | Yoga & Mindfulness | Alta |
+| 7 | I13 | Kayak | Alta |
+| 8 | I14 | Caminata Consciente | Alta |
+| 9 | I20 | Transfer Actividad | Media |
+| 10 | I21 | Transfer Privado | Media |
 
 **Criterio**: se priorizan páginas de conversión directa. Mini Retiro como piloto (producto estrella). Le siguen Home y Listado. Actividades individuales después. Transfers al final.
 
@@ -335,8 +338,8 @@ A continuación, el esquema mínimo de cada capa para orientación rápida:
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Qué hago** | Ejecuto el checklist de 8 dimensiones SEO on-page (sección 8). **Verifico que todas las claves YAML del layout (sección 10) están presentes y con el tipo correcto** (ej: `precio` entero, `tipo` string, `incluye` array, `para_quien_es` con `\|`). Cada dimensión pasa o necesita trabajo. |
-| **Auto-revisión** | Ver checklist de validación (sección 8) + verificación de front matter contra layout (sección 10). Si algo no pasa, corrijo en esta capa antes de dar la página por terminada. |
+| **Qué hago** | **PASO 0 — Pre-check de compatibilidad con layout.** Identifico qué layout usa la página (`single.html`, `list.html`, `index.html`, etc.). Leo el layout y verifico: (a) si renderiza `{{ .Content }}`, (b) qué claves de front matter consume realmente, (c) si hay valores hardcodeados en partials que puedan anular el front matter. Documento el resultado. **PASO 1 —** Ejecuto el checklist de 8 dimensiones SEO on-page (sección 8) aplicando el pre-check: si el layout no renderiza `.Content`, las dimensiones 4, 5 y 8 se marcan como «⏳ No renderizado por el layout». **Verifico que todas las claves YAML del layout (sección 10) están presentes y con el tipo correcto** (ej: `precio` entero, `tipo` string, `incluye` array, `para_quien_es` con `\|`). |
+| **Auto-revisión** | Pre-check de compatibilidad con layout + Ver checklist de validación (sección 8) + verificación de front matter contra layout (sección 10). Si algo no pasa, corrijo en esta capa antes de dar la página por terminada. |
 
 ---
 
@@ -356,6 +359,8 @@ Las 8 dimensiones del framework SEO on-page (`seo-onpage` SKILL). Cada dimensió
 | 7 | **Slug URL** | Minúsculas, guiones, incluye KW principal, menos de 60 caracteres | ☐ |
 | 8 | **Schema on-page** | FAQPage para FAQ, Product para servicios con precio (ya implementado en layouts) | ☐ |
 
+> **⚠️ Dependencia del layout.** Las dimensiones 4 (cuerpo), 5 (enlaces internos) y 8 (schema) solo existen en el HTML de salida si el layout renderiza `{{ .Content }}`. El pre-check de compatibilidad (PASO 0 de Capa 6) determina esto ANTES de ejecutar el checklist. Si el layout no renderiza `.Content`, estas dimensiones se marcan como «⏳ No renderizado por el layout — disponible para futuro».
+
 Si alguna dimensión no pasa, se corrige antes de dar la página por terminada.
 
 ---
@@ -365,11 +370,11 @@ Si alguna dimensión no pasa, se corrige antes de dar la página por terminada.
 
 Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principales-por-pagina.md`.
 
-### I01 — Mini Retiro
+### I10 — Mini Retiro
 
 | Campo | Valor |
 |-------|-------|
-| **Ruta** | `/servicios/mini-retiro/` |
+| **Ruta** | `/experiencias/mini-retiro/` |
 | **Tipo** | Pack (Yoga + Caminata + Kayak) |
 | **KW Principal** | `mini retiro guadalest` |
 | **Title tag** | `Mini retiro en Guadalest | Yoga, kayak y caminata | El Sonido del Silencio` |
@@ -387,7 +392,7 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I0 — Home
+### I00 — Home
 
 | Campo | Valor |
 |-------|-------|
@@ -405,11 +410,11 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I00 — Listado de servicios
+### I01 — Listado de experiencias
 
 | Campo | Valor |
 |-------|-------|
-| **Ruta** | `/servicios/` |
+| **Ruta** | `/experiencias/` |
 | **Tipo** | Listado (página puente) |
 | **KW Principal** | `actividades guadalest` |
 | **Title tag** | `Actividades en Guadalest | Experiencias y planes | El Sonido del Silencio` |
@@ -423,11 +428,29 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I1 — Tarde de Conexión
+### I02 — Listado servicios
 
 | Campo | Valor |
 |-------|-------|
-| **Ruta** | `/servicios/tarde-conexion/` |
+| **Ruta** | `/servicios/` |
+| **Tipo** | Listado (página puente) |
+| **KW Principal** | `servicios guadalest` |
+| **Title tag** | `Servicios en Guadalest | Transfers y transporte | El Sonido del Silencio` |
+| **H1** | `Servicios en Guadalest — Transfers y transporte para tus experiencias` |
+| **Precio** | No aplica (listado) |
+| **Duración** | No aplica |
+| **Estructura base** | Hero de sección → Grid de cards (imagen, título, precio, CTA). Sin contenido extenso. |
+| **FAQ (4 preg.)** | ¿Cómo llegar al embalse de Guadalest? / ¿Dónde aparcar? / ¿Hay transfer disponible? / ¿Qué destinos cubre el transfer privado? |
+| **Notas críticas** | Página puente para servicios de transfer. No redactar contenido extenso. |
+| **WhatsApp** | Genérico: «Hola, quiero información sobre vuestras experiencias en Guadalest» |
+
+---
+
+### I11 — Tarde de Conexión
+
+| Campo | Valor |
+|-------|-------|
+| **Ruta** | `/experiencias/tarde-conexion/` |
 | **Tipo** | Pack (Kayak + Yoga al atardecer) |
 | **KW Principal** | `tarde conexion guadalest` |
 | **Title tag** | `Tarde de conexión en Guadalest | Kayak y yoga al atardecer` |
@@ -446,11 +469,11 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I2 — Yoga & Mindfulness
+### I12 — Yoga & Mindfulness
 
 | Campo | Valor |
 |-------|-------|
-| **Ruta** | `/servicios/yoga/` |
+| **Ruta** | `/experiencias/yoga/` |
 | **Tipo** | Actividad individual |
 | **KW Principal** | `yoga guadalest` |
 | **Title tag** | `Yoga en Guadalest | Clases al aire libre en el embalse` |
@@ -469,11 +492,11 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I3 — Kayak
+### I13 — Kayak
 
 | Campo | Valor |
 |-------|-------|
-| **Ruta** | `/servicios/kayak/` |
+| **Ruta** | `/experiencias/kayak/` |
 | **Tipo** | Actividad individual |
 | **KW Principal** | `kayak embalse guadalest` |
 | **Title tag** | `Kayak en el embalse de Guadalest | Precios y reservas` |
@@ -493,11 +516,11 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I4 — Caminata Consciente
+### I14 — Caminata Consciente
 
 | Campo | Valor |
 |-------|-------|
-| **Ruta** | `/servicios/caminata-consciente/` |
+| **Ruta** | `/experiencias/caminata-consciente/` |
 | **Tipo** | Actividad individual |
 | **KW Principal** | `caminata consciente guadalest` |
 | **Title tag** | `Caminata consciente en Guadalest | Senderismo con atención plena` |
@@ -516,7 +539,7 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I5 — Transfer Actividad
+### I20 — Transfer Actividad
 
 | Campo | Valor |
 |-------|-------|
@@ -538,7 +561,7 @@ Datos compactos extraídos de `064_cw-brief-copywriter.md` §8 y `10_kw-principa
 
 ---
 
-### I6 — Transfer Privado
+### I21 — Transfer Privado
 
 | Campo | Valor |
 |-------|-------|

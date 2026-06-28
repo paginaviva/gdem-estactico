@@ -58,7 +58,7 @@ Esto implica que:
 | Aspecto | Detalle |
 |---------|---------|
 | **Rol (enfoque)** | Preparador / Analizador |
-| **Entrada** | Identificador de página (ej: «I2 — Yoga») |
+| **Entrada** | Identificador de página (ej: «I12 — Yoga») |
 | **Fuentes a consultar** | `064_cw-brief-copywriter.md`, `10_kw-principales-por-pagina.md`, `05_Servicios-eSdS-formulario_revisado.md`, `layouts/_default/single.html` (o `list.html` según tipo de página) |
 | **Acción** | Reúne toda la información de la página desde las fuentes de verdad. Identifica el tipo de página (pack, actividad, transfer, home, listado, información). **Lee el layout `single.html` (o `list.html`) para conocer los 10 bloques y los parámetros de front matter que espera cada uno** (ver [sección 9](#9)). Genera el mapa de secciones que debe tener la página según su tipo. |
 | **Salida** | Brief concreto de la página + andamio de secciones + mapeo de bloques del layout a sus fuentes de datos |
@@ -117,9 +117,11 @@ Esto implica que:
 |---------|---------|
 | **Rol (enfoque)** | Revisor / Control de calidad |
 | **Entrada** | Página completa de la Capa 5 |
-| **Acción** | Verifica: tono homogéneo en toda la página, reglas RAE (sin presente continuo, sin vocabulario hispanoamericano), datos contra fuentes de verdad, CTA WhatsApp presente y correcto, formato FAQ correcto, sin abreviaciones, sin anglicismos innecesarios, sin tecnicismos de yoga sin explicación, autoría de citas (formato «— Elena»). **Ejecuta el checklist de 8 dimensiones SEO on-page** (ver [sección 4](#4)). **Verifica que todas las claves YAML del layout (sección 9) están presentes y con el tipo correcto** (ej: `precio` es entero sin comillas, `tipo` es string, `incluye` es array, `programa` es array de objetos, `para_quien_es` usa `\|` para multilínea). |
+| **Acción** | **PASO 0 — Pre-check de compatibilidad con layout.** Identifica qué layout usa la página (`single.html`, `list.html`, `index.html`, etc.). Lee el layout y verifica: (a) si renderiza `{{ .Content }}`, (b) qué claves de front matter consume realmente, (c) si hay valores hardcodeados en partials que puedan anular el front matter. Documenta el resultado. 
+**PASO 1 — Validación de contenido.** Verifica: tono homogéneo en toda la página, reglas RAE (sin presente continuo, sin vocabulario hispanoamericano), datos contra fuentes de verdad, CTA WhatsApp presente y correcto, formato FAQ correcto, sin abreviaciones, sin anglicismos innecesarios, sin tecnicismos de yoga sin explicación, autoría de citas (formato «— Elena»). 
+**PASO 2 — Ejecuta el checklist de 8 dimensiones SEO on-page** (ver [sección 4](#4)), aplicando el resultado del pre-check: si el layout no renderiza `.Content`, las dimensiones 4 (cuerpo), 5 (enlaces internos) y 8 (schema) se marcan como «⏳ No renderizado por el layout — disponible para futuro» en lugar de ✅. **Verifica que todas las claves YAML del layout (sección 9) están presentes y con el tipo correcto** (ej: `precio` es entero sin comillas, `tipo` es string, `incluye` es array, `programa` es array de objetos, `para_quien_es` usa `\|` para multilínea). |
 | **Salida** | Archivo Markdown de la página listo para implementar (revisión humana opcional) |
-| **Auto-revisión** | Checklist completo de calidad + Checklist SEO on-page 8 dimensiones + Verificación de front matter contra layout. |
+| **Auto-revisión** | Checklist completo de calidad + Pre-check de compatibilidad con layout + Checklist SEO on-page 8 dimensiones + Verificación de front matter contra layout. |
 
 ---
 
@@ -141,6 +143,8 @@ Las 8 dimensiones del framework `.agents/skills/seo-onpage` se incorporan como c
 
 Si alguna dimensión no pasa, se corrige en esa misma capa antes de dar la página por terminada.
 
+> **⚠️ Dependencia del layout.** Las dimensiones 4 (cuerpo), 5 (enlaces internos) y 8 (schema) solo existen en el HTML de salida si el layout de la página renderiza `{{ .Content }}`. Si el layout no lo hace, estas dimensiones deben marcarse como «⏳ No renderizado por el layout — disponible para futuro» y el contenido queda listo para cuando el layout se actualice. El pre-check de compatibilidad (PASO 0 de Capa 6) determina esto antes de ejecutar el checklist.
+
 ---
 
 <a id="5"></a>
@@ -161,16 +165,17 @@ El skill `.agents/skills/seo-technical` cubre auditoría técnica de sitio compl
 
 | Orden | ID | Página | Archivo | Prioridad |
 |:-----:|:--:|--------|---------|:---------:|
-| 1 | I01 | Mini Retiro | `content/servicios/mini-retiro.md` | 🔴 Alta (piloto) |
-| 2 | I0 | Home | `content/_index.md` | 🔴 Alta |
-| 3 | I00 | Listado de servicios | `content/servicios/_index.md` | 🔴 Alta |
-| 4 | I1 | Tarde de Conexión | `content/servicios/tarde-conexion.md` | Alta |
-| 5 | I2 | Yoga & Mindfulness | `content/servicios/yoga.md` | Alta |
-| 6 | I3 | Kayak | `content/servicios/kayak.md` | Alta |
-| 7 | I4 | Caminata Consciente | `content/servicios/caminata-consciente.md` | Alta |
-| 8 | I5 | Transfer Actividad | `content/servicios/transfer-actividad.md` | Media |
-| 9 | I6 | Transfer Privado | `content/servicios/transfer-privado.md` | Media |
-| 10 | I7 | Información | `content/informacion/_index.md` | Baja |
+| 1 | I10 | Mini Retiro | `content/experiencias/mini-retiro.md` | 🔴 Alta (piloto) |
+| 2 | I00 | Home | `content/_index.md` | 🔴 Alta |
+| 3 | I01 | Listado de experiencias | `content/experiencias/_index.md` | 🔴 Alta |
+| 4 | I02 | Listado servicios | `content/servicios/_index.md` | 🔴 Alta |
+| 5 | I11 | Tarde de Conexión | `content/experiencias/tarde-conexion.md` | Alta |
+| 6 | I12 | Yoga & Mindfulness | `content/experiencias/yoga.md` | Alta |
+| 7 | I13 | Kayak | `content/experiencias/kayak.md` | Alta |
+| 8 | I14 | Caminata Consciente | `content/experiencias/caminata-consciente.md` | Alta |
+| 9 | I20 | Transfer Actividad | `content/servicios/transfer-actividad.md` | Media |
+| 10 | I21 | Transfer Privado | `content/servicios/transfer-privado.md` | Media |
+| 11 | I30 | Información | `content/informacion/_index.md` | Baja |
 
 **Criterio de ordenación**: se priorizan las páginas de conversión directa. El Mini Retiro es el piloto (producto estrella). Le siguen Home y Listado. Las actividades individuales van después. Los transfers y la página de Información cierran la ejecución.
 
@@ -202,7 +207,7 @@ Si se desea trazabilidad, cada capa puede dejar una copia en `/tmp/` con el patr
 | `project/esds-hugo/_doc-esds-hugo/064_cw-brief-copywriter.md` | Brief de copywriting (fuente principal para el agente) |
 | `project/ESDS/10_kw-principales-por-pagina.md` | Keywords, title tags, H1, FAQ, entidades |
 | `project/ESDS/05_Servicios-eSdS-formulario_revisado.md` | Formulario de Elena (datos factuales) |
-| `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Plan de trabajo (tareas I0–I7) |
+| `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` | Plan de trabajo (tareas I00–I30) |
 | `project/esds-hugo/_doc-esds-hugo/062_cw-anexo-tecnico-espec.md` | Anexo técnico del proyecto |
 | `project/esds-hugo/layouts/_default/single.html` | Layout de página de servicio (10 bloques, fuente de la estructura) |
 | `project/esds-hugo/layouts/_default/list.html` | Layout de listado (home y listado de servicios) |
@@ -241,7 +246,7 @@ Cada bloque del layout `layouts/_default/single.html` se alimenta de parámetros
 | `title_breve` | string | ✅ | `"Mini Retiro"` |
 | `tipo` | string | ✅ | `"pack"` \| `"actividad"` \| `"transfer"` |
 | `precio` | int | ✅ | `50` (sin comillas, sin símbolo €). Usado por JSON-LD Product. |
-| `precio_texto` | string | ✅ salvo transfers privados | `"50 €/persona"`. Para I6 (Transfer Privado): `"Bajo presupuesto"`. |
+| `precio_texto` | string | ✅ salvo transfers privados | `"50 €/persona"`. Para I21 (Transfer Privado): `"Bajo presupuesto"`. |
 | `duracion` | string | ✅ | `"5 horas"` |
 | `horario` | string | pack/act | `"8:30 — 14:00"` |
 | `min_personas` | int | pack/act | `2` |

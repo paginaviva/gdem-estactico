@@ -34,6 +34,7 @@
 | 064 | `064_cw-brief-copywriter.md` | Raíz | Copywriting (brief) | Brief autónomo para que el copywriter redacte todo el contenido del sitio | Depende de `062_cw-anexo-tecnico-espec.md` | Documento autónomo que contiene toda la información necesaria para redactar el contenido del sitio: tono, estilo, estructura de páginas, público objetivo y referencias. | `064_cw-brief-copywriter.md` |
 | 066 | `066_cw-flujo-capas.md` | Raíz | Copywriting (flujo) | Definir el flujo de redacción por capas para agentes de IA | Depende de `064_cw-brief-copywriter.md` | Versión temporal del flujo de 6 capas de mejora progresiva para redactar contenido mediante agentes de IA especializados. Cada capa se auto-revisa y pasa a la siguiente. | `066_cw-flujo-capas.md` |
 | 068 | `068_cw-flujo-redaccion.md` | Raíz | Copywriting (flujo) | Versión definitiva del flujo de redacción por capas | Sustituye a `066_cw-flujo-capas.md` | Documento definitivo (v1.0) del proceso de 6 capas para redactar contenido. Versión refinada y validada del flujo de trabajo. | `068_cw-flujo-redaccion.md` |
+| 069 | `069_cw-proceso-occ.md` | Raíz | Copywriting (QA) | Proceso de auditoría OCC para verificar coherencia entre output del CW y layouts reales | Depende de `068_cw-flujo-redaccion.md` | Procedimiento de verificación post-Capa 6 que compara cada dimensión SEO contra el HTML real generado por Hugo, detectando discrepancias entre el archivo .md y el output renderizado. | `069_cw-proceso-occ.md` |
 | 101 | `101_PCI-migracion-i18n.md` | Raíz | PCI (registro) | Documentar la migración i18n + menú dropdown completada | Depende de `025_plan-i18n.md` y `052_spec-artefactos.md` | PCI-001: Registro completo de la migración de textos a i18n, reestructuración del menú con submenús desplegables, incidencias, configuraciones y lecciones aprendidas. | `101_PCI-migracion-i18n.md` |
 | 102 | `102_PCI-integracion-artefactos.md` | Raíz | PCI (registro) | Documentar la implementación de 4 artefactos técnicos | Depende de `052_spec-artefactos.md` | PCI-002: Registro completo de la implementación de SEO local, OG/Twitter, FAQ shortcode y JSON-LD. Incluye incidencias (precio vs price), configuraciones, comandos, agentes utilizados y plan de rollback. | `102_PCI-integracion-artefactos.md` |
 
@@ -106,6 +107,16 @@ Versión temporal del flujo de redacción por capas. Define 6 capas de mejora pr
 
 Versión definitiva (v1.0) del flujo de redacción por capas. Mismo enfoque de 6 capas que `066_cw-flujo-capas.md` pero refinado y validado. Es el documento oficial a utilizar.
 
+#### 069_cw-proceso-occ.md
+
+**Proceso OCC (OpenCoder Control).** Auditoría de coherencia que se ejecuta tras la Capa 6 del CW. Verifica que cada dimensión SEO del informe del Copywriter se corresponde con lo que realmente renderizan los layouts de Hugo en el HTML de salida. Detecta discrepancias como:
+- Layout que no renderiza `{{ .Content }}` (dimensiones 4, 5, 8 no existen en HTML)
+- Partials con valores hardcodeados que anulan el front matter
+- Claves i18n que sobreescriben el contenido visible
+- whatsapp_mensaje en front matter que ningún partial consume
+
+Incluye el caso real de la Home I00 como ejemplo documentado.
+
 ---
 
 ### PCI (Post-Implementation Summary)
@@ -156,9 +167,11 @@ Versión definitiva (v1.0) del flujo de redacción por capas. Mismo enfoque de 6
          │              │
          │              ├──► 066_cw-flujo-capas.md (flujo v0)
          │              │
-         │              └──► 068_cw-flujo-redaccion.md (flujo v1)
-         │
-         └──► 102_PCI-integracion-artefactos.md (registro PCI-002)
+              │              ├──► 068_cw-flujo-redaccion.md (flujo v1)
+              │              │
+              │              └──► 069_cw-proceso-occ.md (QA post-CW)
+              │
+              └──► 102_PCI-integracion-artefactos.md (registro PCI-002)
 
 009_despliegue-cloudflare-pages.md (independiente — despliegue)
 
@@ -183,9 +196,10 @@ Versión definitiva (v1.0) del flujo de redacción por capas. Mismo enfoque de 6
 |-----|----------------------|
 | **Desarrollador** | `052_spec-artefactos.md`, `102_PCI-integracion-artefactos.md`, `054_spec-seo-optimizar-tec.md`, `009_despliegue-cloudflare-pages.md` |
 | **Copywriter** | `064_cw-brief-copywriter.md`, `068_cw-flujo-redaccion.md` |
+| **QA / OCC** | `069_cw-proceso-occ.md` |
 | **Project Manager** | `020_PdTbjo-esds.md`, `022_PdTbjo-esds-fase-2.md`, `025_plan-i18n.md` |
 | **Mantenimiento** | `101_PCI-migracion-i18n.md`, `102_PCI-integracion-artefactos.md`, `009_despliegue-cloudflare-pages.md` |
 
 ---
 
-*Fin del índice. Archivos documentados: 12 (solo raíz). Última modificación: 2026-06-28.*
+*Fin del índice. Archivos documentados: 13 (solo raíz). Última modificación: 2026-06-28.*

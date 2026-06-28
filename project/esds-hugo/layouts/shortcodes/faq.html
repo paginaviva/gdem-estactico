@@ -1,12 +1,12 @@
 {{- /* ======== Shortcode: faq ========
-  Genera JSON-LD FAQPage schema a partir de pares pregunta/respuesta en Markdown.
+  Genera FAQ visible (HTML) + JSON-LD FAQPage schema.
   Uso: {{< faq >}}### ¿Pregunta?\nRespuesta.{{< /faq >}}
   Params: Inner (contenido Markdown con preguntas separadas por "### ")
-  Output: <script type="application/ld+json"> con Schema.org FAQPage
-  Dependencias: Solo funciones Hugo nativas (dict, slice, jsonify, safeJS)
+  Output: <details> visibles + <script type="application/ld+json"> con Schema.org FAQPage
 */}}
 {{- $questions := slice }}
 {{- $items := split .Inner "\n### " }}
+<div class="faq-list" itemscope="" itemtype="https://schema.org/FAQPage">
 {{- range $items }}
   {{- $parts := split . "\n" }}
   {{- $q := index $parts 0 | strings.TrimPrefix "### " | strings.TrimSpace }}
@@ -21,8 +21,15 @@
       "name" $q
       "acceptedAnswer" (dict "@type" "Answer" "text" $a)
     )}}
+    <details class="faq-item" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+      <summary class="faq-question" itemprop="name">{{ $q }}</summary>
+      <div class="faq-answer" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+        <div itemprop="text">{{ $a | markdownify }}</div>
+      </div>
+    </details>
   {{- end }}
 {{- end }}
+</div>
 {{- $faq := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $questions }}
 <script type="application/ld+json">
 {{ $faq | jsonify (dict "indent" "  ") | safeJS }}

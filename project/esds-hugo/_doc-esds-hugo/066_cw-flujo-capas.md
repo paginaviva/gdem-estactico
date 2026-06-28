@@ -37,7 +37,7 @@ Esto significa que:
 | Aspecto | Detalle |
 |---------|---------|
 | **Rol (enfoque)** | Preparador / Analizador |
-| **Entrada** | Identificador de página (ej: «I2 — Yoga») |
+| **Entrada** | Identificador de página (ej: «I12 — Yoga») |
 | **Fuentes a consultar** | `cw-brief-copywriter.md`, `10_kw-principales-por-pagina.md`, `05_Servicios-eSdS-formulario_revisado.md` |
 | **Acción** | Reúne toda la información de la página desde las fuentes de verdad. Identifica el tipo de página (pack, actividad, transfer, home, listado, información). Genera el mapa de secciones que debe tener la página según su tipo. |
 | **Salida** | Brief concreto de la página + andamio de secciones |
@@ -95,9 +95,11 @@ Esto significa que:
 |---------|---------|
 | **Rol (enfoque)** | Revisor / Control de calidad |
 | **Entrada** | Página completa de la Capa 5 |
-| **Acción** | Verifica: tono homogéneo en toda la página, reglas RAE (sin presente continuo, sin vocabulario hispanoamericano), datos contra fuentes de verdad, CTA WhatsApp presente y correcto, formato FAQ correcto, sin abreviaciones, sin anglicismos innecesarios, sin tecnicismos de yoga sin explicación, autoría de citas (formato «— Elena»). **Ejecuta el checklist de 8 dimensiones SEO on-page** (ver sección específica más abajo). |
+| **Acción** | **PASO 0 — Pre-check de compatibilidad con layout.** Identifica qué layout usa la página (`single.html`, `list.html`, `index.html`, etc.). Lee el layout y verifica: (a) si renderiza `{{ .Content }}`, (b) qué claves de front matter consume realmente (c) si hay valores hardcodeados en partials que puedan anular el front matter. Documenta el resultado como «✅ compatible», «🟡 parcial» o «🔴 no compatible» para cada dimensión dependiente. 
+**PASO 1 — Validación de contenido.** Verifica: tono homogéneo en toda la página, reglas RAE (sin presente continuo, sin vocabulario hispanoamericano), datos contra fuentes de verdad, CTA WhatsApp presente y correcto, formato FAQ correcto, sin abreviaciones, sin anglicismos innecesarios, sin tecnicismos de yoga sin explicación, autoría de citas (formato «— Elena»). 
+**PASO 2 — Ejecuta el checklist de 8 dimensiones SEO on-page** (ver sección específica más abajo), aplicando el resultado del pre-check: si el layout no renderiza `.Content`, las dimensiones 4 (cuerpo), 5 (enlaces internos) y 8 (schema) se marcan como «⏳ No renderizado por el layout — disponible para futuro» en lugar de ✅. |
 | **Salida** | Archivo Markdown de la página listo para implementar (revisión humana opcional) |
-| **Auto-revisión** | Checklist completo de calidad + Checklist SEO on-page 8 dimensiones. |
+| **Auto-revisión** | Checklist completo de calidad + Pre-check de compatibilidad con layout + Checklist SEO on-page 8 dimensiones. |
 
 ---
 
@@ -105,16 +107,17 @@ Esto significa que:
 
 | Orden | ID | Página | Archivo | Prioridad |
 |:-----:|:--:|--------|---------|:---------:|
-| 1 | I01 | Mini Retiro | `content/servicios/mini-retiro.md` | 🔴 Alta (piloto) |
-| 2 | I0 | Home | `content/_index.md` | 🔴 Alta |
-| 3 | I00 | Listado de servicios | `content/servicios/_index.md` | 🔴 Alta |
-| 4 | I1 | Tarde de Conexión | `content/servicios/tarde-conexion.md` | Alta |
-| 5 | I2 | Yoga & Mindfulness | `content/servicios/yoga.md` | Alta |
-| 6 | I3 | Kayak | `content/servicios/kayak.md` | Alta |
-| 7 | I4 | Caminata Consciente | `content/servicios/caminata-consciente.md` | Alta |
-| 8 | I5 | Transfer Actividad | `content/servicios/transfer-actividad.md` | Media |
-| 9 | I6 | Transfer Privado | `content/servicios/transfer-privado.md` | Media |
-| 10 | I7 | Información | `content/informacion/_index.md` | Baja |
+| 1 | I10 | Mini Retiro | `content/experiencias/mini-retiro.md` | 🔴 Alta (piloto) |
+| 2 | I00 | Home | `content/_index.md` | 🔴 Alta |
+| 3 | I01 | Listado de experiencias | `content/experiencias/_index.md` | 🔴 Alta |
+| 4 | I02 | Listado servicios | `content/servicios/_index.md` | 🔴 Alta |
+| 5 | I11 | Tarde de Conexión | `content/experiencias/tarde-conexion.md` | Alta |
+| 6 | I12 | Yoga & Mindfulness | `content/experiencias/yoga.md` | Alta |
+| 7 | I13 | Kayak | `content/experiencias/kayak.md` | Alta |
+| 8 | I14 | Caminata Consciente | `content/experiencias/caminata-consciente.md` | Alta |
+| 9 | I20 | Transfer Actividad | `content/servicios/transfer-actividad.md` | Media |
+| 10 | I21 | Transfer Privado | `content/servicios/transfer-privado.md` | Media |
+| 11 | I30 | Información | `content/informacion/_index.md` | Baja |
 
 ---
 
@@ -168,4 +171,4 @@ Si se desea trazabilidad, cada capa puede dejar una copia en `/tmp/` con el patr
 - `project/esds-hugo/_doc-esds-hugo/064_cw-brief-copywriter.md` — Brief de copywriting (fuente principal para el agente)
 - `project/ESDS/10_kw-principales-por-pagina.md` — Keywords, title tags, H1, FAQ, entidades
 - `project/ESDS/05_Servicios-eSdS-formulario_revisado.md` — Formulario de Elena (datos factuales)
-- `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` — Plan de trabajo (tareas I0-I7)
+- `project/esds-hugo/_doc-esds-hugo/022_PdTbjo-esds-fase-2.md` — Plan de trabajo (tareas I00–I30)

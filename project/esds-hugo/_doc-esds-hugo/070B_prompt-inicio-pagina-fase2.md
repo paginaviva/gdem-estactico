@@ -78,15 +78,15 @@ Las 6 capas las ejecutas tú secuencialmente, con auto-revisión en cada una.
 
 ## Notas para el usuario
 
-1. El usuario escribe el ID de página (I01, I0, I00, I1, I2, I3, I4, I5, I6) en el parámetro `[ID_PAGINA]`.
+1. El usuario escribe el ID de página (I00, I01, I02, I10, I11, I12, I13, I14, I20, I21) en el parámetro `[ID_PAGINA]`.
 2. El usuario escribe el nombre de la página (Mini Retiro, Home, Listado, Tarde de Conexión, etc.) en el parámetro `[NOMBRE_PAGINA]`.
 3. El usuario pega el bloque completo en el chat.
 
 | Aspecto | Detalle |
 |---------|---------|
-| **IDs de página** | I01 (Mini Retiro), I0 (Home), I00 (Listado), I1 (Tarde de Conexión), I2 (Yoga), I3 (Kayak), I4 (Caminata Consciente), I5 (Transfer Actividad), I6 (Transfer Privado) |
-| **I7 (Información)** | Excluida. Pendiente de Elena. |
-| **Orden recomendado** | I01 → I0 → I00 → I1 → I2 → I3 → I4 → I5 → I6 |
+| **IDs de página** | I00 (Home), I01 (Listado experiencias), I02 (Listado servicios), I10 (Mini Retiro), I11 (Tarde de Conexión), I12 (Yoga), I13 (Kayak), I14 (Caminata Consciente), I20 (Transfer Actividad), I21 (Transfer Privado) |
+| **I30 (Información)** | Excluida. Pendiente de Elena. |
+| **Orden recomendado** | I10 → I00 → I01 → I02 → I11 → I12 → I13 → I14 → I20 → I21 |
 | **Tiempo estimado por página** | Variable según complejidad (pack > actividad > transfer). |
 
 ---

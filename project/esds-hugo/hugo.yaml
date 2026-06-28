@@ -79,7 +79,7 @@ menu:
 
     - identifier: "servicios"
       name: "Servicios"
-      url: "#"
+      url: "/servicios/"
       weight: 3
 
     - identifier: "transfer_actividad"
