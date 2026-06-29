@@ -3,7 +3,7 @@
 > **Propósito:** Responder a las 10 preguntas planteadas por el desarrollador durante la sesión de asesoría sobre el proyecto "El Sonido del Silencio" (esds-hugo), cubriendo .gitignore, git, baseURL, imágenes + Hugo Pipes, Sveltia CMS, CSS/Hugo Pipes, traducción EN, búsqueda, y recomendaciones técnicas priorizadas.
 >
 > **Creación:** 2026-06-29
-> **Última modificación:** 2026-06-29 (v4.1: resueltos B1-B5 — creado partial responsive-img.html con sizes/quality seguro/width correcto/guard nil; añadido imaging a hugo.yaml; creado assets/images/; corregido hugo server --minify en Anexo A)
+> **Última modificación:** 2026-06-29 (v4.2: añadidas mejoras del documento B8-B21 al Anexo B con IDs y estados)
 >
 > **Fuentes:**
 > - Código fuente del proyecto: `/home/coder/project/esds-hugo/`
@@ -795,9 +795,11 @@ TÚ (cliente)                    YO (desarrollador)
 
 ---
 
-## Anexo B — Mejoras detectadas en proyecto/código (Pendientes de implementar)
+## Anexo B — Registro completo de mejoras
 
-> Las siguientes mejoras corresponden a código del proyecto Hugo (templates, config, etc.) identificadas durante la revisión. Se documentan aquí para trackeo y se resolverán cuando se aborde cada tema.
+> Todas las mejoras identificadas durante la revisión del documento y el proyecto, con su estado actual.
+
+### Mejoras de código (templates, config, etc.)
 
 | # | Prioridad | Problema | Archivo/Lugar | Estado |
 |---|:---------:|----------|---------------|--------|
@@ -808,6 +810,25 @@ TÚ (cliente)                    YO (desarrollador)
 | B5 | 🟡 **Media** | `hugo server --minify`: `--minify` se ignora en dev server | Anexo A Fase 2 paso 3 | ✅ Resuelto en v4 |
 | B6 | 🟢 **Baja** | `npx pagefind --source public` → flag oficial es `--site public` | Sección 08 | Pendiente |
 | B7 | 🟢 **Baja** | Anexo A Fase 2 no menciona rama/PR workflow | Anexo A Fase 2 paso 4 | Pendiente |
+
+### Mejoras del documento (estructura, contenido, formato)
+
+| # | Prioridad | Problema | Dónde se resolvió | Estado |
+|---|:---------:|----------|-------------------|--------|
+| B8 | 🔴 **Alta** | IDs 06 y 10 duplicados en índice (copias de 03 y 04) | Índice v4 | ✅ Resuelto |
+| B9 | 🔴 **Alta** | Secciones 06 y 10 inexistentes en el cuerpo del documento | Cuerpo v4 | ✅ Resuelto |
+| B10 | 🔴 **Alta** | Contradicción: sección 05 instruía instalar Sveltia, sección 11 decía no instalarlo | Fusión 05+11 v4 | ✅ Resuelto |
+| B11 | 🔴 **Alta** | Secciones 05 y 11 redundantes (mismo diagrama, misma conclusión) | Fusión en 05 v4 | ✅ Resuelto |
+| B12 | 🟡 **Media** | Emoji 🚀 en título de sección 05 (sin autorización) | Sección 05 v4 | ✅ Resuelto |
+| B13 | 🟡 **Media** | Escala de prioridades incoherente (🟡 = "Alta", sin 🟠) | Tabla prioridades v4 | ✅ Resuelto |
+| B14 | 🟡 **Media** | Anexo A Fase 0 incluía "Subir a GitHub → CF Pages" como paso | Anexo A Fase 0 v4 | ✅ Resuelto |
+| B15 | 🟡 **Media** | Anexo A Fase 0 no terminaba en build de prueba local | Anexo A Fase 0 v4 | ✅ Resuelto |
+| B16 | 🟡 **Media** | Anexo A Fase 2 usaba `hugo server --minify` (--minify se ignora en server) | Anexo A Fase 2 v4 | ✅ Resuelto |
+| B17 | 🟡 **Media** | Tabla prioridades incluía "Configurar Sveltia CMS" pese a decisión de no instalarlo | Tabla prioridades v4 | ✅ Resuelto |
+| B18 | 🟢 **Baja** | "versión EN (español)" → debería decir "versión ES" | Sección 07 v4 | ✅ Resuelto |
+| B19 | 🟢 **Baja** | Faltaban instrucciones de rollback para Hugo Pipes | Sección 04 v4 | ✅ Resuelto |
+| B20 | 🟢 **Baja** | No se documentaba cómo verificar WebP en local | Anexo A Fase 0/2 v4 | ✅ Resuelto |
+| B21 | 🟢 **Baja** | lastmod desactualizado respecto a cambios reales | Frontmatter v4/v4.1 | ✅ Resuelto |
 
 ---
 
