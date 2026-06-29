@@ -1,0 +1,50 @@
+{{- /* responsive-img: <picture> con WebP + JPEG + srcset + sizes + lazy loading
+  ────────────────────────────────────────────────────────────────────
+  Uso:
+    {{ $img := resources.Get "images/foto.jpg" }}
+    {{ partial "responsive-img" (dict
+      "img"        $img
+      "alt"        "Descripción de la imagen"
+      "sizes"      (slice "480" "768" "1024" "1920")
+      "sizesAttr"  "(max-width: 768px) 100vw, 768px"
+      "quality"    80
+      "class"      "mi-clase"
+    )}}
+
+  Si sizesAttr no se pasa, se usa "100vw" (viewport completo).
+  Si quality no se pasa, se usa 80.
+  JPEG fallback se genera con quality + 5 para compensar la pérdida.
+  ────────────────────────────────────────────────────────────────────
+*/ -}}
+{{- $img := .img }}
+{{- if not $img }}
+  {{- errorf "responsive-img: falta el recurso 'img'. Recibido: %v" (printf "%T" .) }}
+{{- end }}
+
+{{- $alt := .alt | default "" }}
+{{- $sizes := .sizes | default (slice "480" "768" "1024" "1920") }}
+{{- $quality := .quality | default 80 | int }}
+{{- $sizesAttr := .sizesAttr | default "100vw" }}
+{{- $class := .class | default "" }}
+
+{{- $srcsetWebp := slice }}
+{{- $srcsetJpeg := slice }}
+{{- $firstJpeg := false }}
+{{- range $i, $w := $sizes }}
+  {{- $wInt := $w | int }}
+  {{- $thumbWebp := $img.Process (printf "resize %dx webp q%d" $wInt $quality) }}
+  {{- $thumbJpeg := $img.Process (printf "resize %dx jpeg q%d" $wInt (add $quality 5)) }}
+  {{- $srcsetWebp = $srcsetWebp | append (printf "%s %dw" $thumbWebp.RelPermalink $wInt) }}
+  {{- $srcsetJpeg = $srcsetJpeg | append (printf "%s %dw" $thumbJpeg.RelPermalink $wInt) }}
+  {{- if eq $i 0 }}{{ $firstJpeg = $thumbJpeg }}{{ end }}
+{{- end }}
+
+<picture>
+  <source srcset="{{ delimit $srcsetWebp ", " }}" sizes="{{ $sizesAttr }}" type="image/webp">
+  <source srcset="{{ delimit $srcsetJpeg ", " }}" sizes="{{ $sizesAttr }}" type="image/jpeg">
+  <img src="{{ $firstJpeg.RelPermalink }}"
+       width="{{ $firstJpeg.Width }}" height="{{ $firstJpeg.Height }}"
+       loading="lazy" decoding="async"
+       alt="{{ $alt }}"
+       {{ with $class }}class="{{ . }}"{{ end }}>
+</picture>

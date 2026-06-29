@@ -106,3 +106,12 @@ markup:
       unsafe: true
 capitalizeListTitles: false
 pluralizeListTitles: false
+
+imaging:
+  resampleFilter: lanczos
+  anchor: smart
+  webp:
+    compression: lossy
+    hint: photo
+    quality: 75
+    method: 4
