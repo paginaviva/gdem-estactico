@@ -832,14 +832,14 @@ TÚ (cliente)                    YO (desarrollador)
 
 ---
 
-| # | Prioridad | Tema | ¿Cuándo? |
-|:-:|:---------:|------|----------|
-| C1 | 🟠 **Alta** | Hugo Pipes partial `responsive-img.html` | **Cuando tengas las fotos reales** |
-| C2 | 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | **Próximo sprint** |
-| C3 | 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | **Próximo sprint** |
-| C4 | 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | **Al pasar a PROD** |
-| C5 | 🔵 **Baja** | Búsqueda PageFind | **Cuando el sitio tenga 20+ páginas** |
-| C6 | 🔵 **Baja** | Traducción inglés | **Cuando el sitio ES esté consolidado** |
+| # | Prioridad | Tema | Acción | ¿Cuándo? |
+|:-:|:---------:|------|--------|----------|
+| C1 | 🟠 **Alta** | Hugo Pipes partial `responsive-img.html` | Reemplazar picsum.photos en layouts (hero, single, list, experiencias) por el partial, usando fotos reales que entregue el cliente | **Cuando tengas las fotos reales** |
+| C2 | 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | Dividir `static/css/style.css` (~1700 líneas) en parciales en `assets/css/`, concatenar y minificar con Hugo Pipes, añadir fingerprint | **Próximo sprint** |
+| C3 | 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | Editar `/home/coder/.gitignore` añadiendo ambas líneas para evitar que se versionen accidentalmente | **Próximo sprint** |
+| C4 | 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | Configurar variable de entorno `HUGO_BASEURL` en Cloudflare Pages Dashboard (Production + Preview) y ajustar comando de build a `hugo --minify -b $HUGO_BASEURL` | **Al pasar a PROD** |
+| C5 | 🔵 **Baja** | Búsqueda PageFind | Añadir PageFind al `baseof.html`, generar índice en build (`npx pagefind --site public`), añadir input de búsqueda en el layout | **Cuando el sitio tenga 20+ páginas** |
+| C6 | 🔵 **Baja** | Traducción inglés | Crear `i18n/en.yaml` (226 entradas), configurar `languages.en` en `hugo.yaml`, crear contenido en `content/en/`, traducir menú | **Cuando el sitio ES esté consolidado** |
 
 ---
 
