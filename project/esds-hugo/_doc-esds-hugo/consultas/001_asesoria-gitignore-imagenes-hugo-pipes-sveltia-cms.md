@@ -3,7 +3,7 @@
 > **Propósito:** Responder a las 10 preguntas planteadas por el desarrollador durante la sesión de asesoría sobre el proyecto "El Sonido del Silencio" (esds-hugo), cubriendo .gitignore, git, baseURL, imágenes + Hugo Pipes, Sveltia CMS, CSS/Hugo Pipes, traducción EN, búsqueda, y recomendaciones técnicas priorizadas.
 >
 > **Creación:** 2026-06-29
-> **Última modificación:** 2026-06-29 (v4.3: añadidos IDs C1-C6 a tabla de prioridades final)
+> **Última modificación:** 2026-06-29 (v5: eliminados B6 y C5 (PageFind descartado); añadido Anexo C con planes C2/C3/C4; ejecutado C3 en .gitignore raíz; C6 pasa a post-DEV)
 >
 > **Fuentes:**
 > - Código fuente del proyecto: `/home/coder/project/esds-hugo/`
@@ -26,7 +26,8 @@
 | [07](#07) | Traducción inglés | Estado actual y plan para migración multilingüe |
 | [08](#08) | Búsqueda (PageFind) | Propósito: uso interno, SEO, buscadores |
 | [Anexo A](#anexo-a) | Plan trabajo imágenes | Flujo colaborativo para migrar de picsum a fotos reales con Hugo Pipes |
-| [Anexo B](#anexo-b) | Mejoras código pendientes | Lista de issues de proyecto/código identificados durante la revisión |
+| [Anexo B](#anexo-b) | Registro completo de mejoras | Lista de issues de proyecto/código y documento con IDs y estados |
+| [Anexo C](#anexo-c) | Planes de trabajo | Planes detallados para C2 (CSS), C3 (.gitignore), C4 (baseURL) |
 
 ---
 
@@ -808,7 +809,6 @@ TÚ (cliente)                    YO (desarrollador)
 | B3 | 🔴 **Alta** | `width`/`height` usan `$img.Width` original en vez del del resize | `layouts/partials/responsive-img.html` | ✅ Resuelto en v4 |
 | B4 | 🔴 **Alta** | Sin `with`/`if` → si imagen no existe el partial explota | `layouts/partials/responsive-img.html` | ✅ Resuelto en v4 |
 | B5 | 🟡 **Media** | `hugo server --minify`: `--minify` se ignora en dev server | Anexo A Fase 2 paso 3 | ✅ Resuelto en v4 |
-| B6 | 🟢 **Baja** | `npx pagefind --source public` → flag oficial es `--site public` | Sección 08 | Pendiente |
 | B7 | 🟢 **Baja** | Anexo A Fase 2 no menciona rama/PR workflow | Anexo A Fase 2 paso 4 | Pendiente |
 
 ### Mejoras del documento (estructura, contenido, formato)
@@ -838,8 +838,108 @@ TÚ (cliente)                    YO (desarrollador)
 | C2 | 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | Dividir `static/css/style.css` (~1700 líneas) en parciales en `assets/css/`, concatenar y minificar con Hugo Pipes, añadir fingerprint | **Próximo sprint** |
 | C3 | 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | Editar `/home/coder/.gitignore` añadiendo ambas líneas para evitar que se versionen accidentalmente | **Próximo sprint** |
 | C4 | 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | Configurar variable de entorno `HUGO_BASEURL` en Cloudflare Pages Dashboard (Production + Preview) y ajustar comando de build a `hugo --minify -b $HUGO_BASEURL` | **Al pasar a PROD** |
-| C5 | 🔵 **Baja** | Búsqueda PageFind | Añadir PageFind al `baseof.html`, generar índice en build (`npx pagefind --site public`), añadir input de búsqueda en el layout | **Cuando el sitio tenga 20+ páginas** |
-| C6 | 🔵 **Baja** | Traducción inglés | Crear `i18n/en.yaml` (226 entradas), configurar `languages.en` en `hugo.yaml`, crear contenido en `content/en/`, traducir menú | **Cuando el sitio ES esté consolidado** |
+| C6 | 🔵 **Baja** | Traducción inglés | Crear `i18n/en.yaml` (226 entradas), configurar `languages.en` en `hugo.yaml`, crear contenido en `content/en/`, traducir menú | **Cuando el sitio ES esté consolidado (post-DEV)** |
+
+---
+
+## Anexo C — Planes de trabajo
+
+### C2 — Refactorizar CSS con Hugo Pipes
+
+**Objetivo:** Dividir `static/css/style.css` (~1700 líneas) en parciales en `assets/css/`, concatenar y minificar con Hugo Pipes, añadir fingerprint.
+
+```
+Fase 1 — Estructura (10 min)
+  [ ] Crear assets/css/ con los archivos parciales:
+      _variables.css  _reset.css  _typography.css  _layout.css
+      _buttons.css  _header.css  _hero.css  _experiencias.css
+      _como-llegar.css  _conversion.css  _conecta.css  _footer.css
+      _service-hero.css  _service-content.css  _service-programa.css
+      _responsive.css  _utilities.css  _faq.css
+      main.css  (con @import de todos)
+
+Fase 2 — Migración de reglas (30-45 min)
+  [ ] Copiar cada bloque de style.css a su archivo parcial
+  [ ] No modificar selectores ni propiedades (solo mover)
+  [ ] main.css tendrá los @import en orden
+
+Fase 3 — Hugo Pipes bundle (10 min)
+  [ ] En baseof.html, reemplazar:
+      <link rel="stylesheet" href="/css/style.css">
+      ──por──
+      {{- $css := slice }}
+      {{- $css = $css | append (resources.Get "css/main.css") }}
+      {{- $css = $css | resources.Concat "css/bundle.css"
+             | resources.Minify | resources.Fingerprint "sha384" }}
+      <link rel="stylesheet" href="{{ $css.RelPermalink }}"
+            integrity="{{ $css.Data.Integrity }}">
+
+Fase 4 — Verificación (10 min)
+  [ ] hugo --minify && hugo server
+  [ ] Abrir navegador → el sitio se ve igual
+  [ ] Inspeccionar <link> → debe apuntar a /css/bundle.abc123.css
+  [ ] Verificar integrity hash en el tag
+
+Fase 5 — Limpieza (5 min)
+  [ ] Eliminar static/css/style.css
+  [ ] git add assets/css/ layouts/_default/baseof.html
+  [ ] git rm static/css/style.css
+  [ ] Commit: "♻️ refactor: split CSS into partials with Hugo Pipes bundle"
+```
+
+**Riesgos:**
+- Si un @import falta, el CSS se rompe → verificar en local antes de commit
+- Si el orden de los parciales no es correcto, cascada incorrecta → revisar dependencias (ej: _variables.css primero)
+- Rollback: `git revert HEAD` si algo falla en producción
+
+---
+
+### C3 — Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz
+
+**Objetivo:** Evitar que estos archivos se versionen accidentalmente.
+
+```
+Fase única (2 min)
+  [ ] Editar /home/coder/.gitignore
+  [ ] Añadir al final:
+      # Hugo
+      .hugo_build.lock
+      
+      # Cloudflare
+      .dev.vars
+  [ ] Verificar con: git status (no deben aparecer como untracked)
+  [ ] Commit: "🔧 chore: add .hugo_build.lock and .dev.vars to .gitignore"
+```
+
+**Nota:** `.hugo_build.lock` lo genera Hugo durante el build para evitar ejecuciones concurrentes. No debe versionarse. `.dev.vars` es el equivalente a `.env` para wrangler en desarrollo local.
+
+---
+
+### C4 — Configurar baseURL producción (HUGO_BASEURL)
+
+**Objetivo:** Configurar la URL de producción sin tocar `hugo.yaml`, usando variable de entorno en Cloudflare Pages.
+
+```
+Fase 1 — Cloudflare Dashboard (5 min, requiere acceso al dashboard)
+  [ ] Ir a Cloudflare Dashboard → Pages → esds-hugo → Settings
+  [ ] Environment variables → Production
+  [ ] Añadir: HUGO_BASEURL = https://tudominio.com
+  [ ] Environment variables → Preview
+  [ ] Añadir: HUGO_BASEURL = https://[hash].pages.dev
+
+Fase 2 — Comando de build (5 min)
+  [ ] En Cloudflare Pages → Settings → Build configuration
+  [ ] Build command: hugo --minify -b $HUGO_BASEURL
+
+Fase 3 — Verificación (5 min)
+  [ ] Hacer un push a GitHub → CF Pages despliega automáticamente
+  [ ] Verificar que el sitio carga con la URL correcta
+  [ ] Inspeccionar <base> tag o links internos → deben usar la URL correcta
+```
+
+**Requisito previo:** Tener el dominio personalizado apuntando a Cloudflare Pages (DNS configurado).
+
+**Nota:** No se toca `hugo.yaml` — `baseURL: "/"` se mantiene para desarrollo local.
 
 ---
 

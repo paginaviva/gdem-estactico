@@ -1,6 +1,7 @@
 # Entorno local y secretos
 .env
 .env.*
+.dev.vars
 !.env.example
 ADVERTENCIA-HALANS.md
 reglas-abreviaciones.txt
@@ -30,6 +31,7 @@ public/
 resources/_gen/
 dist/
 build/
+.hugo_build.lock
 
 # Logs y editores
 *.log
