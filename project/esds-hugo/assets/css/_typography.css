@@ -1,0 +1,22 @@
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: 1.2;
+  color: var(--texto-oscuro);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: var(--space-md);
+}
+
+.text-serif { font-family: var(--font-serif); }
+.text-manuscrita { font-family: var(--font-manuscrita); }
+.text-dorado { color: var(--dorado); }
+.text-center { text-align: center; }

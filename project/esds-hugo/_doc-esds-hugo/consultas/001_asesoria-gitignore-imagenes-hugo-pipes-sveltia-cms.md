@@ -3,7 +3,7 @@
 > **Propósito:** Responder a las 10 preguntas planteadas por el desarrollador durante la sesión de asesoría sobre el proyecto "El Sonido del Silencio" (esds-hugo), cubriendo .gitignore, git, baseURL, imágenes + Hugo Pipes, Sveltia CMS, CSS/Hugo Pipes, traducción EN, búsqueda, y recomendaciones técnicas priorizadas.
 >
 > **Creación:** 2026-06-29
-> **Última modificación:** 2026-06-29 (v5: eliminados B6 y C5 (PageFind descartado); añadido Anexo C con planes C2/C3/C4; ejecutado C3 en .gitignore raíz; C6 pasa a post-DEV)
+> **Última modificación:** 2026-06-29 (v6: ejecutados C2 y C4 — CSS refactorizado a parciales en assets/css/ con Hugo Pipes bundle; build command y HUGO_BASEURL configurados en CF Pages vía API)
 >
 > **Fuentes:**
 > - Código fuente del proyecto: `/home/coder/project/esds-hugo/`
@@ -832,19 +832,19 @@ TÚ (cliente)                    YO (desarrollador)
 
 ---
 
-| # | Prioridad | Tema | Acción | ¿Cuándo? |
-|:-:|:---------:|------|--------|----------|
-| C1 | 🟠 **Alta** | Hugo Pipes partial `responsive-img.html` | Reemplazar picsum.photos en layouts (hero, single, list, experiencias) por el partial, usando fotos reales que entregue el cliente | **Cuando tengas las fotos reales** |
-| C2 | 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | Dividir `static/css/style.css` (~1700 líneas) en parciales en `assets/css/`, concatenar y minificar con Hugo Pipes, añadir fingerprint | **Próximo sprint** |
-| C3 | 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | Editar `/home/coder/.gitignore` añadiendo ambas líneas para evitar que se versionen accidentalmente | **Próximo sprint** |
-| C4 | 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | Configurar variable de entorno `HUGO_BASEURL` en Cloudflare Pages Dashboard (Production + Preview) y ajustar comando de build a `hugo --minify -b $HUGO_BASEURL` | **Al pasar a PROD** |
-| C6 | 🔵 **Baja** | Traducción inglés | Crear `i18n/en.yaml` (226 entradas), configurar `languages.en` en `hugo.yaml`, crear contenido en `content/en/`, traducir menú | **Cuando el sitio ES esté consolidado (post-DEV)** |
+| # | Prioridad | Tema | Acción | Estado |
+|:-:|:---------:|------|--------|--------|
+| C1 | 🟠 **Alta** | Hugo Pipes partial `responsive-img.html` | Reemplazar picsum.photos en layouts (hero, single, list, experiencias) por el partial, usando fotos reales que entregue el cliente | ⏳ Pendiente (fotos reales) |
+| C2 | 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | Dividido `static/css/style.css` en 15 parciales en `assets/css/`, concatenado y minificado con Hugo Pipes, fingerprint SHA-384 | ✅ Ejecutado |
+| C3 | 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | Editado `/home/coder/.gitignore` — añadidas ambas líneas | ✅ Ejecutado |
+| C4 | 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | Build command y HUGO_BASEURL configurados en CF Pages vía API. Valor actual: DEV (esds-hugo.pages.dev). Actualizar cuando haya dominio personalizado | ✅ Ejecutado (parcial) |
+| C6 | 🔵 **Baja** | Traducción inglés | Crear `i18n/en.yaml` (226 entradas), configurar `languages.en` en `hugo.yaml`, crear contenido en `content/en/`, traducir menú | ⏳ Post-DEV |
 
 ---
 
 ## Anexo C — Planes de trabajo
 
-### C2 — Refactorizar CSS con Hugo Pipes
+### C2 — Refactorizar CSS con Hugo Pipes ✅ Ejecutado
 
 **Objetivo:** Dividir `static/css/style.css` (~1700 líneas) en parciales en `assets/css/`, concatenar y minificar con Hugo Pipes, añadir fingerprint.
 
@@ -915,29 +915,26 @@ Fase única (2 min)
 
 ---
 
-### C4 — Configurar baseURL producción (HUGO_BASEURL)
+### C4 — Configurar baseURL producción (HUGO_BASEURL) ✅ Ejecutado
 
 **Objetivo:** Configurar la URL de producción sin tocar `hugo.yaml`, usando variable de entorno en Cloudflare Pages.
 
 ```
-Fase 1 — Cloudflare Dashboard (5 min, requiere acceso al dashboard)
-  [ ] Ir a Cloudflare Dashboard → Pages → esds-hugo → Settings
-  [ ] Environment variables → Production
-  [ ] Añadir: HUGO_BASEURL = https://tudominio.com
-  [ ] Environment variables → Preview
-  [ ] Añadir: HUGO_BASEURL = https://[hash].pages.dev
+Fase 1 — Build command (ejecutado vía API)
+  ✅ Build command: hugo --minify -b $HUGO_BASEURL
 
-Fase 2 — Comando de build (5 min)
-  [ ] En Cloudflare Pages → Settings → Build configuration
-  [ ] Build command: hugo --minify -b $HUGO_BASEURL
+Fase 2 — Env vars (ejecutado vía API)
+  ✅ HUGO_BASEURL creado para Preview y Production (tipo secret_text)
+  ⚠️ Valor actual: https://esds-hugo.pages.dev (DEV)
+  ⏳ Cuando tengas dominio personalizado, actualizar Production:
+     Cloudflare Dashboard → Pages → esds-hugo → Settings →
+     Environment variables → Production → HUGO_BASEURL = https://tudominio.com
 
-Fase 3 — Verificación (5 min)
+Fase 3 — Verificación (próximo push)
   [ ] Hacer un push a GitHub → CF Pages despliega automáticamente
   [ ] Verificar que el sitio carga con la URL correcta
-  [ ] Inspeccionar <base> tag o links internos → deben usar la URL correcta
+  [ ] Inspeccionar que los links internos usan la URL correcta
 ```
-
-**Requisito previo:** Tener el dominio personalizado apuntando a Cloudflare Pages (DNS configurado).
 
 **Nota:** No se toca `hugo.yaml` — `baseURL: "/"` se mantiene para desarrollo local.
 

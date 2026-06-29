@@ -1,0 +1,31 @@
+/* ============================================================
+   El Sonido del Silencio — Main Stylesheet Bundle
+   Hugo Pipes concatena, minifica y añade fingerprint
+   ============================================================ */
+
+/* 1. Design tokens (siempre primero) */
+@import "_variables.css";
+
+/* 2. Base */
+@import "_reset.css";
+@import "_typography.css";
+
+/* 3. Layout */
+@import "_layout.css";
+
+/* 4. Componentes */
+@import "_buttons.css";
+@import "_header.css";
+@import "_hero.css";
+@import "_experiencias.css";
+@import "_como-llegar.css";
+@import "_conversion.css";
+@import "_conecta.css";
+@import "_footer.css";
+@import "_faq.css";
+
+/* 5. Utilidades */
+@import "_utilities.css";
+
+/* 6. Responsive (siempre al final) */
+@import "_responsive.css";

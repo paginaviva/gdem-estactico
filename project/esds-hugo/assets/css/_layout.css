@@ -1,0 +1,66 @@
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+}
+
+.container--narrow {
+  max-width: 960px;
+}
+
+/* ============================================================
+   SECTION TITLES (shared)
+   ============================================================ */
+.section-title {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-title__heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--texto-oscuro);
+  margin-bottom: var(--space-sm);
+}
+
+.section-title__sub {
+  font-family: var(--font-sans);
+  font-size: 0.938rem;
+  color: var(--texto-secundario);
+  font-weight: 400;
+}
+
+.section-title__divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.section-title__divider::before,
+.section-title__divider::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--dorado);
+}
+
+.section-title__divider-icon {
+  color: var(--dorado);
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   HOME CONTENT
+   ============================================================ */
+.home-content {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}

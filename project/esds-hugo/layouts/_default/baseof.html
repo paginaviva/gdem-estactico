@@ -59,8 +59,25 @@
     }
   </style>
 
-  <!-- Hoja de estilos principal -->
-  <link rel="stylesheet" href="/css/style.css">
+  <!-- Hoja de estilos principal (Hugo Pipes bundle) -->
+  {{- $css := slice }}
+  {{- $css = $css | append (resources.Get "css/_variables.css") }}
+  {{- $css = $css | append (resources.Get "css/_reset.css") }}
+  {{- $css = $css | append (resources.Get "css/_typography.css") }}
+  {{- $css = $css | append (resources.Get "css/_layout.css") }}
+  {{- $css = $css | append (resources.Get "css/_buttons.css") }}
+  {{- $css = $css | append (resources.Get "css/_header.css") }}
+  {{- $css = $css | append (resources.Get "css/_hero.css") }}
+  {{- $css = $css | append (resources.Get "css/_experiencias.css") }}
+  {{- $css = $css | append (resources.Get "css/_como-llegar.css") }}
+  {{- $css = $css | append (resources.Get "css/_conversion.css") }}
+  {{- $css = $css | append (resources.Get "css/_conecta.css") }}
+  {{- $css = $css | append (resources.Get "css/_footer.css") }}
+  {{- $css = $css | append (resources.Get "css/_faq.css") }}
+  {{- $css = $css | append (resources.Get "css/_utilities.css") }}
+  {{- $css = $css | append (resources.Get "css/_responsive.css") }}
+  {{- $css = $css | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint "sha384" }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
 
   {{- /* CANONICAL URL */ -}}
   <link rel="canonical" href="{{ .Permalink }}">

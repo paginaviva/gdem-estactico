@@ -1,0 +1,128 @@
+/* ============================================================
+   EXPERIENCIAS SECTION
+   ============================================================ */
+.experiencias {
+  padding: var(--space-3xl) 0;
+  background-color: var(--blanco-hueso);
+}
+
+.experiencias__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.experiencia-card {
+  background-color: var(--blanco);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.experiencia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Card destacada (pack) */
+.experiencia-card--destacada {
+  border: 2px solid var(--dorado);
+  position: relative;
+  box-shadow: 0 0 0 1px var(--dorado), var(--sombra-suave);
+}
+
+.experiencia-card--destacada:hover {
+  box-shadow: 0 0 0 1px var(--dorado), var(--sombra-media);
+}
+
+.experiencia-card__badge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  background-color: var(--dorado);
+  color: var(--blanco);
+  font-size: 0.688rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-sm);
+  z-index: 1;
+}
+
+.experiencia-card__image {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  width: 100%;
+  display: block;
+}
+
+.experiencia-card__content {
+  padding: var(--space-lg);
+}
+
+.experiencia-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: rgba(62, 74, 60, 0.08);
+  font-size: 1.25rem;
+  margin-bottom: var(--space-sm);
+}
+
+.experiencia-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+  color: var(--texto-oscuro);
+}
+
+.experiencia-card__desc {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--texto-secundario);
+  margin-bottom: var(--space-md);
+}
+
+.experiencia-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--borde);
+}
+
+.experiencia-card__price {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dorado);
+  line-height: 1;
+}
+
+.experiencia-card__price-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--texto-secundario);
+  font-family: var(--font-sans);
+}
+
+.experiencia-card__duration {
+  font-size: 0.813rem;
+  color: var(--texto-secundario);
+}
+
+.experiencia-card__min {
+  font-size: 0.75rem;
+  color: var(--texto-secundario);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}

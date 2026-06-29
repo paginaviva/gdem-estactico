@@ -1,0 +1,80 @@
+/* ============================================================
+   CONECTA SECTION
+   ============================================================ */
+.conecta {
+  padding: var(--space-3xl) 0;
+  background-color: var(--verde-bosque);
+  color: var(--texto-claro);
+}
+
+.conecta__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+}
+
+.conecta__card {
+  text-align: center;
+  padding: var(--space-xl);
+}
+
+.conecta__icon {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.conecta__title {
+  font-family: var(--font-manuscrita);
+  font-size: 1.75rem;
+  color: var(--dorado);
+  margin-bottom: var(--space-sm);
+}
+
+.conecta__text {
+  font-size: 0.938rem;
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  opacity: 0.9;
+}
+
+/* WhatsApp button */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background-color: #25D366;
+  color: var(--blanco);
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1DA851;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.30);
+}
+
+.btn-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: linear-gradient(135deg, #833AB4, #FD1D1D, #F77737);
+  color: var(--blanco);
+  padding: 1rem 2.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+}
+
+.btn-instagram:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(131, 58, 180, 0.30);
+}

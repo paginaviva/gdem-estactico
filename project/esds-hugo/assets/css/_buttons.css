@@ -1,0 +1,93 @@
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.938rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--dorado);
+  outline-offset: 2px;
+}
+
+/* Primary — verde bosque */
+.btn-primary {
+  background-color: var(--verde-bosque);
+  color: var(--blanco);
+  border-color: var(--verde-bosque);
+}
+
+.btn-primary:hover {
+  background-color: var(--verde-oscuro);
+  border-color: var(--verde-oscuro);
+  transform: translateY(-1px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Outline — borde blanco sobre fondo oscuro */
+.btn-outline {
+  background-color: transparent;
+  color: var(--blanco);
+  border-color: var(--blanco);
+}
+
+.btn-outline:hover {
+  background-color: var(--blanco);
+  color: var(--verde-bosque);
+  transform: translateY(-1px);
+}
+
+/* Outline oscuro — para fondos claros */
+.btn-outline-dark {
+  background-color: transparent;
+  color: var(--verde-bosque);
+  border-color: var(--verde-bosque);
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--verde-bosque);
+  color: var(--blanco);
+  transform: translateY(-1px);
+}
+
+/* Secundario — verde oliva */
+.btn-secondary {
+  background-color: var(--verde-oliva);
+  color: var(--blanco);
+  border-color: var(--verde-oliva);
+}
+
+.btn-secondary:hover {
+  background-color: var(--verde-bosque);
+  border-color: var(--verde-bosque);
+  transform: translateY(-1px);
+  box-shadow: var(--sombra-media);
+}
+
+/* Tamaños */
+.btn--sm {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.813rem;
+}
+
+.btn--lg {
+  padding: 1rem 2.5rem;
+  font-size: 1.063rem;
+}
+
+.btn--full {
+  width: 100%;
+}
