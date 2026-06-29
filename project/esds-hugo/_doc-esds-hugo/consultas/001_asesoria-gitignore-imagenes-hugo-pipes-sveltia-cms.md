@@ -3,7 +3,7 @@
 > **Propósito:** Responder a las 10 preguntas planteadas por el desarrollador durante la sesión de asesoría sobre el proyecto "El Sonido del Silencio" (esds-hugo), cubriendo .gitignore, git, baseURL, imágenes + Hugo Pipes, Sveltia CMS, CSS/Hugo Pipes, traducción EN, búsqueda, y recomendaciones técnicas priorizadas.
 >
 > **Creación:** 2026-06-29
-> **Última modificación:** 2026-06-29 (v4.2: añadidas mejoras del documento B8-B21 al Anexo B con IDs y estados)
+> **Última modificación:** 2026-06-29 (v4.3: añadidos IDs C1-C6 a tabla de prioridades final)
 >
 > **Fuentes:**
 > - Código fuente del proyecto: `/home/coder/project/esds-hugo/`
@@ -832,14 +832,14 @@ TÚ (cliente)                    YO (desarrollador)
 
 ---
 
-| Prioridad | Tema | ¿Cuándo? |
-|:---------:|------|----------|
-| 🟠 **Alta** | Hugo Pipes partial `responsive-img.html` | **Cuando tengas las fotos reales** |
-| 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | **Próximo sprint** |
-| 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | **Próximo sprint** |
-| 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | **Al pasar a PROD** |
-| 🔵 **Baja** | Búsqueda PageFind | **Cuando el sitio tenga 20+ páginas** |
-| 🔵 **Baja** | Traducción inglés | **Cuando el sitio ES esté consolidado** |
+| # | Prioridad | Tema | ¿Cuándo? |
+|:-:|:---------:|------|----------|
+| C1 | 🟠 **Alta** | Hugo Pipes partial `responsive-img.html` | **Cuando tengas las fotos reales** |
+| C2 | 🟠 **Alta** | Refactorizar CSS con Hugo Pipes | **Próximo sprint** |
+| C3 | 🟡 **Media** | Añadir `.hugo_build.lock` y `.dev.vars` al `.gitignore` raíz | **Próximo sprint** |
+| C4 | 🟡 **Media** | baseURL producción (variable CF: `HUGO_BASEURL`) | **Al pasar a PROD** |
+| C5 | 🔵 **Baja** | Búsqueda PageFind | **Cuando el sitio tenga 20+ páginas** |
+| C6 | 🔵 **Baja** | Traducción inglés | **Cuando el sitio ES esté consolidado** |
 
 ---
 
