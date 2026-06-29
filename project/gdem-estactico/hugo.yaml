@@ -1,9 +1,0 @@
-baseURL: /
-languageCode: es-es
-title: GDEM Estáctico
-theme: ""
-enableRobotsTXT: true
-
-params:
-  description: Camping y naturaleza - Tu sitio de aventura
-
