@@ -400,11 +400,23 @@
          class="serv-list-card"
          role="listitem"
          aria-label='{{ i18n "list_card_cta_aria" . }}'>
+        {{- $cardImg := partial "resolve-hero-img" . }}
         <div class="serv-list-card__image-wrap">
-          <img class="serv-list-card__image"
-               src="{{ .Params.imagen_hero | default "https://picsum.photos/seed/default-card/800/600" }}"
-               alt="{{ .Params.imagen_hero_alt | default (printf "Foto de %s" .Title) }}"
-               loading="lazy">
+          {{- if $cardImg }}
+            {{ partial "responsive-img" (dict
+              "img"       $cardImg
+              "alt"       (.Params.imagen_hero_alt | default (printf "Foto de %s" .Title))
+              "sizes"     (slice "320" "480" "640")
+              "sizesAttr" "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              "quality"   80
+              "class"     "serv-list-card__image"
+            )}}
+          {{- else }}
+            <img class="serv-list-card__image"
+                 src="https://picsum.photos/seed/default-card/800/600"
+                 alt="{{ .Params.imagen_hero_alt | default (printf "Foto de %s" .Title) }}"
+                 loading="lazy">
+          {{- end }}
         </div>
         <div class="serv-list-card__body">
           <h2 class="serv-list-card__title">{{ .Params.title_breve | default .Title }}</h2>

@@ -3,7 +3,12 @@
    Sección "Nuestras Experiencias" — grid de 4 tarjetas de servicios
    Diseño responsive: 1 col móvil · 2 col tablet (≥768px) · 4 col desktop (≥1024px)
    CSS global en style.css (secciones 9 SECTION TITLES y 10 EXPERIENCIAS)
-   ======================================== */}}
+    ======================================== */}}
+
+{{- $yogaImg := resources.Get "images/yoga-al-aire-libre-embalse-guadalest.jpg" -}}
+{{- $kayakImg := resources.Get "images/kayak-aguas-turquesa-embalse-guadalest.jpg" -}}
+{{- $caminataImg := resources.Get "images/caminata-consciente-sendero-valle-guadalest.jpg" -}}
+{{- $retiroImg := resources.Get "images/mini-retiro-yoga-amanecer-embalse-guadalest.jpg" -}}
 
 <section id="experiencias" class="experiencias" aria-labelledby="experiencias-title">
   <div class="container">
@@ -21,11 +26,14 @@
 
     {{/* Tarjeta 1: Yoga en la naturaleza */}}
     <article class="experiencia-card">
-      <img class="experiencia-card__image"
-           src="https://picsum.photos/seed/esds-yoga/600/400"
-           alt="{{ i18n "experiencias_yoga_img_alt" }}"
-            width="600" height="400"
-            loading="lazy">
+      {{ partial "responsive-img" (dict
+        "img"       $yogaImg
+        "alt"       (i18n "experiencias_yoga_img_alt")
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
+        "quality"   80
+        "class"     "experiencia-card__image"
+      )}}
       <div class="experiencia-card__content">
         <div class="experiencia-card__icon" aria-hidden="true">🧘</div>
         <h3 class="experiencia-card__title">{{ i18n "experiencias_yoga_title" }}</h3>
@@ -40,11 +48,14 @@
 
     {{/* Tarjeta 2: Kayak Experience */}}
     <article class="experiencia-card">
-      <img class="experiencia-card__image"
-           src="https://picsum.photos/seed/esds-kayak/600/400"
-           alt="{{ i18n "experiencias_kayak_img_alt" }}"
-            width="600" height="400"
-            loading="lazy">
+      {{ partial "responsive-img" (dict
+        "img"       $kayakImg
+        "alt"       (i18n "experiencias_kayak_img_alt")
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
+        "quality"   80
+        "class"     "experiencia-card__image"
+      )}}
       <div class="experiencia-card__content">
         <div class="experiencia-card__icon" aria-hidden="true">🛶</div>
         <h3 class="experiencia-card__title">{{ i18n "experiencias_kayak_title" }}</h3>
@@ -59,11 +70,14 @@
 
     {{/* Tarjeta 3: Caminata consciente */}}
     <article class="experiencia-card">
-      <img class="experiencia-card__image"
-           src="https://picsum.photos/seed/esds-caminata/600/400"
-           alt="{{ i18n "experiencias_caminata_img_alt" }}"
-            width="600" height="400"
-            loading="lazy">
+      {{ partial "responsive-img" (dict
+        "img"       $caminataImg
+        "alt"       (i18n "experiencias_caminata_img_alt")
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
+        "quality"   80
+        "class"     "experiencia-card__image"
+      )}}
       <div class="experiencia-card__content">
         <div class="experiencia-card__icon" aria-hidden="true">🥾</div>
         <h3 class="experiencia-card__title">{{ i18n "experiencias_caminata_title" }}</h3>
@@ -79,11 +93,14 @@
     {{/* Tarjeta 4: Mini Retiro (Pack completo) — Destacada */}}
     <article class="experiencia-card experiencia-card--destacada">
       <span class="experiencia-card__badge">{{ i18n "experiencias_mini_retiro_badge" }}</span>
-      <img class="experiencia-card__image"
-           src="https://picsum.photos/seed/esds-pack/600/400"
-           alt="{{ i18n "experiencias_mini_retiro_img_alt" }}"
-           width="600" height="400"
-           loading="lazy">
+      {{ partial "responsive-img" (dict
+        "img"       $retiroImg
+        "alt"       (i18n "experiencias_mini_retiro_img_alt")
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
+        "quality"   80
+        "class"     "experiencia-card__image"
+      )}}
       <div class="experiencia-card__content">
         <div class="experiencia-card__icon" aria-hidden="true">⭐</div>
         <h3 class="experiencia-card__title">

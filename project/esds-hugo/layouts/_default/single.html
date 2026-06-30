@@ -1458,6 +1458,9 @@
      (oculto en transfers)
      ============================================== */}}
 {{ if ne .Params.tipo "transfer" }}
+{{- $relYogaImg := resources.Get "images/yoga-al-aire-libre-embalse-guadalest.jpg" -}}
+{{- $relKayakImg := resources.Get "images/kayak-aguas-turquesa-embalse-guadalest.jpg" -}}
+{{- $relCaminataImg := resources.Get "images/caminata-consciente-sendero-valle-guadalest.jpg" -}}
 <section class="service-relacionados" aria-labelledby="relacionados-title">
   <div class="container">
     <div class="section-title">
@@ -1472,10 +1475,14 @@
     <div class="service-relacionados__scroll" role="list" aria-label="Servicios relacionados">
       {{/* Yoga — 30€ */}}
       <a href="/experiencias/yoga/" class="service-relacionados__card" role="listitem">
-        <img class="service-relacionados__card-img"
-             src="https://picsum.photos/seed/yoga-card/600/400"
-             alt="Persona practicando yoga al aire libre"
-             loading="lazy">
+        {{ partial "responsive-img" (dict
+          "img"       $relYogaImg
+          "alt"       "Persona practicando yoga al aire libre"
+          "sizes"     (slice "320" "480" "640")
+          "sizesAttr" "280px"
+          "quality"   80
+          "class"     "service-relacionados__card-img"
+        )}}
         <div class="service-relacionados__card-body">
           <h3 class="service-relacionados__card-title">{{ i18n "single_relacionados_yoga" }}</h3>
           <div class="service-relacionados__card-meta">
@@ -1488,10 +1495,14 @@
 
       {{/* Kayak — 20€ */}}
       <a href="/experiencias/kayak/" class="service-relacionados__card" role="listitem">
-        <img class="service-relacionados__card-img"
-             src="https://picsum.photos/seed/kayak-card/600/400"
-             alt="Kayak en el embalse de Guadalest"
-             loading="lazy">
+        {{ partial "responsive-img" (dict
+          "img"       $relKayakImg
+          "alt"       "Kayak en el embalse de Guadalest"
+          "sizes"     (slice "320" "480" "640")
+          "sizesAttr" "280px"
+          "quality"   80
+          "class"     "service-relacionados__card-img"
+        )}}
         <div class="service-relacionados__card-body">
           <h3 class="service-relacionados__card-title">{{ i18n "single_relacionados_kayak" }}</h3>
           <div class="service-relacionados__card-meta">
@@ -1504,10 +1515,14 @@
 
       {{/* Caminata — 25€ */}}
       <a href="/experiencias/caminata-consciente/" class="service-relacionados__card" role="listitem">
-        <img class="service-relacionados__card-img"
-             src="https://picsum.photos/seed/caminata-card/600/400"
-             alt="Persona caminando en silencio por el valle"
-             loading="lazy">
+        {{ partial "responsive-img" (dict
+          "img"       $relCaminataImg
+          "alt"       "Persona caminando en silencio por el valle"
+          "sizes"     (slice "320" "480" "640")
+          "sizesAttr" "280px"
+          "quality"   80
+          "class"     "service-relacionados__card-img"
+        )}}
         <div class="service-relacionados__card-body">
           <h3 class="service-relacionados__card-title">{{ i18n "single_relacionados_caminata" }}</h3>
           <div class="service-relacionados__card-meta">
