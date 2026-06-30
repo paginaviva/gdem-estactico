@@ -1028,16 +1028,21 @@
   <div class="service-datos-contenedor">
     {{ partial "datos-servicio" . }}
 
-    {{ with .Params.imagenes_galeria }}
-      {{ range $i, $img := . }}
-        {{ if eq $i 0 }}
-        <img src="{{ $img.src }}"
-             alt="{{ $img.alt }}"
-             loading="lazy"
-             class="service-mobile-img">
-        {{ end }}
-      {{ end }}
-    {{ end }}
+    {{- $bannerImg := partial "resolve-banner-img" . }}
+    {{- if $bannerImg }}
+      {{- $alt := "" }}
+      {{- with .Params.imagenes_galeria }}
+        {{- $alt = (index . 0).alt }}
+      {{- end }}
+      {{ partial "responsive-img" (dict
+        "img"       $bannerImg
+        "alt"       $alt
+        "sizes"     (slice "480" "768" "1024" "1200")
+        "sizesAttr" "100vw"
+        "quality"   80
+        "class"     "service-mobile-img"
+      )}}
+    {{- end }}
   </div>
 
   {{/* C — Programa (solo packs) */}}
@@ -1272,18 +1277,23 @@
 </div>{{/* /service-two-col-wrapper */}}
 
   {{/* ❹ BANNER — img 1/4 */}}
-  {{ with .Params.imagenes_galeria }}
-    {{ range $i, $img := . }}
-      {{ if eq $i 0 }}
-      <section class="service-banner" aria-label="Imagen destacada de la experiencia">
-        <img src="{{ $img.src }}"
-             alt="{{ $img.alt }}"
-             loading="lazy"
-             class="service-banner__img">
-      </section>
-      {{ end }}
-    {{ end }}
-  {{ end }}
+  {{- $bannerImg := partial "resolve-banner-img" . }}
+  {{- if $bannerImg }}
+    {{- $alt := "" }}
+    {{- with .Params.imagenes_galeria }}
+      {{- $alt = (index . 0).alt }}
+    {{- end }}
+    <section class="service-banner" aria-label="Imagen destacada de la experiencia">
+      {{ partial "responsive-img" (dict
+        "img"       $bannerImg
+        "alt"       $alt
+        "sizes"     (slice "480" "768" "1024" "1200")
+        "sizesAttr" "100vw"
+        "quality"   80
+        "class"     "service-banner__img"
+      )}}
+    </section>
+  {{- end }}
 
   {{/* ❺ PROGRAMA (solo packs) */}}
   {{ if eq .Params.tipo "pack" }}

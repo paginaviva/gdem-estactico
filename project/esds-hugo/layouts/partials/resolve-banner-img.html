@@ -1,0 +1,26 @@
+{{/* resolve-banner-img: Devuelve el recurso Hugo de la imagen banner (imagenes_galeria[0]) según el contexto de página.
+    Las imágenes residen en assets/images/ con nombres SEO descriptivos.
+    Mapa de nombres definido por el cliente en temp/nombres-banner-imgs-esds-hugo.md.
+    ──────────────────────────────────────────────────────────────────── */}}
+{{- $bannerMap := dict
+  "yoga"              "posturas-yoga-respiracion-embalse-guadalest"
+  "kayak"             "remando-aguas-cristalinas-embalse-guadalest"
+  "caminata-consciente" "camino-silencio-vistas-embalse-guadalest"
+  "tarde-conexion"    "travesia-atardecer-navegacion-embalse-guadalest"
+  "mini-retiro"       "amanecer-bienestar-saludo-sol-guadalest"
+  "transfer-actividad" "aparcamiento-gratuito-beniarda-punto-encuentro"
+  "transfer-privado"  "saltos-agua-fonts-algar-naturaleza"
+}}
+
+{{- $baseName := "" }}
+{{- if not .IsHome }}
+  {{- $baseName = index $bannerMap .File.ContentBaseName }}
+{{- end }}
+
+{{- $path := "" }}
+{{- if $baseName }}
+  {{- $path = printf "images/%s.jpg" $baseName }}
+{{- end }}
+
+{{- $img := resources.Get $path }}
+{{- return $img }}
