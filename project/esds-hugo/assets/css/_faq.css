@@ -24,7 +24,7 @@
 }
 
 .faq-question {
-  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-family: var(--font-serif, 'Open Sans', serif);
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--texto-oscuro, #2D3A2C);

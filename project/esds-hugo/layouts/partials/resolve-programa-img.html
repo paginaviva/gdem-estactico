@@ -1,0 +1,12 @@
+{{/* resolve-programa-img: Devuelve el recurso Hugo de la imagen para un paso del programa,
+    según el nombre del paso (paso). Usa las mismas imágenes que las cards de home.
+    ──────────────────────────────────────────────────────────────────── */}}
+{{- $imgMap := dict
+  "Yoga al amanecer"         "images/yoga-al-aire-libre-embalse-guadalest.jpg"
+  "Caminata Consciente"      "images/caminata-consciente-sendero-valle-guadalest.jpg"
+  "Kayak en el Embalse"      "images/kayak-aguas-turquesa-embalse-guadalest.jpg"
+  "Hatha Yoga al atardecer"  "images/yoga-al-aire-libre-embalse-guadalest.jpg"
+}}
+{{- $path := index $imgMap . }}
+{{- $img := resources.Get ($path | default "") }}
+{{- return $img }}

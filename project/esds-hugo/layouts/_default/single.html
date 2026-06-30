@@ -1061,12 +1061,24 @@
             <span class="service-programa__step-time" aria-label='{{ i18n "single_programa_aria_horario" }}{{ . }}'>{{ . }}</span>
             {{ end }}
           </div>
-          {{ with $step.imagen }}
-          <img class="service-programa__step-img"
-               src="{{ . }}"
-               alt="{{ $step.paso }}"
-               loading="lazy">
-          {{ end }}
+          {{- $progImg := partial "resolve-programa-img" $step.paso }}
+          {{- if $progImg }}
+            {{ partial "responsive-img" (dict
+              "img"       $progImg
+              "alt"       $step.paso
+              "sizes"     (slice "320" "480" "640")
+              "sizesAttr" "(min-width: 768px) 50vw, 100vw"
+              "quality"   80
+              "class"     "service-programa__step-img"
+            )}}
+          {{- else }}
+            {{ with $step.imagen }}
+            <img class="service-programa__step-img"
+                 src="{{ . }}"
+                 alt="{{ $step.paso }}"
+                 loading="lazy">
+            {{ end }}
+          {{- end }}
           {{ with $step.desc }}
           <p class="service-programa__step-desc">{{ . }}</p>
           {{ end }}
@@ -1311,12 +1323,24 @@
             <span class="service-programa__step-time" aria-label='{{ i18n "single_programa_aria_horario" }}{{ . }}'>{{ . }}</span>
             {{ end }}
           </div>
-          {{ with $step.imagen }}
-          <img class="service-programa__step-img"
-               src="{{ . }}"
-               alt="{{ $step.paso }}"
-               loading="lazy">
-          {{ end }}
+          {{- $progImg := partial "resolve-programa-img" $step.paso }}
+          {{- if $progImg }}
+            {{ partial "responsive-img" (dict
+              "img"       $progImg
+              "alt"       $step.paso
+              "sizes"     (slice "320" "480" "640")
+              "sizesAttr" "(min-width: 768px) 50vw, 100vw"
+              "quality"   80
+              "class"     "service-programa__step-img"
+            )}}
+          {{- else }}
+            {{ with $step.imagen }}
+            <img class="service-programa__step-img"
+                 src="{{ . }}"
+                 alt="{{ $step.paso }}"
+                 loading="lazy">
+            {{ end }}
+          {{- end }}
           {{ with $step.desc }}
           <p class="service-programa__step-desc">{{ . }}</p>
           {{ end }}
