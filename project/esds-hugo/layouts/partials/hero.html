@@ -3,8 +3,19 @@
   ============================================================ */}}
 <section class="hero" aria-label="Hero principal {{ .Site.Title }}">
 
-  {{- /* Imagen de fondo */}}
-  <div class="hero__background" style="background-image: url('https://picsum.photos/seed/esds-hero/1600/900');" aria-hidden="true"></div>
+  {{- /* Imagen de fondo — responsive-img con WebP + srcset + lazy loading */}}
+  {{- $heroImg := partial "resolve-hero-img" . }}
+  {{- if $heroImg }}
+  <div class="hero__background" aria-hidden="true">
+    {{ partial "responsive-img" (dict
+      "img"       $heroImg
+      "alt"       ""
+      "sizes"     (slice "480" "768" "1024" "1920")
+      "sizesAttr" "100vw"
+      "quality"   80
+    )}}
+  </div>
+  {{- end }}
 
   {{- /* Overlay */}}
   <div class="hero__overlay" aria-hidden="true"></div>

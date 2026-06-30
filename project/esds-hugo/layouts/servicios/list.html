@@ -42,9 +42,17 @@
   align-items: flex-end;
   margin-top: var(--header-height);
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.serv-list-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.serv-list-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .serv-list-hero__overlay {
@@ -347,8 +355,19 @@
      image_hero, title, description
      ============================================================ */}}
 <section class="serv-list-hero"
-         style="background-image: url('{{ .Params.image_hero | default "/images/servicios/servicios-hero.jpg" }}');"
          aria-label="{{ .Params.image_hero_alt | default "Experiencias en el Valle de Guadalest" }}">
+  {{- $heroImg := partial "resolve-hero-img" . }}
+  {{- if $heroImg }}
+  <div class="serv-list-hero__bg" aria-hidden="true">
+    {{ partial "responsive-img" (dict
+      "img"       $heroImg
+      "alt"       ""
+      "sizes"     (slice "480" "768" "1024" "1920")
+      "sizesAttr" "100vw"
+      "quality"   80
+    )}}
+  </div>
+  {{- end }}
   <div class="serv-list-hero__overlay" aria-hidden="true"></div>
   <div class="serv-list-hero__content">
     <nav class="serv-list-breadcrumb" aria-label='{{ i18n "list_aria_label_breadcrumb" }}'>

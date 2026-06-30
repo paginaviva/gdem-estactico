@@ -1,0 +1,32 @@
+{{/* resolve-hero-img: Devuelve el recurso Hugo de la imagen de héroe según el contexto de página.
+   Mapa de nombres descriptivos (definidos por el cliente).
+   Las imágenes residen en assets/images/ con nombres SEO descriptivos.
+──────────────────────────────────────────────────────────────────── */}}
+{{- $heroMap := dict
+  "experiencias"      "actividades-bienestar-embalse-guadalest-experiencias"
+  "servicios"         "servicios-transfer-transporte-valle-guadalest"
+  "mini-retiro"       "mini-retiro-yoga-amanecer-embalse-guadalest"
+  "tarde-conexion"    "tarde-conexion-kayak-yoga-atardecer-guadalest"
+  "yoga"              "yoga-al-aire-libre-embalse-guadalest"
+  "kayak"             "kayak-aguas-turquesa-embalse-guadalest"
+  "caminata-consciente" "caminata-consciente-sendero-valle-guadalest"
+  "transfer-actividad"  "transfer-compartido-beniarda-embalse-guadalest"
+  "transfer-privado"    "transfer-privado-traslado-medida-valle-guadalest"
+}}
+
+{{- $baseName := "" }}
+{{- if .IsHome }}
+  {{- $baseName = "embalse-guadalest-valle-bienestar-naturaleza" }}
+{{- else if .IsSection }}
+  {{- $baseName = index $heroMap .Section }}
+{{- else }}
+  {{- $baseName = index $heroMap .File.ContentBaseName }}
+{{- end }}
+
+{{- $path := "" }}
+{{- if $baseName }}
+  {{- $path = printf "images/%s.jpg" $baseName }}
+{{- end }}
+
+{{- $img := resources.Get $path }}
+{{- return $img }}

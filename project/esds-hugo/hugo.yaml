@@ -94,12 +94,6 @@ menu:
       url: "/servicios/transfer-privado/"
       weight: 2
 
-    - identifier: "informacion"
-      name: "Información"
-      parent: "servicios"
-      url: "/informacion/"
-      weight: 3
-
 markup:
   goldmark:
     renderer:

@@ -43,9 +43,17 @@
   align-items: flex-end;
   margin-top: var(--header-height);
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.service-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.service-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-hero__overlay {
@@ -430,9 +438,17 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.service-cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.service-cta__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .service-cta__overlay {
@@ -955,8 +971,20 @@
 {{/* ========================================
      ❶ HERO — Foto a sangre, full-width
      ======================================== */}}
-<section class="service-hero" style="background-image: url('{{ .Params.imagen_hero | default "/images/default-hero.jpg" }}');"
+<section class="service-hero"
          aria-label="{{ .Params.imagen_hero_alt | default .Title }}">
+  {{- $heroImg := partial "resolve-hero-img" . }}
+  {{- if $heroImg }}
+  <div class="service-hero__bg" aria-hidden="true">
+    {{ partial "responsive-img" (dict
+      "img"       $heroImg
+      "alt"       ""
+      "sizes"     (slice "480" "768" "1024" "1920")
+      "sizesAttr" "100vw"
+      "quality"   80
+    )}}
+  </div>
+  {{- end }}
   <div class="service-hero__overlay" aria-hidden="true"></div>
   <div class="service-hero__content">
     <nav class="service-breadcrumb" aria-label="Breadcrumb">
@@ -1394,8 +1422,18 @@
      ❾ CTA WHATSAPP — Full-width
      ============================================== */}}
 <section class="service-cta"
-         style="background-image: url('{{ .Params.imagen_hero | default "/images/default-cta.jpg" }}');"
          aria-label='{{ i18n "single_cta_label" }}'>
+  {{- if $heroImg }}
+  <div class="service-cta__bg" aria-hidden="true">
+    {{ partial "responsive-img" (dict
+      "img"       $heroImg
+      "alt"       ""
+      "sizes"     (slice "480" "768" "1024" "1920")
+      "sizesAttr" "100vw"
+      "quality"   80
+    )}}
+  </div>
+  {{- end }}
   <div class="service-cta__overlay" aria-hidden="true"></div>
   <div class="service-cta__content">
     <h2 class="service-cta__title">{{ i18n "single_cta_title" }}</h2>
