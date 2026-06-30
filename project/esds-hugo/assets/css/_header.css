@@ -25,6 +25,9 @@
 
 /* Logo */
 .logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
   font-family: var(--font-serif);
   font-size: 1.125rem;
   font-weight: 700;

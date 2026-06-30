@@ -24,25 +24,29 @@
     {{/* Grid de tarjetas */}}
     <div class="experiencias__grid">
 
-    {{/* Tarjeta 1: Yoga en la naturaleza */}}
-    <article class="experiencia-card">
+    {{/* Tarjeta 1: Mini Retiro (Pack completo) — Destacada */}}
+    <article class="experiencia-card experiencia-card--destacada">
+      <span class="experiencia-card__badge">{{ i18n "experiencias_mini_retiro_badge" }}</span>
       {{ partial "responsive-img" (dict
-        "img"       $yogaImg
-        "alt"       (i18n "experiencias_yoga_img_alt")
+        "img"       $retiroImg
+        "alt"       (i18n "experiencias_mini_retiro_img_alt")
         "sizes"     (slice "320" "480" "640")
         "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
         "quality"   80
         "class"     "experiencia-card__image"
       )}}
       <div class="experiencia-card__content">
-        <div class="experiencia-card__icon" aria-hidden="true">🧘</div>
-        <h3 class="experiencia-card__title">{{ i18n "experiencias_yoga_title" }}</h3>
-        <p class="experiencia-card__desc">{{ i18n "experiencias_yoga_desc" }}</p>
+        <div class="experiencia-card__icon" aria-hidden="true">⭐</div>
+        <h3 class="experiencia-card__title">
+          {{ i18n "experiencias_mini_retiro_title" }}
+          <span class="experiencia-card__price-label">{{ i18n "experiencias_mini_retiro_label" }}</span>
+        </h3>
+        <p class="experiencia-card__desc">{{ i18n "experiencias_mini_retiro_desc" }}</p>
         <div class="experiencia-card__meta">
-          <span class="experiencia-card__duration">{{ i18n "experiencias_yoga_duracion" }}</span>
-          <span class="experiencia-card__price">{{ i18n "experiencias_yoga_precio" }} <span class="experiencia-card__price-label">{{ i18n "experiencias_precio_label" }}</span></span>
+          <span class="experiencia-card__duration">{{ i18n "experiencias_mini_retiro_duracion" }}</span>
+          <span class="experiencia-card__price">{{ i18n "experiencias_mini_retiro_precio" }} <span class="experiencia-card__price-label">{{ i18n "experiencias_precio_label" }}</span></span>
         </div>
-        <p class="experiencia-card__min">{{ i18n "experiencias_yoga_min" }}</p>
+        <p class="experiencia-card__min">{{ i18n "experiencias_mini_retiro_min" }}</p>
       </div>
     </article>
 
@@ -68,7 +72,29 @@
       </div>
     </article>
 
-    {{/* Tarjeta 3: Caminata consciente */}}
+    {{/* Tarjeta 3: Yoga en la naturaleza */}}
+    <article class="experiencia-card">
+      {{ partial "responsive-img" (dict
+        "img"       $yogaImg
+        "alt"       (i18n "experiencias_yoga_img_alt")
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
+        "quality"   80
+        "class"     "experiencia-card__image"
+      )}}
+      <div class="experiencia-card__content">
+        <div class="experiencia-card__icon" aria-hidden="true">🧘</div>
+        <h3 class="experiencia-card__title">{{ i18n "experiencias_yoga_title" }}</h3>
+        <p class="experiencia-card__desc">{{ i18n "experiencias_yoga_desc" }}</p>
+        <div class="experiencia-card__meta">
+          <span class="experiencia-card__duration">{{ i18n "experiencias_yoga_duracion" }}</span>
+          <span class="experiencia-card__price">{{ i18n "experiencias_yoga_precio" }} <span class="experiencia-card__price-label">{{ i18n "experiencias_precio_label" }}</span></span>
+        </div>
+        <p class="experiencia-card__min">{{ i18n "experiencias_yoga_min" }}</p>
+      </div>
+    </article>
+
+    {{/* Tarjeta 4: Caminata consciente */}}
     <article class="experiencia-card">
       {{ partial "responsive-img" (dict
         "img"       $caminataImg
@@ -87,32 +113,6 @@
           <span class="experiencia-card__price">{{ i18n "experiencias_caminata_precio" }} <span class="experiencia-card__price-label">{{ i18n "experiencias_precio_label" }}</span></span>
         </div>
         <p class="experiencia-card__min">{{ i18n "experiencias_caminata_min" }}</p>
-      </div>
-    </article>
-
-    {{/* Tarjeta 4: Mini Retiro (Pack completo) — Destacada */}}
-    <article class="experiencia-card experiencia-card--destacada">
-      <span class="experiencia-card__badge">{{ i18n "experiencias_mini_retiro_badge" }}</span>
-      {{ partial "responsive-img" (dict
-        "img"       $retiroImg
-        "alt"       (i18n "experiencias_mini_retiro_img_alt")
-        "sizes"     (slice "320" "480" "640")
-        "sizesAttr" "(max-width: 1024px) 50vw, 25vw"
-        "quality"   80
-        "class"     "experiencia-card__image"
-      )}}
-      <div class="experiencia-card__content">
-        <div class="experiencia-card__icon" aria-hidden="true">⭐</div>
-        <h3 class="experiencia-card__title">
-          {{ i18n "experiencias_mini_retiro_title" }}
-          <span class="experiencia-card__price-label">{{ i18n "experiencias_mini_retiro_label" }}</span>
-        </h3>
-        <p class="experiencia-card__desc">{{ i18n "experiencias_mini_retiro_desc" }}</p>
-        <div class="experiencia-card__meta">
-          <span class="experiencia-card__duration">{{ i18n "experiencias_mini_retiro_duracion" }}</span>
-          <span class="experiencia-card__price">{{ i18n "experiencias_mini_retiro_precio" }} <span class="experiencia-card__price-label">{{ i18n "experiencias_precio_label" }}</span></span>
-        </div>
-        <p class="experiencia-card__min">{{ i18n "experiencias_mini_retiro_min" }}</p>
       </div>
     </article>
 
