@@ -59,17 +59,25 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var submenuParents = document.querySelectorAll('.nav__item--has-children > .nav__link');
+  var toggleBtn = document.getElementById('menu-toggle');
+  var navList = document.getElementById('nav-list');
 
+  // Toggle menú principal (hamburguesa)
+  if (toggleBtn && navList) {
+    toggleBtn.addEventListener('click', function() {
+      var isOpen = navList.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+
+  // Submenús en móvil
+  var submenuParents = document.querySelectorAll('.nav__item--has-children > .nav__link');
   submenuParents.forEach(function(link) {
     link.addEventListener('click', function(e) {
-      // Solo en móvil
       if (window.innerWidth < 768) {
         e.preventDefault();
         var parent = this.parentElement;
         parent.classList.toggle('open');
-
-        // aria-expanded en el <a> (elemento controlador, no en el <li>)
         var isOpen = parent.classList.contains('open');
         this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       }

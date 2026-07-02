@@ -1,0 +1,26 @@
+{{/* resolve-galeria-img: Devuelve el recurso Hugo para una imagen de galería (slots [1], [2], [3]).
+   Uso: {{ partial "resolve-galeria-img" (dict "page" . "index" 1) }}
+   index: 1=img 2/4, 2=img 3/4, 3=img 4/4
+   Si no hay imagen mapeada (pendiente del cliente), devuelve nil → fallback al original.
+   Mapa: content-base-name:index → ruta en assets/images/
+   ──────────────────────────────────────────────────────────────────── */}}
+{{- $page := .page }}
+{{- $index := .index | int }}
+{{- $name := $page.File.ContentBaseName }}
+
+{{- $map := dict
+  "yoga:1" "images/grupo-reducido-clase-yoga-atardecer-guadalest.jpg"
+  "yoga:2" "images/meditacion-orilla-embalse-silencio-guadalest.jpg"
+  "yoga:3" "images/entorno-natural-montanas-embalse-guadalest.jpg"
+  "kayak:1" "images/navegacion-silencio-montanas-verdes-guadalest.jpg"
+  "kayak:2" "images/reflejo-cielo-embalse-vista-panoramica-guadalest.jpg"
+  "tarde-conexion:2" "images/tonos-dorados-atardecer-embalse-panoramica.jpg"
+  "tarde-conexion:3" "images/grupo-travesia-remos-montanas-guadalest.jpg"
+  "transfer-actividad:1" "images/carretera-montana-acceso-embalse-guadalest.jpg"
+  "transfer-privado:1" "images/castillo-guadalest-pena-vistas-valle.jpg"
+}}
+
+{{- $key := printf "%s:%d" $name $index }}
+{{- $path := index $map $key }}
+{{- $img := resources.Get ($path | default "") }}
+{{- return $img }}

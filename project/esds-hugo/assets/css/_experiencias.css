@@ -13,11 +13,14 @@
 }
 
 .experiencia-card {
+  display: block;
   background-color: var(--blanco);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--sombra-suave);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  text-decoration: none;
+  color: inherit;
 }
 
 .experiencia-card:hover {
@@ -125,4 +128,15 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
+}
+
+/* CTA button inside card */
+.experiencia-card .btn {
+  margin-top: auto;
+  pointer-events: none;
+}
+
+.experiencia-card:hover .btn-outline-dark {
+  background-color: var(--verde-bosque);
+  color: var(--blanco);
 }

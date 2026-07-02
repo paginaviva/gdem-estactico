@@ -723,6 +723,8 @@
   .service-media--img-dcha .service-media__img {
     grid-column: 2;
     grid-row: 1;
+    aspect-ratio: auto;
+    object-fit: initial;
   }
 
   .service-media--img-dcha .service-media__text {
@@ -816,6 +818,11 @@
   object-fit: cover;
   display: block;
   background-color: var(--blanco-hueso);
+}
+
+.service-mobile-img--portrait {
+  aspect-ratio: auto;
+  object-fit: initial;
 }
 
 /* ----------------------------------------------------------
@@ -1147,16 +1154,32 @@
   {{ end }}
 
   {{/* E — img 2/4 */}}
-  {{ with .Params.imagenes_galeria }}
-    {{ range $i, $img := . }}
-      {{ if eq $i 1 }}
-      <img src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           class="service-mobile-img">
+  {{- $galImg1 := partial "resolve-galeria-img" (dict "page" $ "index" 1) }}
+  {{- if $galImg1 }}
+    {{- $alt1 := "" }}
+    {{- with $.Params.imagenes_galeria }}
+      {{- $alt1 = (index . 1).alt }}
+    {{- end }}
+    {{ partial "responsive-img" (dict
+      "img"       $galImg1
+      "alt"       $alt1
+      "sizes"     (slice "320" "480" "640")
+      "sizesAttr" "100vw"
+      "quality"   80
+      "class"     "service-mobile-img"
+    )}}
+  {{- else }}
+    {{ with .Params.imagenes_galeria }}
+      {{ range $i, $img := . }}
+        {{ if eq $i 1 }}
+        <img src="{{ $img.src }}"
+             alt="{{ $img.alt }}"
+             loading="lazy"
+             class="service-mobile-img">
+        {{ end }}
       {{ end }}
     {{ end }}
-  {{ end }}
+  {{- end }}
 
   {{/* F — Cita de Elena */}}
   {{ with .Params.cita_elena }}
@@ -1172,17 +1195,35 @@
   </section>
   {{ end }}
 
+  {{ if eq .Section "experiencias" }}
+  {{/* Solo experiencias: G, H, I, J, K */}}
   {{/* G — img 3/4 */}}
-  {{ with .Params.imagenes_galeria }}
-    {{ range $i, $img := . }}
-      {{ if eq $i 2 }}
-      <img src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           class="service-mobile-img">
+  {{- $galImg2 := partial "resolve-galeria-img" (dict "page" $ "index" 2) }}
+  {{- if $galImg2 }}
+    {{- $alt2 := "" }}
+    {{- with $.Params.imagenes_galeria }}
+      {{- $alt2 = (index . 2).alt }}
+    {{- end }}
+    {{ partial "responsive-img" (dict
+      "img"       $galImg2
+      "alt"       $alt2
+      "sizes"     (slice "320" "480" "640")
+      "sizesAttr" "100vw"
+      "quality"   80
+      "class"     "service-mobile-img"
+    )}}
+  {{- else }}
+    {{ with .Params.imagenes_galeria }}
+      {{ range $i, $img := . }}
+        {{ if eq $i 2 }}
+        <img src="{{ $img.src }}"
+             alt="{{ $img.alt }}"
+             loading="lazy"
+             class="service-mobile-img">
+        {{ end }}
       {{ end }}
     {{ end }}
-  {{ end }}
+  {{- end }}
 
   {{/* H — Actividades (Yoga, Caminata, Kayak) */}}
   {{ with .Params.actividades }}
@@ -1199,26 +1240,57 @@
   </section>
   {{ end }}
 
-  {{/* I — img 4/4 */}}
-  {{ with .Params.imagenes_galeria }}
-    {{ range $i, $img := . }}
-      {{ if eq $i 3 }}
-      <img src="{{ $img.src }}"
-           alt="{{ $img.alt }}"
-           loading="lazy"
-           class="service-mobile-img">
-      {{ end }}
-    {{ end }}
-  {{ end }}
+  {{/* I+J: orden según tipo de página
+       - Mini Retiro (tiene .actividades): mantiene I → J
+       - Resto de experiencias: J → I (intercalado) */}}
+  {{ if .Params.actividades }}
+    {{/* MINI RETIRO — orden original: I → J */}}
+    {{/* I — img 4/4 (portrait collage, sin recortar) */}}
+    {{- $porQueImg := resources.Get "images/experiencia-bienestar-naturaleza-embalse-guadalest.png" -}}
+    {{- if $porQueImg }}
+      {{ partial "responsive-img" (dict
+        "img"       $porQueImg
+        "alt"       "Experiencia de bienestar en el embalse de Guadalest"
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "100vw"
+        "quality"   80
+        "class"     "service-mobile-img service-mobile-img--portrait"
+      )}}
+    {{- end }}
 
-  {{/* J — Para quién es */}}
-  {{ with .Params.para_quien_es }}
-  <section class="service-media service-media--stack" aria-labelledby="para-quien-mobile-title">
-    <div class="container">
-      <h2 id="para-quien-mobile-title" class="service-media__title">{{ i18n "single_para_quien" }}</h2>
-      <div class="service-media__body">{{ . | markdownify }}</div>
-    </div>
-  </section>
+    {{/* J — Para quién es */}}
+    {{ with $.Params.para_quien_es }}
+    <section class="service-media service-media--stack" aria-labelledby="para-quien-mobile-title">
+      <div class="container">
+        <h2 id="para-quien-mobile-title" class="service-media__title">{{ i18n "single_para_quien" }}</h2>
+        <div class="service-media__body">{{ . | markdownify }}</div>
+      </div>
+    </section>
+    {{ end }}
+  {{ else }}
+    {{/* RESTO DE EXPERIENCIAS — orden intercalado: J → I */}}
+    {{/* J — Para quién es */}}
+    {{ with $.Params.para_quien_es }}
+    <section class="service-media service-media--stack" aria-labelledby="para-quien-mobile-title">
+      <div class="container">
+        <h2 id="para-quien-mobile-title" class="service-media__title">{{ i18n "single_para_quien" }}</h2>
+        <div class="service-media__body">{{ . | markdownify }}</div>
+      </div>
+    </section>
+    {{ end }}
+
+    {{/* I — img 4/4 (portrait collage, sin recortar) */}}
+    {{- $porQueImg := resources.Get "images/experiencia-bienestar-naturaleza-embalse-guadalest.png" -}}
+    {{- if $porQueImg }}
+      {{ partial "responsive-img" (dict
+        "img"       $porQueImg
+        "alt"       "Experiencia de bienestar en el embalse de Guadalest"
+        "sizes"     (slice "320" "480" "640")
+        "sizesAttr" "100vw"
+        "quality"   80
+        "class"     "service-mobile-img service-mobile-img--portrait"
+      )}}
+    {{- end }}
   {{ end }}
 
   {{/* K — Por qué elegir */}}
@@ -1230,6 +1302,7 @@
     </div>
   </section>
   {{ end }}
+  {{ end }}{{/* /if eq .Section "experiencias" */}}
 
 </div>{{/* /service-mobile-layout */}}
 
@@ -1269,16 +1342,32 @@
         {{ end }}
 
         {{/* 🖼️ img 2/4 */}}
-        {{ with .Params.imagenes_galeria }}
-          {{ range $i, $img := . }}
-            {{ if eq $i 1 }}
-            <img src="{{ $img.src }}"
-                 alt="{{ $img.alt }}"
-                 loading="lazy"
-                 class="service-content-img">
+        {{- $galImg1 := partial "resolve-galeria-img" (dict "page" $ "index" 1) }}
+        {{- if $galImg1 }}
+          {{- $alt1 := "" }}
+          {{- with $.Params.imagenes_galeria }}
+            {{- $alt1 = (index . 1).alt }}
+          {{- end }}
+          {{ partial "responsive-img" (dict
+            "img"       $galImg1
+            "alt"       $alt1
+            "sizes"     (slice "320" "480" "640")
+            "sizesAttr" "(min-width: 768px) 65vw, 100vw"
+            "quality"   80
+            "class"     "service-content-img"
+          )}}
+        {{- else }}
+          {{ with .Params.imagenes_galeria }}
+            {{ range $i, $img := . }}
+              {{ if eq $i 1 }}
+              <img src="{{ $img.src }}"
+                   alt="{{ $img.alt }}"
+                   loading="lazy"
+                   class="service-content-img">
+              {{ end }}
             {{ end }}
           {{ end }}
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </section>
@@ -1410,14 +1499,30 @@
   {{ if and .Params.imagenes_galeria .Params.para_quien_es }}
   <section class="service-media service-media--img-izq" aria-labelledby="para-quien-title">
     <div class="service-media__container">
-      {{ range $i, $img := $.Params.imagenes_galeria }}
-        {{ if eq $i 2 }}
-        <img src="{{ $img.src }}"
-             alt="{{ $img.alt }}"
-             loading="lazy"
-             class="service-media__img">
+      {{- $galImg2 := partial "resolve-galeria-img" (dict "page" $ "index" 2) }}
+      {{- if $galImg2 }}
+        {{- $alt2 := "" }}
+        {{- with $.Params.imagenes_galeria }}
+          {{- $alt2 = (index . 2).alt }}
+        {{- end }}
+        {{ partial "responsive-img" (dict
+          "img"       $galImg2
+          "alt"       $alt2
+          "sizes"     (slice "320" "480" "640")
+          "sizesAttr" "(min-width: 768px) 50vw, 100vw"
+          "quality"   80
+          "class"     "service-media__img"
+        )}}
+      {{- else }}
+        {{ range $i, $img := $.Params.imagenes_galeria }}
+          {{ if eq $i 2 }}
+          <img src="{{ $img.src }}"
+               alt="{{ $img.alt }}"
+               loading="lazy"
+               class="service-media__img">
+          {{ end }}
         {{ end }}
-      {{ end }}
+      {{- end }}
       <div class="service-media__text">
         <h2 id="para-quien-title" class="service-media__title">{{ i18n "single_para_quien" }}</h2>
         <div class="service-media__body">
@@ -1438,12 +1543,26 @@
           {{ .Params.por_que_elegir | markdownify }}
         </div>
       </div>
-      {{ range $i, $img := $.Params.imagenes_galeria }}
-        {{ if eq $i 3 }}
-        <img src="{{ $img.src }}"
-             alt="{{ $img.alt }}"
-             loading="lazy"
-             class="service-media__img">
+      {{ if eq $.Section "experiencias" }}
+        {{- $porQueImg := resources.Get "images/experiencia-bienestar-naturaleza-embalse-guadalest.png" -}}
+        {{- if $porQueImg }}
+          {{ partial "responsive-img" (dict
+            "img"       $porQueImg
+            "alt"       "Experiencia de bienestar en el embalse de Guadalest"
+            "sizes"     (slice "320" "480" "640")
+            "sizesAttr" "(min-width: 768px) 50vw, 100vw"
+            "quality"   80
+            "class"     "service-media__img"
+          )}}
+        {{- end }}
+      {{ else }}
+        {{ range $i, $img := $.Params.imagenes_galeria }}
+          {{ if eq $i 3 }}
+          <img src="{{ $img.src }}"
+               alt="{{ $img.alt }}"
+               loading="lazy"
+               class="service-media__img">
+          {{ end }}
         {{ end }}
       {{ end }}
     </div>
